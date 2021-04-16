@@ -1,0 +1,1685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Spring Security Keycloak Spring Boot - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spring Security Keycloak Spring Boot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
+        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
+        Access a value defined in the application.properti
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Spring Security Keycloak Spring Boot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Spring Security Keycloak Spring Boot
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    1. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-demo-application" class="md-nav__link">
+    2. The Demo Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-set-up-a-spring-boot-application" class="md-nav__link">
+    3. Set Up A Spring Boot Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-keycloak-in-spring-boot" class="md-nav__link">
+    4. Configure Keycloak In Spring Boot
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configure Keycloak In Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-basic-keycloak-configuration" class="md-nav__link">
+    4.1. Basic Keycloak Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-the-keycloak-configuration-defined-in-applicationproperties" class="md-nav__link">
+    4.2. Use The Keycloak Configuration Defined In application.properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implement-the-application-logic" class="md-nav__link">
+    5. Implement The Application Logic
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Implement The Application Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-controller" class="md-nav__link">
+    5.1. The Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-the-repository" class="md-nav__link">
+    5.2. The Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-the-entity" class="md-nav__link">
+    5.3. The Entity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configure-spring-security-with-keycloak" class="md-nav__link">
+    6. Configure Spring Security With Keycloak
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configure Spring Security With Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-create-a-security-configuration-class" class="md-nav__link">
+    6.1 Create a Security Configuration Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-register-keycloak-as-the-authentication-provider" class="md-nav__link">
+    6.2 Register Keycloak as the Authentication Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-define-a-session-authentication-strategy" class="md-nav__link">
+    6.3 Define a Session Authentication Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-define-role-based-access-security-policies" class="md-nav__link">
+    6.4. Define Role-Based Access Security Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-handle-bean-definition-overriding-issues" class="md-nav__link">
+    6.5 Handle Bean Definition Overriding Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-the-final-spring-security-configuration-with-keycloak" class="md-nav__link">
+    6.7 The Final Spring Security Configuration with Keycloak
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testing-the-application" class="md-nav__link">
+    7. Testing The Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-using-the-application" class="md-nav__link">
+    8. Using The Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keycloak-series" class="md-nav__link">
+    Keycloak Series
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keycloak-with-spring-series" class="md-nav__link">
+    Keycloak with Spring Series
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
+        Setting up KeePassXC on Linux (with Cloud Synchron
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B2%20Linux%20Ubuntu%20%20/" class="md-nav__link">
+        Автоматическое монтирование диска в Linux Ubuntu  
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    1. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-demo-application" class="md-nav__link">
+    2. The Demo Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-set-up-a-spring-boot-application" class="md-nav__link">
+    3. Set Up A Spring Boot Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-keycloak-in-spring-boot" class="md-nav__link">
+    4. Configure Keycloak In Spring Boot
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configure Keycloak In Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-basic-keycloak-configuration" class="md-nav__link">
+    4.1. Basic Keycloak Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-the-keycloak-configuration-defined-in-applicationproperties" class="md-nav__link">
+    4.2. Use The Keycloak Configuration Defined In application.properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-implement-the-application-logic" class="md-nav__link">
+    5. Implement The Application Logic
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Implement The Application Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-controller" class="md-nav__link">
+    5.1. The Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-the-repository" class="md-nav__link">
+    5.2. The Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-the-entity" class="md-nav__link">
+    5.3. The Entity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configure-spring-security-with-keycloak" class="md-nav__link">
+    6. Configure Spring Security With Keycloak
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configure Spring Security With Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-create-a-security-configuration-class" class="md-nav__link">
+    6.1 Create a Security Configuration Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-register-keycloak-as-the-authentication-provider" class="md-nav__link">
+    6.2 Register Keycloak as the Authentication Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-define-a-session-authentication-strategy" class="md-nav__link">
+    6.3 Define a Session Authentication Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-define-role-based-access-security-policies" class="md-nav__link">
+    6.4. Define Role-Based Access Security Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-handle-bean-definition-overriding-issues" class="md-nav__link">
+    6.5 Handle Bean Definition Overriding Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-the-final-spring-security-configuration-with-keycloak" class="md-nav__link">
+    6.7 The Final Spring Security Configuration with Keycloak
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testing-the-application" class="md-nav__link">
+    7. Testing The Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-using-the-application" class="md-nav__link">
+    8. Using The Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keycloak-series" class="md-nav__link">
+    Keycloak Series
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keycloak-with-spring-series" class="md-nav__link">
+    Keycloak with Spring Series
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Spring Security Keycloak Spring Boot</h1>
+                
+                <p>Spring Security Keycloak Spring Boot</p>
+<p><img width="1040" height="693" src="../../_resources/6950caf40d0646d78a14efd05b93faa2.jpg"/></p>
+<p>In <a href="https://www.thomasvitale.com/tag/keycloak/">previous articles</a>, we have explored some cool Keycloak features and used them to secure a Spring Boot application. In this tutorial, we will bring <strong>Spring Security</strong> in and see how to integrate it with <strong>Keycloak</strong> seamlessly.</p>
+<p>We're going to:</p>
+<ul>
+<li>Set up a Spring Boot application;</li>
+<li>Integrate Spring Boot with Keycloak;</li>
+<li>Configure Spring Security to use Keycloak as an authentication provider;</li>
+<li>Implement the application logic;</li>
+<li>Add access policies based on user roles to protect our application endpoints.</li>
+</ul>
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+<p>To follow along with this tutorial, you will need:</p>
+<ul>
+<li>JDK 8 or JDK 11+</li>
+<li>an IDE</li>
+<li>Gradle 5.5.0+</li>
+<li>Spring Boot 2.1.0+</li>
+<li>Keycloak 7.0.0+</li>
+</ul>
+<p>If you prefer to use Apache Maven rather than Gradle, feel free to do so.</p>
+<p>You will need <strong>a <a href="https://www.keycloak.org/">Keycloak</a> server installed and configured</strong>. If you are just getting started and want to know more about it, refer to my previous articles in this series to learn <a href="https://www.thomasvitale.com/introducing-keycloak-identity-access-management/">how to install Keycloak</a>, how to do some <a href="https://www.thomasvitale.com/keycloak-configuration-authentication-authorisation/">basic configuration for authentication and authorization</a>, and how to <a href="https://www.thomasvitale.com/keycloak-authentication-flow-sso-client/">set up a client for our application</a>.</p>
+<p>Throughout this tutorial, I will use a Keycloak server configured in the same way as explained in the mentioned articles.</p>
+<p>Should you be interested in having a look at <a href="https://www.thomasvitale.com/spring-boot-keycloak-security/">how to secure a Spring Boot application with Keycloak</a>, without using Spring Security, I wrote an article about that, too. But it's not a prerequisite to follow along with this one.</p>
+<p>On GitHub, you can find the <a href="https://github.com/ThomasVitale/spring-keycloak-tutorials/tree/master/keycloak-spring-security-first-look">source code</a> for the application we are building in this tutorial.</p>
+<p>Let's get started!</p>
+<h2 id="2-the-demo-application">2. The Demo Application</h2>
+<p>The application we're going to build is for a fictitious public library. There are two groups of users:</p>
+<ul>
+<li><strong>members</strong> can browse the books available in the library;</li>
+<li><strong>librarians</strong> can also manage the books.</li>
+</ul>
+<p>For each group of users, we have a corresponding user role defined in Keycloak.</p>
+<p>Also, we have two users registered in the system: Sheldon is a member, Irma is both a member and a librarian.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Username</th>
+<th>Roles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sheldon Cooper</td>
+<td>sheldon.cooper</td>
+<td>Member</td>
+</tr>
+<tr>
+<td>Irma Pince</td>
+<td>irma.pince</td>
+<td>Member, Librarian</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-set-up-a-spring-boot-application">3. Set Up A Spring Boot Application</h2>
+<p>Our application will make use of three main libraries to set Spring up:</p>
+<ul>
+<li><code>spring-boot-starter-web</code>, a starter for building web applications with <strong>Spring MVC</strong>;</li>
+<li><code>spring-boot-starter-thymeleaf</code>, a starter to use <strong>Thymleaf</strong> views for Spring MVC;</li>
+<li><code>spring-boot-starter-security</code>, a starter for using <strong>Spring Security</strong>.</li>
+</ul>
+<p>The integration with Keycloak is made possible by the so-called <a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#what-are-client-adapters">client adapters</a>.</p>
+<blockquote>
+<p>Keycloak client adapters are libraries that make it very easy to secure applications and services with Keycloak.</p>
+</blockquote>
+<p>For this project, we will need:</p>
+<ul>
+<li>the <a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_boot_adapter"><strong>Spring Boot Adapter</strong></a> to take advantage of its auto-configuration features for Spring Boot;</li>
+<li>the <a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_security_adapter"><strong>Spring Security Adapter</strong></a> to use Keycloak as an authentication provider for Spring Security.</li>
+</ul>
+<p>The <code>keycloak-spring-boot-starter</code> library includes both of them, so we don't need anything else other than that.</p>
+<p>We can define all those dependencies in the <code>gradle.build</code> file for our project (or <code>pom.xml</code> if using Maven).</p>
+<div class="highlight"><pre><span></span><code>buildscript {
+    ext {
+        springBootVersion = &#39;2.1.9.RELEASE&#39;
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(&quot;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&quot;)
+    }
+}
+
+apply plugin: &#39;java&#39;
+apply plugin: &#39;org.springframework.boot&#39;
+apply plugin: &#39;io.spring.dependency-management&#39;
+
+group = &#39;com.thomasvitale&#39;
+version = &#39;0.0.1-SNAPSHOT&#39;
+sourceCompatibility = &#39;1.8&#39;
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set(&#39;keycloakVersion&#39;, &#39;7.0.1&#39;)
+}
+
+dependencies {
+
+    implementation &#39;org.springframework.boot:spring-boot-starter-web&#39;
+    implementation &#39;org.springframework.boot:spring-boot-starter-thymeleaf&#39;
+    implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;
+
+
+    implementation &#39;org.keycloak:keycloak-spring-boot-starter&#39;
+
+
+    testImplementation &#39;org.springframework.boot:spring-boot-starter-test&#39;
+    testImplementation &#39;org.springframework.boot:spring-security-test&#39;
+    testImplementation &#39;org.keycloak:keycloak-test-helper&#39;
+}
+
+dependencyManagement {
+    imports {
+        mavenBom &quot;org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}&quot;
+    }
+}
+</code></pre></div>
+<p>build.gradle</p>
+<p>That's it. We have set up a Spring Boot application, ready to leverage Spring Security and Keycloak.</p>
+<h2 id="4-configure-keycloak-in-spring-boot">4. Configure Keycloak In Spring Boot</h2>
+<p>We should now provide some configuration for the integration between Spring Boot and Keycloak.</p>
+<h3 id="41-basic-keycloak-configuration">4.1. Basic Keycloak Configuration</h3>
+<p>The <a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#_java_adapter_config">default configuration file</a> for Keycloak is <code>keycloak.json</code>, but thanks to the Keycloak Spring Boot Adapter we can use the native <code>application.properties</code> file (or <code>application.yml</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="na">keycloak.realm</span><span class="o">=</span><span class="s">public-library</span>
+<span class="na">keycloak.resource</span><span class="o">=</span><span class="s">spring-boot-app</span>
+<span class="na">keycloak.auth-server-url</span><span class="o">=</span><span class="s">http://localhost:8180/auth</span>
+<span class="na">keycloak.ssl-required</span><span class="o">=</span><span class="s">external</span>
+<span class="na">keycloak.public-client</span><span class="o">=</span><span class="s">true</span>
+<span class="na">keycloak.principal-attribute</span><span class="o">=</span><span class="s">preferred_username</span>
+</code></pre></div>
+<p>application.properties</p>
+<p>Let's look at the properties one by one:</p>
+<ul>
+<li><code>keycloak.realm</code>: the name of the realm, required;</li>
+<li><code>keycloak.resource</code>: the client-id of the application, required;</li>
+<li><code>keycloak.auth-server-url</code>: the base URL of the Keycloak server, required;</li>
+<li><code>keycloak.ssl-required</code>:  establishes if communications with the Keycloak server must happen over HTTPS. Here, it's set to <code>external</code>, meaning that it's only needed for external requests (default value). In production, instead, we should set it to <em>all</em>. Optional;</li>
+<li><code>keycloak.public-client</code>: prevents the application from sending credentials to the Keycloak server (<em>false</em> is the default value). We want to set it to <em>true</em> whenever we use <em>public</em> clients instead of <a href="http://www.keycloak.org/docs/latest/server_admin/index.html#_client-credentials"><em>confidential</em></a>. Optional;</li>
+<li><code>keycloak.principal-attribute</code>: the attribute with which to populate the <code>UserPrincipal</code> name. Optional.</li>
+</ul>
+<h3 id="42-use-the-keycloak-configuration-defined-in-applicationproperties">4.2. Use The Keycloak Configuration Defined In <em>application.properties</em></h3>
+<p>Starting from Keycloak Spring Boot Adapter 7.0.0, due to <a href="https://issues.jboss.org/browse/KEYCLOAK-11282">some issues</a>, the automatic discovery of the Keycloak configuration from the <code>application.properties</code> (or <code>application.yml</code>) file will not work. To overcome this problem, we need to define a <code>KeycloakSpringBootConfigResolver</code> bean explicitly in a <code>@Configuration</code> class.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">KeycloakConfig</span> <span class="p">{</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">KeycloakSpringBootConfigResolver</span> <span class="nf">keycloakConfigResolver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">KeycloakSpringBootConfigResolver</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>KeycloakConfig.java</p>
+<p>Without this bean, we would get an error.</p>
+<div class="highlight"><pre><span></span><code>***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of method setKeycloakSpringBootProperties in org.keycloak.adapters.springboot.KeycloakBaseSpringBootConfiguration required a bean of type &#39;org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver&#39; that could not be found.
+
+
+Action:
+
+Consider defining a bean of type &#39;org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver&#39; in your configuration.
+
+
+Process finished with exit code 1
+</code></pre></div>
+<p>Error thrown when no KeycloakSpringBootConfigResolver bean has been defined.</p>
+<p>This problem doesn't affect the Keycloak Spring Boot Adapter versions older than 7.0.0.</p>
+<h2 id="5-implement-the-application-logic">5. Implement The Application Logic</h2>
+<p>We want to use Spring Security and Keycloak to make sure that the users of our application are authenticated and authorized, before accessing some protected endpoints.</p>
+<h3 id="51-the-controller">5.1. The Controller</h3>
+<p>Let's define three endpoints in a Spring MVC <code>Controller</code> class:</p>
+<ul>
+<li><code>/index</code> will be freely accessible;</li>
+<li><code>/books</code> will be accessible only by users with a <em>Member</em> role: they can browse the books available at the library;</li>
+<li><code>/manager</code> will be accessible only by users with a <em>Librarian</em> role: they can manage the books.</li>
+</ul>
+<p>Later on, we will configure the last two endpoints to require the users to both be authenticated and have the proper role. It's also helpful adding a <code>/logout</code> endpoint for logging out conveniently.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LibraryController</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">BookRepository</span> <span class="n">bookRepository</span><span class="p">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">public</span> <span class="nf">LibraryController</span><span class="p">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">,</span> <span class="n">BookRepository</span> <span class="n">bookRepository</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">request</span> <span class="o">=</span> <span class="n">request</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">bookRepository</span> <span class="o">=</span> <span class="n">bookRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getHome</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;index&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;/books&quot;</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBooks</span><span class="p">(</span><span class="n">Model</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">configCommonAttributes</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+        <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;books&quot;</span><span class="p">,</span> <span class="n">bookRepository</span><span class="p">.</span><span class="na">readAll</span><span class="p">());</span>
+        <span class="k">return</span> <span class="s">&quot;books&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;/manager&quot;</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getManager</span><span class="p">(</span><span class="n">Model</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">configCommonAttributes</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+        <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;books&quot;</span><span class="p">,</span> <span class="n">bookRepository</span><span class="p">.</span><span class="na">readAll</span><span class="p">());</span>
+        <span class="k">return</span> <span class="s">&quot;manager&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;/logout&quot;</span><span class="p">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">logout</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="n">request</span><span class="p">.</span><span class="na">logout</span><span class="p">();</span>
+        <span class="k">return</span> <span class="s">&quot;redirect:/&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">configCommonAttributes</span><span class="p">(</span><span class="n">Model</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">getKeycloakSecurityContext</span><span class="p">().</span><span class="na">getIdToken</span><span class="p">().</span><span class="na">getGivenName</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="n">KeycloakSecurityContext</span> <span class="nf">getKeycloakSecurityContext</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">KeycloakSecurityContext</span><span class="p">)</span> <span class="n">request</span><span class="p">.</span><span class="na">getAttribute</span><span class="p">(</span><span class="n">KeycloakSecurityContext</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>LibraryController.java</p>
+<p>In the last method, we use the <code>KeycloakSecurityContext</code> to retrieve the <code>IdToken</code>, from which we can get the first name of the authenticated user.</p>
+<p>As a template engine, we're using <a href="http://www.thymeleaf.org/">Thymeleaf</a>.  We have a template for each resource as well as a unique template to handle unauthorized requests. You can check out the full <a href="https://github.com/ThomasVitale/spring-keycloak-tutorials/tree/master/keycloak-spring-security-first-look">source code</a> of this demo project on GitHub to see how the templates look like.</p>
+<h3 id="52-the-repository">5.2. The Repository</h3>
+<p>The <code>LibraryController</code> class delegates the fetching of  <code>Book</code> entities to a <code>BookRepository</code> class. The repository is implemented hard-coded in memory, for the sake of the example.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookRepository</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Book</span><span class="o">&gt;</span> <span class="n">books</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcurrentHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+    <span class="kd">static</span> <span class="p">{</span>
+        <span class="n">books</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;B01&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Book</span><span class="p">(</span><span class="s">&quot;B01&quot;</span><span class="p">,</span> <span class="s">&quot;Harry Potter and the Deathly Hallows&quot;</span><span class="p">,</span> <span class="s">&quot;J.K. Rowling&quot;</span><span class="p">));</span>
+        <span class="n">books</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;B02&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Book</span><span class="p">(</span><span class="s">&quot;B02&quot;</span><span class="p">,</span> <span class="s">&quot;The Lord of the Rings&quot;</span><span class="p">,</span> <span class="s">&quot;J.R.R. Tolkien&quot;</span><span class="p">));</span>
+        <span class="n">books</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;B03&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Book</span><span class="p">(</span><span class="s">&quot;B03&quot;</span><span class="p">,</span> <span class="s">&quot;War and Peace&quot;</span><span class="p">,</span> <span class="s">&quot;Leo Tolstoy&quot;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Book</span><span class="o">&gt;</span> <span class="nf">readAll</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Book</span><span class="o">&gt;</span> <span class="n">allBooks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">books</span><span class="p">.</span><span class="na">values</span><span class="p">());</span>
+        <span class="n">allBooks</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">Book</span><span class="p">::</span><span class="n">getId</span><span class="p">));</span>
+        <span class="k">return</span> <span class="n">allBooks</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>BookRepository.java</p>
+<h3 id="53-the-entity">5.3. The Entity</h3>
+<p>The <code>Book</code> class is a POJO.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Book</span><span class="p">(</span><span class="n">String</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">title</span><span class="p">,</span> <span class="n">String</span> <span class="n">author</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">author</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Book.java</p>
+<h2 id="6-configure-spring-security-with-keycloak">6. Configure Spring Security With Keycloak</h2>
+<p>If we tried to run the application at this point, we would notice that we could navigate through all the pages without any restriction. Let's change that.</p>
+<p>We want to configure Spring Security to:</p>
+<ul>
+<li>delegate the user authentication phase to Keycloak, following the <a href="https://www.thomasvitale.com/keycloak-authentication-flow-sso-client/">OAuth 2.0/OpenID Connect Authorization Code Flow</a>;</li>
+<li>leverage the <code>IdToken</code> and <code>AccessToken</code> objects returned by Keycloak to define some access policies for our application endpoints.</li>
+</ul>
+<h3 id="61-create-a-security-configuration-class">6.1 Create a Security Configuration Class</h3>
+<p>Let's proceed step by step, starting with the creation of a <code>SecurityConfig</code> class.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@KeycloakConfiguration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="kd">extends</span> <span class="n">KeycloakWebSecurityConfigurerAdapter</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>SecurityConfig</code> class should extend <code>KeycloakWebSecurityConfigurerAdapter</code> and be annotated with <code>@KeycloakConfiguration</code>. This annotation provides a Keycloak-based Spring Security configuration.</p>
+<p>It is a stereotype to wrap the two annotations required by a Spring Security configuration class: <code>@Configuration</code> and <code>@EnableWebSecurity</code>. It also packs a third annotation required by Keycloak to scan correctly the beans configured in the Keycloak Spring Security Adapter: <code>@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)</code>.</p>
+<h3 id="62-register-keycloak-as-the-authentication-provider">6.2 Register Keycloak as the Authentication Provider</h3>
+<p>Keycloak is our identity provider (IdP), so let's register it with the Spring Security authentication manager.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Autowired</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">configureGlobal</span><span class="p">(</span><span class="n">AuthenticationManagerBuilder</span> <span class="n">auth</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SimpleAuthorityMapper</span> <span class="n">grantedAuthorityMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleAuthorityMapper</span><span class="p">();</span>
+    <span class="n">grantedAuthorityMapper</span><span class="p">.</span><span class="na">setPrefix</span><span class="p">(</span><span class="s">&quot;ROLE_&quot;</span><span class="p">);</span>
+
+    <span class="n">KeycloakAuthenticationProvider</span> <span class="n">keycloakAuthenticationProvider</span> <span class="o">=</span> <span class="n">keycloakAuthenticationProvider</span><span class="p">();</span>
+    <span class="n">keycloakAuthenticationProvider</span><span class="p">.</span><span class="na">setGrantedAuthoritiesMapper</span><span class="p">(</span><span class="n">grantedAuthorityMapper</span><span class="p">);</span>
+    <span class="n">auth</span><span class="p">.</span><span class="na">authenticationProvider</span><span class="p">(</span><span class="n">keycloakAuthenticationProvider</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here, we are registering <code>KeycloakAuthenticationProvider</code> with the authentication manager. In this way, Keycloak will be responsible for providing authentication services.</p>
+<p>Spring Security has a convention to handle security roles in a format like <code>ROLE_ADMIN</code> (where <code>ADMIN</code> is the actual security role name). I don't like this convention. In Keycloak, I prefer defining capitalized, lowercase role names.</p>
+<p>To solve the mismatch between the way we defined the user roles and the conventions used by Spring Security, we can specify a different configuration. So, we are setting a <code>SimpleAuthorityMapper</code> for the <code>KeycloakAuthenticationProvider</code> to prefix all the roles registered in Keycloak with the <code>ROLE_</code> prefix. That will help Spring Security handling those roles in the best way.</p>
+<p>In Keycloak, we have defined two roles: <em>Member</em> and <em>Librarian</em>. In Spring Security, after the mapping, they will become <code>ROLE_Member</code> and <code>ROLE_Librarian</code>.</p>
+<p>We could even make the full role name uppercase by calling the method <code>grantedAuthorityMapper.setConvertToUpperCase(true);</code>, but for this demo application we are not doing that.</p>
+<h3 id="63-define-a-session-authentication-strategy">6.3 Define a Session Authentication Strategy</h3>
+<p>The application that we are building, in Keycloak terms, is a <em>public</em> application with user interaction. In this scenario, the recommended session authentication strategy is <code>RegisterSessionAuthenticationStrategy</code>, which registers a user session after successful authentication.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Bean</span>
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="n">SessionAuthenticationStrategy</span> <span class="nf">sessionAuthenticationStrategy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">RegisterSessionAuthenticationStrategy</span><span class="p">(</span><span class="k">new</span> <span class="n">SessionRegistryImpl</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>When securing a service-to-service application, instead, we would use a <code>NullAuthenticatedSessionStrategy</code>.</p>
+<h3 id="64-define-role-based-access-security-policies">6.4. Define Role-Based Access Security Policies</h3>
+<p>So far, we have done all the necessary configuration to make Spring Security work seamlessly with Keycloak. Our final step is about defining some security constraints for the application endpoints.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span> <span class="n">http</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">configure</span><span class="p">(</span><span class="n">http</span><span class="p">);</span>
+    <span class="n">http</span>
+        <span class="p">.</span><span class="na">authorizeRequests</span><span class="p">()</span>
+        <span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">&quot;/books&quot;</span><span class="p">).</span><span class="na">hasAnyRole</span><span class="p">(</span><span class="s">&quot;Member&quot;</span><span class="p">,</span> <span class="s">&quot;Librarian&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">&quot;/manager&quot;</span><span class="p">).</span><span class="na">hasRole</span><span class="p">(</span><span class="s">&quot;Librarian&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">anyRequest</span><span class="p">().</span><span class="na">permitAll</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The access policies for our application endpoints are:</p>
+<ul>
+<li><code>/books</code> -> user must be authenticated and with at least one of the roles <em>Member</em> and <em>Librarian</em>.</li>
+<li><code>/manager</code> -> user must be authenticated and with the role <em>Librarian</em>.</li>
+<li>any other endpoint will be freely accessible, no role constraint, no authentication required.</li>
+</ul>
+<h3 id="65-handle-bean-definition-overriding-issues">6.5 Handle Bean Definition Overriding Issues</h3>
+<p>Since Spring 2.1.0, the <code>spring.main.allow-bean-definition-overriding</code> property is set to false by default, differently from the previous versions of Spring. It means that it's not allowed anymore to override a bean already defined.</p>
+<p>The <code>SecurityConfig</code> class we are working on extends <code>KeycloakWebSecurityConfigurerAdapter</code>, which defines an <code>HttpSessionManager</code> bean. But this bean has already been defined somewhere else in the Keycloak Adapter library. Therefore, it triggers an error in Spring 2.1.0+.</p>
+<div class="highlight"><pre><span></span><code>***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean &#39;httpSessionManager&#39;, defined in class path resource [com/thomasvitale/keycloak/config/SecurityConfig.class], could not be registered. A bean with that name has already been defined in URL [.../org/keycloak/adapters/springsecurity/management/HttpSessionManager.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+
+Process finished with exit code 1
+</code></pre></div>
+<p>Error thrown when multiple beans of the same type have been defined.</p>
+<p>We could fix the problem by changing the value for <code>spring.main.allow-bean-definition-overriding</code> to true. I prefer adjusting the bean definition to be loaded conditionally only if no other bean of that type has been defined.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Bean</span>
+<span class="nd">@Override</span>
+<span class="nd">@ConditionalOnMissingBean</span><span class="p">(</span><span class="n">HttpSessionManager</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">protected</span> <span class="n">HttpSessionManager</span> <span class="nf">httpSessionManager</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">HttpSessionManager</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="67-the-final-spring-security-configuration-with-keycloak">6.7 The Final Spring Security Configuration with Keycloak</h3>
+<p>We have completed the security configuration. Here it is the final result.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@KeycloakConfiguration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="kd">extends</span> <span class="n">KeycloakWebSecurityConfigurerAdapter</span> <span class="p">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configureGlobal</span><span class="p">(</span><span class="n">AuthenticationManagerBuilder</span> <span class="n">auth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SimpleAuthorityMapper</span> <span class="n">grantedAuthorityMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleAuthorityMapper</span><span class="p">();</span>
+        <span class="n">grantedAuthorityMapper</span><span class="p">.</span><span class="na">setPrefix</span><span class="p">(</span><span class="s">&quot;ROLE_&quot;</span><span class="p">);</span>
+
+        <span class="n">KeycloakAuthenticationProvider</span> <span class="n">keycloakAuthenticationProvider</span> <span class="o">=</span> <span class="n">keycloakAuthenticationProvider</span><span class="p">();</span>
+        <span class="n">keycloakAuthenticationProvider</span><span class="p">.</span><span class="na">setGrantedAuthoritiesMapper</span><span class="p">(</span><span class="n">grantedAuthorityMapper</span><span class="p">);</span>
+        <span class="n">auth</span><span class="p">.</span><span class="na">authenticationProvider</span><span class="p">(</span><span class="n">keycloakAuthenticationProvider</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">SessionAuthenticationStrategy</span> <span class="nf">sessionAuthenticationStrategy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">RegisterSessionAuthenticationStrategy</span><span class="p">(</span><span class="k">new</span> <span class="n">SessionRegistryImpl</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="nd">@Override</span>
+    <span class="nd">@ConditionalOnMissingBean</span><span class="p">(</span><span class="n">HttpSessionManager</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+    <span class="kd">protected</span> <span class="n">HttpSessionManager</span> <span class="nf">httpSessionManager</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">HttpSessionManager</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="p">(</span><span class="n">HttpSecurity</span> <span class="n">http</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">configure</span><span class="p">(</span><span class="n">http</span><span class="p">);</span>
+        <span class="n">http</span>
+            <span class="p">.</span><span class="na">authorizeRequests</span><span class="p">()</span>
+            <span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">&quot;/books&quot;</span><span class="p">).</span><span class="na">hasAnyRole</span><span class="p">(</span><span class="s">&quot;Member&quot;</span><span class="p">,</span> <span class="s">&quot;Librarian&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">antMatchers</span><span class="p">(</span><span class="s">&quot;/manager&quot;</span><span class="p">).</span><span class="na">hasRole</span><span class="p">(</span><span class="s">&quot;Librarian&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">anyRequest</span><span class="p">().</span><span class="na">permitAll</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>SecurityConfig.java</p>
+<h2 id="7-testing-the-application">7. Testing The Application</h2>
+<p>It's time to verify if our code will work as intended. As you may have noticed, when setting up our <code>build.gradle</code>, we have defined a few dependencies for testing:</p>
+<ul>
+<li><code>spring-boot-starter-test</code>, a starter for testing Spring Boot applications with JUnit, Hamcrest and Mockito;</li>
+<li><code>spring-security-test</code>, which provides utilities to test Spring Security;</li>
+<li><code>keycloak-test-helper</code>, which helps testing applications using Keycloak.</li>
+</ul>
+<p>Writing autotests for Spring applications secured by Keycloak will be the topic of a future article, so we're not going to use those libraries now. But here you have them, in case you're interested in diving into the topic.</p>
+<p>Instead, let's run our application and manually check if it's working correctly.</p>
+<h2 id="8-using-the-application">8. Using The Application</h2>
+<p>Let's make sure our Keycloak server is up and running, and start our Spring application. By default, it will be available on <code>http://localhost:8080</code>.</p>
+<p><img width="700" height="201" src="../../_resources/7324c093d9fe4544b60113b24c33c2ba.png"/></p>
+<p>Home page - Public</p>
+<p>The home page is freely accessible. We are not required to be authenticated nor to have a specific role.</p>
+<p>When we navigate to the other pages, the application redirects us to Keycloak for logging in.</p>
+<p><img width="700" height="474" src="../../_resources/3a9520a8786b402ebcc1a7d2b3cb638c.png"/></p>
+<p>Login page provided by Keycloak</p>
+<p>After providing the right username and password, Keycloak redirects us back to our application. Depending on our role, we can visit the other pages as well.</p>
+<p>If we log in as a <em>Member,</em> like Sheldon Cooper, then we are allowed to see the <em>Browse Books</em> page.</p>
+<p><img width="700" height="360" src="../../_resources/8d6b66ff61d941b999b3579561d96ef0.png"/></p>
+<p>Browse Books - Protected (Member)</p>
+<p>Even if we are authenticated, we don't have the rights to navigate to the <em>Manage Library</em> page. If we try to do so, then we are told that we are not allowed in.</p>
+<p><img width="700" height="218" src="../../_resources/fefb4ee26cf0414383ffb8fa8badb64c.png"/></p>
+<p>If we log in as a <em>Librarian</em>, like Irma Pince, then we can also see the <em>Manage Library</em> page.</p>
+<p><img width="700" height="482" src="../../_resources/cd77330e74c94b92b26523f54786a819.png"/></p>
+<p>Manage Library - Protected (Librarian)</p>
+<p>Finally, let's notice the <em>Logout</em> link in the top-right corner, which we can use to log out.</p>
+<p>The application is working correctly, and all the security constraints have been enforced.</p>
+<p>Well done!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we have built a Spring Boot application and secured it with Spring Security and Keycloak.</p>
+<p>We have configured the integration with Keycloak leveraging the Spring Boot Adapter. Then, we have used the Spring Security Adapter to set Keycloak as the authentication provider for our application and protected some endpoints by defining access control policies based on user roles.</p>
+<p>If you are interested in Keycloak, have a look at <a href="https://www.thomasvitale.com/tag/keycloak/">my articles</a> about this identity and access management solution.</p>
+<p>Are you thinking about using Keycloak for your next project? Have you already been using it? I'd like to hear your stories about Keycloak, leave a comment or let me know on <a href="https://twitter.com/vitalethomas">Twitter</a>!</p>
+<p><em>Last update: 15/11/2019</em></p>
+<h2 id="keycloak-series">Keycloak Series</h2>
+<ul>
+<li><a href="https://www.thomasvitale.com/introducing-keycloak-identity-access-management/">Introducing Keycloak for Identity and Access Management</a></li>
+<li><a href="https://www.thomasvitale.com/keycloak-configuration-authentication-authorisation/">Keycloak Basic Configuration for Authentication and Authorization</a></li>
+<li><a href="https://www.thomasvitale.com/keycloak-authentication-flow-sso-client/">Keycloak Authentication Flows, SSO Protocols and Client Configuration</a></li>
+</ul>
+<h2 id="keycloak-with-spring-series">Keycloak with Spring Series</h2>
+<ul>
+<li><a href="https://www.thomasvitale.com/spring-boot-keycloak-security/">Securing a Spring Boot Application with Keycloak - A First Look</a></li>
+<li>Spring Security and Keycloak to Secure a Spring Boot Application  - A First Look</li>
+</ul>
+<hr />
+<p><a href="https://www.thomasvitale.com/spring-security-keycloak/">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Spring REST Error Handling Example
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Uploading and Parsing CSV File using Spring Boot
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>

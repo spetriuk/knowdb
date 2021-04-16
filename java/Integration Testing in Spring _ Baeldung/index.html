@@ -1,0 +1,1423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Integration Testing in Spring Baeldung - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integration Testing in Spring   Baeldung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
+        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
+        Access a value defined in the application.properti
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Integration Testing in Spring   Baeldung
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Integration Testing in Spring   Baeldung
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    1. Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-preparation" class="md-nav__link">
+    2. Preparation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-spring-mvc-test-configuration" class="md-nav__link">
+    3. Spring MVC Test Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Spring MVC Test Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-enable-spring-in-tests-with-junit-5" class="md-nav__link">
+    3.1. Enable Spring in Tests with JUnit 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-webapplicationcontext-object" class="md-nav__link">
+    3.2. The WebApplicationContext Object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mocking-web-context-beans" class="md-nav__link">
+    3.3. Mocking Web Context Beans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verify-test-configuration" class="md-nav__link">
+    3.4. Verify Test Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-writing-integration-tests" class="md-nav__link">
+    4. Writing Integration Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Writing Integration Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-verify-view-name" class="md-nav__link">
+    4.1. Verify View Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-verify-response-body" class="md-nav__link">
+    4.2. Verify Response Body
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-send-get-request-with-path-variable" class="md-nav__link">
+    4.3. Send GET Request With Path Variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-send-get-request-with-query-parameters" class="md-nav__link">
+    4.4. Send GET Request With Query Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-send-post-request" class="md-nav__link">
+    4.5. Send POST Request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mockmvc-limitations" class="md-nav__link">
+    5. MockMvc Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    6. Conclusion
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Conclusion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-started-with-spring-5-and-spring-boot-2-through-the-learn-spring-course" class="md-nav__link">
+    Get started with Spring 5 and Spring Boot 2, through the Learn Spring course:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
+        Setting up KeePassXC on Linux (with Cloud Synchron
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B2%20Linux%20Ubuntu%20%20/" class="md-nav__link">
+        Автоматическое монтирование диска в Linux Ubuntu  
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    1. Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-preparation" class="md-nav__link">
+    2. Preparation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-spring-mvc-test-configuration" class="md-nav__link">
+    3. Spring MVC Test Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Spring MVC Test Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-enable-spring-in-tests-with-junit-5" class="md-nav__link">
+    3.1. Enable Spring in Tests with JUnit 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-webapplicationcontext-object" class="md-nav__link">
+    3.2. The WebApplicationContext Object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mocking-web-context-beans" class="md-nav__link">
+    3.3. Mocking Web Context Beans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verify-test-configuration" class="md-nav__link">
+    3.4. Verify Test Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-writing-integration-tests" class="md-nav__link">
+    4. Writing Integration Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Writing Integration Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-verify-view-name" class="md-nav__link">
+    4.1. Verify View Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-verify-response-body" class="md-nav__link">
+    4.2. Verify Response Body
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-send-get-request-with-path-variable" class="md-nav__link">
+    4.3. Send GET Request With Path Variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-send-get-request-with-query-parameters" class="md-nav__link">
+    4.4. Send GET Request With Query Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-send-post-request" class="md-nav__link">
+    4.5. Send POST Request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mockmvc-limitations" class="md-nav__link">
+    5. MockMvc Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusion" class="md-nav__link">
+    6. Conclusion
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Conclusion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-started-with-spring-5-and-spring-boot-2-through-the-learn-spring-course" class="md-nav__link">
+    Get started with Spring 5 and Spring Boot 2, through the Learn Spring course:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Integration Testing in Spring   Baeldung</h1>
+                
+                <p>Integration Testing in Spring | Baeldung</p>
+<h2 id="1-overview"><strong>1. Overview</strong><a href="#Overview"></a></h2>
+<p>Integration testing plays an important role in the application development cycle by verifying the end-to-end behavior of a system.</p>
+<p>In this article, we'll see how we can leverage the Spring MVC test framework in order to write and run integration tests that test controllers without explicitly starting a Servlet container.</p>
+<h2 id="2-preparation"><strong>2. Preparation</strong><a href="#Preparation"></a></h2>
+<p>Several Maven dependencies are required for running the integration tests we'll use in this article. First and foremost, we'll need the latest <a href="https://search.maven.org/classic/#search%7Cga%7C1%7Cg%3A%22org.junit.jupiter%22%20AND%20a%3A%22junit-jupiter-engine%22">junit-jupiter-engine</a>, <a href="https://search.maven.org/classic/#search%7Cga%7C1%7Cg%3A%22org.junit.jupiter%22%20AND%20a%3A%22junit-jupiter-api%22">junit-jupiter-api</a>, and <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.springframework%22%20AND%20a%3A%22spring-test%22">Spring test</a> dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-engine<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-test<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.3.3<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span> 
+</code></pre></div>
+<p>For effective asserting of results, we're going to also use <a href="https://search.maven.org/classic/#search|gav|1|g%3A%22org.hamcrest%22%20AND%20a%3A%22hamcrest-library%22">Hamcrest</a> and <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22com.jayway.jsonpath%22%20AND%20a%3A%22json-path%22">JSON path</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.hamcrest<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hamcrest-library<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.jayway.jsonpath<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>json-path<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.5.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h2 id="3-spring-mvc-test-configuration"><strong>3. Spring MVC Test Configuration</strong><a href="#Test"></a></h2>
+<p>Let's now introduce how to configure and run the Spring enabled tests.</p>
+<h3 id="31-enable-spring-in-tests-with-junit-5"><strong>3.1. Enable Spring in Tests with JUnit 5</strong><a href="#1-enable-spring-in-tests-with-junit-5"></a></h3>
+<p>JUnit 5 defines an extension interface through which classes can integrate with the JUnit test.</p>
+<p>We can enable this extension <strong>by adding the <em>@ExtendWith</em> annotation to our test classes and specifying the extension class to load</strong>. To run the Spring test, we use <em>SpringExtension.class.</em></p>
+<p>We also need the <strong><em>@ContextConfiguration</em> annotation to load the context configuration and</strong> <strong>bootstrap the context that our test will use</strong>.</p>
+<p>Let's have a look:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@ContextConfiguration</span><span class="p">(</span><span class="n">classes</span> <span class="o">=</span> <span class="p">{</span> <span class="n">ApplicationConfig</span><span class="p">.</span><span class="na">class</span> <span class="p">})</span>
+<span class="nd">@WebAppConfiguration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreetControllerIntegrationTest</span> <span class="p">{</span>
+    <span class="p">....</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Notice how, in <em>@ContextConfiguration,</em> we provide the <em>ApplicationConfig.class</em> config class, which loads the configuration we need for this particular test.</p>
+<p>We use a Java configuration class here to specify the context configuration. Similarly, we can use the XML-based configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@ContextConfiguration</span><span class="p">(</span><span class="n">locations</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;&quot;</span><span class="p">})</span>
+</code></pre></div>
+<p>Finally, we also annotate the test with <strong>@<em>WebAppConfiguration</em>, which will load the web application context</strong>.</p>
+<p>By default, it looks for the root web application at path <em>src/main/webapp.</em> We can override this location by simply passing the <em>value</em> attribute:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@WebAppConfiguration</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="32-the-webapplicationcontext-object"><strong>3.2. The <em>WebApplicationContext</em> Object</strong><a href="#2-the-webapplicationcontext-object"></a></h3>
+<p><em>WebApplicationContext</em> provides a web application configuration. It loads all the application beans and controllers into the context.</p>
+<p>We'll now be able to wire the web application context right into the test:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Autowired</span>
+<span class="kd">private</span> <span class="n">WebApplicationContext</span> <span class="n">webApplicationContext</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="33-mocking-web-context-beans"><strong>3.3. Mocking Web Context Beans</strong><a href="#3-mocking-web-context-beans"></a></h3>
+<p><em>MockMvc</em> provides support for Spring MVC testing. <strong>It encapsulates all web application beans and makes them available for testing.</strong></p>
+<p>Let's see how to use it:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="n">MockMvc</span> <span class="n">mockMvc</span><span class="p">;</span>
+<span class="nd">@BeforeEach</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span> <span class="o">=</span> <span class="n">MockMvcBuilders</span><span class="p">.</span><span class="na">webAppContextSetup</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">webApplicationContext</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We initialize the <em>mockMvc</em> object in the <em>@BeforeEach</em> annotated method so that we don't have to initialize it inside every test.</p>
+<h3 id="34-verify-test-configuration"><strong>3.4. Verify Test Configuration</strong><a href="#4-verify-test-configuration"></a></h3>
+<p>Let's verify that we're loading the <em>WebApplicationContext</em> object (<em>webApplicationContext</em>) properly. We'll also check that the right <em>servletContext</em> is being attached:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenWac_whenServletContext_thenItProvidesGreetController</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ServletContext</span> <span class="n">servletContext</span> <span class="o">=</span> <span class="n">webApplicationContext</span><span class="p">.</span><span class="na">getServletContext</span><span class="p">();</span>
+
+    <span class="n">Assert</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">servletContext</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="na">assertTrue</span><span class="p">(</span><span class="n">servletContext</span> <span class="k">instanceof</span> <span class="n">MockServletContext</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">webApplicationContext</span><span class="p">.</span><span class="na">getBean</span><span class="p">(</span><span class="s">&quot;greetController&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Notice that we're also checking that a <em>GreetController.java</em> bean exists in the web context. This ensures that Spring beans are loaded properly. At this point, the setup of the integration test is done. Now, let's see how we can test resource methods using the <em>MockMvc</em> object.</p>
+<h2 id="4-writing-integration-tests"><strong>4. Writing Integration Tests</strong><a href="#Writing"></a></h2>
+<p>In this section, we'll go over the basic operations available through the test framework.</p>
+<p>We'll show how to send requests with path variables and parameters. Also, we'll follow with a few examples that show how to assert that the proper view name is resolved, or that the response body is as expected.</p>
+<p>The snippets that are shown below use static imports from M<em>ockMvcRequestBuilders</em> or <em>MockMvcResultMatchers</em> classes.</p>
+<h3 id="41-verify-view-name"><strong>4.1. Verify View Name</strong><a href="#1-verify-view-name"></a></h3>
+<p>We can invoke the <em>/homePage</em> endpoint from our test as<em>:</em></p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/homePage
+</code></pre></div>
+<p>First, let's see the test code:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenHomePageURI_whenMockMVC_thenReturnsIndexJSPViewName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;/homePage&quot;</span><span class="p">)).</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">view</span><span class="p">().</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;index&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's break it down:</p>
+<ul>
+<li><em>perform()</em> method will call a GET request method, which returns the <em>ResultActions</em>. Using this result, we can have assertion expectations about the response, like its content, HTTP status, or header</li>
+<li><em>andDo(print())</em> will print the request and response. This is helpful to get a detailed view in case of an error</li>
+<li><em>andExpect()</em> will expect the provided argument. In our case, we're expecting “index” to be returned via <em>MockMvcResultMatchers.view()</em></li>
+</ul>
+<h3 id="42-verify-response-body"><strong>4.2. Verify Response Body</strong><a href="#2-verify-response-body"></a></h3>
+<p>We'll invoke the <em>/greet</em> endpoint from our test as:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/greet
+</code></pre></div>
+<p>The expected output will be:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World!!!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's see the test code:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURI_whenMockMVC_thenVerifyResponse</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">MvcResult</span> <span class="n">mvcResult</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;/greet&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">()).</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.message&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andReturn</span><span class="p">();</span>
+
+    <span class="n">Assert</span><span class="p">.</span><span class="na">assertEquals</span><span class="p">(</span><span class="s">&quot;application/json;charset=UTF-8&quot;</span><span class="p">,</span> 
+      <span class="n">mvcResult</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">getContentType</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's see exactly what's going on:</p>
+<ul>
+<li><em>andExpect(MockMvcResultMatchers.status().isOk())</em> will verify that response HTTP status is <em>Ok</em> (<em>200)</em>. This ensures that the request was successfully executed</li>
+<li><em>andExpect(MockMvcResultMatchers.jsonPath(“$.message”).value(“Hello World!!!”))</em> will verify that response content matches with the argument “<em>Hello World!!!</em>“. Here, we used <em>jsonPath</em>, which extracts response content and provides the requested value</li>
+<li><em>andReturn()</em> will return the <em>MvcResult</em> object, which is used when we have to verify something that isn't directly achievable by the library. In this case, we've added <em>assertEquals</em> to match the content type of the response that is extracted from the <em>MvcResult</em> object</li>
+</ul>
+<h3 id="43-send-get-request-with-path-variable"><strong>4.</strong><strong>3. Send GET Request With Path Variable</strong><a href="#3-send-get-request-with-path-variable"></a></h3>
+<p>We'll invoke the <em>/greetWithPathVariable/{name}</em> endpoint from our test as:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/greetWithPathVariable/John
+</code></pre></div>
+<p>The expected output will be:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World John!!!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's see the test code:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURIWithPathVariable_whenMockMVC_thenResponseOK</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span>
+      <span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;/greetWithPathVariable/{name}&quot;</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">()).</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">content</span><span class="p">().</span><span class="na">contentType</span><span class="p">(</span><span class="s">&quot;application/json;charset=UTF-8&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.message&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Hello World John!!!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>MockMvcRequestBuilders.get(“/greetWithPathVariable/{name}”, “John”)</em> will send a request as “<em>/greetWithPathVariable/John</em>“.</p>
+<p>This becomes easier with respect to readability and knowing what parameters are dynamically set in the URL. Note that we can pass as many path parameters as needed.</p>
+<h3 id="44-send-get-request-with-query-parameters"><strong>4.4. Send GET Request With Query Parameters</strong><a href="#4-send-get-request-with-query-parameters"></a></h3>
+<p>We'll invoke the <em>/greetWithQueryVariable?name={name}</em> endpoint from our test as:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/greetWithQueryVariable?name=John%20Doe
+</code></pre></div>
+<p>In this case, the expected output will be:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World John Doe!!!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now, let's see the test code:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURIWithQueryParameter_whenMockMVC_thenResponseOK</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;/greetWithQueryVariable&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">param</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;John Doe&quot;</span><span class="p">)).</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">()).</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">content</span><span class="p">().</span><span class="na">contentType</span><span class="p">(</span><span class="s">&quot;application/json;charset=UTF-8&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.message&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Hello World John Doe!!!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong><em>param(“name”, “John Doe”)</em> will append the query parameter in the GET request</strong>. This is similar to “<em>/greetWithQueryVariable?name=John%20Doe</em><em>“.</em></p>
+<p>The query parameter can also be implemented using the URI template style:</p>
+<div class="highlight"><pre><span></span><code><span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span>
+  <span class="n">get</span><span class="p">(</span><span class="s">&quot;/greetWithQueryVariable?name={name}&quot;</span><span class="p">,</span> <span class="s">&quot;John Doe&quot;</span><span class="p">));</span>
+</code></pre></div>
+<h3 id="45-send-post-request"><strong>4.5. Send POST Request</strong><a href="#5-send-post-request"></a></h3>
+<p>We'll invoke the <em>/greetWithPost</em> endpoint from our test as:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/greetWithPost
+</code></pre></div>
+<p>We should obtain as output:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World!!!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And our test code is:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURIWithPost_whenMockMVC_thenVerifyResponse</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">post</span><span class="p">(</span><span class="s">&quot;/greetWithPost&quot;</span><span class="p">)).</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">()).</span><span class="na">andExpect</span><span class="p">(</span><span class="n">content</span><span class="p">()</span>
+      <span class="p">.</span><span class="na">contentType</span><span class="p">(</span><span class="s">&quot;application/json;charset=UTF-8&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.message&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong><em>MockMvcRequestBuilders.post(“/greetWithPost”)</em></strong> <strong>will send the POST request</strong>. We can set path variables and query parameters in a similar way as before, whereas form data can be set only via the <em>param()</em> method, similar to query parameters as:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/spring-mvc-test/greetWithPostAndFormData
+</code></pre></div>
+<p>Then, the data will be:</p>
+<div class="highlight"><pre><span></span><code><span class="err">id=</span><span class="mi">1</span><span class="err">;</span><span class="kc">na</span><span class="err">me=Joh</span><span class="kc">n</span><span class="err">%</span><span class="mi">20</span><span class="err">Doe</span>
+</code></pre></div>
+<p>So, we should get:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World John Doe!!!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let's see our test:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURI_whenMockMVC_thenVerifyResponse</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="n">MvcResult</span> <span class="n">mvcResult</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">MockMvcRequestBuilders</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/greet&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andDo</span><span class="p">(</span><span class="n">print</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">MockMvcResultMatchers</span><span class="p">.</span><span class="na">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+      <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">MockMvcResultMatchers</span><span class="p">.</span><span class="na">jsonPath</span><span class="p">(</span><span class="s">&quot;$.message&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">andReturn</span><span class="p">();</span>
+
+   <span class="n">assertEquals</span><span class="p">(</span><span class="s">&quot;application/json;charset=UTF-8&quot;</span><span class="p">,</span> <span class="n">mvcResult</span><span class="p">.</span><span class="na">getResponse</span><span class="p">().</span><span class="na">getContentType</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the above code snippet, we've added two parameters: <em>id</em> as “1” and <em>name</em> as “John Doe”.</p>
+<h2 id="5-mockmvc-limitations">5. <em>MockMvc</em> Limitations<a href="#mockmvc-limitations"></a></h2>
+<p><em>MockMvc</em> provides an elegant and easy-to-use API to call web endpoints and to inspect and assert their response at the same time. Despite all its benefits, it has a few limitations.</p>
+<p>First of all, it does use a subclass of the <em><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html">DispatcherServlet</a> </em>to handle test requests. To be more specific, the <em><a href="https://github.com/spring-projects/spring-framework/blob/622ccc57672ffed758220b33a08f8215334cdb2d/spring-test/src/main/java/org/springframework/test/web/servlet/TestDispatcherServlet.java#L53">TestDispatcherServlet</a> </em>is responsible for calling controllers and performing all of the familiar Spring magic.</p>
+<p>The <em>MockMvc</em> class <a href="https://github.com/spring-projects/spring-framework/blob/622ccc57672ffed758220b33a08f8215334cdb2d/spring-test/src/main/java/org/springframework/test/web/servlet/MockMvc.java#L72">wraps</a> this <em>TestDispatcherServlet </em>internally. So, every time we send a request using the <em>perform() </em>method, <em>MockMvc </em>will use the underlying <em>TestDispatcherServlet </em>directly. Therefore, there are no real network connections made, and consequently, we won't test the whole network stack while using <em>MockMvc</em>.</p>
+<p>Also, <strong>because Spring prepares a fake web application context to mock the HTTP requests and responses, it may not support all features of a full-blown Spring application</strong>.</p>
+<p>For example, this mock setup does not support <a href="https://github.com/spring-projects/spring-boot/issues/7321">HTTP redirections</a>. This may not seem that significant at first. However, Spring Boot handles some errors by redirecting the current request to the <em>/error </em>endpoint. So, if we're using the <em>MockMvc, </em>we may not be able to test some API failures.</p>
+<p>As an alternative to <em>MockMvc, </em>we can set up a more real application contextand then use <em><a href="https://www.baeldung.com/rest-template">RestTemplate</a> </em>or even <a href="https://www.baeldung.com/rest-assured-tutorial">REST-assured</a> to test our application.</p>
+<p>For instance, this is easy using Spring Boot:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span><span class="p">(</span><span class="n">webEnvironment</span> <span class="o">=</span> <span class="n">DEFINED_PORT</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreetControllerRealIntegrationTest</span> <span class="p">{</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">RestAssured</span><span class="p">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">DEFAULT_PORT</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">givenGreetURI_whenSendingReq_thenVerifyResponse</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">given</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;/greet&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="na">then</span><span class="p">()</span>
+          <span class="p">.</span><span class="na">statusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here, we don't even need to add the <em>@ExtendWith(SpringExtension.class)</em>.</p>
+<p>This way, every test will make a real HTTP request to the application that listens on a random TCP port.</p>
+<h2 id="6-conclusion"><strong>6. Conclusion</strong><a href="#Conclusion"></a></h2>
+<p>In this tutorial, we implemented a few simple Spring-enabled integration tests.</p>
+<p>We also looked at the <em>WebApplicationContext</em> and <em>MockMvc</em> object creation, which played an important role in calling the endpoints of the application.</p>
+<p>Looking further, we covered how we can send GET and POST requests with variations of parameter passing and how to verify the HTTP response status, header, and content.</p>
+<p>As a closing remark, we did also evaluate some limitations of <em>MockMvc.</em> Knowing those limitations can guide us to make an informed decision about how we're going to implement our tests.</p>
+<p>Finally, the implementation of all these examples and code snippets is available <a href="https://github.com/eugenp/tutorials/tree/master/spring-web-modules/spring-mvc-java">over on GitHub</a>.</p>
+<h3 id="get-started-with-spring-5-and-spring-boot-2-through-the-learn-spring-course"><strong>Get started with Spring 5 and Spring Boot 2, through the <em>Learn Spring</em> course:</strong></h3>
+<p><strong><a href="https://www.baeldung.com/ls-course-end">&gt;> THE COURSE</a></strong></p>
+<hr />
+<p><a href="https://www.baeldung.com/integration-testing-in-spring">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Export & Download Data as CSV File in Spring Boot
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Java%20Stream%20API/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Java Stream API
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>

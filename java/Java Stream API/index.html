@@ -1,0 +1,2633 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Java Stream API - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Java Stream API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
+        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
+        Access a value defined in the application.properti
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Java Stream API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Java Stream API
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    I. Способы создания стримов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    II. Методы работы со стримами
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Методы работы со стримами">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 Краткое описание конвейерных методов работы со стримами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 Краткое описание терминальных методов работы со стримами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 Краткое описание дополнительных методов у числовых стримов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 Несколько других полезных методов стримов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii" class="md-nav__link">
+    III. Примеры работы с методами стримов
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Примеры работы с методами стримов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-filter-findfirst-findany-skip-limit-count" class="md-nav__link">
+    3.1 Примеры использования filter, findFirst, findAny, skip, limit и count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-distinct" class="md-nav__link">
+    3.2 Примеры использования distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-match-anymatch-allmatch-nonematch" class="md-nav__link">
+    3.3 Примеры использования Match функций (anyMatch, allMatch, noneMatch)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-map-map-maptoint-flatmap-flatmaptoint" class="md-nav__link">
+    3.4 Примеры использования Map функций (map, mapToInt, FlatMap, FlatMapToInt)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-sorted" class="md-nav__link">
+    3.5 Примеры использования Sorted функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-max-min" class="md-nav__link">
+    3.6 Примеры использования Max и Min функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-foreach-peek" class="md-nav__link">
+    3.7 Примеры использования ForEach и Peek функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-reduce" class="md-nav__link">
+    3.8 Примеры использования Reduce функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-toarray-collect" class="md-nav__link">
+    3.9 Примеры использования toArray и collect функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-collectora" class="md-nav__link">
+    3.10 Пример создания собственного Collector'a
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv" class="md-nav__link">
+    IV. Заключение
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
+        Setting up KeePassXC on Linux (with Cloud Synchron
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B2%20Linux%20Ubuntu%20%20/" class="md-nav__link">
+        Автоматическое монтирование диска в Linux Ubuntu  
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    I. Способы создания стримов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    II. Методы работы со стримами
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Методы работы со стримами">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 Краткое описание конвейерных методов работы со стримами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 Краткое описание терминальных методов работы со стримами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 Краткое описание дополнительных методов у числовых стримов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 Несколько других полезных методов стримов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii" class="md-nav__link">
+    III. Примеры работы с методами стримов
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Примеры работы с методами стримов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-filter-findfirst-findany-skip-limit-count" class="md-nav__link">
+    3.1 Примеры использования filter, findFirst, findAny, skip, limit и count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-distinct" class="md-nav__link">
+    3.2 Примеры использования distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-match-anymatch-allmatch-nonematch" class="md-nav__link">
+    3.3 Примеры использования Match функций (anyMatch, allMatch, noneMatch)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-map-map-maptoint-flatmap-flatmaptoint" class="md-nav__link">
+    3.4 Примеры использования Map функций (map, mapToInt, FlatMap, FlatMapToInt)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-sorted" class="md-nav__link">
+    3.5 Примеры использования Sorted функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-max-min" class="md-nav__link">
+    3.6 Примеры использования Max и Min функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-foreach-peek" class="md-nav__link">
+    3.7 Примеры использования ForEach и Peek функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-reduce" class="md-nav__link">
+    3.8 Примеры использования Reduce функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-toarray-collect" class="md-nav__link">
+    3.9 Примеры использования toArray и collect функции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-collectora" class="md-nav__link">
+    3.10 Пример создания собственного Collector'a
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv" class="md-nav__link">
+    IV. Заключение
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Java Stream API</h1>
+                
+                <p>Java Stream API</p>
+<p><a href="http://habrahabr.ru/post/270383/"><img alt="" src="../../_resources/060920b02daa4bacbbdef7e62f6b3f4b.jpg" /></a></p>
+<p>Несмотря на то, что Java 8 вышла уже достаточно давно, далеко не все программисты используют её новые возможности, кого-то останавливает то, что рабочие проекты слишком сложно перевести с Java 7 или даже Java 6, кого-то использование в своих проектах GWT, кто-то делает проекты под Android и не хочет или не может использовать сторонние библиотеки для реализации лямбд и Stream Api. Однако знание лямбд и Stream Api для программиста Java зачастую требуют на собеседованиях, ну и просто будет полезно при переходе на проект где используется Java 8. Я хотел бы предложить вам краткую шпаргалку по Stream Api с практическими примерами реализации различных задач с новым функциональным подходом. Знания лямбд и функционального программирования не потребуется (я постарался дать примеры так, чтобы все было понятно), уровень от самого базового знания Java и выше.</p>
+<p>Также, так как это шпаргалка, статья может использоваться, чтобы быстро вспомнить как работает та или иная особенность Java Stream Api. Краткое перечисление возможностей основных функций дано в начале статьи.</p>
+<p><strong>Для тех кто совсем не знает что такое Stream Api</strong></p>
+<p>Stream API это новый способ работать со структурами данных в функциональном стиле. Чаще всего с помощью stream в Java 8 работают с коллекциями, но на самом деле этот механизм может использоваться для самых различных данных.</p>
+<p>Stream Api позволяет писать обработку структур данных в стиле SQL, то если раньше задача получить сумму всех нечетных чисел из коллекции решалась следующим кодом:</p>
+<div class="highlight"><pre><span></span><code> Integer sumOddOld = 0; 
+        for(Integer i: collection) {
+            if(i % 2 != 0) {
+                sumOddOld += i;
+            }
+        } 
+</code></pre></div>
+<p>То с помощью Stream Api можно решить такую задачу в функциональном стиле:</p>
+<div class="highlight"><pre><span></span><code> Integer sumOdd = collection.stream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+</code></pre></div>
+<p>Более того, Stream Api позволяет решать задачу параллельно лишь изменив stream() на parallelStream() без всякого лишнего кода, т.е.</p>
+<div class="highlight"><pre><span></span><code> Integer sumOdd = collection.parallelStream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+</code></pre></div>
+<p>Уже делает код параллельным, без всяких семафоров, синхронизаций, рисков взаимных блокировок и т.п.</p>
+<p><strong>Общее оглавление 'Шпаргалок'</strong></p>
+<p>Давайте начнем с начала, а именно с создания объектов stream в Java 8.</p>
+<h2 id="i"><strong>I. Способы создания стримов</strong></h2>
+<p>Перечислим несколько способов создать стрим</p>
+<table>
+<thead>
+<tr>
+<th>Способ создания стрима</th>
+<th>Шаблон создания</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Классический: Создание стрима из коллекции</td>
+<td>collection.<strong>stream</strong>()</td>
+<td><code>&lt;br&gt;Collection&lt;String&gt; collection = Arrays.asList("a1", "a2", "a3");&lt;br&gt;        Stream&lt;String&gt; streamFromCollection = collection.stream(); &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>2. Создание стрима из значений</td>
+<td><strong>Stream.of</strong>(<em>значение1</em>,… <em>значениеN</em>)</td>
+<td><code>&lt;br&gt;Stream&lt;String&gt; streamFromValues = Stream.of("a1", "a2", "a3"); &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>3. Создание стрима из массива</td>
+<td><strong>Arrays.stream</strong>(<em>массив</em>)</td>
+<td><code>&lt;br&gt;String[] array = {"a1","a2","a3"};                     &lt;br&gt; Stream&lt;String&gt; streamFromArrays = Arrays.stream(array); &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>4. Создание стрима из файла (каждая строка в файле будет отдельным элементом в стриме)</td>
+<td><strong>Files.lines</strong>(<em>путь_к_файлу</em>)</td>
+<td><code>&lt;br&gt;Stream&lt;String&gt; streamFromFiles = Files.lines(Paths.get("file.txt")) &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>5. Создание стрима из строки</td>
+<td>«строка».<strong>chars</strong>()</td>
+<td><code>&lt;br&gt;IntStream streamFromString = "123".chars() &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>6. С помощью Stream.builder</td>
+<td>Stream.<strong>builder</strong>().<strong>add</strong>(...)....<strong>build</strong>()</td>
+<td><code>&lt;br&gt;Stream.builder().add("a1").add("a2").add("a3").build() &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>7. Создание параллельного стрима</td>
+<td>collection.<strong>parallelStream</strong>()</td>
+<td><code>&lt;br&gt;Stream&lt;String&gt; stream = collection.parallelStream(); &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>8. Создание бесконечных стрима с помощью Stream.iterate</td>
+<td><strong>Stream.iterate</strong>(<em>начальное_условие</em>, <em>выражение_генерации</em>)</td>
+<td><code>&lt;br&gt;Stream&lt;Integer&gt; streamFromIterate = Stream.iterate(1, n -&gt; n + 1) &lt;br&gt;</code></td>
+</tr>
+<tr>
+<td>9. Создание бесконечных стрима с помощью Stream.generate</td>
+<td><strong>Stream.generate</strong>(<em>выражение_генерации</em>)</td>
+<td><code>&lt;br&gt;Stream&lt;String&gt; streamFromGenerate = Stream.generate(() -&gt; "a1") &lt;br&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>В принципе, кроме последних двух способов создания стрима, все не отличается от обычных способов создания коллекций. Последние два способа служат для генерации бесконечных стримов, в iterate задается начальное условие и выражение получение следующего значения из предыдущего, то есть Stream.iterate(1, n -&gt; n + 1) будет выдавать значения 1, 2, 3, 4,… N. Stream.generate служит для генерации константных и случайных значений, он просто выдает значения соответствующие выражению, в данном примере, он будет выдавать бесконечное количество значений «a1».</p>
+<p><strong>Для тех кто не знает лямбды</strong></p>
+<p>Выражение n -&gt; n + 1, это просто аналог выражения Integer func(Integer n) { return n+1;}, а выражение () -&gt; «a1» аналог выражения String func() { return «a1»;} обернутых в анонимный класс.</p>
+<p><strong>Более подробные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/BuildTests.java">github</a>'e</p>
+<div class="highlight"><pre><span></span><code> System.out.println(&quot;Test buildStream start&quot;);
+
+
+        Stream&lt;String&gt; streamFromValues = Stream.of(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;);
+        System.out.println(&quot;streamFromValues = &quot; + streamFromValues.collect(Collectors.toList())); 
+
+
+        String[] array = {&quot;a1&quot;,&quot;a2&quot;,&quot;a3&quot;};
+        Stream&lt;String&gt; streamFromArrays = Arrays.stream(array);
+        System.out.println(&quot;streamFromArrays = &quot; + streamFromArrays.collect(Collectors.toList())); 
+
+        Stream&lt;String&gt; streamFromArrays1 = Stream.of(array);
+        System.out.println(&quot;streamFromArrays1 = &quot; + streamFromArrays1.collect(Collectors.toList())); 
+
+
+        File file = new File(&quot;1.tmp&quot;);
+        file.deleteOnExit();
+        PrintWriter out = new PrintWriter(file);
+        out.println(&quot;a1&quot;);
+        out.println(&quot;a2&quot;);
+        out.println(&quot;a3&quot;);
+        out.close();
+
+        Stream&lt;String&gt; streamFromFiles = Files.lines(Paths.get(file.getAbsolutePath()));
+        System.out.println(&quot;streamFromFiles = &quot; + streamFromFiles.collect(Collectors.toList())); 
+
+
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;);
+        Stream&lt;String&gt; streamFromCollection = collection.stream();
+        System.out.println(&quot;streamFromCollection = &quot; + streamFromCollection.collect(Collectors.toList())); 
+
+
+        IntStream streamFromString = &quot;123&quot;.chars();
+        System.out.print(&quot;streamFromString = &quot;);
+        streamFromString.forEach((e)-&gt;System.out.print(e + &quot; , &quot;)); 
+        System.out.println();
+
+
+        Stream.Builder&lt;String&gt; builder = Stream.builder();
+        Stream&lt;String&gt; streamFromBuilder = builder.add(&quot;a1&quot;).add(&quot;a2&quot;).add(&quot;a3&quot;).build();
+        System.out.println(&quot;streamFromBuilder = &quot; + streamFromBuilder.collect((Collectors.toList()))); 
+
+
+
+        Stream&lt;Integer&gt; streamFromIterate = Stream.iterate(1, n -&gt; n + 2);
+        System.out.println(&quot;streamFromIterate = &quot; + streamFromIterate.limit(3).collect(Collectors.toList())); 
+
+
+        Stream&lt;String&gt; streamFromGenerate = Stream.generate(() -&gt; &quot;a1&quot;);
+        System.out.println(&quot;streamFromGenerate = &quot; + streamFromGenerate.limit(3).collect(Collectors.toList())); 
+
+
+        Stream&lt;String&gt; streamEmpty = Stream.empty();
+        System.out.println(&quot;streamEmpty = &quot; + streamEmpty.collect(Collectors.toList())); 
+
+
+        Stream&lt;String&gt; parallelStream = collection.parallelStream();
+        System.out.println(&quot;parallelStream = &quot; + parallelStream.collect(Collectors.toList())); 
+</code></pre></div>
+<h2 id="ii"><strong>II. Методы работы со стримами</strong></h2>
+<p>Java Stream API предлагает два вида методов:
+1. Конвейерные — возвращают другой stream, то есть работают как builder,
+2. Терминальные — возвращают другой объект, такой как коллекция, примитивы, объекты, Optional и т.д.</p>
+<p><strong>О том чем отличаются конвейерные и терминальные методы</strong></p>
+<h3 id="21"><strong>2.1 Краткое описание конвейерных методов работы со стримами</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Метод stream</th>
+<th>Описание</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>filter</strong></td>
+<td>Отфильтровывает записи, возвращает только записи, соответствующие условию</td>
+<td>collection.stream().filter(«a1»::equals).count()</td>
+</tr>
+<tr>
+<td><strong>skip</strong></td>
+<td>Позволяет пропустить N первых элементов</td>
+<td>collection.stream().skip(collection.size() — 1).findFirst().orElse(«1»)</td>
+</tr>
+<tr>
+<td><strong>distinct</strong></td>
+<td>Возвращает стрим без дубликатов (для метода equals)</td>
+<td>collection.stream().distinct().collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>map</strong></td>
+<td>Преобразует каждый элемент стрима</td>
+<td>collection.stream().map((s) -&gt; s + "_1").collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>peek</strong></td>
+<td>Возвращает тот же стрим, но применяет функцию к каждому элементу стрима</td>
+<td>collection.stream().map(String::toUpperCase).peek((e) -&gt; System.out.print("," + e)).<br>collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td>Позволяет ограничить выборку определенным количеством первых элементов</td>
+<td>collection.stream().limit(2).collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>sorted</strong></td>
+<td>Позволяет сортировать значения либо в натуральном порядке, либо задавая Comparator</td>
+<td>collection.stream().sorted().collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>mapToInt</strong>,<br><strong>mapToDouble</strong>,<br><strong>mapToLong</strong></td>
+<td>Аналог map, но возвращает числовой стрим (то есть стрим из числовых примитивов)</td>
+<td>collection.stream().mapToInt((s) -&gt; Integer.parseInt(s)).toArray()</td>
+</tr>
+<tr>
+<td><strong>flatMap</strong>,<br><strong>flatMapToInt</strong>,<br><strong>flatMapToDouble</strong>,<br><strong>flatMapToLong</strong></td>
+<td>Похоже на map, но может создавать из одного элемента несколько</td>
+<td>collection.stream().flatMap((p) -&gt; Arrays.asList(p.split(",")).stream()).toArray(String[]::new)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22"><strong>2.2 Краткое описание терминальных методов работы со стримами</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Метод stream</th>
+<th>Описание</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>findFirst</strong></td>
+<td>Возвращает первый элемент из стрима (возвращает Optional)</td>
+<td>collection.stream().findFirst().orElse(«1»)</td>
+</tr>
+<tr>
+<td><strong>findAny</strong></td>
+<td>Возвращает любой подходящий элемент из стрима (возвращает Optional)</td>
+<td>collection.stream().findAny().orElse(«1»)</td>
+</tr>
+<tr>
+<td><strong>collect</strong></td>
+<td>Представление результатов в виде коллекций и других структур данных</td>
+<td>collection.stream().filter((s) -&gt; s.contains(«1»)).collect(Collectors.toList())</td>
+</tr>
+<tr>
+<td><strong>count</strong></td>
+<td>Возвращает количество элементов в стриме</td>
+<td>collection.stream().filter(«a1»::equals).count()</td>
+</tr>
+<tr>
+<td><strong>anyMatch</strong></td>
+<td>Возвращает true, если условие выполняется хотя бы для одного элемента</td>
+<td>collection.stream().anyMatch(«a1»::equals)</td>
+</tr>
+<tr>
+<td><strong>noneMatch</strong></td>
+<td>Возвращает true, если условие не выполняется ни для одного элемента</td>
+<td>collection.stream().noneMatch(«a8»::equals)</td>
+</tr>
+<tr>
+<td><strong>allMatch</strong></td>
+<td>Возвращает true, если условие выполняется для всех элементов</td>
+<td>collection.stream().allMatch((s) -&gt; s.contains(«1»))</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>Возвращает минимальный элемент, в качестве условия использует компаратор</td>
+<td>collection.stream().min(String::compareTo).get()</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>Возвращает максимальный элемент, в качестве условия использует компаратор</td>
+<td>collection.stream().max(String::compareTo).get()</td>
+</tr>
+<tr>
+<td><strong>forEach</strong></td>
+<td>Применяет функцию к каждому объекту стрима, порядок при параллельном выполнении не гарантируется</td>
+<td>set.stream().forEach((p) -&gt; p.append("_1"));</td>
+</tr>
+<tr>
+<td><strong>forEachOrdered</strong></td>
+<td>Применяет функцию к каждому объекту стрима, сохранение порядка элементов гарантирует</td>
+<td>list.stream().forEachOrdered((p) -&gt; p.append("_new"));</td>
+</tr>
+<tr>
+<td><strong>toArray</strong></td>
+<td>Возвращает массив значений стрима</td>
+<td>collection.stream().map(String::toUpperCase).toArray(String[]::new);</td>
+</tr>
+<tr>
+<td><strong>reduce</strong></td>
+<td>Позволяет выполнять агрегатные функции на всей коллекцией и возвращать один результат</td>
+<td>collection.stream().reduce((s1, s2) -&gt; s1 + s2).orElse(0)</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание методы findFirst, findAny, anyMatch это short-circuiting методы, то есть обход стримов организуется таким образом чтобы найти подходящий элемент максимально быстро, а не обходить весь изначальный стрим.</p>
+<h3 id="23"><strong>2.3 Краткое описание дополнительных методов у числовых стримов</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Метод stream</th>
+<th>Описание</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sum</strong></td>
+<td>Возвращает сумму всех чисел</td>
+<td>collection.stream().mapToInt((s) -&gt; Integer.parseInt(s)).sum()</td>
+</tr>
+<tr>
+<td><strong>average</strong></td>
+<td>Возвращает среднее арифметическое всех чисел</td>
+<td>collection.stream().mapToInt((s) -&gt; Integer.parseInt(s)).average()</td>
+</tr>
+<tr>
+<td><strong>mapToObj</strong></td>
+<td>Преобразует числовой стрим обратно в объектный</td>
+<td>intStream.mapToObj((id) -&gt; new Key(id)).toArray()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24"><strong>2.4 Несколько других полезных методов стримов</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Метод stream</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>isParallel</strong></td>
+<td>Узнать является ли стрим параллельным</td>
+</tr>
+<tr>
+<td><strong>parallel</strong></td>
+<td>Вернуть параллельный стрим, если стрим уже параллельный, то может вернуть самого себя</td>
+</tr>
+<tr>
+<td><strong>sequential</strong></td>
+<td>Вернуть последовательный стрим, если стрим уже последовательный, то может вернуть самого себя</td>
+</tr>
+</tbody>
+</table>
+<p>С помощью, методов parallel и sequential можно определять какие операции могут быть параллельными, а какие только последовательными. Так же из любого последовательного стрима можно сделать параллельный и наоборот, то есть:</p>
+<div class="highlight"><pre><span></span><code>collection.stream().
+peek(...). 
+parallel().
+map(...). 
+sequential().
+reduce(...) 
+</code></pre></div>
+<p><strong>Внимание</strong>: крайне не рекомендуется использовать параллельные стримы для сколько-нибудь долгих операций (получение данных из базы, сетевых соединений), так как все параллельные стримы работают c одним пулом fork/join и такие долгие операции могут остановить работу всех параллельных стримов в JVM из-за того отсутствия доступных потоков в пуле, т.е. параллельные стримы стоит использовать лишь для коротких операций, где счет идет на миллисекунды, но не для тех где счет может идти на секунды и минуты.</p>
+<h2 id="iii"><strong>III. Примеры работы с методами стримов</strong></h2>
+<p>Рассмотрим работу с методами на различных задачах, обычно требующихся при работе с коллекциями.</p>
+<h3 id="31-filter-findfirst-findany-skip-limit-count"><strong>3.1 Примеры использования filter, findFirst, findAny, skip, limit и count</strong></h3>
+<p><strong>Условие</strong>: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), давайте посмотрим как её можно обрабатывать используя методы filter, findFirst, findAny, skip и count:</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Вернуть количество вхождений объекта «a1»</td>
+<td>collection.stream().filter(«a1»::equals).count()</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Вернуть первый элемент коллекции или 0, если коллекция пуста</td>
+<td>collection.stream().findFirst().orElse(«0»)</td>
+<td>a1</td>
+</tr>
+<tr>
+<td>Вернуть последний элемент коллекции или «empty», если коллекция пуста</td>
+<td>collection.stream().skip(collection.size() — 1).findAny().orElse(«empty»)</td>
+<td>a1</td>
+</tr>
+<tr>
+<td>Найти элемент в коллекции равный «a3» или кинуть ошибку</td>
+<td>collection.stream().filter(«a3»::equals).findFirst().get()</td>
+<td>a3</td>
+</tr>
+<tr>
+<td>Вернуть третий элемент коллекции по порядку</td>
+<td>collection.stream().skip(2).findFirst().get()</td>
+<td>a3</td>
+</tr>
+<tr>
+<td>Вернуть два элемента начиная со второго</td>
+<td>collection.stream().skip(1).limit(2).toArray()</td>
+<td>[a2, a3]</td>
+</tr>
+<tr>
+<td>Выбрать все элементы по шаблону</td>
+<td>collection.stream().filter((s) -&gt; s.contains(«1»)).collect(Collectors.toList())</td>
+<td>[a1, a1]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Обратите внимание</strong>, что методы findFirst и findAny возвращают новый тип Optional, появившийся в Java 8, для того чтобы избежать NullPointerException. Метод filter удобно использовать для выборки лишь определенного множества значений, а метод skip позволяет пропускать определенное количество элементов.</p>
+<p><strong>Если вы не знаете лямбды</strong></p>
+<p>Выражение «a3»::equals это аналог boolean func(s) { return «a3».equals(s);}, а (s) -&gt; s.contains(«1») это аналог boolean func(s) { return s.contains(«1»);} обернутых в анонимный класс.</p>
+<p><strong>Условие</strong>: дана коллекция класс People (с полями name — имя, age — возраст, sex — пол), вида Arrays.asList( new People(«Вася», 16, Sex.MAN), new People(«Петя», 23, Sex.MAN), new People(«Елена», 42, Sex.WOMEN), new People(«Иван Иванович», 69, Sex.MAN)). Давайте посмотрим примеры как работать с таким классом:</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Выбрать мужчин-военнообязанных (от 18 до 27 лет)</td>
+<td>peoples.stream().filter((p)-&gt; p.getAge() &gt;= 18 &amp;&amp; p.getAge() &lt; 27<br>&amp;&amp; p.getSex() == Sex.MAN).collect(Collectors.toList())</td>
+<td>[{name='Петя', age=23, sex=MAN}]</td>
+</tr>
+<tr>
+<td>Найти средний возраст среди мужчин</td>
+<td>peoples.stream().filter((p) -&gt; p.getSex() == Sex.MAN).<br>mapToInt(People::getAge).average().getAsDouble()</td>
+<td>36.0</td>
+</tr>
+<tr>
+<td>Найти кол-во потенциально работоспособных людей в выборке (т.е. от 18 лет и учитывая что женщины выходят в 55 лет, а мужчина в 60)</td>
+<td>peoples.stream().filter((p) -&gt; p.getAge() &gt;= 18).filter(<br>(p) -&gt; (p.getSex() == Sex.WOMEN &amp;&amp; p.getAge() &lt; 55) | (p.getSex() == Sex.MAN &amp;&amp; p.getAge() &lt; 60)).count()</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Также этот пример можно найти на github'e: <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/FiterAndCountTests.java">первый класс</a> и <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/LimitAndSkipTests.java">второй класс</a></p>
+<div class="highlight"><pre><span></span><code> private static void testFilterAndCount() {
+        System.out.println();
+        System.out.println(&quot;Test filter and count start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+        Collection&lt;People&gt; peoples = Arrays.asList(
+                new People(&quot;Вася&quot;, 16, Sex.MAN),
+                new People(&quot;Петя&quot;, 23, Sex.MAN),
+                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
+                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
+        );
+
+
+        long count = collection.stream().filter(&quot;a1&quot;::equals).count();
+        System.out.println(&quot;count = &quot; + count); 
+
+
+        List&lt;String&gt; select = collection.stream().filter((s) -&gt; s.contains(&quot;1&quot;)).collect(Collectors.toList());
+        System.out.println(&quot;select = &quot; + select); 
+
+
+        List&lt;People&gt; militaryService = peoples.stream().filter((p)-&gt; p.getAge() &gt;= 18 &amp;&amp; p.getAge() &lt; 27
+                &amp;&amp; p.getSex() == Sex.MAN).collect(Collectors.toList());
+        System.out.println(&quot;militaryService = &quot; + militaryService); 
+
+
+        double manAverageAge = peoples.stream().filter((p) -&gt; p.getSex() == Sex.MAN).
+                mapToInt(People::getAge).average().getAsDouble();
+        System.out.println(&quot;manAverageAge = &quot; + manAverageAge); 
+
+
+        long peopleHowCanWork = peoples.stream().filter((p) -&gt; p.getAge() &gt;= 18).filter(
+                (p) -&gt; (p.getSex() == Sex.WOMEN &amp;&amp; p.getAge() &lt; 55) || (p.getSex() == Sex.MAN &amp;&amp; p.getAge() &lt; 60)).count();
+        System.out.println(&quot;peopleHowCanWork = &quot; + peopleHowCanWork); 
+
+    }
+
+
+
+
+    private static void testFindFirstSkipCount() {
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+        System.out.println(&quot;Test findFirst and skip start&quot;);
+
+        String first = collection.stream().findFirst().orElse(&quot;1&quot;);
+        System.out.println(&quot;first = &quot; + first); 
+
+
+        String last = collection.stream().skip(collection.size() - 1).findAny().orElse(&quot;1&quot;);
+        System.out.println(&quot;last = &quot; + last ); 
+
+
+        String find = collection.stream().filter(&quot;a3&quot;::equals).findFirst().get();
+        System.out.println(&quot;find = &quot; + find); 
+
+
+        String third = collection.stream().skip(2).findFirst().get();
+        System.out.println(&quot;third = &quot; + third); 
+
+        System.out.println();
+        System.out.println(&quot;Test collect start&quot;);
+
+        List&lt;String&gt; select = collection.stream().filter((s) -&gt; s.contains(&quot;1&quot;)).collect(Collectors.toList());
+        System.out.println(&quot;select = &quot; + select); 
+    }
+
+
+    private static void testLimit() {
+        System.out.println();
+        System.out.println(&quot;Test limit start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+
+        List&lt;String&gt; limit = collection.stream().limit(2).collect(Collectors.toList());
+        System.out.println(&quot;limit = &quot; + limit); 
+
+
+        List&lt;String&gt; fromTo = collection.stream().skip(1).limit(2).collect(Collectors.toList());
+        System.out.println(&quot;fromTo = &quot; + fromTo); 
+
+
+        String last = collection.stream().skip(collection.size() - 1).findAny().orElse(&quot;1&quot;);
+        System.out.println(&quot;last = &quot; + last ); 
+    }
+
+    private enum Sex {
+        MAN,
+        WOMEN
+    }
+
+    private static class People {
+        private final String name;
+        private final Integer age;
+        private final Sex sex;
+
+        public People(String name, Integer age, Sex sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public Sex getSex() {
+            return sex;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;{&quot; +
+                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &quot;, sex=&quot; + sex +
+                    &#39;}&#39;;
+        }
+    } 
+</code></pre></div>
+<h3 id="32-distinct"><strong>3.2 Примеры использования distinct</strong></h3>
+<p>Метод distinct возвращает stream без дубликатов, при этом для упорядоченного стрима (например, коллекция на основе list) порядок стабилен, для неупорядоченного — порядок не гарантируется. Рассмотрим результаты работы над коллекцией Collection ordered = Arrays.asList(«a1», «a2», «a2», «a3», «a1», «a2», «a2») и Collection nonOrdered = new HashSet&lt;&gt;(ordered).</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Получение коллекции без дубликатов из неупорядоченного стрима</td>
+<td>nonOrdered.stream().distinct().collect(Collectors.toList())</td>
+<td>[a1, a2, a3] —<br>порядок не гарантируется</td>
+</tr>
+<tr>
+<td>Получение коллекции без дубликатов из упорядоченного стрима</td>
+<td>ordered.stream().distinct().collect(Collectors.toList());</td>
+<td>[a1, a2, a3] —<br>порядок гарантируется</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Обратите внимание:</strong>
+1. Если вы используете distinct с классом, у которого переопределен equals, обязательно так же корректно переопределить hashCode в соответствие с контрактом equals/hashCode (самое главное чтобы hashCode для всех equals объектов, возвращал одинаковое значение), иначе distinct может не удалить дубликаты (аналогично, как при использовании HashSet/HashMap),
+2. Если вы используете параллельные стримы и вам не важен порядок элементов после удаления дубликатов — намного лучше для производительности сделать сначала стрим неупорядоченным с помощь unordered(), а уже потом применять distinct(), так как подержание стабильности сортировки при параллельном стриме довольно затратно по ресурсам и distinct() на упорядоченным стриме будет выполнятся значительно дольше чем при неупорядоченном,</p>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/DistinctTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testDistinct() {
+        System.out.println();
+        System.out.println(&quot;Test distinct start&quot;);
+        Collection&lt;String&gt; ordered = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;, &quot;a2&quot;, &quot;a2&quot;);
+        Collection&lt;String&gt; nonOrdered = new HashSet&lt;&gt;(ordered);
+
+
+        List&lt;String&gt; distinct = nonOrdered.stream().distinct().collect(Collectors.toList());
+        System.out.println(&quot;distinct = &quot; + distinct); 
+
+        List&lt;String&gt; distinctOrdered = ordered.stream().distinct().collect(Collectors.toList());
+        System.out.println(&quot;distinctOrdered = &quot; + distinctOrdered); 
+    } 
+</code></pre></div>
+<h3 id="33-match-anymatch-allmatch-nonematch"><strong>3.3 Примеры использования Match функций (anyMatch, allMatch, noneMatch)</strong></h3>
+<p><strong>Условие</strong>: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), давайте посмотрим, как её можно обрабатывать используя Match функции</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Найти существуют ли хоть один «a1» элемент в коллекции</td>
+<td>collection.stream().anyMatch(«a1»::equals)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Найти существуют ли хоть один «a8» элемент в коллекции</td>
+<td>collection.stream().anyMatch(«a8»::equals)</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Найти есть ли символ «1» у всех элементов коллекции</td>
+<td>collection.stream().allMatch((s) -&gt; s.contains(«1»))</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Проверить что не существуют ни одного «a7» элемента в коллекции</td>
+<td>collection.stream().noneMatch(«a7»::equals)</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Также этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/FindAndMatchTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testMatch() {
+        System.out.println();
+        System.out.println(&quot;Test anyMatch, allMatch, noneMatch  start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+
+        boolean isAnyOneTrue = collection.stream().anyMatch(&quot;a1&quot;::equals);
+        System.out.println(&quot;anyOneTrue &quot; + isAnyOneTrue); 
+        boolean isAnyOneFalse = collection.stream().anyMatch(&quot;a8&quot;::equals);
+        System.out.println(&quot;anyOneFlase &quot; + isAnyOneFalse); 
+
+
+        boolean isAll = collection.stream().allMatch((s) -&gt; s.contains(&quot;1&quot;));
+        System.out.println(&quot;isAll &quot; + isAll); 
+
+
+        boolean isNotEquals = collection.stream().noneMatch(&quot;a7&quot;::equals);
+        System.out.println(&quot;isNotEquals &quot; + isNotEquals); 
+    } 
+</code></pre></div>
+<h3 id="34-map-map-maptoint-flatmap-flatmaptoint"><strong>3.4 Примеры использования Map функций (map, mapToInt, FlatMap, FlatMapToInt)</strong></h3>
+<p><strong>Условие</strong>: даны две коллекции collection1 = Arrays.asList(«a1», «a2», «a3», «a1») и collection2 = Arrays.asList(«1,2,0», «4,5»), давайте посмотрим как её можно обрабатывать используя различные map функции</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Добавить "_1" к каждому элементу первой коллекции</td>
+<td>collection1.stream().map((s) -&gt; s + "_1").collect(Collectors.toList())</td>
+<td>[a1_1, a2_1, a3_1, a1_1]</td>
+</tr>
+<tr>
+<td>В первой коллекции убрать первый символ и вернуть массив чисел (int[])</td>
+<td>collection1.stream().mapToInt((s) -&gt; Integer.parseInt(s.substring(1))).toArray()</td>
+<td>[1, 2, 3, 1]</td>
+</tr>
+<tr>
+<td>Из второй коллекции получить все числа, перечисленные через запятую из всех элементов</td>
+<td>collection2.stream().flatMap((p) -&gt; Arrays.asList(p.split(",")).stream()).toArray(String[]::new)</td>
+<td>[1, 2, 0, 4, 5]</td>
+</tr>
+<tr>
+<td>Из второй коллекции получить сумму всех чисел, перечисленных через запятую</td>
+<td>collection2.stream().flatMapToInt((p) -&gt; Arrays.asList(p.split(",")).stream().mapToInt(Integer::parseInt)).sum()</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание: все map функции могут вернуть объект другого типа (класса), то есть map может работать со стримом строк, а на выходе дать Stream из значений Integer или получать класс людей People, а возвращать класс Office, где эти люди работают и т.п., flatMap (flatMapToInt и т.п.) на выходе должны возвращать стрим с одним, несколькими или ни одним элементов для каждого элемента входящего стрима (см. последние два примера).</p>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/MapTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testMap() {
+        System.out.println();
+        System.out.println(&quot;Test map start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+        List&lt;String&gt; transform = collection.stream().map((s) -&gt; s + &quot;_1&quot;).collect(Collectors.toList());
+        System.out.println(&quot;transform = &quot; + transform); 
+
+
+        List&lt;Integer&gt; number = collection.stream().map((s) -&gt; Integer.parseInt(s.substring(1))).collect(Collectors.toList());
+        System.out.println(&quot;number = &quot; + number); 
+
+    }
+
+
+    private static void testMapToInt() {
+        System.out.println();
+        System.out.println(&quot;Test mapToInt start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+        int[] number = collection.stream().mapToInt((s) -&gt; Integer.parseInt(s.substring(1))).toArray();
+        System.out.println(&quot;number = &quot; + Arrays.toString(number)); 
+
+    }
+
+
+    private static void testFlatMap() {
+        System.out.println();
+        System.out.println(&quot;Test flat map start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;1,2,0&quot;, &quot;4,5&quot;);
+
+        String[] number = collection.stream().flatMap((p) -&gt; Arrays.asList(p.split(&quot;,&quot;)).stream()).toArray(String[]::new);
+        System.out.println(&quot;number = &quot; + Arrays.toString(number)); 
+    }
+
+
+    private static void testFlatMapToInt() {
+        System.out.println();
+        System.out.println(&quot;Test flat map start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;1,2,0&quot;, &quot;4,5&quot;);
+
+        int sum = collection.stream().flatMapToInt((p) -&gt; Arrays.asList(p.split(&quot;,&quot;)).stream().mapToInt(Integer::parseInt)).sum();
+        System.out.println(&quot;sum = &quot; + sum); 
+    } 
+</code></pre></div>
+<h3 id="35-sorted"><strong>3.5 Примеры использования Sorted функции</strong></h3>
+<p><strong>Условие</strong>: даны две коллекции коллекция строк Arrays.asList(«a1», «a4», «a3», «a2», «a1», «a4») и коллекция людей класса People (с полями name — имя, age — возраст, sex — пол), вида Arrays.asList( new People(«Вася», 16, Sex.MAN), new People(«Петя», 23, Sex.MAN), new People(«Елена», 42, Sex.WOMEN), new People(«Иван Иванович», 69, Sex.MAN)). Давайте посмотрим примеры как их можно сортировать:</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Отсортировать коллекцию строк по алфавиту</td>
+<td>collection.stream().sorted().collect(Collectors.toList())</td>
+<td>[a1, a1, a2, a3, a4, a4]</td>
+</tr>
+<tr>
+<td>Отсортировать коллекцию строк по алфавиту в обратном порядке</td>
+<td>collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).collect(Collectors.toList())</td>
+<td>[a4, a4, a3, a2, a1, a1]</td>
+</tr>
+<tr>
+<td>Отсортировать коллекцию строк по алфавиту и убрать дубликаты</td>
+<td>collection.stream().sorted().distinct().collect(Collectors.toList())</td>
+<td>[a1, a2, a3, a4]</td>
+</tr>
+<tr>
+<td>Отсортировать коллекцию строк по алфавиту в обратном порядке и убрать дубликаты</td>
+<td>collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).distinct().collect(Collectors.toList())</td>
+<td>[a4, a3, a2, a1]</td>
+</tr>
+<tr>
+<td>Отсортировать коллекцию людей по имени в обратном алфавитном порядке</td>
+<td>peoples.stream().sorted((o1,o2) -&gt; -o1.getName().compareTo(o2.getName())).collect(Collectors.toList())</td>
+<td>[{'Петя'}, {'Иван Иванович'}, {'Елена'}, {'Вася'}]</td>
+</tr>
+<tr>
+<td>Отсортировать коллекцию людей сначала по полу, а потом по возрасту</td>
+<td>peoples.stream().sorted((o1, o2) -&gt; o1.getSex() != o2.getSex()? o1.getSex().<br>compareTo(o2.getSex()): o1.getAge().compareTo(o2.getAge())).collect(Collectors.toList())</td>
+<td>[{'Вася'}, {'Петя'}, {'Иван Иванович'}, {'Елена'}]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/SortedTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testSorted() {
+        System.out.println();
+        System.out.println(&quot;Test sorted start&quot;);
+
+
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a4&quot;, &quot;a3&quot;, &quot;a2&quot;, &quot;a1&quot;, &quot;a4&quot;);
+
+
+        List&lt;String&gt; sorted = collection.stream().sorted().collect(Collectors.toList());
+        System.out.println(&quot;sorted = &quot; + sorted); 
+
+
+        List&lt;String&gt; sortedDistinct = collection.stream().sorted().distinct().collect(Collectors.toList());
+        System.out.println(&quot;sortedDistinct = &quot; + sortedDistinct); 
+
+
+        List&lt;String&gt; sortedReverse = collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).collect(Collectors.toList());
+        System.out.println(&quot;sortedReverse = &quot; + sortedReverse); 
+
+
+        List&lt;String&gt; distinctReverse = collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).distinct().collect(Collectors.toList());
+        System.out.println(&quot;distinctReverse = &quot; + distinctReverse); 
+
+
+
+        Collection&lt;People&gt; peoples = Arrays.asList(
+                new People(&quot;Вася&quot;, 16, Sex.MAN),
+                new People(&quot;Петя&quot;, 23, Sex.MAN),
+                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
+                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
+        );
+
+
+        Collection&lt;People&gt; byName = peoples.stream().sorted((o1,o2) -&gt; -o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
+        System.out.println(&quot;byName = &quot; + byName); 
+
+
+        Collection&lt;People&gt; bySexAndAge = peoples.stream().sorted((o1, o2) -&gt; o1.getSex() != o2.getSex() ? o1.getSex().
+                compareTo(o2.getSex()) : o1.getAge().compareTo(o2.getAge())).collect(Collectors.toList());
+        System.out.println(&quot;bySexAndAge = &quot; + bySexAndAge); 
+    }
+
+    private enum Sex {
+        MAN,
+        WOMEN
+    }
+
+    private static class People {
+        private final String name;
+        private final Integer age;
+        private final Sex sex;
+
+        public People(String name, Integer age, Sex sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public Sex getSex() {
+            return sex;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;{&quot; +
+                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &quot;, sex=&quot; + sex +
+                    &#39;}&#39;;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof People)) return false;
+            People people = (People) o;
+            return Objects.equals(name, people.name) &amp;&amp;
+                    Objects.equals(age, people.age) &amp;&amp;
+                    Objects.equals(sex, people.sex);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, age, sex);
+        }
+    } 
+</code></pre></div>
+<h3 id="36-max-min"><strong>3.6 Примеры использования Max и Min функций</strong></h3>
+<p><strong>Условие</strong>: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), и коллекция класса Peoples из прошлых примеров про Sorted и Filter функции.</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Найти максимальное значение среди коллекции строк</td>
+<td>collection.stream().max(String::compareTo).get()</td>
+<td>a3</td>
+</tr>
+<tr>
+<td>Найти минимальное значение среди коллекции строк</td>
+<td>collection.stream().min(String::compareTo).get()</td>
+<td>a1</td>
+</tr>
+<tr>
+<td>Найдем человека с максимальным возрастом</td>
+<td>peoples.stream().max((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get()</td>
+<td>{name='Иван Иванович', age=69, sex=MAN}</td>
+</tr>
+<tr>
+<td>Найдем человека с минимальным возрастом</td>
+<td>peoples.stream().min((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get()</td>
+<td>{name='Вася', age=16, sex=MAN}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/MaxMinTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testMinMax() {
+        System.out.println();
+        System.out.println(&quot;Test min and max start&quot;);
+
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+
+        String max = collection.stream().max(String::compareTo).get();
+        System.out.println(&quot;max &quot; + max); 
+
+
+        String min = collection.stream().min(String::compareTo).get();
+        System.out.println(&quot;min &quot; + min); 
+
+
+
+
+        Collection&lt;People&gt; peoples = Arrays.asList(
+                new People(&quot;Вася&quot;, 16, Sex.MAN),
+                new People(&quot;Петя&quot;, 23, Sex.MAN),
+                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
+                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
+        );
+
+
+        People older = peoples.stream().max((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get();
+        System.out.println(&quot;older &quot; + older); 
+
+
+        People younger = peoples.stream().min((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get();
+        System.out.println(&quot;younger &quot; + younger); 
+    }
+
+
+    private enum Sex {
+        MAN,
+        WOMEN
+    }
+
+    private static class People {
+        private final String name;
+        private final Integer age;
+        private final Sex sex;
+
+        public People(String name, Integer age, Sex sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public Sex getSex() {
+            return sex;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;{&quot; +
+                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &quot;, sex=&quot; + sex +
+                    &#39;}&#39;;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof People)) return false;
+            People people = (People) o;
+            return Objects.equals(name, people.name) &amp;&amp;
+                    Objects.equals(age, people.age) &amp;&amp;
+                    Objects.equals(sex, people.sex);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, age, sex);
+        }
+    } 
+</code></pre></div>
+<h3 id="37-foreach-peek"><strong>3.7 Примеры использования ForEach и Peek функций</strong></h3>
+<p>Обе ForEach и Peek по сути делают одно и тоже, меняют свойства объектов в стриме, единственная разница между ними в том что ForEach терминальная и она заканчивает работу со стримом, в то время как Peek конвейерная и работа со стримом продолжается. Например, есть коллекция:</p>
+<div class="highlight"><pre><span></span><code> Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;)); 
+</code></pre></div>
+<p>И нужно добавить к каждому элементу "_new", то для ForEach код будет</p>
+<div class="highlight"><pre><span></span><code> list.stream().forEachOrdered((p) -&gt; p.append(&quot;_new&quot;)); 
+</code></pre></div>
+<p>а для peek код будет</p>
+<div class="highlight"><pre><span></span><code> List&lt;StringBuilder&gt; newList = list.stream().peek((p) -&gt; p.append(&quot;_new&quot;)).collect(Collectors.toList()); 
+</code></pre></div>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/ForEachAndPeekTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testForEach() {
+        System.out.println();
+        System.out.println(&quot;For each start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+        System.out.print(&quot;forEach = &quot;);
+        collection.stream().map(String::toUpperCase).forEach((e) -&gt; System.out.print(e + &quot;,&quot;)); 
+        System.out.println();
+
+        Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;));
+        list.stream().forEachOrdered((p) -&gt; p.append(&quot;_new&quot;));
+        System.out.println(&quot;forEachOrdered = &quot; + list); 
+    }
+
+
+    private static void testPeek() {
+        System.out.println();
+        System.out.println(&quot;Test peek start&quot;);
+        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+
+        System.out.print(&quot;peak1 = &quot;);
+        List&lt;String&gt; peek = collection.stream().map(String::toUpperCase).peek((e) -&gt; System.out.print(e + &quot;,&quot;)).
+                collect(Collectors.toList());
+        System.out.println(); 
+        System.out.println(&quot;peek2 = &quot; + peek); 
+
+        Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;));
+        List&lt;StringBuilder&gt; newList = list.stream().peek((p) -&gt; p.append(&quot;_new&quot;)).collect(Collectors.toList());
+        System.out.println(&quot;newList = &quot; + newList); 
+    } 
+</code></pre></div>
+<h3 id="38-reduce"><strong>3.8 Примеры использования Reduce функции</strong></h3>
+<p>Метод reduce позволяет выполнять агрегатные функции на всей коллекцией (такие как сумма, нахождение минимального или максимального значение и т.п.), он возвращает одно значение для стрима, функция получает два аргумента — значение полученное на прошлых шагах и текущее значение.</p>
+<p><strong>Условие</strong>: Дана коллекция чисел Arrays.asList(1, 2, 3, 4, 2) выполним над ними несколько действий используя reduce.</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Получить сумму чисел или вернуть 0</td>
+<td>collection.stream().reduce((s1, s2) -&gt; s1 + s2).orElse(0)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Вернуть максимум или -1</td>
+<td>collection.stream().reduce(Integer::max).orElse(-1)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Вернуть сумму нечетных чисел или 0</td>
+<td>collection.stream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0)</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Также этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/ReduceTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testReduce() {
+        System.out.println();
+        System.out.println(&quot;Test reduce start&quot;);
+
+
+        Collection&lt;Integer&gt; collection = Arrays.asList(1, 2, 3, 4, 2);
+
+
+        Integer sum = collection.stream().reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+        Integer sumOld = 0; 
+        for(Integer i: collection) {
+            sumOld += i;
+        }
+        System.out.println(&quot;sum = &quot; + sum + &quot; : &quot; + sumOld); 
+
+
+
+        Integer max1 = collection.stream().reduce((s1, s2) -&gt; s1 &gt; s2 ? s1 : s2).orElse(0); 
+        Integer max2 = collection.stream().reduce(Integer::max).orElse(0); 
+        Integer maxOld = null; 
+        for(Integer i: collection) {
+            maxOld = maxOld != null &amp;&amp; maxOld &gt; i? maxOld: i;
+        }
+        maxOld = maxOld == null? 0 : maxOld;
+        System.out.println(&quot;max = &quot; + max1 + &quot; : &quot; + max2 + &quot; : &quot; + maxOld); 
+
+
+        Integer min = collection.stream().reduce((s1, s2) -&gt; s1 &lt; s2 ? s1 : s2).orElse(0); 
+        Integer minOld = null; 
+        for(Integer i: collection) {
+            minOld = minOld != null &amp;&amp; minOld &lt; i? minOld: i;
+        }
+        minOld = minOld == null? 0 : minOld;
+        System.out.println(&quot;min = &quot; + min+ &quot; : &quot; + minOld); 
+
+
+        Integer last = collection.stream().reduce((s1, s2) -&gt; s2).orElse(0); 
+        Integer lastOld = null; 
+        for(Integer i: collection) {
+            lastOld = i;
+        }
+        lastOld = lastOld == null? 0 : lastOld;
+        System.out.println(&quot;last = &quot; + last + &quot; : &quot; + lastOld); 
+
+
+        Integer sumMore2 = collection.stream().filter(o -&gt; o &gt; 2).reduce((s1, s2) -&gt; s1 + s2).orElse(0);     
+        Integer sumMore2Old = 0; 
+        for(Integer i: collection) {
+            if(i &gt; 2) {
+                sumMore2Old += i;
+            }
+        }
+        System.out.println(&quot;sumMore2 = &quot; + sumMore2 + &quot; : &quot; + sumMore2Old); 
+
+
+        Integer sumOdd = collection.stream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+        Integer sumOddOld = 0; 
+        for(Integer i: collection) {
+            if(i % 2 != 0) {
+                sumOddOld += i;
+            }
+        }
+        System.out.println(&quot;sumOdd = &quot; + sumOdd + &quot; : &quot; + sumOddOld); 
+
+
+
+
+        Collection&lt;People&gt; peoples = Arrays.asList(
+                new People(&quot;Вася&quot;, 16, Sex.MAN),
+                new People(&quot;Петя&quot;, 23, Sex.MAN),
+                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
+                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
+        );
+
+
+        int oldMan = peoples.stream().filter((p) -&gt; p.getSex() == Sex.MAN).map(People::getAge).reduce((s1, s2) -&gt; s1 &gt; s2 ? s1 : s2).get();
+        System.out.println(&quot;oldMan = &quot; + oldMan); 
+
+
+        int younger = peoples.stream().filter((p) -&gt; p.getName().contains(&quot;е&quot;)).mapToInt(People::getAge).reduce((s1, s2) -&gt; s1 &lt; s2 ? s1 : s2).orElse(0);
+        System.out.println(&quot;younger = &quot; + younger); 
+    }
+
+    private enum Sex {
+        MAN,
+        WOMEN
+    }
+
+    private static class People {
+        private final String name;
+        private final Integer age;
+        private final Sex sex;
+
+        public People(String name, Integer age, Sex sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public Sex getSex() {
+            return sex;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;{&quot; +
+                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &quot;, sex=&quot; + sex +
+                    &#39;}&#39;;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof People)) return false;
+            People people = (People) o;
+            return Objects.equals(name, people.name) &amp;&amp;
+                    Objects.equals(age, people.age) &amp;&amp;
+                    Objects.equals(sex, people.sex);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, age, sex);
+        }
+    } 
+</code></pre></div>
+<h3 id="39-toarray-collect"><strong>3.9 Примеры использования toArray и collect функции</strong></h3>
+<p>Если с toArray все просто, можно либо вызвать toArray() получить Object[], либо toArray(T[]::new) — получив массив типа T, то collect позволяет много возможностей преобразовать значение в коллекцию, map'у или любой другой тип. Для этого используются статические методы из Collectors, например преобразование в List будет stream.collect(Collectors.toList()).</p>
+<p>Давайте рассмотрим статические методы из Collectors:</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>toList, toCollection, toSet</td>
+<td>представляют стрим в виде списка, коллекции или множества</td>
+</tr>
+<tr>
+<td>toConcurrentMap, toMap</td>
+<td>позволяют преобразовать стрим в map</td>
+</tr>
+<tr>
+<td>averagingInt, averagingDouble, averagingLong</td>
+<td>возвращают среднее значение</td>
+</tr>
+<tr>
+<td>summingInt, summingDouble, summingLong</td>
+<td>возвращает сумму</td>
+</tr>
+<tr>
+<td>summarizingInt, summarizingDouble, summarizingLong</td>
+<td>возвращают SummaryStatistics с разными агрегатными значениями</td>
+</tr>
+<tr>
+<td>partitioningBy</td>
+<td>разделяет коллекцию на две части по соответствию условию и возвращает их как Map&lt;Boolean, List&gt;</td>
+</tr>
+<tr>
+<td>groupingBy</td>
+<td>разделяет коллекцию на несколько частей и возвращает Map&lt;N, List<T&gt;></td>
+</tr>
+<tr>
+<td>mapping</td>
+<td>дополнительные преобразования значений для сложных Collector'ов</td>
+</tr>
+</tbody>
+</table>
+<p>Теперь давайте рассмотрим работу с collect и toArray на примерах:
+<strong>Условие:</strong> Дана коллекция чисел Arrays.asList(1, 2, 3, 4), рассмотрим работу collect и toArray с ней</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Получить сумму нечетных чисел</td>
+<td>numbers.stream().collect(Collectors.summingInt(((p) -&gt; p % 2 == 1? p: 0)))</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Вычесть от каждого элемента 1 и получить среднее</td>
+<td>numbers.stream().collect(Collectors.averagingInt((p) -&gt; p — 1))</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Прибавить к числам 3 и получить статистику</td>
+<td>numbers.stream().collect(Collectors.summarizingInt((p) -&gt; p + 3))</td>
+<td>IntSummaryStatistics{count=4, sum=22, min=4, average=5.5, max=7}</td>
+</tr>
+<tr>
+<td>Разделить числа на четные и нечетные</td>
+<td>numbers.stream().collect(Collectors.partitioningBy((p) -&gt; p % 2 == 0))</td>
+<td>{false=[1, 3], true=[2, 4]}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Условие:</strong> Дана коллекция строк Arrays.asList(«a1», «b2», «c3», «a1»), рассмотрим работу collect и toArray с ней</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Код примера</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Получение списка без дубликатов</td>
+<td>strings.stream().distinct().collect(Collectors.toList())</td>
+<td>[a1, b2, c3]</td>
+</tr>
+<tr>
+<td>Получить массив строк без дубликатов и в верхнем регистре</td>
+<td>strings.stream().distinct().map(String::toUpperCase).toArray(String[]::new)</td>
+<td>{A1, B2, C3}</td>
+</tr>
+<tr>
+<td>Объединить все элементы в одну строку через разделитель: и обернуть тегами &lt;b&gt;… &lt;/b&gt;</td>
+<td>strings.stream().collect(Collectors.joining(": ", "&lt;b&gt; ", " &lt;/b&gt;"))</td>
+<td>&lt;b&gt; a1: b2: c3: a1 &lt;/b&gt;</td>
+</tr>
+<tr>
+<td>Преобразовать в map, где первый символ ключ, второй символ значение</td>
+<td>strings.stream().distinct().collect(Collectors.toMap((p) -&gt; p.substring(0, 1), (p) -&gt; p.substring(1, 2)))</td>
+<td>{a=1, b=2, c=3}</td>
+</tr>
+<tr>
+<td>Преобразовать в map, сгруппировав по первому символу строки</td>
+<td>strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1)))</td>
+<td>{a=[a1, a1], b=[b2], c=[c3]}</td>
+</tr>
+<tr>
+<td>Преобразовать в map, сгруппировав по первому символу строки и объединим вторые символы через :</td>
+<td>strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1), Collectors.mapping((p) -&gt; p.substring(1, 2), Collectors.joining(":"))))</td>
+<td>{a=1:1, b=2, c=3}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Детальные примеры</strong></p>
+<p>Также примеры можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/CollectAndToArrayTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> private static void testCollect() {
+        System.out.println();
+        System.out.println(&quot;Test distinct start&quot;);
+
+
+        Collection&lt;String&gt; strings = Arrays.asList(&quot;a1&quot;, &quot;b2&quot;, &quot;c3&quot;, &quot;a1&quot;);
+
+
+        List&lt;String&gt; distinct = strings.stream().distinct().collect(Collectors.toList());
+        System.out.println(&quot;distinct = &quot; + distinct); 
+
+
+        String[] array = strings.stream().distinct().map(String::toUpperCase).toArray(String[]::new);
+        System.out.println(&quot;array = &quot; + Arrays.asList(array)); 
+
+
+        String join = strings.stream().collect(Collectors.joining(&quot; : &quot;, &quot;&lt;b&gt; &quot;, &quot; &lt;/b&gt;&quot;));
+        System.out.println(&quot;join = &quot; + join); 
+
+
+        Map&lt;String, String&gt; map = strings.stream().distinct().collect(Collectors.toMap((p) -&gt; p.substring(0, 1), (p) -&gt; p.substring(1, 2)));
+        System.out.println(&quot;map = &quot; + map); 
+
+
+        Map&lt;String, List&lt;String&gt;&gt; groups = strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1)));
+        System.out.println(&quot;groups = &quot; + groups); 
+
+
+        Map&lt;String, String&gt; groupJoin = strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1), Collectors.mapping((p) -&gt; p.substring(1, 2), Collectors.joining(&quot;:&quot;))));
+        System.out.println(&quot;groupJoin = &quot; + groupJoin); 
+
+
+        Collection&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4);
+
+
+        long sumOdd = numbers.stream().collect(Collectors.summingInt(((p) -&gt; p % 2 == 1 ? p : 0)));
+        System.out.println(&quot;sumOdd = &quot; + sumOdd); 
+
+
+        double average = numbers.stream().collect(Collectors.averagingInt((p) -&gt; p - 1));
+        System.out.println(&quot;average = &quot; + average); 
+
+
+        IntSummaryStatistics statistics = numbers.stream().collect(Collectors.summarizingInt((p) -&gt; p + 3));
+        System.out.println(&quot;statistics = &quot; + statistics); 
+
+
+        long sumEven = numbers.stream().collect(Collectors.summarizingInt((p) -&gt; p % 2 == 0 ? p : 0)).getSum();
+        System.out.println(&quot;sumEven = &quot; + sumEven); 
+
+
+        Map&lt;Boolean, List&lt;Integer&gt;&gt; parts = numbers.stream().collect(Collectors.partitioningBy((p) -&gt; p % 2 == 0));
+        System.out.println(&quot;parts = &quot; + parts); 
+    } 
+</code></pre></div>
+<h3 id="310-collectora"><strong>3.10 Пример создания собственного Collector'a</strong></h3>
+<p>Кроме Collector'ов уже определенных в Collectors можно так же создать собственный Collector, Давайте рассмотрим пример как его можно создать.</p>
+<p>Метод определения пользовательского Collector'a:</p>
+<div class="highlight"><pre><span></span><code>Collector&lt;Тип_источника, Тип_аккумулятора, Тип_результата&gt; сollector =  Collector.of(
+                метод_инициализации_аккумулятора,
+                метод_обработки_каждого_элемента,
+                метод_соединения_двух_аккумуляторов,
+                [метод_последней_обработки_аккумулятора]
+        ); 
+</code></pre></div>
+<p>Как видно из кода выше, для реализации своего Collector'a нужно определить три или четыре метода (метод_последней_обработки_аккумулятора не обязателен). Рассмотрим следующий кода, который мы писали до Java 8, чтобы объединить все строки коллекции:</p>
+<div class="highlight"><pre><span></span><code> StringBuilder b = new StringBuilder(); 
+        for(String s: strings) {
+            b.append(s).append(&quot; , &quot;); 
+        }
+        String joinBuilderOld = b.toString(); 
+</code></pre></div>
+<p>И аналогичный код, который будет написан в Java 8</p>
+<div class="highlight"><pre><span></span><code>String joinBuilder = strings.stream().collect(
+   Collector.of(
+                StringBuilder::new, 
+                (b ,s) -&gt; b.append(s).append(&quot; , &quot;), 
+                (b1, b2) -&gt; b1.append(b2).append(&quot; , &quot;), 
+                StringBuilder::toString 
+        )
+); 
+</code></pre></div>
+<p>В общем-то, три метода легко понять из кода выше, их мы писали практически при каждой обработки коллекций, но вот что такое метод_соединения_двух_аккумуляторов? Это метод который нужен для параллельной обработки Collector'a, в данном случае при параллельном стриме коллекция может быть разделенной на две части (или больше частей), в каждой из которых будет свой аккумулятор StringBuilder и потом необходимо будет их объединить, то код до Java 8 при 2 потоках будет таким:</p>
+<div class="highlight"><pre><span></span><code> StringBuilder b1 = new StringBuilder(); 
+        for(String s: stringsPart1) { 
+            b1.append(s).append(&quot; , &quot;); 
+        }
+
+        StringBuilder b2 = new StringBuilder(); 
+        for(String s: stringsPart2) { 
+            b2.append(s).append(&quot; , &quot;); 
+        }
+
+        StringBuilder b = b1.append(b2).append(&quot; , &quot;), 
+
+        String joinBuilderOld = b.toString(); 
+</code></pre></div>
+<p>Напишем свой аналог Collectors.toList() для работы со строковым стримом:</p>
+<div class="highlight"><pre><span></span><code> Collector&lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
+                ArrayList::new, 
+                List::add, 
+                (l1, l2) -&gt; { l1.addAll(l2); return l1; } 
+        );
+
+        List&lt;String&gt; distinct1 = strings.stream().distinct().collect(toList); 
+</code></pre></div>
+<p><strong>Детальные примеры</strong></p>
+<p>Так же примеры можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/CollectAndToArrayTests.java">github'e</a></p>
+<div class="highlight"><pre><span></span><code> Collector&lt;String,StringBuilder, String&gt; stringBuilderCollector =  Collector.of(
+                StringBuilder::new, 
+                (b ,s) -&gt; b.append(s).append(&quot; , &quot;), 
+                (b1, b2) -&gt; b1.append(b2).append(&quot; , &quot;), 
+                StringBuilder::toString 
+        );
+        String joinBuilder = strings.stream().collect(stringBuilderCollector);
+        System.out.println(&quot;joinBuilder = &quot; + joinBuilder); 
+
+
+        StringBuilder b = new StringBuilder(); 
+        for(String s: strings) {
+            b.append(s).append(&quot; , &quot;); 
+        }
+        String joinBuilderOld = b.toString(); 
+        System.out.println(&quot;joinBuilderOld = &quot; + joinBuilderOld); 
+
+
+        Collector&lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
+                ArrayList::new, 
+                List::add, 
+                (l1, l2) -&gt; { l1.addAll(l2); return l1; } 
+        );
+        List&lt;String&gt; distinct1 = strings.stream().distinct().collect(toList);
+        System.out.println(&quot;distinct1 = &quot; + distinct1); 
+</code></pre></div>
+<h2 id="iv"><strong>IV. Заключение</strong></h2>
+<p>Вот и все. Надеюсь, моя небольшая шпаргалка по работе со stream api была для вас полезной. Все исходники есть на <a href="https://github.com/Vedenin/java_collections_overview/tree/master/src/com/github/vedenin/rus/stream_api">github'е</a>, удачи в написании хорошего кода.</p>
+<p><strong>P.S.</strong> Список других статей, где можно прочитать дополнительно про Stream Api:
+1. <a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Processing Data with Java SE 8 Streams, Part 1</a> от Oracle,
+2. <a href="http://www.oracle.com/technetwork/articles/java/architect-streams-pt2-2227132.html">Processing Data with Java SE 8 Streams, Part 2</a> от Oracle,
+3. <a href="http://prologistic.com.ua/polnoe-rukovodstvo-po-java-8-stream.html">Полное руководство по Java 8 Stream</a></p>
+<p><strong>P.P.S.</strong> Так же советую посмотреть мой opensource проект <a href="https://github.com/Vedenin/useful-java-links/tree/master/link-rus">useful-java-links</a> — возможно, наиболее полная коллекция полезных Java библиотек, фреймворков и русскоязычного обучающего видео. Так же есть аналогичная <a href="https://github.com/Vedenin/useful-java-links/">английская версия</a> этого проекта и начинаю opensource <a href="https://github.com/Vedenin/useful-java-links/tree/master/helloworlds">подпроект Hello world</a> по подготовке коллекции простых примеров для разных Java библиотек в одном maven проекте (буду благодарен за любую помощь).</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Integration Testing in Spring   Baeldung
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Spring REST Error Handling Example
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>

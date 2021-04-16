@@ -1,0 +1,1898 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Юнит тестирование для чайников - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Юнит тестирование для чайников
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
+        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
+        Access a value defined in the application.properti
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Юнит тестирование для чайников
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Юнит тестирование для чайников
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#we-need-to-go-deeper" class="md-nav__link">
+    We need to go deeper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Не нужно писать тесты, если
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Любой долгосрочный проект без надлежащего покрытия тестами обречен рано или поздно быть переписанным с нуля
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Почему есть проекты второго типа?
+  </a>
+  
+    <nav class="md-nav" aria-label="Почему есть проекты второго типа?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vcs" class="md-nav__link">
+    Выберите логическое расположение тестов в вашей VCS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Выберите способ именования проектов с тестами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Используйте такой же способ именования для тестовых классов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Выберите «говорящий» способ именования методов тестирующих классов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Выберите тестовый фреймворк, который подходит вам
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Что тестировать, а что – нет?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Придерживайтесь единого стиля написания тела теста
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Тестируйте одну вещь за один раз
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Борьба с зависимостями
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fakes-stubs-mocks" class="md-nav__link">
+    Fakes: stubs &amp; mocks
+  </a>
+  
+    <nav class="md-nav" aria-label="Fakes: stubs &amp; mocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Стаб
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Мок
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Тестирование состояния и тестирование поведения
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестирование состояния и тестирование поведения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Тестирование состояния
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Тестирование взаимодействия
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Изоляционные фреймвоки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Тестируемая архитектура
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестируемая архитектура">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Инъекция в конструктор
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    Инъекция в фабрику
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    Подмена фабрики
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    Переопределение локального фабричного метода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-oop" class="md-nav__link">
+    Тестируемая архитектура VS OOP
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестируемая архитектура VS OOP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    Серьезные требования к безопасности
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    Производительность
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    Работа с унаследованным кодом
+  </a>
+  
+    <nav class="md-nav" aria-label="Работа с унаследованным кодом">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    Архитектура тестируема
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    Архитектура не тестируема
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    Поддержка тестов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    Как «измерить» прогресс
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-first" class="md-nav__link">
+    Test First?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    Почитать на тему
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
+        Setting up KeePassXC on Linux (with Cloud Synchron
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B2%20Linux%20Ubuntu%20%20/" class="md-nav__link">
+        Автоматическое монтирование диска в Linux Ubuntu  
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#we-need-to-go-deeper" class="md-nav__link">
+    We need to go deeper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Не нужно писать тесты, если
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Любой долгосрочный проект без надлежащего покрытия тестами обречен рано или поздно быть переписанным с нуля
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Почему есть проекты второго типа?
+  </a>
+  
+    <nav class="md-nav" aria-label="Почему есть проекты второго типа?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vcs" class="md-nav__link">
+    Выберите логическое расположение тестов в вашей VCS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Выберите способ именования проектов с тестами
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Используйте такой же способ именования для тестовых классов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Выберите «говорящий» способ именования методов тестирующих классов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Выберите тестовый фреймворк, который подходит вам
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Что тестировать, а что – нет?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Придерживайтесь единого стиля написания тела теста
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Тестируйте одну вещь за один раз
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Борьба с зависимостями
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fakes-stubs-mocks" class="md-nav__link">
+    Fakes: stubs &amp; mocks
+  </a>
+  
+    <nav class="md-nav" aria-label="Fakes: stubs &amp; mocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Стаб
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Мок
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Тестирование состояния и тестирование поведения
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестирование состояния и тестирование поведения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Тестирование состояния
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Тестирование взаимодействия
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Изоляционные фреймвоки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Тестируемая архитектура
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестируемая архитектура">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Инъекция в конструктор
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    Инъекция в фабрику
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    Подмена фабрики
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    Переопределение локального фабричного метода
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-oop" class="md-nav__link">
+    Тестируемая архитектура VS OOP
+  </a>
+  
+    <nav class="md-nav" aria-label="Тестируемая архитектура VS OOP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    Серьезные требования к безопасности
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    Производительность
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    Работа с унаследованным кодом
+  </a>
+  
+    <nav class="md-nav" aria-label="Работа с унаследованным кодом">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    Архитектура тестируема
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    Архитектура не тестируема
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    Поддержка тестов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    Как «измерить» прогресс
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-first" class="md-nav__link">
+    Test First?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    Почитать на тему
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p>Юнит-тестирование для чайников</p>
+<h1 id="-">Юнит-тестирование для чайников</h1>
+<blockquote>
+<p>Даже если вы никогда в жизни не думали, что занимаетесь тестированием, вы это делаете. Вы собираете свое приложение, нажимаете кнопку и проверяете, соответствует...</p>
+</blockquote>
+<p>Даже если вы никогда в жизни не думали, что занимаетесь тестированием, вы это делаете. Вы собираете свое приложение, нажимаете кнопку и проверяете, соответствует ли полученный результат вашим ожиданиям. Достаточно часто в приложении можно встретить формочки с кнопкой “Test it” или классы с названием <em>TestController</em> или <em>MyServiceTestClient</em>.</p>
+<p><img alt="" src="https://habrastorage.org/storage2/6da/5c9/f6d/6da5c9f6d05c82a919b8cdcfa00e0b9b.png" /></p>
+<p>То что вы делаете, называется <em>интеграционным тестированием</em>. Современные приложения достаточно сложны и содержат множество зависимостей. Интеграционное тестирование проверяет, что несколько компонентов системы работают вместе правильно.</p>
+<p>Оно выполняет свою задачу, но сложно для автоматизации. Как правило, тесты требуют, чтобы вся или почти вся система была развернута и сконфигурирована на машине, на которой они выполняются. Предположим, что вы разрабатываете web-приложение с UI и веб-сервисами. Минимальная комплектация, которая вам потребуется: браузер, веб-сервер, правильно настроенные веб-сервисы и база данных. На практике все еще сложнее. Разворачивать всё это на билд-сервере и всех машинах разработчиков?</p>
+<h2 id="we-need-to-go-deeper">We need to go deeper</h2>
+<p><img alt="" src="https://habrastorage.org/storage2/5c0/1c5/99f/5c01c599f95b6ee0edf77494908860a9.jpg" /><br />
+Давайте сначала спустимся на предыдущий уровень и убедимся, что наши компоненты работают правильно по-отдельности.</p>
+<p>Обратимся к википедии:</p>
+<blockquote>
+<p><strong>Модульное тестирование</strong>, или <strong>юнит-тестирование</strong> (англ. unit testing) — процесс в программировании, позволяющий проверить на корректность отдельные модули исходного кода программы.</p>
+<p>Идея состоит в том, чтобы писать тесты для каждой нетривиальной функции или метода. Это позволяет достаточно быстро проверить, не привело ли очередное изменение кода к регрессии, то есть к появлению ошибок в уже оттестированных местах программы, а также облегчает обнаружение и устранение таких ошибок.</p>
+</blockquote>
+<p><img alt="" src="https://habrastorage.org/storage2/ec3/825/c7f/ec3825c7f0710f9fed6814c89b794ded.jpg" /></p>
+<p>Таким образом, юнит-тестирование – это первый бастион на борьбе с багами. За ним еще интеграционное, приемочное и, наконец, ручное тестирование, в том числе «свободный поиск».</p>
+<p>Нужно ли все это вам? С моей точки зрения ответ: «не всегда».</p>
+<h2 id="_1">Не нужно писать тесты, если</h2>
+<ul>
+<li>Вы делаете простой сайт-визитку из 5 статических html-страниц и с одной формой отправки письма. На этом заказчик, скорее всего, успокоится, ничего большего ему не нужно. Здесь нет никакой особенной логики, быстрее просто все проверить «руками»</li>
+<li>Вы занимаетесь рекламным сайтом/простыми флеш-играми или баннерами – сложная верстка/анимация или большой объем статики. Никакой логики нет, только представление</li>
+<li>Вы делаете проект для выставки. Срок – от двух недель до месяца, ваша система – комбинация железа и софта, в начале проекта не до конца известно, что именно должно получиться в конце. Софт будет работать 1-2 дня на выставке</li>
+<li>Вы всегда пишете код без ошибок, обладаете идеальной памятью и даром предвидения. Ваш код настолько крут, что изменяет себя сам, вслед за требованиями клиента. Иногда код объясняет клиенту, что его требования — ~гов~ не нужно реализовывать</li>
+</ul>
+<p>В первых трех случаях по объективным причинам (сжатые сроки, бюджеты, размытые цели или очень простые требования) вы не получите выигрыша от написания тестов.</p>
+<p>Последний случай рассмотрим отдельно. Я знаю только одного такого человека, и если вы не узнали себя на фото ниже, то у меня для вас плохие новости.</p>
+<p><img alt="" src="https://habrastorage.org/storage2/635/68c/356/63568c35676c4d929422ec8e42dd3563.jpg" /></p>
+<h2 id="_2">Любой долгосрочный проект без надлежащего покрытия тестами обречен рано или поздно быть переписанным с нуля</h2>
+<p><img alt="" src="https://habrastorage.org/storage2/ee9/ab0/40f/ee9ab040f988cde943d001c819e8c08c.png" /></p>
+<p>В своей практике я много раз встречался с проектами старше года. Они делятся на три категории:</p>
+<ul>
+<li><strong>Без покрытия тестами.</strong> Обычно такие системы сопровождаются спагетти-кодом и уволившимися ведущими разработчиками. Никто в компании не знает, как именно все это работает. Да и что оно в конечном итоге должно делать, сотрудники представляют весьма отдаленно.</li>
+<li><strong>С тестами, которые никто не запускает и не поддерживает.</strong> Тесты в системе есть, но что они тестируют, и какой от них ожидается результат, неизвестно. Ситуация уже лучше. Присутствует какая-никакая архитектура, есть понимание, что такое слабая связанность. Можно отыскать некоторые документы. Скорее всего, в компании еще работает главный разработчик системы, который держит в голове особенности и хитросплетения кода.</li>
+<li><strong>С серьезным покрытием. Все тесты проходят.</strong> Если тесты в проекте действительно запускаются, то их много. Гораздо больше, чем в системах из предыдущей группы. И теперь каждый из них – атомарный: один тест проверяет только одну вещь. Тест является спецификацией метода класса, контрактом: какие входные параметры ожидает этот метод, и что остальные компоненты системы ждут от него на выходе. Таких систем гораздо меньше. В них присутствует актуальная спецификация. Текста немного: обычно пара страниц, с описанием основных фич, схем серверов и <em>getting started guide’ом</em>. В этом случае проект не зависит от людей. Разработчики могут приходить и уходить. Система надежно протестирована и сама рассказывает о себе путем тестов.</li>
+</ul>
+<p>Проекты первого типа – крепкий орешек, с ними работать тяжелее всего. Обычно их рефакторинг по стоимости равен или превышает переписывание с нуля.</p>
+<h2 id="_3">Почему есть проекты второго типа?</h2>
+<p>Коллеги из <em>ScrumTrek</em> уверяют, что всему виной темная сторона кода и властелин <a href="http://habrahabr.ru/company/scrumtrek/blog/168485/">Дарт Автотестиус</a>. Я убежден, что это очень близко к правде. Бездумное написание тестов <strong>не только не помогает, но вредит проекту</strong>. Если раньше у вас был один некачественный продукт, то написав тесты, не разобравшись в этой теме, вы получите два. И удвоенное время на сопровождение и поддержку.</p>
+<p>Для того чтобы темная сторона кода не взяла верх, нужно придерживаться <strong>следующих основных правил</strong>.<br />
+Ваши тесты должны:</p>
+<ul>
+<li>Быть достоверными</li>
+<li>Не зависеть от окружения, на котором они выполняются</li>
+<li>Легко поддерживаться</li>
+<li>Легко читаться и быть простыми для понимания (даже новый разработчик должен понять <strong>что именно</strong> тестируется)</li>
+<li>Соблюдать единую конвенцию именования</li>
+<li>Запускаться регулярно в автоматическом режиме</li>
+</ul>
+<p>Чтобы достичь выполнения этих пунктов, нужны терпение и воля. Но давайте по порядку.</p>
+<h3 id="vcs">Выберите логическое расположение тестов в вашей VCS</h3>
+<p>Только так. Ваши тесты должны быть частью контроля версий. В зависимости от типа вашего решения, они могут быть организованы по-разному. Общая рекомендация: если приложение монолитное, положите все тесты в папку Tests; если у вас много разных компонентов, храните тесты в папке каждого компонента.</p>
+<h3 id="_4">Выберите способ именования проектов с тестами</h3>
+<p>Одна из лучших практик: добавьте к каждому проекту его собственный тестовый проект.<br />
+У вас есть части системы <PROJECT\_NAME>.Core, <PROJECT\_NAME>.Bl и <PROJECT\_NAME>.Web? Добавьте еще <PROJECT\_NAME>.Core.Tests, <PROJECT\_NAME>.Bl.Tests и <PROJECT\_NAME>.Web.Tests.</p>
+<p>У такого способа именования есть дополнительный сайд-эффект. Вы сможете использовать паттерн *.Tests.dll для запуска тестов на билд-сервере.</p>
+<h3 id="_5">Используйте такой же способ именования для тестовых классов</h3>
+<p>У вас есть класс ProblemResolver? Добавьте в тестовый проект ProblemResolverTests. Каждый тестирующий класс должен тестировать только одну сущность. Иначе вы очень быстро скатитесь</p>
+<p>~в унылое го~</p>
+<p>во второй тип проектов (с тестами, которые никто не запускает).</p>
+<h3 id="_6">Выберите «говорящий» способ именования методов тестирующих классов</h3>
+<p><em>TestLogin</em> – не самое лучшее название метода. Что именно тестируется? Каковы входные параметры? Могут ли возникать ошибки и исключительные ситуации?</p>
+<p>На мой взгляд, лучший способ именования методов такой: <em>[Тестируемый метод]_[Сценарий]_[Ожидаемое поведение]</em>.<br />
+Предположим, что у нас есть класс Calculator, а у него есть метод Sum, который (привет, Кэп!) должен складывать два числа.<br />
+В этом случае наш тестирующий класс будет выглядеть так:</p>
+<div class="highlight"><pre><span></span><code>сlass CalculatorTests
+{
+        public void Sum_2Plus5_7Returned()
+        {
+        // …
+        }
+}
+</code></pre></div>
+<p>Такая запись понятна без объяснений. Это спецификация к вашему коду.</p>
+<h3 id="_7">Выберите тестовый фреймворк, который подходит вам</h3>
+<p>Вне зависимости от платформы не стоит писать велосипеды. Я видел много проектов, в которых автоматические тесты (в основном, не юнит, а приемочные) запускались из консольного приложения. Не надо этого делать, все уже сделано за вас.</p>
+<p>Уделите чуть больше внимания обзору фреймворков. Например, многие .NET разработчики используют MsTest только потому, что он входит в поставку студии. Мне гораздо больше по душе NUnit. Он не создает лишних папок с результатами тестов и имеет поддержку параметризированного тестирования. Я могу так же легко запускать мои тесты на NUnit с помощью Решарпера. Кому-то понравится элегантность xUnit’а: конструктор вместо атрибутов инициализации, реализация IDisposable как TearDown.</p>
+<h3 id="_8">Что тестировать, а что – нет?</h3>
+<p>Одни говорят о необходимости покрытия кода на 100%, другие считают это лишней тратой ресурсов.<br />
+Мне нравится такой подход: расчертите лист бумаги по оси X и Y, где X – алгоритмическая сложность, а Y – количество зависимостей. Ваш код можно разделить на 4 группы.<br />
+<img alt="" src="https://habrastorage.org/storage2/177/ea7/e55/177ea7e5529adfb647db334db0e83cb0.png" /></p>
+<p>Рассмотрим сначала экстремальные случаи: простой код без зависимостей и сложный код с большим количеством зависимостей.</p>
+<ol>
+<li><strong>Простой код без зависимостей.</strong> Скорее всего здесь и так все ясно. Его можно не тестировать.</li>
+<li><strong>Сложный код с большим количеством зависимостей.</strong> Хм, если у вас есть такой код, тут пахнет God Object’ом и сильной связностью. Скорее всего, неплохо будет провести рефакторинг. Мы не станем покрывать этот код юнит-тестами, потому что перепишем его, а значит, у нас изменятся сигнатуры методов и появятся новые классы. Так зачем писать тесты, которые придется выбросить? Хочу оговориться, что для проведения такого рода рефакторинга нам все же нужно тестирование, но лучше воспользоваться более высокоуровневыми <em>приемочными тестами</em>. Мы рассмотрим этот случай отдельно.</li>
+</ol>
+<p>Что у нас остается:</p>
+<ol>
+<li><strong>Cложный код без зависимостей.</strong> Это некие алгоритмы или бизнес-логика. Отлично, это важные части системы, тестируем их.</li>
+<li><strong>Не очень сложный код с зависимостями.</strong> Этот код связывает между собой разные компоненты. Тесты важны, чтобы уточнить, как именно должно происходить взаимодействие. Причина потери Mars Climate Orbiter 23 сентября 1999 года заключалась в программно-человеческой ошибке: одно подразделение проекта считало «в дюймах», а другое – «в метрах», и прояснили это уже после потери аппарата. Результат мог быть другим, если бы команды протестировали «швы» приложения.</li>
+</ol>
+<h3 id="_9">Придерживайтесь единого стиля написания тела теста</h3>
+<p>Отлично зарекомендовал себя подход AAA <em>(arrange, act, assert)</em> . Вернемся к примеру с калькулятором:</p>
+<div class="highlight"><pre><span></span><code>class CalculatorTests
+{
+    public void Sum_2Plus5_7Returned()
+    {
+        // arrange
+        var calc = new Calculator();
+
+        // act
+        var res = calc.Sum(2,5);
+
+        // assert
+        Assert.AreEqual(7, res);    
+    }
+}
+</code></pre></div>
+<p>Такая форма записи гораздо легче читается, чем</p>
+<div class="highlight"><pre><span></span><code>class CalculatorTests
+{
+    public void Sum_2Plus5_7Returned()
+    {
+        Assert.AreEqual(7, new Calculator().sum(2,5));  
+    }
+}
+</code></pre></div>
+<p>А значит, этот код проще поддерживать.</p>
+<h3 id="_10">Тестируйте одну вещь за один раз</h3>
+<p><strong>Каждый тест должен проверять только одну вещь.</strong> Если процесс слишком сложен (например, покупка в интернет магазине), разделите его на несколько частей и протестируйте их отдельно.<br />
+Если вы не будете придерживаться этого правила, ваши тесты станут нечитаемыми, и вскоре вам окажется очень сложно их поддерживать.</p>
+<h3 id="_11">Борьба с зависимостями</h3>
+<p>До сих пор мы тестировали калькулятор. У него совсем нет зависимостей. В современных бизнес-приложениях количество таких классов, к сожалению, мало.<br />
+Рассмотрим такой пример.</p>
+<div class="highlight"><pre><span></span><code>public class AccountManagementController : BaseAdministrationController
+{
+    #region Vars
+
+    private readonly IOrderManager _orderManager;
+        private readonly IAccountData _accountData;
+        private readonly IUserManager _userManager;
+        private readonly FilterParam _disabledAccountsFilter;
+
+        #endregion
+
+        public AccountManagementController()
+        {
+            _oms = OrderManagerFactory.GetOrderManager();
+            _accountData = _ orderManager.GetComponent&lt;IAccountData&gt;();
+            _userManager = UserManagerFactory.Get();
+            _disabledAccountsFilter = new FilterParam(&quot;Enabled&quot;, Expression.Eq, true);
+        }
+}
+</code></pre></div>
+<p>Фабрика в этом примере берет данные о конкретной реализации <em>AccountData</em> из файла конфигурации, что нас абсолютно не устраивает. Мы же не хотим поддерживать зоопарк файлов *.config. Более того, настоящие реализации могут зависеть от базы данных. Если мы продолжим в том же духе, то перестанем тестировать только методы контроллера и начнем вместе с ними тестировать другие компоненты системы. Как мы помним, это называется <em>интеграционным тестированием</em>.<br />
+Чтобы не тестировать все вместе, мы подсунем фальшивую реализацию <em>(fake)</em>.<br />
+Перепишем наш класс так:</p>
+<div class="highlight"><pre><span></span><code>public class AccountManagementController : BaseAdministrationController
+{
+        #region Vars
+
+        private readonly IOrderManager _oms;
+        private readonly IAccountData _accountData;
+        private readonly IUserManager _userManager;
+        private readonly FilterParam _disabledAccountsFilter;
+
+        #endregion
+
+        public AccountManagementController()
+        {
+            _oms = OrderManagerFactory.GetOrderManager();
+            _accountData = _oms.GetComponent&lt;IAccountData&gt;();
+            _userManager = UserManagerFactory.Get();
+            _disabledAccountsFilter = new FilterParam(&quot;Enabled&quot;, Expression.Eq, true);
+        }
+
+        /// &lt;summary&gt;
+        /// For testability
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;accountData&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;userManager&quot;&gt;&lt;/param&gt;
+        public AccountManagementController(
+            IAccountData accountData,
+            IUserManager userManager)
+        {
+            _accountData = accountData;
+            _userManager = userManager;
+            _disabledAccountsFilter = new FilterParam(&quot;Enabled&quot;, Expression.Eq, true);
+        }
+}
+</code></pre></div>
+<p>Теперь у контроллера появилась новая точка входа, и мы можем передать туда другие реализации интерфейсов.</p>
+<h3 id="fakes-stubs-mocks">Fakes: stubs &amp; mocks</h3>
+<p>Мы переписали класс и теперь можем подсунуть контроллеру другие реализации зависимостей, которые не станут лезть в базу, смотреть конфиги и т.д. Словом, будут делать только то, что от них требуется. Разделяем и властвуем. Настоящие реализации мы должны протестировать отдельно в своих собственных тестовых классах. Сейчас мы тестируем только контроллер.</p>
+<p><strong>Выделяют два типа подделок: стабы (stubs) и моки (mock).</strong><br />
+Часто эти понятия путают. Разница в том, что стаб ничего не проверяет, а лишь имитирует заданное состояние. А мок – это объект, у которого есть ожидания. Например, что данный метод класса должен быть вызван определенное число раз. Иными словами, ваш тест никогда не сломается из-за «стаба», а вот из-за мока может.<br />
+С технической точки зрения это значит, что используя стабы в Assert мы проверяем состояние тестируемого класса или результат выполненного метода. При использовании мока мы проверяем, соответствуют ли ожидания мока поведению тестируемого класса.</p>
+<h4 id="_12">Стаб</h4>
+<h4 id="_13"><img alt="" src="https://habrastorage.org/storage2/95a/409/842/95a40984251f9529238b2e48c61e79f2.png" /></h4>
+<div class="highlight"><pre><span></span><code>[Test]
+public void LogIn_ExisingUser_HashReturned()
+{
+    // Arrange
+    OrderProcessor = Mock.Of&lt;IOrderProcessor&gt;();
+    OrderData = Mock.Of&lt;IOrderData&gt;();
+    LayoutManager = Mock.Of&lt;ILayoutManager&gt;();
+    NewsProvider = Mock.Of&lt;INewsProvider&gt;();
+
+    Service = new IosService(
+        UserManager,
+        AccountData,
+        OrderProcessor,
+        OrderData,
+        LayoutManager,
+        NewsProvider);
+
+    // Act
+    var hash = Service.LogIn(&quot;ValidUser&quot;, &quot;Password&quot;);
+
+    // Assert
+    Assert.That(!string.IsNullOrEmpty(hash));
+}
+</code></pre></div>
+<h4 id="_14">Мок</h4>
+<h4 id="_15"><img alt="" src="https://habrastorage.org/storage2/92d/add/11c/92dadd11ca7c689b6cc19e1f040c1888.png" /></h4>
+<div class="highlight"><pre><span></span><code>[Test]
+public void Create_AddAccountToSpecificUser_AccountCreatedAndAddedToUser()
+{
+    // Arrange
+    var account = Mock.Of&lt;AccountViewModel&gt;();
+
+    // Act
+    _controller.Create(1, account);
+
+    // Assert
+    _accountData.Verify(m =&gt; m.CreateAccount(It.IsAny&lt;IAccount&gt;()), Times.Exactly(1));
+    _accountData.Verify(m =&gt; m.AddAccountToUser(It.IsAny&lt;int&gt;(), It.IsAny&lt;int&gt;()), Times.Once());
+}
+</code></pre></div>
+<h3 id="_16">Тестирование состояния и тестирование поведения</h3>
+<p>Почему важно понимать, казалось бы, незначительную разницу между моками и стабами? Давайте представим, что нам нужно протестировать автоматическую систему полива. Можно подойти к этой задаче двумя способами:</p>
+<h4 id="_17">Тестирование состояния</h4>
+<p>Запускаем цикл (12 часов). И через 12 часов проверяем, хорошо ли политы растения, достаточно ли воды, каково состояние почвы и т.д.</p>
+<h4 id="_18">Тестирование взаимодействия</h4>
+<p>Установим датчики, которые будут засекать, когда полив начался и закончился, и сколько воды поступило из системы.<br />
+Стабы используются при тестировании состояния, а моки – взаимодействия. <strong>Лучше использовать не более одного мока на тест</strong>. Иначе с высокой вероятностью вы нарушите принцип «тестировать только одну вещь». При этом в одном тесте может быть сколько угодно стабов или же мок и стабы.</p>
+<h3 id="_19">Изоляционные фреймвоки</h3>
+<p>Мы могли бы реализовывать моки и стабы самостоятельно, но есть несколько причин, почему я не советую делать это:</p>
+<ul>
+<li>Велосипеды уже написаны до нас</li>
+<li>Многие интерфейсы не так просто реализовать с полпинка</li>
+<li>Наши самописные подделки могут содержать ошибки</li>
+<li>Это дополнительный код, который придется поддерживать</li>
+</ul>
+<p>В примере выше я использовал фреймворк <a href="http://code.google.com/p/moq/">Moq</a> для создания моков и стабов. Довольно распространен фреймворк <a href="http://www.hibernatingrhinos.com/oss/rhino-mocks">Rhino Mocks</a>. Оба фреймворка — бесплатные. На мой взгляд, они практически эквивалентны, но Moq субъективно удобнее.</p>
+<p>На рынке есть также два коммерческих фреймворка: <em>TypeMock Isolator</em> и <em>Microsoft Moles</em>. На мой взгляд они обладают чрезмерными возможностями подменять невиртуальные и статические методы. Хотя при работе с унаследованным кодом это и может быть полезно, ниже я опишу, почему все-таки не советую заниматься подобными вещами.</p>
+<p>Шоукейсы перечисленных изоляционных фреймворков можно посмотреть <a href="http://code.google.com/p/mocking-frameworks-compare/">тут</a>. А информацию по техническим аспектам работы с ними легко найти на Хабре.</p>
+<h3 id="_20">Тестируемая архитектура</h3>
+<p>Вернемся к примеру с контроллером.</p>
+<div class="highlight"><pre><span></span><code>public AccountManagementController(
+    IAccountData accountData,
+    IUserManager userManager)
+{
+    _accountData = accountData;
+    _userManager = userManager;
+    _disabledAccountsFilter = new FilterParam(&quot;Enabled&quot;, Expression.Eq, true);
+}
+</code></pre></div>
+<p>Здесь мы отделались «малой кровью». К сожалению, не всегда все бывает так просто. Давайте рассмотрим основные случаи, как мы можем внедрить зависимости:</p>
+<h4 id="_21">Инъекция в конструктор</h4>
+<p>Добавляем дополнительный конструктор или заменяем текущий (зависит от того, как вы создаете объекты в вашем приложении, используете ли IOC-контейнер). Этим подходом мы воспользовались в примере выше.</p>
+<h4 id="_22">Инъекция в фабрику</h4>
+<p>Setter можно дополнительно «спрятать» от основного приложения, если выделить интерфейс IUserManagerFactory и работать в продакшн-коде по интерфейсной ссылке.</p>
+<div class="highlight"><pre><span></span><code>public class UserManagerFactory
+{
+    private IUserManager _instance;
+
+    /// &lt;summary&gt;
+    /// Get UserManager instance
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;IUserManager with configuration from the configuration file&lt;/returns&gt;
+    public IUserManager Get()
+    {
+        return _instance ?? Get(UserConfigurationSection.GetSection());
+    }
+
+    private IUserManager Get(UserConfigurationSection config)
+    {
+        return _instance ?? (_instance = Create(config));
+    }
+
+    /// &lt;summary&gt;
+    /// For testing purposes only!
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;userManager&quot;&gt;&lt;/param&gt;
+    public void Set(IUserManager userManager)
+    {
+        _instance = userManager;
+    }
+}
+</code></pre></div>
+<h4 id="_23">Подмена фабрики</h4>
+<p>Вы можете подменить всю фабрику целиком. Это потребует выделение интерфейса или создание виртуальной функции, создание объектов. После этого вы сможете переопределить фабричные методы так, чтобы они возвращали ваши подделки.</p>
+<h4 id="_24">Переопределение локального фабричного метода</h4>
+<p>Если зависимости инстанцируются прямо в коде явным образом, то самый простой путь – выделить фабричный protected-метод CreateObjectName() и переопределить его в классе-наследнике. После этого тестируйте класс-наследник, а не ваш первоначально тестируемый класс.<br />
+Например, мы решили написать расширяемый калькулятор (со сложными действиями) и начали выделять новый слой абстракции.</p>
+<div class="highlight"><pre><span></span><code>public class Calculator
+{
+    public double Multipy(double a, double b)
+    {
+        var multiplier = new Multiplier();
+        return multiplier.Execute(a, b);
+    }
+}
+
+public interface IArithmetic
+{
+    double Execute(double a, double b);
+}
+
+public class Multiplier : IArithmetic
+{
+    public double Execute(double a, double b)
+    {
+        return a * b;
+    }
+}
+</code></pre></div>
+<p>Мы не хотим тестировать класс <em>Multiplier</em>, для него будет отдельный тест. Перепишем код так:</p>
+<div class="highlight"><pre><span></span><code>public class Calculator
+{
+    public double Multipy(double a, double b)
+    {
+        var multiplier = CreateMultiplier();
+        return multiplier.Execute(a, b);
+    }
+
+    protected virtual IArithmetic CreateMultiplier()
+    {
+        var multiplier = new Multiplier();
+        return multiplier;
+    }
+}
+
+public class CalculatorUnderTest : Calculator
+{
+    protected override IArithmetic CreateMultiplier()
+    {
+        return new FakeMultiplier();
+    }
+}
+
+public class FakeMultiplier : IArithmetic
+{
+    public double Execute(double a, double b)
+    {
+        return 5;
+    }
+}
+</code></pre></div>
+<p>Код намеренно упрощен, чтобы акцентировать внимание именно на иллюстрации способа. В реальной жизни вместо калькулятора, скорее всего, будут DataProvider’ы, UserManager’ы и другие сущности с гораздо более сложной логикой.</p>
+<h4 id="vs-oop">Тестируемая архитектура VS OOP</h4>
+<p>Многие разработчики начинают жаловаться, дескать «этот ваш тестируемый дизайн» нарушает инкапсуляцию, открывает слишком много. Я думаю, что существует только две причины, когда это может вас беспокоить:</p>
+<h5 id="_25">Серьезные требования к безопасности</h5>
+<p>Это значит, что у вас серьезная криптография, бинарники упакованы, и все обвешано сертификатами.<br />
+Даже если так, скорее всего, вы сможете найти компромиссное решение. Например, в .NET вы можете использовать internal-методы и атрибут <a href="http://msdn.microsoft.com/ru-ru/library/system.runtime.compilerservices.internalsvisibletoattribute.aspx">[InternalsVisibleTo]</a>, чтобы дать доступ к тестируемым методам из ваших тестовых сборок.</p>
+<h5 id="_26">Производительность</h5>
+<p>Существует ряд задач, когда архитектурой приходится жертвовать в угоду производительности, и для кого-то это становится поводом отказаться от тестирования. В моей практике докинуть сервер/проапгрейдить железо всегда было дешевле, чем писать нетестируемый код. Если у вас есть критический участок, вероятно, стоит переписать его на более низком уровне. Ваше приложение на C#? Возможно, есть смысл собрать одну неуправляемую сборку на С++.</p>
+<p>Вот несколько принципов, которые помогают писать тестируемый код:</p>
+<ul>
+<li>Мыслите интерфейсами, а не классами, тогда вы всегда сможете легко подменять настоящие реализации подделками в тестовом коде</li>
+<li>Избегайте прямого инстанцирования объектов внутри методов с логикой. Используйте фабрики или <em>dependency injection</em>. В этом случае использование IOC-контейнера в проекте может сильно упростить вам работу.</li>
+<li>Избегайте прямого вызова статических методов</li>
+<li>Избегайте конструкторов, которые содержат логику: вам сложно будет это протестировать.</li>
+</ul>
+<h2 id="_27">Работа с унаследованным кодом</h2>
+<p>Под «унаследованным» мы будем понимать код без тестов. Качество такого кода может быть разным. Несколько советов, как можно покрыть его тестами.</p>
+<h3 id="_28">Архитектура тестируема</h3>
+<p>Нам повезло, прямых созданий классов и мясорубки нет, а принципы SOLID соблюдаются. Нет ничего проще – создаем тестовые проекты, и шаг за шагом покрываем приложение, используя принципы, описанные в статье. В крайнем случае, нам придется добавить пару сеттеров для фабрик и выделить несколько интерфейсов.</p>
+<h3 id="_29">Архитектура не тестируема</h3>
+<p>У нас есть жесткие связи, костыли и прочие радости жизни. Нам предстоит рефакторинг. Как правильно проводить комплексный рефакторинг – тема, выходящая далеко за рамки этой статьи.<br />
+Стоит выделить основное правило. Если вы не меняете интерфейсов – все просто, методика идентична. А вот если вы задумали большие перемены, следует составить граф зависимостей и разбить ваш код на отдельные более мелкие подсистемы (надеюсь, что это возможно). В идеале должно получиться примерно так: ядро, модуль #1, модуль #2 и т.д.<br />
+После этого выберите жертву. Только не начинайте с ядра. Возьмите сначала что-то поменьше: то, что вы способны отрефакторить за разумное время. Покрывайте эту подсистему интеграционными и/или приемочными тестами. А когда закончите, сможете покрыть эту часть юнит-тестами. Рано или поздно, шаг за шагом, вы должны преуспеть.<br />
+Будьте готовы, что сделать это быстро</p>
+<p>~скорее всего~</p>
+<p>не получится. Вам придется проявить волевые качества.</p>
+<h2 id="_30">Поддержка тестов</h2>
+<p><img alt="" src="https://habrastorage.org/storage2/b51/49e/b95/b5149eb9594de7513ca2c79e1d1a0f41.png" /></p>
+<p>Не относитесь к своим тестам как к второсортному коду. Многие начинающие разработчики ошибочно полагают, что DRY, KISS и все остальное – это для продакшна. А в тестах допустимо все. <strong>Это не верно. Тесты – такой-же код.</strong> Разница только в том, что у тестов другая цель – обеспечить качество вашего приложения. Все принципы, применямые в разработке продакшн-кода могут и должны применяться при написании тестов.<br />
+Есть всего три причины, почему тест перестал проходить:</p>
+<ol>
+<li>Ошибка в продакшн-коде: это баг, его нужно завести в баг-трекере и починить.</li>
+<li>Баг в тесте: видимо, продакшн-код изменился, а тест написан с ошибкой (например, тестирует слишком много или не то, что было нужно). Возможно, что раньше он проходил ошибочно. Разберитесь и почините тест.</li>
+<li>Смена требований. Если требования изменились слишком сильно – тест должен упасть. Это правильно и нормально. Вам нужно разобраться с новыми требованиями и исправить тест. Или удалить, если он больше не актуален.</li>
+</ol>
+<p>Уделяйте внимание поддержке ваших тестов, чините их вовремя, удаляйте дубликаты, выделяйте базовые классы и развивайте API тестов. Можно завести шаблонные базовые тестовые классы, которые обязывают реализовать набор тестов (например CRUD). Если делать это регулярно, то вскоре это не будет занимать много времени.</p>
+<h2 id="_31">Как «измерить» прогресс</h2>
+<p>Для измерения успешности внедрения юнит-тестов в вашем проекте следует использовать две метрики:</p>
+<ol>
+<li>Количество багов в новых релизах (в т.ч. и регрессии)</li>
+<li>Покрытие кода</li>
+</ol>
+<p>Первая показывает, есть ли у наших действий результат, или мы впустую расходуем время, которое могли бы потратить на фичи. Вторая – как много нам еще предстоит сделать.</p>
+<p>Наиболее популярные тулзы для измерения покрытия кода на .NET платформе это:</p>
+<ul>
+<li>NCover</li>
+<li>dotTrace</li>
+<li>встроенный в студию Test Coverage</li>
+</ul>
+<h2 id="test-first">Test First?</h2>
+<p><img alt="" src="https://habrastorage.org/storage2/a4f/4a2/11e/a4f4a211e0a89c703b0741ed55d56f65.png" /></p>
+<p>Я умышленно не касался этой темы до самого конца. С моей точки зрения Test First – хорошая практика, обладающая рядом неоспоримых преимуществ. Однако, по тем или иным причинам, иногда я отступаю от этого правила и пишу тесты после того, как готов код.</p>
+<p>На мой взгляд, «как писать тесты» гораздо важнее, чем «когда это делать». Делайте, как вам удобно, но не забывайте: если вы начинаете с тестов, то получаете архитектуру «в придачу». Если вы сначала пишете код, вам возможно, придется его менять, чтобы сделать тестируемым.</p>
+<h2 id="_32">Почитать на тему</h2>
+<p>Отличную подборку ссылок и книг по теме можно найти в <a href="http://habrahabr.ru/post/136049/">этой статье на Хабре</a>. Особенно рекомендую книгу The Art of Unit Testing. Я читал первое издание. Оказывается, вышло уже и второе.</p>
+<hr />
+<p><a href="https://habr.com/ru/post/169381/">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Uploading and Parsing CSV File using Spring Boot
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kafka local cluster run
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
