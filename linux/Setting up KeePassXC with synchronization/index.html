@@ -14,7 +14,7 @@
     
     
       
-        <title>Автоматическое монтирование диска в Linux Ubuntu - KnowDB</title>
+        <title>Setting up KeePassXC with synchronization - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux-ubuntu-mint" class="md-skip">
+        <a href="#setting-up-keepassxc-on-linux-with-cloud-synchronization" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Автоматическое монтирование диска в Linux Ubuntu  
+              Setting up KeePassXC with synchronization
             
           </span>
         </div>
@@ -359,8 +359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
-        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      <a href="../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
       </a>
     </li>
   
@@ -371,8 +371,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
-        Access a value defined in the application.properti
+      <a href="../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
       </a>
     </li>
   
@@ -601,8 +601,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
-        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      <a href="../Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands
       </a>
     </li>
   
@@ -627,6 +627,18 @@
     <li class="md-nav__item">
       <a href="../How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
         How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
       </a>
     </li>
   
@@ -671,18 +683,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
-        Setting up KeePassXC on Linux (with Cloud Synchron
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -694,12 +694,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Автоматическое монтирование диска в Linux Ubuntu  
+          Setting up KeePassXC with synchronization
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Автоматическое монтирование диска в Linux Ubuntu  
+        Setting up KeePassXC with synchronization
       </a>
       
         
@@ -716,57 +716,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    Шаг 1. Узнаем идентификаторы подключенных разделов
+  <a href="#master-password" class="md-nav__link">
+    Master Password
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    Шаг 2. Оповещаем систему о новом разделе
+  <a href="#key-file" class="md-nav__link">
+    Key File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    Шаг 3. Завершаем дело
+  <a href="#decryption-time" class="md-nav__link">
+    Decryption Time
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    Шаг 4. Гуляем смело
+  <a href="#rclone" class="md-nav__link">
+    Rclone
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-gnome-disk-utility" class="md-nav__link">
-    Вариант 2. Gnome Disk Utility
-  </a>
-  
-    <nav class="md-nav" aria-label="Вариант 2. Gnome Disk Utility">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    Проблемы с удалением в корзину?
+  <a href="#automation" class="md-nav__link">
+    Automation
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Дополнительно
+      
+        <li class="md-nav__item">
+  <a href="#key-file_1" class="md-nav__link">
+    Key File
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -774,6 +761,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
     </li>
   
 
@@ -851,57 +850,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    Шаг 1. Узнаем идентификаторы подключенных разделов
+  <a href="#master-password" class="md-nav__link">
+    Master Password
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    Шаг 2. Оповещаем систему о новом разделе
+  <a href="#key-file" class="md-nav__link">
+    Key File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    Шаг 3. Завершаем дело
+  <a href="#decryption-time" class="md-nav__link">
+    Decryption Time
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    Шаг 4. Гуляем смело
+  <a href="#rclone" class="md-nav__link">
+    Rclone
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-gnome-disk-utility" class="md-nav__link">
-    Вариант 2. Gnome Disk Utility
-  </a>
-  
-    <nav class="md-nav" aria-label="Вариант 2. Gnome Disk Utility">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    Проблемы с удалением в корзину?
+  <a href="#automation" class="md-nav__link">
+    Automation
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    Дополнительно
+      
+        <li class="md-nav__item">
+  <a href="#key-file_1" class="md-nav__link">
+    Key File
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -918,64 +904,70 @@
               
                 
                 
-                <p>Автоматическое монтирование диска в Linux Ubuntu  Mint</p>
-<h1 id="linux-ubuntu-mint">Автоматическое монтирование диска в Linux Ubuntu / Mint</h1>
+                <p>Setting up KeePassXC with synchronization</p>
+<h1 id="setting-up-keepassxc-on-linux-with-cloud-synchronization">Setting up KeePassXC on Linux (with Cloud Synchronization)</h1>
 <blockquote>
-<p>Если Вы устали подключать разделы вручную.</p>
+<p>Stay open-source, trust no one.</p>
 </blockquote>
-<p>Так уж повелось, что по умолчанию Ubuntu монтирует только свой системный раздел, называя его "файловой системой". Остальные разделы (кроме флэшек и других подключаемых устройств) придется монтировать вручную. Нас такой расклад не устраивает и мы хотим иметь доступ к нашему второму (третьему, четвертому...) разделу сразу после загрузки ОС.</p>
-<p>Каждый раздел имеет свой UUID (<a href="https://ru.wikipedia.org/wiki/UUID" title="UUID">Universally Unique Identifier</a>), и мы будем подключать разделы с помощью него.</p>
-<h3 id="1">Шаг 1. Узнаем идентификаторы подключенных разделов</h3>
-<p><code>sudo blkid</code></p>
-<p>Получаем что-то примерно такое:</p>
-<p><code>/dev/sda1: UUID="b2098d42-3e3d-470c-8ddb-76f74f0f6d44" TYPE="ext4"  
-/dev/sda3: LABEL="ntfs" UUID="6798491F3EB8CFC8" TYPE="ntfs"  
-/dev/sda5: LABEL="FAT32" UUID="1D7D-F985" TYPE="vfat"  
-/dev/sda6: LABEL="ext3" UUID="a4f6af01-786f-4bdf-9405-d340fded6580" TYPE="ext3"  
-/dev/sda7: LABEL="ext2" UUID="4b2c5e07-97db-4a65-9147-e6b0dceb1353" TYPE="ext2"  
-/dev/sda8: LABEL="ext4" UUID="b74143c3-6679-4a3a-9a20-b608ba085170" TYPE="ext4"</code></p>
-<p>Если Вашему разделу задан Label, то всё отлично, поиски необходимого не займут много времени. Например, нам нужен раздел "ntfs" с UUID "6798491F3EB8CFC8". Для определения UUID для раздела без Label придется воспользоваться программами типа <a href="http://gparted.org/">gParted</a> или стандартного менеджера дисков, здесь Вам помогут обозначения /dev/sdaX.</p>
-<p><img alt="gParted информация о разделе" src="http://coddism.com/uploads/users/1/1433546930_1433363420_2015060402_29_46_6a0001.png" title="gParted: информация о разделе" /></p>
-<p>Если же Вам лень искать UUID, то можно воспользоваться порядковым номером: /dev/sda3. Минус такого подхода - порядковый номер может измениться при добавлении или переставлении дисков.</p>
-<h3 id="2">Шаг 2. Оповещаем систему о новом разделе</h3>
-<p>Вся информация по монтируемым разделам хранится в fstab:</p>
-<p><code>sudo gedit /etc/fstab</code></p>
-<p>Если у Вас не установлен gedit, то можете воспользоваться nano или любым другим текстовым редактором. В этом файле добавляем в конец строку:</p>
-<p><code>UUID="6798491F3EB8CFC8" /media/isergium/ntfs    ntfs-3g defaults,uid=1000    0 0</code></p>
-<p>Монтировать разделы желательно в /media - так они продолжут распознаваться некоторыми проводниками (например, Nemo) как разделы. Для удобства все разделы можно монтировать в одну папку, например /media/*username*.</p>
-<p><img alt="Linux Mint - Nautilus - Носители" src="http://coddism.com/uploads/users/1/1433546885_1433361178_2015060401_52_41_8e3001.png" title="Linux Mint, Nautilus, Носители" /></p>
-<p>Приведённый выше формат действителен для NTFS. Обязательно убедитесь что пакет ntfs-3g установлен в Вашей системе. Он даёт много преимуществ перед использованием обычного ntfs, поэтому просто используйте его. Для других файловых систем рекомендованы другие параметры и обозначения:</p>
-<table><tbody><tr><td>NTFS</td><td>ntfs-3g</td><td>ntfs-3g defaults,uid=1000&nbsp;&nbsp;&nbsp; 0 0</td></tr><tr><td>FAT16, FAT32</td><td>vfat</td><td>user,auto,fmask=0111,dmask=0000</td></tr><tr><td>Apple HFS</td><td>hfsplus</td><td>user,auto,file_umask=0177,dir_umask=0077,uid=1000</td></tr><tr><td>ext2</td><td>ext2</td><td rowspan="3">defaults</td></tr><tr><td>ext3</td><td>ext3</td></tr><tr><td>ext4</td><td>ext4</td></tr></tbody></table>
-
-<p>Не забудьте подставить свои значение UUID и путь монтирования.</p>
-<h3 id="3">Шаг 3. Завершаем дело</h3>
-<p>Осталось перезагрузиться или смонтировать несмонтированные диски:</p>
-<p><code>sudo mount -a</code></p>
-<h3 id="4">Шаг 4. Гуляем смело</h3>
-<p>Вот и всё. Отныне для доступа к необходимым файлам не придется вручную монтировать разделы с ними.</p>
-<h2 id="2-gnome-disk-utility">Вариант 2. Gnome Disk Utility</h2>
-<p>В комментариях был предложен более удобный способ автоматического монтирования с помощью стандартной программы "Диски" (gnome-disks). Вот пример работы с ним на Elementary OS Freya (дистрибутив основан на Ubuntu 14.04):</p>
-<p><a href="http://coddism.com/uploads/users/1/1464125993_20160525_02_33_42____________________001.png" title="Gnome Disks"><img alt="Gnome Disks" src="http://coddism.com/uploads/users/1/1464125993_20160525_02_33_42____________________001.png" title="Gnome Disks" /></a> <a href="http://coddism.com/uploads/users/1/1464126203_20160525_02_43_09____________________001.png" title="Gnome Disks: Automatic Mount Options"><img alt="Gnome Disks: Automatic Mount Options" src="http://coddism.com/uploads/users/1/1464126203_20160525_02_43_09____________________001.png" title="Gnome Disks: Automatic Mount Options" /></a></p>
-<p>Выбрать диск, выбрать раздел, нажать на кнопку с шестерёнками, в появившемся меню выбрать "Изменить параметры монтирования" ("Edit Mount Options"). В настройках выключить верхний переключатель "Параметры автоматического подключения" ("Automatic Mount Options"), включить "Подключение при запуске" ("Mount at startup") и "Показывать в интерфейсе" ("Show in user interface"). В "Идентифицировать как" ("Identify as") лучше выбрать что-нибудь связанное с UUID. По желанию можно задать Тип файловой системы ("Filesystem Type"), Точку подключения ("Mount Point") и что-нибудь ещё.</p>
-<p>После сохранения соответствующая запись появится в /etc/fstab:</p>
-<p><code>UUID=3C1D4F9C296DA92C /mnt/3C1D4F9C296DA92C auto nosuid,nodev,nofail,x-gvfs-show 0 0</code></p>
-<p>После перезагрузки и каждого следующего включения диск будет примонтирован автоматически:</p>
-<p><img alt="Elementary OS Диски" src="http://coddism.com/uploads/users/1/1464127537_20160525_02_53_42____________________001.png" /></p>
-<p>Если программа "Диски" не была найдена, то её можно запустить из консоли:</p>
-<p><code>gnome-disks</code></p>
-<p>Установить её можно <a href="https://git.gnome.org/browse/gnome-disk-utility/">из исходников</a> или командой:</p>
-<p><code>sudo apt-get install gnome-disk-utility</code></p>
-<h3 id="_1">Проблемы с удалением в корзину?</h3>
-<p>Если при удалении файлов со смонтированных дисков выдаются ошибки вроде "не удалось переместить в корзину",  "невозможно удалить в корзину" и подобные, то достаточно добавить в параметры монтирования параметр uid=1000.</p>
-<p><code>UUID="6798491F3EB8CFC8" /media/isergium/ntfs    ntfs-3g defaults,uid=1000    0 0</code></p>
-<p>Этот параметр устанавливает владельца примонтированного раздела, по умолчанию это (зависит от файловой системы) либо root, либо владелец процесса. Если Ваш UID иной (что маловероятно), то можете поискать свой в /etc/passwd и прописать его.</p>
-<p>Вместо uid можно использовать gid - этот параметр установит группу владельцев. Обычно это тоже 1000, проверить можно в /etc/group.</p>
-<h3 id="_2">Дополнительно</h3>
-<ul>
-<li><a href="http://coddism.com/zametki/vospitanie_windows__uchim_delitsja_razdelami">Если Windows мешает монтированию разделов</a></li>
-</ul>
+<h2 id="master-password">Master Password</h2>
+<p>The most important thing about using a password manager is to choose a (<strong><em>really, really</em></strong>) strong master password. If you’re not genuinely impressed with yourself when you type it in, it’s not strong enough. The point of switching to a password manager is to have all of your most sensitive credentials in one impregnable place; your bank account, credit cards, mail, social media — whether it’s your assets or your reputation, the dearest information you have is most probably accessible through the internet, ergo your passwords for this information should be as un-hackable as possible.</p>
+<p><img alt="Wonderful xkcd comic about password entropy." src="https://miro.medium.com/max/1480/1*7v6djGHv-AC6Jeg9I5Eamg.png" /></p>
+<p><a href="https://www.xkcd.com/">xkcd</a> knows.</p>
+<p>In my opinion the best approach in this case, and in many other cases, is to combine: choose four random words that are easy for you to remember, but combine uppercase, lowercase, and special characters as well. E.g. “correct horse battery staple” isn’t much harder to remember than “C0rrEct(hOrse)b@TTery+$7ap13|” once you’ve practiced typing it a couple of times, but the increase in <a href="https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength">entropy</a> is substantial. It will take you longer to type, but I’d argue the extra minute a day (at most!) is a fair price for securing all of your passwords. Let your muscle memory do the heavy lifting and you’ll be surprised at how easily it comes to you after a few times.</p>
+<p>Just to be on the safe side, copy your master password to a physical note and put it in a completely secure place that no one with access to your computer could ever possibly know of.</p>
+<h2 id="key-file">Key File</h2>
+<p>Go to <em>Database → Database settings… → Security</em>. Under the <em>Password</em> section at the top you should see a <em>Key File</em> section.</p>
+<p><img alt="Security settings for a particular database within KeePassXC" src="https://miro.medium.com/max/2880/1*FxFNYt1vCDOOeWwfE6gHig.png" /></p>
+<p>Database → Database settings… → Security</p>
+<p>This allows setting or creating a binary file that is used together with or instead of a master password. It is recommended to let the application generate a key file for you, and to copy it to three USB sticks. One you will carry with you, the other two you will keep as backup (in separate locations from the physical backup for your master password!). Having a key file means that even if someone somehow gains access to your password, you have a second form of authentication that prevents them from being able to use it. Again, you pay with convenience, but profit immensely in security. Simply get in the habit of throwing that USB stick in your pocket or backpack when you leave the house to any place where you might need access to your passwords. This should really be limited to perhaps one or two computers you work on. We’ll talk about your mobile phone in a second.</p>
+<h2 id="decryption-time">Decryption Time</h2>
+<p>In the same <em>Database settings… → Security</em> menu, note the second tab titled <em>Encryption Settings</em>. The first field in this tab is labeled <em>Decryption Time</em> and should have a <em>Change</em> button opposite of it. Press the button and validate your decryption time setting is set to <em>at least</em> 1 second. Feel free to give it a couple of extra deciseconds (hundreds of milliseconds) while you’re at it. The difference will be effectively indistinguishable, but the result will be a significant increase in the number of iterations used when encrypting your data, making it much harder to decrypt.</p>
+<p><img alt="" src="https://miro.medium.com/max/2880/1*fmhb-QdPBJbmgNhDM6axJQ.png" /></p>
+<p>These are the basics. You can also set a default username for new entries (<em>Database</em> → <em>Database settings… → General</em>), which I like to have as my e-mail address, change the time interval for clearing the clipboard after copying passwords (<em>Tools → Settings → Security</em>), decide to show a system tray icon (<em>Tools → Settings → General</em>), and much, much more. Explore and make it your own!</p>
+<p>First, you probably want to have your passwords available on your mobile phone. I use <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android">Keepass2Android</a> and am very satisfied.</p>
+<p>Keepass2Android allows you to set the location of the database file from various cloud services (including Google Drive, Dropbox, OneDrive, ownCloud, NextCloud, and more). However, KeePassXC does not. <a href="https://keepassxc.org/docs/#faq-cloudsync">As stated in the KeePassXC website</a>:</p>
+<blockquote>
+<p>_Why is there no cloud synchronization feature built into KeePassXC?<br />
+_Cloud synchronization with Dropbox, Google Drive, OneDrive, ownCloud, Nextcloud etc. can be easily accomplished by simply storing your KeePassXC database inside your shared cloud folder and letting your desktop synchronization client do the rest. We prefer this approach, because it is simple, not tied to a specific cloud provider and keeps the complexity of our code low.</p>
+</blockquote>
+<p>Now it really depends on what cloud service you are using. <a href="https://www.dropbox.com/install-linux">Dropbox</a> provides a Linux client, and so do <a href="https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&amp;package=owncloud-client">ownCloud</a> and <a href="https://nextcloud.com/install/">NextCloud</a>, but Google Drive and OneDrive don’t offer a particularly straightforward solution for Linux users. Also, you may not want or be able to install your cloud provider’s client in all the computers you need to have access to your passwords from.</p>
+<blockquote>
+<p><strong>EDIT</strong>: if you’re using GNOME there actually is a simple method to mount both Google Drive and OneDrive, more information <a href="https://linuxnewbieguide.org/how-to-use-google-drive-in-linux/">here</a>. Thanks to <a href="https://twitter.com/KeePassXC">KeePassXC</a> on twitter, for pointing this out.</p>
+</blockquote>
+<p>This could pose a potential problem, but fret not — <a href="https://rclone.org/">Rclone</a> has got you covered.</p>
+<p><img alt="" src="https://miro.medium.com/max/370/0*iURvCA1ElOf3QOVw" /></p>
+<h2 id="rclone">Rclone</h2>
+<p>According to <a href="https://github.com/rclone/rclone">Rclone’s GitHub project</a>’s README:</p>
+<blockquote>
+<p>Rclone <em>(“rsync for cloud storage”)</em> is a command line program to sync files and directories to and from different cloud storage providers.</p>
+</blockquote>
+<p>If you’ve clicked on either of two previous links and reviewed the incredible list of <a href="https://github.com/rclone/rclone#storage-providers">supported cloud storage providers</a>, you could almost certainly spot whichever cloud service you might be using as well as just about any other one you’ve ever heard of (and a dozen you haven’t). Most importantly, the list includes any one of the services supported by Keepass2Android.</p>
+<p><a href="https://rclone.org/downloads/">Installation</a> is as simple as running:<br />
+<code>curl https://rclone.org/install.sh | sudo bash</code>.<br />
+To verify everything went smoothly you can execute<code>rclone --version</code> (or <code>-V</code>) and see that you get the expected output.</p>
+<p>Use the instructions on Rclone’s homepage to set up a connection to your preferred cloud storage provider by following the link next to its name. This process is usually quite effortless and mostly entails running <code>rclone config</code>, selecting whichever provider you’re using, choosing a name for the created remote location, and accepting some defaults. To validate your configuration, execute: <code>rclone lsd _name_:</code>, where <em>name</em> represents the name you chose for the remote (cloud) location. This will list all top-level directories within that location. Generally speaking, remote paths in Rclone are specified as <code>_name_:remote/path</code> (which is why <code>_name_:</code> points to the root directory).</p>
+<h2 id="automation">Automation</h2>
+<p>Now that you have established a connection with your cloud storage provider, you need a script to automate the task of checking for updates and importing (if the remote version is newer) or exporting (if the local version is newer). I am not much of a bash scriptwriter, but I’ve come up with something relatively simple that seems to work:</p>
+<p>Bash script to automate database file synchronization</p>
+<p>All you have to do is download the file (you can also click the “view raw” button and copy directly to a file on your computer) and change the values of the four variables under the “Configuration” title (<code>DRIVE_NAME</code>, <code>DB_FILE_NAME</code>, <code>LOCAL_LOCATION</code>, and <code>REMOTE_LOCATION</code>) according to your setup. I like to keep such bash scripts under <code>~/Scripts</code> (<code>~</code> in the terminal is an alias to the home directory). Don’t forget to give the file execution permissions:<br />
+<code>chmod +x ~/Scripts/sync-passwords.sh</code></p>
+<p>Alternatively, you can simply run:</p>
+<p>cd; mkdir -p Scripts; wget <a href="https://gist.githubusercontent.com/ZviBaratz/a4a51544c3d876543d37abfd0c6ee2a3/raw/1b739673cfe168a7c0797bc04e1ab90269c82281/sync-passwords.sh">https://gist.githubusercontent.com/ZviBaratz/a4a51544c3d876543d37abfd0c6ee2a3/raw/1b739673cfe168a7c0797bc04e1ab90269c82281/sync-passwords.sh</a> -P Scripts; chmod +x Scripts/sync-passwords.sh</p>
+<p>This will change directory to the user home’s directory, create the ‘Scripts’ directory if it doesn’t exist under it, download the GitHub gist, and change its permissions to make it executable. However, don’t forget you still have to change the variables at the beginning of the script to match the name and location of your database file and the name of the cloud storage provider.</p>
+<p>Make sure it’s working by running it:<br />
+<code>~/Scripts/sync-passwords.sh</code></p>
+<p>Assuming you don’t yet have a remote copy of the database file, you should see something like:</p>
+<p><img alt="" src="https://miro.medium.com/max/576/1*JM5BNwZ_fYb8F8dOKOkjEw.png" /></p>
+<p>In following runs the output will look like:</p>
+<p><img alt="" src="https://miro.medium.com/max/1148/1*dK0r7yDv8C4ZPRtl3l_kHQ.png" /></p>
+<p>Finally, you may want to create a <a href="https://en.wikipedia.org/wiki/Cron">cron</a> job to automate the execution of this script, so that you don’t have to remember running it every time you make a small change. To create a job that runs the synchronization script every 20 minutes, you can run:</p>
+<p>(crontab -l; echo "*/20 * * * * $HOME/Scripts/sync-passwords.sh") | crontab -</p>
+<p>If you would like to create a different synchronization schedule you can use <a href="https://crontab.guru/">crontab.guru</a> or <a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">learn more about cron scheduling</a>. If you already created this job and would like to edit it you can do so using <code>crontab -e</code>.</p>
+<h2 id="key-file_1">Key File</h2>
+<p>Don’t forget about the key file! Connect your mobile phone to your desktop with a USB cable and copy the key file to your local storage. Open Keepass2Android and under <em>“select master key type:”</em> choose <em>“Password + Key File”</em>. Browse to select your key file from the phone’s local storage.</p>
+<p>Once you’ve unlocked your database successfully, click on the options button (should appear as three vertical dots in the top right corner) → Settings → Database, and select “Import database to internal folder”. Having completed that, delete the original version of the key file on the device so that it is not accessible to any other application.</p>
 <hr />
-<p><a href="http://coddism.com/zametki/avtomaticheskoe_montirovanie_diska_v_linux_ubuntu__mint">Source</a></p>
+<p><a href="https://medium.com/@z.baratz/setting-up-keepassxc-on-linux-with-cloud-synchronization-85ccce837365#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0NjJhNzFkYTRmNmQ2MTFmYzBmZWNmMGZjNGJhOWMzN2Q2NWU2Y2QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2MTU4MDA3NzEsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwOTg1NDU3NDIwMTExOTA5ODcxMCIsImVtYWlsIjoiYWxwaGEucGkwMkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlNlcmhpaSBQZXRyaXVrIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqRjIwSmVyUjNPTzY5amR5RHhUYjNKcFl1THN6bkV3N29iWXprYz1zOTYtYyIsImdpdmVuX25hbWUiOiJTZXJoaWkiLCJmYW1pbHlfbmFtZSI6IlBldHJpdWsiLCJpYXQiOjE2MTU4MDEwNzEsImV4cCI6MTYxNTgwNDY3MSwianRpIjoiMjAxMTczMWQ0YjZlYjIwMWRjOGRkZjhiNTg0MzM4Yjc4NGQ1MGExZiJ9.o3ciGgSXAyU-mwu-2CURTs9MhKwZz37d7GxHFFx1dnq_T3WMV1ac5-0Kw9GBhNVvTaagFCUQbrAvjN3SgYdLiikqgywmqtKjIVvNvKLjmNQ3mzU5xZEG8z_snoRhuWIqIapMNRMZqO2GfUJvVrcy7-xJUmt5WI6xS_7nbgaQmAl8ZEIEEr_J6c-BeOv7_wu1wN0yD3gMn3UEHL0viL4QJu7dOYSiBSzg_mRywMSg-W9HfEGsQHQtGlUTTmMjV8RvhI2pW0ZgVP2MEzBPhwUi5DT1rraKu2IR1aEI4wIBWcaulUdsB4bbSA7SO3zrp_2fhHBzvddMip7xiSH8B2-h2Q">Source</a></p>
                 
               
               
@@ -994,7 +986,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Repack%20AppImage/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1003,19 +995,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Setting up KeePassXC on Linux (with Cloud Synchron
+              Repack AppImage
             </div>
           </div>
         </a>
       
       
-        <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Подключение ext4 в Windows
+              Автоматическое монтирование диска
             </div>
           </div>
           <div class="md-footer__button md-icon">
