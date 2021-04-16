@@ -1,0 +1,1127 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Ёбаный Git!!! - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ёбаный Git!!!
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ёбаный Git!!!
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ёбаный Git!!!
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    Бля, я накосячил, где у git волшебная машина времени!?!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Бля, я закоммитил и вспомнил, что кое-что забыл!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Бля, мне нужно изменить сообщение моего последнего коммита!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    Бля, Я случайно закоммитил что-то в мастер, хотя это должно быть в новой ветке!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Бля, я случайно закоммитил не в ту ветку!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Бля, я пытаюсь открыть diff, но ничего не происходит?!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    Бля, мне нужно отменить коммит, который был 5 коммитов назад!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Бля, мне нужно отменить изменения в файле!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Нахуй всё, я сдаюсь.
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%40Before%20vs%20%40BeforeClass%20vs%20%40BeforeEach%20vs%20%40BeforeA/" class="md-nav__link">
+        @Before vs @BeforeClass vs @BeforeEach vs @BeforeA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Access%20a%20value%20defined%20in%20the%20application.properti/" class="md-nav__link">
+        Access a value defined in the application.properti
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands%20%28U/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands (U
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20on%20Linux%20%28with%20Cloud%20Synchron/" class="md-nav__link">
+        Setting up KeePassXC on Linux (with Cloud Synchron
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0%20%D0%B2%20Linux%20Ubuntu%20%20/" class="md-nav__link">
+        Автоматическое монтирование диска в Linux Ubuntu  
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    Бля, я накосячил, где у git волшебная машина времени!?!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Бля, я закоммитил и вспомнил, что кое-что забыл!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Бля, мне нужно изменить сообщение моего последнего коммита!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    Бля, Я случайно закоммитил что-то в мастер, хотя это должно быть в новой ветке!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Бля, я случайно закоммитил не в ту ветку!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Бля, я пытаюсь открыть diff, но ничего не происходит?!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    Бля, мне нужно отменить коммит, который был 5 коммитов назад!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Бля, мне нужно отменить изменения в файле!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Нахуй всё, я сдаюсь.
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p>Ёбаный Git!!!</p>
+<h1 id="git">Ёбаный Git!!!</h1>
+<p>Git сложен: легко всё проебать, и нереально понять как исправить. Документация Git - это финиш: чтобы найти решение, <em>тебе заранее надо знать название фишки</em>, которая вернет всё на место.</p>
+<p><em>Популярно</em> опишу несколько ситуаций, из которых мне пришлось выбираться.</p>
+<h2 id="git_1"><a id="&vcy;&ocy;&lcy;&shcy;&iecy;&bcy;&ncy;&acy;&yacy;-&mcy;&acy;&shcy;&icy;&ncy;&acy;-&vcy;&rcy;&iecy;&mcy;&iecy;&ncy;&icy;"></a><a href="#волшебная-машина-времени">Бля, я накосячил, где у git волшебная машина времени!?!</a></h2>
+<div class="highlight"><pre><span></span><code>git reflog
+<span class="c1"># вы увидите список всего,</span>
+<span class="c1"># что сделали в git, во всех ветках!</span>
+<span class="c1"># у каждого элемента есть индекс HEAD@{индекс}</span>
+<span class="c1"># найдите тот, перед которым всё сломалось</span>
+git reset HEAD@<span class="o">{</span>index<span class="o">}</span>
+<span class="c1"># волшебная машина времени</span>
+</code></pre></div>
+<p>Используйте это чтобы вернуть случайно удалённые штуки, или убрать то чем Вы всё сломали, или восстановиться после неудачного слияния, или просто вернуться туда, когда всё работало. Я ОЧЕНЬ ЧАСТО использую <code>reflog</code>. Снимаю шляпу перед теми, кто предложил добавить это.</p>
+<h2 id="-"><a id="&icy;&zcy;&mcy;&iecy;&ncy;&icy;&tcy;&softcy;-&pcy;&ocy;&scy;&lcy;&iecy;&dcy;&ncy;&icy;&jcy;-&kcy;&ocy;&mcy;&mcy;&icy;&tcy;"></a><a href="#изменить-последний-коммит">Бля, я закоммитил и вспомнил, что кое-что забыл!</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># сделайте своё изменение</span>
+git add . <span class="c1"># или добавьте файлы по отдельности</span>
+git commit --amend --no-edit
+<span class="c1"># теперь ваш последний коммит содержит это изменение!</span>
+<span class="c1"># ПРЕДУПРЕЖДЕНИЕ: никогда не меняйте опубликованные коммиты!</span>
+</code></pre></div>
+<p>Обычно я это использую когда коммичу, потом запускаю тесты/сканеры... и блин, я не поставил пробел после знака равно. Также можно сделать изменения в новом коммите и использовать <code>rebase -i</code> чтобы склеить оба коммита вместе, но так в миллион раз быстрее.</p>
+<p><em>Предупреждение: никогда не изменяйте коммиты, отправленные в публичную ветку! Изменяйте только коммиты в вашей локальной ветке, иначе Вам не поздоровится.</em></p>
+<h2 id="_1"><a id="&icy;&zcy;&mcy;&iecy;&ncy;&icy;&tcy;&softcy;-&scy;&ocy;&ocy;&bcy;&shchcy;&iecy;&ncy;&icy;&iecy;-&pcy;&ocy;&scy;&lcy;&iecy;&dcy;&ncy;&iecy;&gcy;&ocy;-&kcy;&ocy;&mcy;&mcy;&icy;&tcy;&acy;"></a><a href="#изменить-сообщение-последнего-коммита">Бля, мне нужно изменить сообщение моего последнего коммита!</a></h2>
+<div class="highlight"><pre><span></span><code>git commit --amend
+<span class="c1"># открывает редактор для смены сообщения</span>
+</code></pre></div>
+<p>Ёбаные требования по наименованию.</p>
+<h2 id="-_1"><a id="&scy;&lcy;&ucy;&chcy;&acy;&jcy;&ncy;&ycy;&jcy;-&kcy;&ocy;&mcy;&mcy;&icy;&tcy;-&vcy;-&mcy;&acy;&scy;&tcy;&iecy;&rcy;"></a><a href="#случайный-коммит-в-мастер">Бля, Я случайно закоммитил что-то в мастер, хотя это должно быть в новой ветке!</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># создаст новую ветку из текущего состояния мастера</span>
+git branch какое-то-имя-новой-ветки
+<span class="c1"># удалит последний коммит из мастера</span>
+git reset HEAD~ --hard
+git checkout какое-то-имя-новой-ветки
+<span class="c1"># ваш коммит теперь живёт в этой ветке :)</span>
+</code></pre></div>
+<p>NB: это не будет работать, если вы уже отправили коммит в удалённую ветку, и если вы пробовали сделать это как-то по-другому, может помочь <code>git reset HEAD@{количество-коммитов-назад}</code> вместо <code>HEAD~</code>. Ёбушки-воробушки. Так же многие люди предлагали сделать то же самое, но короче. Спасибо всем!</p>
+<h2 id="_2"><a id="&scy;&lcy;&ucy;&chcy;&acy;&jcy;&ncy;&ycy;&jcy;-&kcy;&ocy;&mcy;&mcy;&icy;&tcy;-&ncy;&iecy;-&vcy;-&tcy;&ucy;-&vcy;&iecy;&tcy;&kcy;&ucy;"></a><a href="#случайный-коммит-не-в-ту-ветку">Бля, я случайно закоммитил не в ту ветку!</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># отменяет последний коммит, но оставляет изменения доступными</span>
+git reset HEAD~ --soft
+git stash
+<span class="c1"># переключиться на нужную ветку</span>
+git checkout имя-нужной-ветки
+git stash pop
+git add . <span class="c1"># или добавьте отдельные файлы</span>
+git commit -m <span class="s2">&quot;ваше сообщение здесь&quot;</span>
+<span class="c1"># теперь ваши изменения на нужной ветке</span>
+</code></pre></div>
+<p>Многие люди предлагали использовать <code>cherry-pick</code> в такой ситуации, так что выбирайте, то что вам больше нравится!</p>
+<div class="highlight"><pre><span></span><code>git checkout имя-нужной-ветки
+<span class="c1"># скопировать последний коммит из мастера</span>
+git cherry-pick master
+<span class="c1"># удалить из мастера</span>
+git checkout master
+git reset HEAD~ --hard
+</code></pre></div>
+<h2 id="diff"><a id="&gcy;&dcy;&iecy;-&mcy;&ocy;&jcy;-diff"></a><a href="#где-мой-diff">Бля, я пытаюсь открыть diff, но ничего не происходит?!</a></h2>
+<p>Если вы уверены, что изменили файлы, но <code>diff</code> пуст, возможно вы индексировали изменения (<code>add</code>) и нужно добавить специальный флаг.</p>
+<div class="highlight"><pre><span></span><code>git diff --staged
+</code></pre></div>
+<p>¯\<em>(ツ)</em>/¯ (да, я знаю, что это не баг, а фича, но это нихуя не очевидно с первого раза!)</p>
+<h2 id="5"><a id="&ocy;&tcy;&mcy;&iecy;&ncy;&icy;&tcy;&softcy;-&kcy;&ocy;&mcy;&mcy;&icy;&tcy;"></a><a href="#отменить-коммит">Бля, мне нужно отменить коммит, который был 5 коммитов назад!</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># найдите коммит, который нужно отменить</span>
+git log
+<span class="c1"># используйте стрелочки, чтобы прокрутить историю</span>
+<span class="c1"># сохраните хеш нужного коммита</span>
+git revert <span class="o">[</span>сохранённый хеш<span class="o">]</span>
+<span class="c1"># git создаст новый коммит, отменяющий выбранный</span>
+<span class="c1"># отредактируйте сообщений коммита</span>
+<span class="c1"># или просто сохраните</span>
+</code></pre></div>
+<p>Вам не нужно откатываться назад и копипастить старый файл в существующий! Если вы закоммитили хрень, её можно убрать с <code>revert</code>.</p>
+<p>Также можно отменить только один файл вместо целого коммита! Но конечно, (как всегда у git`а) это совершенно другой набор чёртовых команд...</p>
+<h2 id="_3"><a id="&ocy;&tcy;&mcy;&iecy;&ncy;&icy;&tcy;&softcy;-&icy;&zcy;&mcy;&iecy;&ncy;&iecy;&ncy;&icy;&yacy;"></a><a href="#отменить-изменения">Бля, мне нужно отменить изменения в файле!</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># найти хеш коммита, до которого нужно откатиться</span>
+git log
+<span class="c1"># используйте стрелочки, чтобы прокрутить историю</span>
+<span class="c1"># сохраните хеш нужного коммита</span>
+git checkout <span class="o">[</span>сохранённый хеш<span class="o">]</span> -- путь/к/файлу
+<span class="c1"># старая версия файла окажется в вашем индексе</span>
+git commit -m <span class="s2">&quot;Ого, теперь не придётся копипастить, чтобы отменить изменения!&quot;</span>
+</code></pre></div>
+<p>Когда до меня это дошло, это было ОХУЕННО. Если серьезно, то схуяли <code>checkout --</code> лучший способ отменять изменения? :угрожает-линусу-торвальдсу:</p>
+<h2 id="_4"><a id="&kcy;-&chcy;&iocy;&rcy;&tcy;&ucy;-&vcy;&scy;&iocy;"></a><a href="#к-чёрту-всё">Нахуй всё, я сдаюсь.</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
+sudo rm -r чёртов-репозиторий-git
+git clone https://some.github.url/чёртов-репозиторий-git.git
+<span class="nb">cd</span> чёртов-репозиторий-git
+</code></pre></div>
+<p>Спасибо Eric V. за эту подсказку. Все жалобы по поводу использованию <code>sudo</code> в этой шутке могут быть направлены сразу ему.</p>
+<p>Вообще говоря, если ваша ветка настооолько загажена, что нужно вернуться к удалённому состоянию в "git-корректном стиле" попробуйте это, но это необратимо!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># получить последнее состояние origin</span>
+git fetch origin
+git checkout master
+git reset --hard origin/master
+<span class="c1"># удалить неиндексированные файлы</span>
+git clean -d --force
+<span class="c1"># повторить checkout/reset/clean для каждой испорченной ветки</span>
+</code></pre></div>
+<p>*Предупреждение: Этот сайт не является исчерпывающим руководством. Да, есть другие способы сделать тоже самое, но я пришёл к этому методом проб и ошибок, и теперь делюсь этим с большой дозой легкомыслия и ругани. Примите это или уйдите!</p>
+<hr />
+<p><a href="https://ohshitgit.com/ru">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Create%20Empty%20Branch%20in%20Git/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Create Empty Branch in Git
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Команда Git stash. Как прятать изменения в Git
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
