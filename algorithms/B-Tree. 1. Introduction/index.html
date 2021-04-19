@@ -837,8 +837,8 @@
                 
                 <p>B-Tree. 1. Introduction</p>
 <p><strong>Introduction:</strong> 
-B-Tree is a self-balancing search tree. In most of the other self-balancing search trees (like <a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">AVL</a> and Red-Black Trees), it is assumed that everything is in main memory. To understand the use of B-Trees, we must think of the huge amount of data that cannot fit in main memory. When the number of keys is high, the data is read from disk in the form of blocks. Disk access time is very high compared to the main memory access time. The main idea of using B-Trees is to reduce the number of disk accesses. Most of the tree operations (search, insert, delete, max, min, ..etc ) require O(h) disk accesses where h is the height of the tree. B-tree is a fat tree. The height of B-Trees is kept low by putting maximum possible keys in a B-Tree node. Generally, the B-Tree node size is kept equal to the disk block size. Since the height of the B-tree is low so total disk accesses for most of the operations are reduced significantly compared to balanced Binary Search Trees like AVL Tree, Red-Black Tree, ..etc.
-<strong>Time Complexity of B-Tree:</strong> 
+B-Tree is a self-balancing search tree. In most of the other self-balancing search trees (like <a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">AVL</a> and Red-Black Trees), it is assumed that everything is in main memory. To understand the use of B-Trees, we must think of the huge amount of data that cannot fit in main memory. When the number of keys is high, the data is read from disk in the form of blocks. Disk access time is very high compared to the main memory access time. The main idea of using B-Trees is to reduce the number of disk accesses. Most of the tree operations (search, insert, delete, max, min, ..etc ) require O(h) disk accesses where h is the height of the tree. B-tree is a fat tree. The height of B-Trees is kept low by putting maximum possible keys in a B-Tree node. Generally, the B-Tree node size is kept equal to the disk block size. Since the height of the B-tree is low so total disk accesses for most of the operations are reduced significantly compared to balanced Binary Search Trees like AVL Tree, Red-Black Tree, ..etc.</p>
+<p><strong>Time Complexity of B-Tree:</strong> 
  </p>
 <table>
 <thead>
@@ -993,11 +993,11 @@ Searching a B-Tree is similar to searching a binary tree. The algorithm is simil
 <span class="p">}</span>
 </code></pre></div></p>
 <p>The above code doesn’t contain the driver program. We will be covering the complete program in our next post on <a href="https://www.geeksforgeeks.org/b-tree-set-1-insert-2/">B-Tree Insertion</a>.
-There are two conventions to define a B-Tree, one is to define by minimum degree (followed in <a href="http://www.flipkart.com/introduction-algorithms-3rd/p/itmczynzhyhxv2gs?pid=9788120340077&amp;affid=sandeepgfg">Cormen book</a>), second is define by order. We have followed the minimum degree convention and will be following same in coming posts on B-Tree. The variable names used in the above program are also kept same as Cormen book for better readability. 
-<strong>Insertion and Deletion</strong> 
+There are two conventions to define a B-Tree, one is to define by minimum degree (followed in <a href="http://www.flipkart.com/introduction-algorithms-3rd/p/itmczynzhyhxv2gs?pid=9788120340077&amp;affid=sandeepgfg">Cormen book</a>), second is define by order. We have followed the minimum degree convention and will be following same in coming posts on B-Tree. The variable names used in the above program are also kept same as Cormen book for better readability. </p>
+<p><strong>Insertion and Deletion</strong> 
 <a href="https://www.geeksforgeeks.org/b-tree-set-1-insert-2/">B-Tree Insertion</a> 
-<a href="https://www.geeksforgeeks.org/b-tree-set-3delete/">B-Tree Deletion</a>
-<strong>References:</strong> 
+<a href="https://www.geeksforgeeks.org/b-tree-set-3delete/">B-Tree Deletion</a></p>
+<p><strong>References:</strong> 
 <a href="http://www.flipkart.com/introduction-algorithms-3rd/p/itmczynzhyhxv2gs?pid=9788120340077&amp;affid=sandeepgfg">Introduction to Algorithms 3rd Edition by Clifford Stein, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest</a>
 Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above.
  </p>
