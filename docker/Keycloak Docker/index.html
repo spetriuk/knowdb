@@ -323,36 +323,36 @@
       
         <li class="md-nav__item">
   <a href="#run-container" class="md-nav__link">
-    Run container:
+    Run container
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#export-realm" class="md-nav__link">
-    Export realm:
+    Export realm
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#start-keycloak-container-with-importing-realm" class="md-nav__link">
-    Start keycloak container with importing realm:
+    Start keycloak container with importing realm
   </a>
   
-    <nav class="md-nav" aria-label="Start keycloak container with importing realm:">
+    <nav class="md-nav" aria-label="Start keycloak container with importing realm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#docker-composeyml" class="md-nav__link">
-    docker-compose.yml:
+    docker-compose.yml
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    Run:
+    Run
   </a>
   
 </li>
@@ -759,6 +759,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
         Fix Large Black Borders Around Windows GTK 3.16
       </a>
@@ -964,36 +976,36 @@
       
         <li class="md-nav__item">
   <a href="#run-container" class="md-nav__link">
-    Run container:
+    Run container
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#export-realm" class="md-nav__link">
-    Export realm:
+    Export realm
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#start-keycloak-container-with-importing-realm" class="md-nav__link">
-    Start keycloak container with importing realm:
+    Start keycloak container with importing realm
   </a>
   
-    <nav class="md-nav" aria-label="Start keycloak container with importing realm:">
+    <nav class="md-nav" aria-label="Start keycloak container with importing realm">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#docker-composeyml" class="md-nav__link">
-    docker-compose.yml:
+    docker-compose.yml
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    Run:
+    Run
   </a>
   
 </li>
@@ -1019,11 +1031,11 @@
                   <h1>Keycloak Docker</h1>
                 
                 <p>Keycloak Docker</p>
-<h2 id="run-container">Run container:</h2>
+<h2 id="run-container">Run container</h2>
 <p><div class="highlight"><pre><span></span><code>docker run -p <span class="m">8090</span>:8090 -e <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin -e <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>admin -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/tmp --name keyc quay.io/keycloak/keycloak:12.0.3
 </code></pre></div>
 <code>-v $(pwd)</code> stands for folder to save exported realm</p>
-<h2 id="export-realm">Export realm:</h2>
+<h2 id="export-realm">Export realm</h2>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it keyc /opt/jboss/keycloak/bin/standalone.sh <span class="se">\</span>
 -Djboss.socket.binding.port-offset<span class="o">=</span><span class="m">100</span> -Dkeycloak.migration.action<span class="o">=</span><span class="nb">export</span> <span class="se">\</span>
 -Dkeycloak.migration.provider<span class="o">=</span>singleFile <span class="se">\</span>
@@ -1031,8 +1043,8 @@
 -Dkeycloak.migration.usersExportStrategy<span class="o">=</span>REALM_FILE <span class="se">\</span>
 -Dkeycloak.migration.file<span class="o">=</span>/tmp/my_realm.json
 </code></pre></div>
-<h2 id="start-keycloak-container-with-importing-realm">Start keycloak container with importing realm:</h2>
-<h3 id="docker-composeyml"><code>docker-compose.yml</code>:</h3>
+<h2 id="start-keycloak-container-with-importing-realm">Start keycloak container with importing realm</h2>
+<h3 id="docker-composeyml"><code>docker-compose.yml</code></h3>
 <div class="highlight"><pre><span></span><code>version: &#39;3&#39;
 
 services:
@@ -1050,7 +1062,7 @@ services:
     ports:
       - 8090:8090
 </code></pre></div>
-<h3 id="run">Run:</h3>
+<h3 id="run">Run</h3>
 <div class="highlight"><pre><span></span><code>docker-compose up
 </code></pre></div>
                 
