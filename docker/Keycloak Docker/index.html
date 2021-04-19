@@ -14,7 +14,7 @@
     
     
       
-        <title>Setting Up Kafka - KnowDB</title>
+        <title>Keycloak Docker - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-kafka" class="md-skip">
+        <a href="#run-container" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setting Up Kafka
+              Keycloak Docker
             
           </span>
         </div>
@@ -270,12 +270,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         Docker
@@ -291,11 +293,79 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Keycloak Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Keycloak Docker
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#run-container" class="md-nav__link">
+    Run container:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-realm" class="md-nav__link">
+    Export realm:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-keycloak-container-with-importing-realm" class="md-nav__link">
+    Start keycloak container with importing realm:
+  </a>
+  
+    <nav class="md-nav" aria-label="Start keycloak container with importing realm:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    docker-compose.yml:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    Run:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -305,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+      <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
         Local PostgreSQL Docker Dev
       </a>
     </li>
@@ -317,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+      <a href="../Mongodb%20Docker/" class="md-nav__link">
         Mongodb Docker
       </a>
     </li>
@@ -329,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
         PgAdmin 4 docker
       </a>
     </li>
@@ -564,14 +634,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       <label class="md-nav__link" for="__nav_6">
         Kafka
@@ -589,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Kafka%20local%20cluster%20run/" class="md-nav__link">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
         Kafka local cluster run
       </a>
     </li>
@@ -601,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KafkaTemplate/" class="md-nav__link">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
         KafkaTemplate
       </a>
     </li>
@@ -611,62 +679,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Setting Up Kafka
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
         Setting Up Kafka
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-multiple-kafka-brokers" class="md-nav__link">
-    Setting Up Multiple Kafka Brokers
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting Up Multiple Kafka Brokers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#starting-up-the-new-broker" class="md-nav__link">
-    Starting up the new Broker
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -938,8 +955,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -948,16 +963,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-multiple-kafka-brokers" class="md-nav__link">
-    Setting Up Multiple Kafka Brokers
+  <a href="#run-container" class="md-nav__link">
+    Run container:
   </a>
   
-    <nav class="md-nav" aria-label="Setting Up Multiple Kafka Brokers">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-realm" class="md-nav__link">
+    Export realm:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-keycloak-container-with-importing-realm" class="md-nav__link">
+    Start keycloak container with importing realm:
+  </a>
+  
+    <nav class="md-nav" aria-label="Start keycloak container with importing realm:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#starting-up-the-new-broker" class="md-nav__link">
-    Starting up the new Broker
+  <a href="#docker-composeyml" class="md-nav__link">
+    docker-compose.yml:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    Run:
   </a>
   
 </li>
@@ -980,252 +1016,43 @@
               
                 
                 
-                <p>Setting Up Kafka</p>
-<h1 id="setting-up-kafka">Setting Up Kafka</h1>
-<details><summary>Linux</summary>
-<p>
-
-- Make sure you are navigated inside the bin directory.
-
-## Start Zookeeper and Kafka Broker
-
--   Start up the Zookeeper.
-
-<div class="highlight"><pre><span></span><code>./zookeeper-server-start.sh ../config/zookeeper.properties
+                  <h1>Keycloak Docker</h1>
+                
+                <p>Keycloak Docker</p>
+<h2 id="run-container">Run container:</h2>
+<p><div class="highlight"><pre><span></span><code>docker run -p <span class="m">8090</span>:8090 -e <span class="nv">KEYCLOAK_USER</span><span class="o">=</span>admin -e <span class="nv">KEYCLOAK_PASSWORD</span><span class="o">=</span>admin -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/tmp --name keyc quay.io/keycloak/keycloak:12.0.3
 </code></pre></div>
-
-- Add the below properties in the server.properties
-
-<div class="highlight"><pre><span></span><code>listeners=PLAINTEXT://localhost:9092
-auto.create.topics.enable=false
+<code>-v $(pwd)</code> stands for folder to save exported realm</p>
+<h2 id="export-realm">Export realm:</h2>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it keyc /opt/jboss/keycloak/bin/standalone.sh <span class="se">\</span>
+-Djboss.socket.binding.port-offset<span class="o">=</span><span class="m">100</span> -Dkeycloak.migration.action<span class="o">=</span><span class="nb">export</span> <span class="se">\</span>
+-Dkeycloak.migration.provider<span class="o">=</span>singleFile <span class="se">\</span>
+-Dkeycloak.migration.realmName<span class="o">=</span>usersapp <span class="se">\</span>
+-Dkeycloak.migration.usersExportStrategy<span class="o">=</span>REALM_FILE <span class="se">\</span>
+-Dkeycloak.migration.file<span class="o">=</span>/tmp/my_realm.json
 </code></pre></div>
+<h2 id="start-keycloak-container-with-importing-realm">Start keycloak container with importing realm:</h2>
+<h3 id="docker-composeyml"><code>docker-compose.yml</code>:</h3>
+<div class="highlight"><pre><span></span><code>version: &#39;3&#39;
 
--   Start up the Kafka Broker
-
-<div class="highlight"><pre><span></span><code>./kafka-server-start.sh ../config/server.properties
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.3
+    volumes:
+      - /tmp:/opt/jboss/keycloak/imports
+    command: 
+      -Djboss.socket.binding.port-offset=10
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/opt/jboss/keycloak/imports/my_realm.json
+      - DB_VENDOR=h2
+    ports:
+      - 8090:8090
 </code></pre></div>
-
-## How to create a topic ?
-
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --create --topic test-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 4
+<h3 id="run">Run:</h3>
+<div class="highlight"><pre><span></span><code>docker-compose up
 </code></pre></div>
-
-## How to instantiate a Console Producer?
-
-### Without Key
-
-<div class="highlight"><pre><span></span><code>./kafka-console-producer.sh --broker-list localhost:9092 --topic test-topic
-</code></pre></div>
-
-### With Key
-
-<div class="highlight"><pre><span></span><code>./kafka-console-producer.sh --broker-list localhost:9092 --topic test-topic --property &quot;key.separator=-&quot; --property &quot;parse.key=true&quot;
-</code></pre></div>
-
-## How to instantiate a Console Consumer?
-
-### Without Key
-
-<div class="highlight"><pre><span></span><code>./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
-</code></pre></div>
-
-### With Key
-
-<div class="highlight"><pre><span></span><code>./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning -property &quot;key.separator= - &quot; --property &quot;print.key=true&quot;
-</code></pre></div>
-
-### With Consumer Group
-
-<div class="highlight"><pre><span></span><code>./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --group &lt;group-name&gt;
-</code></pre></div>
-</p>
-
-</details>
-
-<details><summary>Windows</summary>
-<p>
-
-- Make sure you are inside the **bin/windows** directory.
-
-## Start Zookeeper and Kafka Broker
-
--   Start up the Zookeeper.
-
-<div class="highlight"><pre><span></span><code>zookeeper-server-start.bat ..\..\config\zookeeper.properties
-</code></pre></div>
-
--   Start up the Kafka Broker.
-
-<div class="highlight"><pre><span></span><code>kafka-server-start.bat ..\..\config\server.properties
-</code></pre></div>
-
-## How to create a topic ?
-
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --create --topic test-topic -zookeeper localhost:2181 --replication-factor 1 --partitions 4
-</code></pre></div>
-
-## How to instantiate a Console Producer?
-
-### Without Key
-
-<div class="highlight"><pre><span></span><code>kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
-</code></pre></div>
-
-### With Key
-
-<div class="highlight"><pre><span></span><code>kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic --property &quot;key.separator=-&quot; --property &quot;parse.key=true&quot;
-</code></pre></div>
-
-## How to instantiate a Console Consumer?
-
-### Without Key
-
-<div class="highlight"><pre><span></span><code>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
-</code></pre></div>
-
-### With Key
-
-<div class="highlight"><pre><span></span><code>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning -property &quot;key.separator= - &quot; --property &quot;print.key=true&quot;
-</code></pre></div>
-
-### With Consumer Group
-
-<div class="highlight"><pre><span></span><code>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --group &lt;group-name&gt;
-</code></pre></div>
-</p>
-
-</details>
-
-<h2 id="setting-up-multiple-kafka-brokers">Setting Up Multiple Kafka Brokers</h2>
-<ul>
-<li>
-<p>The first step is to add a new <strong>server.properties</strong>.</p>
-</li>
-<li>
-<p>We need to modify three properties to start up a multi broker set up.</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code>broker.id=&lt;unique-broker-d&gt;
-listeners=PLAINTEXT://localhost:&lt;unique-port&gt;
-log.dirs=/tmp/&lt;unique-kafka-folder&gt;
-auto.create.topics.enable=false
-</code></pre></div>
-<ul>
-<li>Example config will be like below.</li>
-</ul>
-<div class="highlight"><pre><span></span><code>broker.id=1
-listeners=PLAINTEXT://localhost:9093
-log.dirs=/tmp/kafka-logs-1
-auto.create.topics.enable=false
-</code></pre></div>
-<h3 id="starting-up-the-new-broker">Starting up the new Broker</h3>
-<ul>
-<li>Provide the new <strong>server.properties</strong> thats added.</li>
-</ul>
-<div class="highlight"><pre><span></span><code>./kafka-server-start.sh ../config/server-1.properties
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>./kafka-server-start.sh ../config/server-2.properties
-</code></pre></div>
-<h1 id="advanced-kafka-cli-operations">Advanced Kafka CLI operations:</h1>
-<details><summary>Linux</summary>
-<p>
-
-## List the topics in a cluster
-
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --zookeeper localhost:2181 --list
-</code></pre></div>
-
-## Describe topic
-
-- The below command can be used to describe all the topics.
-
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --zookeeper localhost:2181 --describe
-</code></pre></div>
-
-- The below command can be used to describe a specific topic.
-
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --zookeeper localhost:2181 --describe --topic &lt;topic-name&gt;
-</code></pre></div>
-
-## Alter the min insync replica
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --alter --zookeeper localhost:2181 --topic library-events --config min.insync.replicas=2
-</code></pre></div>
-
-## Delete a topic
-
-<div class="highlight"><pre><span></span><code>./kafka-topics.sh --zookeeper localhost:2181 --delete --topic test-topic
-</code></pre></div>
-## How to view consumer groups
-
-<div class="highlight"><pre><span></span><code>./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
-</code></pre></div>
-
-### Consumer Groups and their Offset
-
-<div class="highlight"><pre><span></span><code>./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group console-consumer-27773
-</code></pre></div>
-
-## Viewing the Commit Log
-
-<div class="highlight"><pre><span></span><code>./kafka-run-class.sh kafka.tools.DumpLogSegments --deep-iteration --files /tmp/kafka-logs/test-topic-0/00000000000000000000.log
-</code></pre></div>
-
-## Setting the Minimum Insync Replica
-
-<div class="highlight"><pre><span></span><code>./kafka-configs.sh --alter --zookeeper localhost:2181 --entity-type topics --entity-name test-topic --add-config min.insync.replicas=2
-</code></pre></div>
-</p>
-</details>
-
-<details><summary>Windows</summary>
-<p>
-
-- Make sure you are inside the **bin/windows** directory.
-
-## List the topics in a cluster
-
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --zookeeper localhost:2181 --list
-</code></pre></div>
-
-## Describe topic
-
-- The below command can be used to describe all the topics.
-
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --zookeeper localhost:2181 --describe
-</code></pre></div>
-
-- The below command can be used to describe a specific topic.
-
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --zookeeper localhost:2181 --describe --topic &lt;topic-name&gt;
-</code></pre></div>
-
-## Alter the min insync replica
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --alter --zookeeper localhost:2181 --topic library-events --config min.insync.replicas=2
-</code></pre></div>
-
-
-## Delete a topic
-
-<div class="highlight"><pre><span></span><code>kafka-topics.bat --zookeeper localhost:2181 --delete --topic &lt;topic-name&gt;
-</code></pre></div>
-
-
-## How to view consumer groups
-
-<div class="highlight"><pre><span></span><code>kafka-consumer-groups.bat --bootstrap-server localhost:9092 --list
-</code></pre></div>
-
-### Consumer Groups and their Offset
-
-<div class="highlight"><pre><span></span><code>kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group console-consumer-27773
-</code></pre></div>
-
-## Viewing the Commit Log
-
-<div class="highlight"><pre><span></span><code>kafka-run-class.bat kafka.tools.DumpLogSegments --deep-iteration --files /tmp/kafka-logs/test-topic-0/00000000000000000000.log
-</code></pre></div>
-</p>
-</details>
                 
               
               
@@ -1244,7 +1071,7 @@ auto.create.topics.enable=false
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../KafkaTemplate/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1253,19 +1080,19 @@ auto.create.topics.enable=false
               <span class="md-footer__direction">
                 Previous
               </span>
-              KafkaTemplate
+              B Tree. 3. Delete Operation
             </div>
           </div>
         </a>
       
       
-        <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Add Nemo context menu action
+              Local PostgreSQL Docker Dev
             </div>
           </div>
           <div class="md-footer__button md-icon">
