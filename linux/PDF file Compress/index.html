@@ -1021,12 +1021,11 @@
 <div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript
 </code></pre></div>
 <p>А затем сожмем PDF:</p>
-<p>```bash</p>
-<p>for file in *.pdf; do
+<p><code>bash
+for file in *.pdf; do
   pdf=".pdf";
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$file$pdf" $file
- done
- ```</p>
+ done</code></p>
 <p>Или однй коммандой:</p>
 <p><code>sh
  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf</code></p>
