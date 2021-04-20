@@ -1007,12 +1007,12 @@
 </code></pre></div>
 <p>Далее кидаем файлы pdf в какую-то папку,далее создаем и запускаем следующий скрипт:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> file <span class="k">in</span> *.pdf<span class="p">;</span> <span class="k">do</span> 
-<span class="nv">ps</span><span class="o">=</span><span class="s2">&quot;.ps&quot;</span><span class="p">;</span>
-pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$ps</span><span class="s2">&quot;</span><span class="p">;</span> 
+  <span class="nv">ps</span><span class="o">=</span><span class="s2">&quot;.ps&quot;</span><span class="p">;</span>
+  pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$ps</span><span class="s2">&quot;</span><span class="p">;</span> 
 <span class="k">done</span>
 <span class="k">for</span> file <span class="k">in</span> *.ps<span class="p">;</span> <span class="k">do</span> 
-<span class="nv">pdf</span><span class="o">=</span><span class="s2">&quot;.pdf&quot;</span><span class="p">;</span>
-pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$pdf</span><span class="s2">&quot;</span><span class="p">;</span> 
+  <span class="nv">pdf</span><span class="o">=</span><span class="s2">&quot;.pdf&quot;</span><span class="p">;</span>
+  pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$pdf</span><span class="s2">&quot;</span><span class="p">;</span> 
 <span class="k">done</span>
 </code></pre></div>
 <p>В итоге получаем сжатые в несколько раз файлы.</p>
@@ -1021,11 +1021,12 @@ pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="
 <div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript
 </code></pre></div>
 <p>А затем сожмем PDF:</p>
-<p><code>bash
-for file in *.pdf; do
- pdf=".pdf";
- gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$file$pdf" $file
- done</code></p>
+<p>```bash</p>
+<p>for file in *.pdf; do
+  pdf=".pdf";
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$file$pdf" $file
+ done
+ ```</p>
 <p>Или однй коммандой:</p>
 <p><code>sh
  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf</code></p>
