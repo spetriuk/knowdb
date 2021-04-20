@@ -1024,7 +1024,9 @@
 <p><code>bash
 for file in *.pdf; do
   pdf=".pdf";
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$file$pdf" $file
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 
+  -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH 
+  -sOutputFile="$file$pdf" $file
  done</code></p>
 <p>Или однй коммандой:</p>
 <p><code>sh
