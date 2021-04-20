@@ -791,14 +791,14 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    Способ 1:
+    Способ 1.
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    Способ 2:
+    Способ 2
   </a>
   
 </li>
@@ -973,14 +973,14 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    Способ 1:
+    Способ 1.
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    Способ 2:
+    Способ 2
   </a>
   
 </li>
@@ -1001,7 +1001,7 @@
                   <h1>PDF file Compress</h1>
                 
                 <p>PDF file Compress</p>
-<h2 id="1">Способ 1:</h2>
+<h2 id="1">Способ 1.</h2>
 <p>Устанавливаем Ghostscript и pdftk</p>
 <div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript pdftk
 </code></pre></div>
@@ -1016,12 +1016,12 @@
 <span class="k">done</span>
 </code></pre></div>
 <p>В итоге получаем сжатые в несколько раз файлы.</p>
-<h2 id="2">Способ 2:</h2>
+<h2 id="2">Способ 2</h2>
 <p>Воспользуемся ghostscript. Убедимся, что он установлен:</p>
 <div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript
 </code></pre></div>
 <p>А затем сожмем PDF:</p>
-<p><code>bash
+<p><code>sh
 for file in *.pdf; do
   pdf=".pdf";
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 
