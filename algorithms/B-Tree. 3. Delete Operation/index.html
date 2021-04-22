@@ -1,0 +1,1885 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>B Tree. 3. Delete Operation - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              B Tree. 3. Delete Operation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Algorithms
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-Tree.%201.%20Introduction/" class="md-nav__link">
+        B Tree. 1. Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-Tree.%202.%20Insert%20Operation/" class="md-nav__link">
+        B Tree. 2. Insert Operation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        B Tree. 3. Delete Operation
+      </a>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
+        Keycloak Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+        Local PostgreSQL Docker Dev
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Delete%20branch%20local_remote/" class="md-nav__link">
+        Delete branch local remote
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+        Add Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/AppImage%20Repack/" class="md-nav__link">
+        AppImage Repack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+        Bash read Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
+        Bash remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+        Bash  Write to File
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Bind Mouse Buttons To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+        Fix Large Black Borders Around Windows GTK 3.16
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+        GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+        How to add keyboard shortcuts to nemo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/KeePassXC%20with%20synchronization/" class="md-nav__link">
+        KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Mouse Buttons Bind To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+        Nemo add keyboard shortcuts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20context%20menu%20action/" class="md-nav__link">
+        Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+        PDF create from images
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+        PDF file Compress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+        Repack AppImage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Setting%20up%20KeePassXC%20with%20synchronization/" class="md-nav__link">
+        Setting up KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Mongodb
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mongodb" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Mongodb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+        MongoDB Cheat Sheet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>B Tree. 3. Delete Operation</h1>
+                
+                <p>B-Tree. 3. Delete Operation</p>
+<p>B-Tree is a type of a multi-way search tree. So, if you are not familiar with multi-way search trees in general, it is better to take a look at <a href="http://www.youtube.com/watch?v=JZhdUb5F7oY">this video lecture from IIT-Delhi</a>, before proceeding further. Once you get the basics of a multi-way search tree clear, B-Tree operations will be easier to understand.</p>
+<p>Source of the following explanation and algorithm is <a href="http://www.flipkart.com/introduction-algorithms-3/p/itmczynzhyhxv2gs?pid=9788120340077&amp;affid=sandeepgfg">Introduction to Algorithms 3rd Edition by Clifford Stein, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest</a></p>
+<p><strong>Deletion process:</strong>
+Deletion from a B-tree is more complicated than insertion, because we can delete a key from any node-not just a leaf—and when we delete a key from an internal node, we will have to rearrange the node’s children.</p>
+<p>As in insertion, we must make sure the deletion doesn’t violate the <a href="https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/">B-tree properties</a>. Just as we had to ensure that a node didn’t get too big due to insertion, we must ensure that a node doesn’t get too small during deletion (except that the root is allowed to have fewer than the minimum number t-1 of keys). Just as a simple insertion algorithm might have to back up if a node on the path to where the key was to be inserted was full, a simple approach to deletion might have to back up if a node (other than the root) along the path to where the key is to be deleted has the minimum number of keys.</p>
+<p>The deletion procedure deletes the key k from the subtree rooted at x. This procedure guarantees that whenever it calls itself recursively on a node x, the number of keys in x is at least the minimum degree t . Note that this condition requires one more key than the minimum required by the usual B-tree conditions, so that sometimes a key may have to be moved into a child node before recursion descends to that child. This strengthened condition allows us to delete a key from the tree in one downward pass without having to “back up” (with one exception, which we’ll explain). You should interpret the following specification for deletion from a B-tree with the understanding that if the root node x ever becomes an internal node having no keys (this situation can occur in cases 2c and 3b then we delete x, and x’s only child x.c1 becomes the new root of the tree, decreasing the height of the tree by one and preserving the property that the root of the tree contains at least one key (unless the tree is empty).</p>
+<p>We sketch how deletion works with various cases of deleting keys from a B-tree.</p>
+<p><strong>1.</strong> If the key k is in node x and x is a leaf, delete the key k from x.</p>
+<p><strong>2.</strong> If the key k is in node x and x is an internal node, do the following.</p>
+<p><strong>a)</strong> If the child y that precedes k in node x has at least t keys, then find the predecessor k0 of k in the sub-tree rooted at y. Recursively delete k0, and replace k by k0 in x. (We can find k0 and delete it in a single downward pass.)</p>
+<p><strong>b)</strong> If y has fewer than t keys, then, symmetrically, examine the child z that follows k in node x. If z has at least t keys, then find the successor k0 of k in the subtree rooted at z. Recursively delete k0, and replace k by k0 in x. (We can find k0 and delete it in a single downward pass.)</p>
+<p><strong>c)</strong> Otherwise, if both y and z have only t-1 keys, merge k and all of z into y, so that x loses both k and the pointer to z, and y now contains 2t-1 keys. Then free z and recursively delete k from y.</p>
+<p><strong>3.</strong> If the key k is not present in internal node x, determine the root x.c(i) of the appropriate subtree that must contain k, if k is in the tree at all. If x.c(i) has only t-1 keys, execute step 3a or 3b as necessary to guarantee that we descend to a node containing at least t keys. Then finish by recursing on the appropriate child of x.</p>
+<p><strong>a)</strong> If x.c(i) has only t-1 keys but has an immediate sibling with at least t keys, give x.c(i) an extra key by moving a key from x down into x.c(i), moving a key from x.c(i) ’s immediate left or right sibling up into x, and moving the appropriate child pointer from the sibling into x.c(i).</p>
+<p><strong>b)</strong> If x.c(i) and both of x.c(i)’s immediate siblings have t-1 keys, merge x.c(i) with one sibling, which involves moving a key from x down into the new merged node to become the median key for that node.</p>
+<p>Since most of the keys in a B-tree are in the leaves, deletion operations are most often used to delete keys from leaves. The recursive delete procedure then acts in one downward pass through the tree, without having to back up. When deleting a key in an internal node, however, the procedure makes a downward pass through the tree but may have to return to the node from which the key was deleted to replace the key with its predecessor or successor (cases 2a and 2b).</p>
+<p>The following figures explain the deletion process.
+<a href="https://media.geeksforgeeks.org/wp-content/uploads/bplustree.png"><img width="219" height="300" src="../../_resources/3e7eba4363d74e13aa9c4e8b07dae1dd.png"/></a>
+<a href="https://media.geeksforgeeks.org/wp-content/uploads/bplustr.png"><img width="320" height="300" src="../../_resources/7d84dc43d36c4c748a085dc21eaf26e5.png"/></a></p>
+<p><strong>Implementation:</strong>
+Following is C++ implementation of deletion process.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* The following program performs deletion on a B-Tree. It contains functions</span>
+<span class="cm">specific for deletion along with all the other functions provided in the</span>
+<span class="cm">previous articles on B-Trees. See https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/</span>
+<span class="cm">for previous article.</span>
+
+<span class="cm">The deletion function has been compartmentalized into 8 functions for ease</span>
+<span class="cm">of understanding and clarity</span>
+
+<span class="cm">The following functions are exclusive for deletion</span>
+<span class="cm">In class BTreeNode:</span>
+<span class="cm">    1) remove</span>
+<span class="cm">    2) removeFromLeaf</span>
+<span class="cm">    3) removeFromNonLeaf</span>
+<span class="cm">    4) getPred</span>
+<span class="cm">    5) getSucc</span>
+<span class="cm">    6) borrowFromPrev</span>
+<span class="cm">    7) borrowFromNext</span>
+<span class="cm">    8) merge</span>
+<span class="cm">    9) findKey</span>
+
+<span class="cm">In class BTree:</span>
+<span class="cm">    1) remove</span>
+
+<span class="cm">The removal of a key from a B-Tree is a fairly complicated process. The program handles</span>
+<span class="cm">all the 6 different cases that might arise while removing a key.</span>
+
+<span class="cm">Testing: The code has been tested using the B-Tree provided in the CLRS book( included</span>
+<span class="cm">in the main function ) along with other cases.</span>
+
+<span class="cm">Reference: CLRS3 - Chapter 18 - (499-502)</span>
+<span class="cm">It is advised to read the material in CLRS before taking a look at the code. */</span>
+
+<span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="c1">// A BTree node</span>
+<span class="k">class</span> <span class="nc">BTreeNode</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">keys</span><span class="p">;</span> <span class="c1">// An array of keys</span>
+    <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>   <span class="c1">// Minimum degree (defines the range for number of keys)</span>
+    <span class="n">BTreeNode</span> <span class="o">**</span><span class="n">C</span><span class="p">;</span> <span class="c1">// An array of child pointers</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">// Current number of keys</span>
+    <span class="kt">bool</span> <span class="n">leaf</span><span class="p">;</span> <span class="c1">// Is true when node is leaf. Otherwise false</span>
+
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="n">BTreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">_t</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">_leaf</span><span class="p">);</span> <span class="c1">// Constructor</span>
+
+    <span class="c1">// A function to traverse all nodes in a subtree rooted with this node</span>
+    <span class="kt">void</span> <span class="nf">traverse</span><span class="p">();</span>
+
+    <span class="c1">// A function to search a key in subtree rooted with this node.</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="nf">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span> <span class="c1">// returns NULL if k is not present.</span>
+
+    <span class="c1">// A function that returns the index of the first key that is greater</span>
+    <span class="c1">// or equal to k</span>
+    <span class="kt">int</span> <span class="nf">findKey</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// A utility function to insert a new key in the subtree rooted with</span>
+    <span class="c1">// this node. The assumption is, the node must be non-full when this</span>
+    <span class="c1">// function is called</span>
+    <span class="kt">void</span> <span class="nf">insertNonFull</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// A utility function to split the child y of this node. i is index</span>
+    <span class="c1">// of y in child array C[]. The Child y must be full when this</span>
+    <span class="c1">// function is called</span>
+    <span class="kt">void</span> <span class="nf">splitChild</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">y</span><span class="p">);</span>
+
+    <span class="c1">// A wrapper function to remove the key k in subtree rooted with</span>
+    <span class="c1">// this node.</span>
+    <span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// A function to remove the key present in idx-th position in</span>
+    <span class="c1">// this node which is a leaf</span>
+    <span class="kt">void</span> <span class="nf">removeFromLeaf</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to remove the key present in idx-th position in</span>
+    <span class="c1">// this node which is a non-leaf node</span>
+    <span class="kt">void</span> <span class="nf">removeFromNonLeaf</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to get the predecessor of the key- where the key</span>
+    <span class="c1">// is present in the idx-th position in the node</span>
+    <span class="kt">int</span> <span class="nf">getPred</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to get the successor of the key- where the key</span>
+    <span class="c1">// is present in the idx-th position in the node</span>
+    <span class="kt">int</span> <span class="nf">getSucc</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to fill up the child node present in the idx-th</span>
+    <span class="c1">// position in the C[] array if that child has less than t-1 keys</span>
+    <span class="kt">void</span> <span class="nf">fill</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to borrow a key from the C[idx-1]-th node and place</span>
+    <span class="c1">// it in C[idx]th node</span>
+    <span class="kt">void</span> <span class="nf">borrowFromPrev</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to borrow a key from the C[idx+1]-th node and place it</span>
+    <span class="c1">// in C[idx]th node</span>
+    <span class="kt">void</span> <span class="nf">borrowFromNext</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// A function to merge idx-th child of the node with (idx+1)th child of</span>
+    <span class="c1">// the node</span>
+    <span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// Make BTree friend of this so that we can access private members of</span>
+    <span class="c1">// this class in BTree functions</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">BTree</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">BTree</span>
+<span class="p">{</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span> <span class="c1">// Pointer to root node</span>
+    <span class="kt">int</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// Minimum degree</span>
+<span class="k">public</span><span class="o">:</span>
+
+    <span class="c1">// Constructor (Initializes tree as empty)</span>
+    <span class="n">BTree</span><span class="p">(</span><span class="kt">int</span> <span class="n">_t</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">_t</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">traverse</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// function to search a key in this tree</span>
+    <span class="n">BTreeNode</span><span class="o">*</span> <span class="n">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span><span class="o">?</span> <span class="nb">NULL</span> <span class="o">:</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">search</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The main function that inserts a new key in this B-Tree</span>
+    <span class="kt">void</span> <span class="n">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// The main function that removes a new key in thie B-Tree</span>
+    <span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+
+<span class="p">};</span>
+
+<span class="n">BTreeNode</span><span class="o">::</span><span class="n">BTreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">t1</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">leaf1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Copy the given minimum degree and leaf property</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t1</span><span class="p">;</span>
+    <span class="n">leaf</span> <span class="o">=</span> <span class="n">leaf1</span><span class="p">;</span>
+
+    <span class="c1">// Allocate memory for maximum number of possible keys</span>
+    <span class="c1">// and child pointers</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="mi">-1</span><span class="p">];</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BTreeNode</span> <span class="o">*</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">];</span>
+
+    <span class="c1">// Initialize the number of keys as 0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A utility function that returns the index of the first key that is</span>
+<span class="c1">// greater than or equal to k</span>
+<span class="kt">int</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">findKey</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">idx</span><span class="o">&lt;</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span>
+        <span class="o">++</span><span class="n">idx</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">idx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to remove the key k from the sub-tree rooted with this node</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">findKey</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// The key to be removed is present in this node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// If the node is a leaf node - removeFromLeaf is called</span>
+        <span class="c1">// Otherwise, removeFromNonLeaf function is called</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span><span class="p">)</span>
+            <span class="n">removeFromLeaf</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="nf">removeFromNonLeaf</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+
+        <span class="c1">// If this node is a leaf node, then the key is not present in tree</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The key &quot;</span><span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="o">&lt;&lt;</span><span class="s">&quot; is does not exist in the tree</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// The key to be removed is present in the sub-tree rooted with this node</span>
+        <span class="c1">// The flag indicates whether the key is present in the sub-tree rooted</span>
+        <span class="c1">// with the last child of this node</span>
+        <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">idx</span><span class="o">==</span><span class="n">n</span><span class="p">)</span><span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span> <span class="p">);</span>
+
+        <span class="c1">// If the child where the key is supposed to exist has less that t keys,</span>
+        <span class="c1">// we fill that child</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">)</span>
+            <span class="n">fill</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+
+        <span class="c1">// If the last child has been merged, it must have merged with the previous</span>
+        <span class="c1">// child and so we recurse on the (idx-1)th child. Else, we recurse on the</span>
+        <span class="c1">// (idx)th child which now has atleast t keys</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span> <span class="o">&amp;&amp;</span> <span class="n">idx</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="mi">-1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to remove the idx-th key from this node - which is a leaf node</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">removeFromLeaf</span> <span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="c1">// Move all the keys after the idx-th pos one place backward</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// Reduce the count of keys</span>
+    <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to remove the idx-th key from this node - which is a non-leaf node</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">removeFromNonLeaf</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+
+    <span class="c1">// If the child that precedes k (C[idx]) has atleast t keys,</span>
+    <span class="c1">// find the predecessor &#39;pred&#39; of k in the subtree rooted at</span>
+    <span class="c1">// C[idx]. Replace k by pred. Recursively delete pred</span>
+    <span class="c1">// in C[idx]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">getPred</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">;</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">pred</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If the child C[idx] has less that t keys, examine C[idx+1].</span>
+    <span class="c1">// If C[idx+1] has atleast t keys, find the successor &#39;succ&#39; of k in</span>
+    <span class="c1">// the subtree rooted at C[idx+1]</span>
+    <span class="c1">// Replace k by succ</span>
+    <span class="c1">// Recursively delete succ in C[idx+1]</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">succ</span> <span class="o">=</span> <span class="n">getSucc</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">succ</span><span class="p">;</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">succ</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If both C[idx] and C[idx+1] has less that t keys,merge k and all of C[idx+1]</span>
+    <span class="c1">// into C[idx]</span>
+    <span class="c1">// Now C[idx] contains 2t-1 keys</span>
+    <span class="c1">// Free C[idx+1] and recursively delete k from C[idx]</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to get predecessor of keys[idx]</span>
+<span class="kt">int</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">getPred</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Keep moving to the right most node until we reach a leaf</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">cur</span><span class="o">=</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">];</span>
+
+    <span class="c1">// Return the last key of the leaf</span>
+    <span class="k">return</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">getSucc</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="c1">// Keep moving the left most node starting from C[idx+1] until we reach a leaf</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">cur</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="c1">// Return the first key of the leaf</span>
+    <span class="k">return</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to fill child C[idx] which has less than t-1 keys</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">fill</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="c1">// If the previous child(C[idx-1]) has more than t-1 keys, borrow a key</span>
+    <span class="c1">// from that child</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">idx</span><span class="o">!=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="mi">-1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span><span class="o">&gt;=</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">borrowFromPrev</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// If the next child(C[idx+1]) has more than t-1 keys, borrow a key</span>
+    <span class="c1">// from that child</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">idx</span><span class="o">!=</span><span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span><span class="o">&gt;=</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">borrowFromNext</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+
+    <span class="c1">// Merge C[idx] with its sibling</span>
+    <span class="c1">// If C[idx] is the last child, merge it with with its previous sibling</span>
+    <span class="c1">// Otherwise merge it with its next sibling</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">idx</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">merge</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="nf">merge</span><span class="p">(</span><span class="n">idx</span><span class="mi">-1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to borrow a key from C[idx-1] and insert it</span>
+<span class="c1">// into C[idx]</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">borrowFromPrev</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">child</span><span class="o">=</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">sibling</span><span class="o">=</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="mi">-1</span><span class="p">];</span>
+
+    <span class="c1">// The last key from C[idx-1] goes up to the parent and key[idx-1]</span>
+    <span class="c1">// from parent is inserted as the first key in C[idx]. Thus, the loses</span>
+    <span class="c1">// sibling one key and child gains one key</span>
+
+    <span class="c1">// Moving all key in C[idx] one step ahead</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span><span class="mi">-1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// If C[idx] is not a leaf, move all its child pointers one step ahead</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">child</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Setting child&#39;s first key equal to keys[idx-1] from the current node</span>
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="mi">-1</span><span class="p">];</span>
+
+    <span class="c1">// Moving sibling&#39;s last child as C[idx]&#39;s first child</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+        <span class="n">child</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">];</span>
+
+    <span class="c1">// Moving the key from the sibling to the parent</span>
+    <span class="c1">// This reduces the number of keys in the sibling</span>
+    <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span>
+
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to borrow a key from the C[idx+1] and place</span>
+<span class="c1">// it in C[idx]</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">borrowFromNext</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">child</span><span class="o">=</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">sibling</span><span class="o">=</span><span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+
+    <span class="c1">// keys[idx] is inserted as the last key in C[idx]</span>
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+
+    <span class="c1">// Sibling&#39;s first child is inserted as the last child</span>
+    <span class="c1">// into C[idx]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">))</span>
+        <span class="n">child</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="c1">//The first key from sibling is inserted into keys[idx]</span>
+    <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="c1">// Moving all keys in sibling one step behind</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// Moving the child pointers one step behind</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Increasing and decreasing the key count of C[idx] and C[idx+1]</span>
+    <span class="c1">// respectively</span>
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// A function to merge C[idx] with C[idx+1]</span>
+<span class="c1">// C[idx+1] is freed after merging</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">merge</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">child</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">sibling</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+
+    <span class="c1">// Pulling a key from the current node and inserting it into (t-1)th</span>
+    <span class="c1">// position of C[idx]</span>
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">t</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+
+    <span class="c1">// Copying the keys from C[idx+1] to C[idx] at the end</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">child</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// Copying the child pointers from C[idx+1] to C[idx]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">child</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Moving all keys after idx in the current node one step before -</span>
+    <span class="c1">// to fill the gap created by moving keys[idx] to C[idx]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// Moving the child pointers after (idx+1) in the current node one</span>
+    <span class="c1">// step before</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">idx</span><span class="o">+</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+    <span class="c1">// Updating the key count of child and the current node</span>
+    <span class="n">child</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">+=</span> <span class="n">sibling</span><span class="o">-&gt;</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+
+    <span class="c1">// Freeing the memory occupied by sibling</span>
+    <span class="k">delete</span><span class="p">(</span><span class="n">sibling</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// The main function that inserts a new key in this B-Tree</span>
+<span class="kt">void</span> <span class="n">BTree</span><span class="o">::</span><span class="n">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// If tree is empty</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Allocate memory for root</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BTreeNode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="c1">// Insert key</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Update number of keys in root</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="c1">// If tree is not empty</span>
+    <span class="p">{</span>
+        <span class="c1">// If root is full, then tree grows in height</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="mi">-1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Allocate memory for new root</span>
+            <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BTreeNode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+            <span class="c1">// Make old root as child of new root</span>
+            <span class="n">s</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+
+            <span class="c1">// Split the old root and move 1 key to the new root</span>
+            <span class="n">s</span><span class="o">-&gt;</span><span class="n">splitChild</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">root</span><span class="p">);</span>
+
+            <span class="c1">// New root has two children now. Decide which of the</span>
+            <span class="c1">// two children is going to have new key</span>
+            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span>
+                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">s</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">insertNonFull</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+
+            <span class="c1">// Change root</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="c1">// If root is not full, call insertNonFull for root</span>
+            <span class="n">root</span><span class="o">-&gt;</span><span class="n">insertNonFull</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A utility function to insert a new key in this node</span>
+<span class="c1">// The assumption is, the node must be non-full when this</span>
+<span class="c1">// function is called</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">insertNonFull</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Initialize index as index of rightmost element</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="mi">-1</span><span class="p">;</span>
+
+    <span class="c1">// If this is a leaf node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// The following loop does two things</span>
+        <span class="c1">// a) Finds the location of new key to be inserted</span>
+        <span class="c1">// b) Moves all greater keys to one place ahead</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">k</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Insert the new key at found location</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="c1">// If this node is not leaf</span>
+    <span class="p">{</span>
+        <span class="c1">// Find the child which is going to have the new key</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">k</span><span class="p">)</span>
+            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+
+        <span class="c1">// See if the found child is full</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="mi">-1</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// If the child is full, then split it</span>
+            <span class="n">splitChild</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span>
+
+            <span class="c1">// After split, the middle key of C[i] goes up and</span>
+            <span class="c1">// C[i] is splitted into two. See which of the two</span>
+            <span class="c1">// is going to have the new key</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span>
+                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">insertNonFull</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A utility function to split the child y of this node</span>
+<span class="c1">// Note that y must be full when this function is called</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">splitChild</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Create a new node which is going to store (t-1) keys</span>
+    <span class="c1">// of y</span>
+    <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">z</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BTreeNode</span><span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">);</span>
+    <span class="n">z</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Copy the last (t-1) keys of y to z</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">t</span><span class="mi">-1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">t</span><span class="p">];</span>
+
+    <span class="c1">// Copy the last t children of y to z</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">leaf</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">t</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Reduce the number of keys in y</span>
+    <span class="n">y</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Since this node is going to have a new child,</span>
+    <span class="c1">// create space of new child</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+    <span class="c1">// Link the new child to this node</span>
+    <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+
+    <span class="c1">// A key of y will move to this node. Find location of</span>
+    <span class="c1">// new key and move all greater keys one space ahead</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="mi">-1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+        <span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+
+    <span class="c1">// Copy the middle key of y to this node</span>
+    <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">keys</span><span class="p">[</span><span class="n">t</span><span class="mi">-1</span><span class="p">];</span>
+
+    <span class="c1">// Increment count of keys in this node</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Function to traverse all nodes in a subtree rooted with this node</span>
+<span class="kt">void</span> <span class="n">BTreeNode</span><span class="o">::</span><span class="n">traverse</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// There are n keys and n+1 children, travers through n keys</span>
+    <span class="c1">// and first n children</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If this is not leaf, then before printing key[i],</span>
+        <span class="c1">// traverse the subtree rooted with child C[i].</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">traverse</span><span class="p">();</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Print the subtree rooted with last child</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">traverse</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Function to search key k in subtree rooted with this node</span>
+<span class="n">BTreeNode</span> <span class="o">*</span><span class="n">BTreeNode</span><span class="o">::</span><span class="n">search</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Find the first key greater than or equal to k</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="c1">// If the found key is equal to k, return this node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+
+    <span class="c1">// If key is not found here and this is a leaf node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">leaf</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+    <span class="c1">// Go to the appropriate child</span>
+    <span class="k">return</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">search</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">BTree</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The tree is empty</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Call the remove function for root</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+
+    <span class="c1">// If the root node has 0 keys, make its first child as the new root</span>
+    <span class="c1">// if it has a child, otherwise set root as NULL</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">BTreeNode</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">leaf</span><span class="p">)</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+        <span class="c1">// Free the old root</span>
+        <span class="k">delete</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Driver program to test above functions</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">BTree</span> <span class="nf">t</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// A B-Tree with minium degree 3</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">26</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree constructed is</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 6</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 13</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 7</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 4</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Traversal of tree after removing 16</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">traverse</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Traversal of tree constructed is
+ 1 2 3 4 5 6 7 10 11 12 13 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 6
+ 1 2 3 4 5 7 10 11 12 13 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 13
+ 1 2 3 4 5 7 10 11 12 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 7
+ 1 2 3 4 5 10 11 12 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 4
+ 1 2 3 5 10 11 12 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 2
+ 1 3 5 10 11 12 14 15 16 17 18 19 20 21 22 24 25 26
+Traversal of tree after removing 16
+ 1 3 5 10 11 12 14 15 17 18 19 20 21 22 24 25 26
+</code></pre></div>
+<hr />
+<p><a href="https://www.geeksforgeeks.org/delete-operation-in-b-tree/">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../B-Tree.%202.%20Insert%20Operation/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              B Tree. 2. Insert Operation
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../docker/Keycloak%20Docker/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Keycloak Docker
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/serhii-petriuk/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
