@@ -14,7 +14,7 @@
     
     
       
-        <title>Mongodb Docker - KnowDB</title>
+        <title>Bash Write to File - KnowDB</title>
       
     
     
@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#writing-to-a-file-using-redirection-operators" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mongodb Docker
+              Bash  Write to File
             
           </span>
         </div>
@@ -265,14 +270,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Docker
@@ -290,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Keycloak%20Docker/" class="md-nav__link">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
         Keycloak Docker
       </a>
     </li>
@@ -302,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
         Local PostgreSQL Docker Dev
       </a>
     </li>
@@ -312,18 +315,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
         Mongodb Docker
       </a>
-      
     </li>
   
 
@@ -333,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
         PgAdmin 4 docker
       </a>
     </li>
@@ -646,12 +642,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       <label class="md-nav__link" for="__nav_7">
         Linux
@@ -669,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+      <a href="../Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
         Add Nemo context menu action
       </a>
     </li>
@@ -681,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+      <a href="../Bash%20read%20Command/" class="md-nav__link">
         Bash read Command
       </a>
     </li>
@@ -693,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+      <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
         Bash скрипты начало
       </a>
     </li>
@@ -703,11 +701,59 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Bash  Write to File
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Bash  Write to File
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-a-file-using-redirection-operators" class="md-nav__link">
+    Writing to a File using Redirection Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-a-file-using-the-tee-command" class="md-nav__link">
+    Writing to a File using the tee Command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -717,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+      <a href="../Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
         Bind Mouse Buttons To Keyboard Keys Or Commands
       </a>
     </li>
@@ -729,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+      <a href="../Cinnamon%20theme%20switch%20script/" class="md-nav__link">
         Cinnamon theme switch script
       </a>
     </li>
@@ -741,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+      <a href="../Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
         Fix Large Black Borders Around Windows GTK 3.16
       </a>
     </li>
@@ -753,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+      <a href="../How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
         How to add keyboard shortcuts to nemo
       </a>
     </li>
@@ -765,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+      <a href="../Joplin%20Terminal/" class="md-nav__link">
         Joplin Terminal
       </a>
     </li>
@@ -777,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Mosquitto/" class="md-nav__link">
+      <a href="../Mosquitto/" class="md-nav__link">
         Mosquitto
       </a>
     </li>
@@ -789,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+      <a href="../PDF%20create%20from%20images/" class="md-nav__link">
         PDF create from images
       </a>
     </li>
@@ -801,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+      <a href="../PDF%20file%20Compress/" class="md-nav__link">
         PDF file Compress
       </a>
     </li>
@@ -813,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+      <a href="../Remove%20recursive%20by%20extension/" class="md-nav__link">
         Remove recursive by extension
       </a>
     </li>
@@ -825,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+      <a href="../Repack%20AppImage/" class="md-nav__link">
         Repack AppImage
       </a>
     </li>
@@ -837,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Setting%20up%20KeePassXC%20with%20synchronization/" class="md-nav__link">
+      <a href="../Setting%20up%20KeePassXC%20with%20synchronization/" class="md-nav__link">
         Setting up KeePassXC with synchronization
       </a>
     </li>
@@ -849,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+      <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
         Автоматическое монтирование диска
       </a>
     </li>
@@ -953,19 +999,121 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-a-file-using-redirection-operators" class="md-nav__link">
+    Writing to a File using Redirection Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-a-file-using-the-tee-command" class="md-nav__link">
+    Writing to a File using the tee Command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Mongodb Docker</h1>
+                  <h1>Bash  Write to File</h1>
                 
-                <p>Mongodb Docker</p>
-<div class="highlight"><pre><span></span><code>docker run -p <span class="m">27018</span>:27017 --name mongo -d mongo
+                <p>One of the most common tasks when writing Bash scripts or working on the Linux command line is reading and writing files.</p>
+<p>This article explains how to write text to a file in Bash, using the redirection operators and <code>tee</code> command.</p>
+<h2 id="writing-to-a-file-using-redirection-operators">Writing to a File using Redirection Operators</h2>
+<p>In Bash, the redirection of output allows you to capture the output from a command and write it to a file.</p>
+<p>The general format for redirecting and writing output to a file is as follows:</p>
+<div class="highlight"><pre><span></span><code>output &gt; filename 
+output &gt;&gt; filename 
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it mongo bash
+<ul>
+<li>The <code>&gt;</code> redirection operator writes the output to a given file. If the file exists, it is truncated to zero length. Otherwise, the file is created. Be extra careful when using this operator as you may overwrite an important file.</li>
+<li>The <code>&gt;&gt;</code> redirection operator appends the output to a given file. The file is created if it does not exist.</li>
+</ul>
+<p>You need to have write permissions to the file. Otherwise, you will receive a permission denied error.</p>
+<p>Here is a simple example showing how the redirect the output of the <a href="https://linuxize.com/post/echo-command-in-linux-with-examples/"><code>echo</code></a> command to a file:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> &gt; file.txt
 </code></pre></div>
+<p>To prevent overwriting existing files, enable the “noclobber” option with the <code>set</code> builtin:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">set</span> -o noclobber<span class="sb">``</span><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> &gt; file.txt<span class="sb">`</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>bash: file.txt: cannot overwrite existing file 
+</code></pre></div>
+<p>The <code>&gt;|</code> operator allows you to override the Bash “noclobber” option:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">set</span> -o noclobber<span class="sb">``</span><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> &gt;<span class="p">|</span> file.txt<span class="sb">`</span>
+</code></pre></div>
+<p>The <code>&gt;&gt;</code> operator append the output to the end of the file, rather than overwriting the file:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> &gt;&gt; file.txt
+</code></pre></div>
+<p>Use the <a href="https://linuxize.com/post/bash-printf-command/"><code>printf</code></a> command to create a complex output:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">printf</span> <span class="s2">&quot;Hello, I&#39;m %s.\n&quot;</span> <span class="nv">$USER</span> &gt; file.txt
+</code></pre></div>
+<p>If you want to write multiple lines to a file, use the <a href="https://linuxize.com/post/bash-heredoc/">Here document</a> (Heredoc) redirection.</p>
+<p>For example, you can pass the content to the <a href="https://linuxize.com/post/linux-cat-command/"><code>cat</code></a> command and write it to a file:</p>
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt; EOF &gt; file.txt The current working directory is: $PWD You are logged in as $(whoami) EOF</span> 
+</code></pre></div>
+<p>To append the lines, change <code>&gt;</code> with <code>&gt;&gt;</code> before the file name:</p>
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt; EOF &gt;&gt; file.txt The current working directory is: $PWD You are logged in as $(whoami) EOF</span> 
+</code></pre></div>
+<p>You can write the output of any command to a file:</p>
+<div class="highlight"><pre><span></span><code>date +<span class="s2">&quot;Year: %Y, Month: %m, Day: %d&quot;</span> &gt; file.txt
+</code></pre></div>
+<p>The output of the <a href="https://linuxize.com/post/linux-date-command/"><code>date</code></a> command will be written to the file.</p>
+<h2 id="writing-to-a-file-using-the-tee-command">Writing to a File using the <code>tee</code> Command</h2>
+<p>The <a href="https://linuxize.com/post/linux-tee-command/"><code>tee</code></a> command reads from the standard input and writes to both standard output and one or more files simultaneously.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> <span class="p">|</span> tee file.txt
+</code></pre></div>
+<p>The <code>tee</code> command’s default behavior is to overwrite the specified file, same as the <code>&gt;</code> operator. To append the output to the file, invoke the command with the <code>-a</code> (<code>--append</code>) option:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> <span class="p">|</span> tee -a file.txt
+</code></pre></div>
+<p>If you don’t want the <code>tee</code> to write to the standard output, you can redirect it to <code>/dev/null</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> <span class="p">|</span> tee file.txt &gt;/dev/null
+</code></pre></div>
+<p>To write the text to more than one file, specify the files as arguments to the <code>tee</code> command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> <span class="p">|</span> tee file_1.txt file_2.txt file_3.txt
+</code></pre></div>
+<p>Another advantage of the <code>tee</code> command is that you can use it in conjunction with <code>sudo</code> and write to files owned by other users. To append text to a file that you don’t have write permissions to, prepend <a href="https://linuxize.com/post/sudo-command-in-linux/"><code>sudo</code></a> before <code>tee</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;this is a line&quot;</span> <span class="p">|</span> sudo tee file.txt
+</code></pre></div>
+<p>The <code>echo</code> command output is passed as input to the <code>tee</code>, which elevates the sudo permissions and writes the text to the file.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In Linux, to write text to a file, use the <code>&gt;</code> and <code>&gt;&gt;</code> redirection operators or the <code>tee</code> command.</p>
+<hr />
+<p><a href="https://linuxize.com/post/bash-write-to-file/">Source</a></p>
+                
+                  
                 
               
               
@@ -984,7 +1132,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -993,19 +1141,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Local PostgreSQL Docker Dev
+              Bash скрипты начало
             </div>
           </div>
         </a>
       
       
-        <a href="../PgAdmin%204%20docker/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              PgAdmin 4 docker
+              Bind Mouse Buttons To Keyboard Keys Or Commands
             </div>
           </div>
           <div class="md-footer__button md-icon">

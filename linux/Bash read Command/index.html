@@ -14,7 +14,7 @@
     
     
       
-        <title>Mongodb Docker - KnowDB</title>
+        <title>Bash read Command - KnowDB</title>
       
     
     
@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bash-read-built-in" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mongodb Docker
+              Bash read Command
             
           </span>
         </div>
@@ -265,14 +270,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Docker
@@ -290,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Keycloak%20Docker/" class="md-nav__link">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
         Keycloak Docker
       </a>
     </li>
@@ -302,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
+      <a href="../../docker/Local%20PostgreSQL%20Docker%20Dev/" class="md-nav__link">
         Local PostgreSQL Docker Dev
       </a>
     </li>
@@ -312,18 +315,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
         Mongodb Docker
       </a>
-      
     </li>
   
 
@@ -333,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
         PgAdmin 4 docker
       </a>
     </li>
@@ -646,12 +642,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       <label class="md-nav__link" for="__nav_7">
         Linux
@@ -669,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
+      <a href="../Add%20Nemo%20context%20menu%20action/" class="md-nav__link">
         Add Nemo context menu action
       </a>
     </li>
@@ -679,11 +677,73 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Bash read Command
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Bash read Command
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bash-read-built-in" class="md-nav__link">
+    Bash read Built-in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-delimiter" class="md-nav__link">
+    Changing the Delimiter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-string" class="md-nav__link">
+    Prompt String
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-the-words-to-array" class="md-nav__link">
+    Assign the Words to Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -693,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+      <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
         Bash скрипты начало
       </a>
     </li>
@@ -705,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+      <a href="../Bash_%20Write%20to%20File/" class="md-nav__link">
         Bash  Write to File
       </a>
     </li>
@@ -717,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+      <a href="../Bind%20Mouse%20Buttons%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
         Bind Mouse Buttons To Keyboard Keys Or Commands
       </a>
     </li>
@@ -729,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+      <a href="../Cinnamon%20theme%20switch%20script/" class="md-nav__link">
         Cinnamon theme switch script
       </a>
     </li>
@@ -741,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
+      <a href="../Fix%20Large%20Black%20Borders%20Around%20Windows%20GTK%203.16/" class="md-nav__link">
         Fix Large Black Borders Around Windows GTK 3.16
       </a>
     </li>
@@ -753,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
+      <a href="../How%20to%20add%20keyboard%20shortcuts%20to%20nemo/" class="md-nav__link">
         How to add keyboard shortcuts to nemo
       </a>
     </li>
@@ -765,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+      <a href="../Joplin%20Terminal/" class="md-nav__link">
         Joplin Terminal
       </a>
     </li>
@@ -777,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Mosquitto/" class="md-nav__link">
+      <a href="../Mosquitto/" class="md-nav__link">
         Mosquitto
       </a>
     </li>
@@ -789,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+      <a href="../PDF%20create%20from%20images/" class="md-nav__link">
         PDF create from images
       </a>
     </li>
@@ -801,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+      <a href="../PDF%20file%20Compress/" class="md-nav__link">
         PDF file Compress
       </a>
     </li>
@@ -813,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Remove%20recursive%20by%20extension/" class="md-nav__link">
+      <a href="../Remove%20recursive%20by%20extension/" class="md-nav__link">
         Remove recursive by extension
       </a>
     </li>
@@ -825,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Repack%20AppImage/" class="md-nav__link">
+      <a href="../Repack%20AppImage/" class="md-nav__link">
         Repack AppImage
       </a>
     </li>
@@ -837,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Setting%20up%20KeePassXC%20with%20synchronization/" class="md-nav__link">
+      <a href="../Setting%20up%20KeePassXC%20with%20synchronization/" class="md-nav__link">
         Setting up KeePassXC with synchronization
       </a>
     </li>
@@ -849,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+      <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
         Автоматическое монтирование диска
       </a>
     </li>
@@ -953,19 +1013,190 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bash-read-built-in" class="md-nav__link">
+    Bash read Built-in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-delimiter" class="md-nav__link">
+    Changing the Delimiter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-string" class="md-nav__link">
+    Prompt String
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-the-words-to-array" class="md-nav__link">
+    Assign the Words to Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Mongodb Docker</h1>
+                  <h1>Bash read Command</h1>
                 
-                <p>Mongodb Docker</p>
-<div class="highlight"><pre><span></span><code>docker run -p <span class="m">27018</span>:27017 --name mongo -d mongo
+                <p>Bash read Command</p>
+<p>Bash ships with a number of built-in commands that you can use on the command line or in your shell scripts.</p>
+<p>In this article, we’ll explore the built-in <code>read</code> command.</p>
+<h2 id="bash-read-built-in">Bash <code>read</code> Built-in</h2>
+<p><code>read</code> is a bash built-in command that reads a line from the standard input (or from the file descriptor) and split the line into words. The first word is assigned to the first name, the second one to the second name, and so on.</p>
+<p>The general syntax of the <code>read</code> built-in takes the following form:</p>
+<p>To illustrate how the command works, open your terminal, type <code>read var1 var2</code>, and hit “Enter”. The command will wait for the user to enter the input. Type two words and press “Enter”.</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">read</span> var1 var2<span class="sb">``</span>Hello, World!<span class="sb">`</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it mongo bash
+<p>The words are assigned to the names that are passed to the <code>read</code> command as arguments. Use <a href="https://linuxize.com/post/echo-command-in-linux-with-examples/"><code>echo</code></a> or <a href="https://linuxize.com/post/bash-printf-command/"><code>printf</code></a> to verify it:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$var1</span><span class="sb">``</span><span class="nb">echo</span> <span class="nv">$var2</span><span class="sb">`</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>Hello,
+World! 
+</code></pre></div>
+<p>Instead of typing on the terminal, you can pass the standard input to <code>read</code> using other methods such as piping, here-string, or <a href="https://linuxize.com/post/bash-heredoc/">heredoc</a> :</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Hello, World!&quot;</span> <span class="p">|</span> <span class="o">(</span><span class="nb">read</span> var1 var2<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;</span><span class="nv">$var1</span><span class="s2"> \n</span><span class="nv">$var2</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<p><code>read</code> and <code>echo</code> are enclosed in parentheses and executed in the same subshell.</p>
+<div class="highlight"><pre><span></span><code>Hello,
+World! 
+</code></pre></div>
+<p>Here is an example using a here string and <code>printf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">read</span> -r var1 var2 <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="sb">``</span><span class="nb">printf</span> <span class="s2">&quot;var1: %s \nvar2: %s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$var1</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$var2</span><span class="s2">&quot;</span><span class="sb">`</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Var1: Hello, 
+Var2: World! 
+</code></pre></div>
+<p>When no argument is provided to the <code>read</code> command, the entire line is assigned to the <code>REPLY</code> variable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Hello, world!&quot;</span> <span class="p">|</span> <span class="o">(</span>read<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Hello, World! 
+</code></pre></div>
+<p>If the number of arguments supplied to <code>read</code> is bigger than the number of words read from the input, the remaining words are assigned to the last name:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Linux is awesome.&quot;</span> <span class="p">|</span> <span class="o">(</span><span class="nb">read</span> var1 var2<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;Var1: </span><span class="nv">$var1</span><span class="s2"> \nVar2: </span><span class="nv">$var2</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Var1: Linux 
+Var2: is awesome. 
+</code></pre></div>
+<p>Otherwise, if the number of arguments is less than the number of names, an empty value is assigned to the remaining names:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Hello, World!&quot;</span> <span class="p">|</span> <span class="o">(</span><span class="nb">read</span> var1 var2 var3<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;Var1: </span><span class="nv">$var1</span><span class="s2"> \nVar2: </span><span class="nv">$var2</span><span class="s2"> \nVar3: </span><span class="nv">$var3</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Var1: Hello, 
+Var2: World! 
+Var3: 
+</code></pre></div>
+<p>By default, <code>read</code> interprets the backslash as an escape character, which sometimes may cause unexpected behavior. To disable backslash escaping, invoke the command with the <code>-r</code> option.</p>
+<p>Below is an example showing how <code>read</code> works when invoked with and without the <code>-r</code> option:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">read</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Hello, \tWorld!&quot;</span><span class="sb">``</span><span class="nb">printf</span> %s <span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span><span class="sb">`</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Hello, tWorld! 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">read</span> -r <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Hello, \tWorld!&quot;</span><span class="sb">``</span><span class="nb">printf</span> %s <span class="s2">&quot;</span><span class="nv">$REPLY</span><span class="s2">&quot;</span><span class="sb">`</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Hello, <span class="se">\t</span>World! 
+</code></pre></div>
+<p>Generally, you should always use <code>read</code> with the <code>-r</code> option.</p>
+<h2 id="changing-the-delimiter">Changing the Delimiter</h2>
+<p>The default behavior of <code>read</code> is to split the line into words using one or more spaces, tabs, and newline as delimiters. To use another character as a delimiter, assign it to the <code>IFS</code> variable (Internal Field Separator).</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Linux:is:awesome.&quot;</span> <span class="p">|</span> <span class="o">(</span><span class="nv">IFS</span><span class="o">=</span><span class="s2">&quot;:&quot;</span> <span class="nb">read</span> -r var1 var2 var3<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;</span><span class="nv">$var1</span><span class="s2"> \n</span><span class="nv">$var2</span><span class="s2"> \n</span><span class="nv">$var3</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Linux 
+is 
+awesome. 
+</code></pre></div>
+<p>When <code>IFS</code> is set to a character other than space or tab, the words are separated by exactly one character:</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;Linux::is:awesome.&quot;</span> <span class="p">|</span> <span class="se">\`</span> <span class="sb">`</span><span class="o">(</span><span class="nv">IFS</span><span class="o">=</span><span class="s2">&quot;:&quot;</span> <span class="nb">read</span> -r var1 var2 var3 var4<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;Var1: </span><span class="nv">$var1</span><span class="s2"> \nVar2: </span><span class="nv">$var2</span><span class="s2"> \nVar3: </span><span class="nv">$var3</span><span class="s2"> \nVar4: </span><span class="nv">$var4</span><span class="s2">&quot;</span><span class="o">)</span><span class="sb">`</span>
+</code></pre></div>
+<p>The line is separated in four words. The second word is an empty value representing the segment between the delimiters. It is created because we used two delimiter characters next to each other(<code>::</code>).</p>
+<div class="highlight"><pre><span></span><code>Var1: Linux 
+Var2:  
+Var3: is 
+Var4: awesome. 
+</code></pre></div>
+<p>You can use more than one delimiter to split the line. When specifying multiple delimiters, assign the characters to the <code>IFS</code> variable without a space between them.</p>
+<p>Here is an example using <code>_</code> an <code>-</code> as delimiters:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;Linux_is-awesome.&#39;</span> <span class="p">|</span> <span class="o">(</span><span class="nv">IFS</span><span class="o">=</span><span class="s2">&quot;-_&quot;</span> <span class="nb">read</span> -r var1 var2 var3<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&quot;</span><span class="nv">$var1</span><span class="s2"> \n</span><span class="nv">$var2</span><span class="s2"> \n</span><span class="nv">$var3</span><span class="s2">&quot;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Linux 
+is 
+awesome. 
+</code></pre></div>
+<h2 id="prompt-string">Prompt String</h2>
+<p>When writing interactive bash scripts, you can use the <code>read</code> command to get the user input.</p>
+<p>To specify a prompt string, use the <code>-p</code> option. The prompt is printed before the <code>read</code> is executed and doesn’t include a newline.</p>
+<p>Here is a simple example:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">read</span> -r -p <span class="s2">&quot;Are you sure?&quot;</span> 
+</code></pre></div>
+<p>Generally, you would use the <code>read</code> command inside a <a href="https://linuxize.com/post/bash-while-loop/"><code>while</code></a> loop to force the user to give one of the expected answers.</p>
+<p>The code below will prompt the user for <a href="https://linuxize.com/post/reboot-linux-using-command-line/">system reboot</a> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
+    <span class="nb">read</span> -r -p <span class="s2">&quot;Do you wish to reboot the system? (Y/N): &quot;</span> answer
+    <span class="k">case</span> <span class="nv">$answer</span> <span class="k">in</span>
+        <span class="o">[</span>Yy<span class="o">]</span>* <span class="o">)</span> reboot<span class="p">;</span> break<span class="p">;;</span>
+        <span class="o">[</span>Nn<span class="o">]</span>* <span class="o">)</span> exit<span class="p">;;</span>
+        * <span class="o">)</span> <span class="nb">echo</span> <span class="s2">&quot;Please answer Y or N.&quot;</span><span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="k">done</span> 
+</code></pre></div>
+<p>If the shell script asks users to enter sensitive information, like password, use the <code>-s</code> option that tells <code>read</code> not to print the input on the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">read</span> -r -s -p <span class="s2">&quot;Enter your password: &quot;</span> 
+</code></pre></div>
+<h2 id="assign-the-words-to-array">Assign the Words to Array</h2>
+<p>To assign the words to an <a href="https://linuxize.com/post/bash-arrays/">array</a> instead of variable names, invoke the <code>read</code> command with the <code>-a</code> option:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">read</span> -r -a MY_ARR <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Linux is awesome.&quot;</span>
+
+<span class="k">for</span> i <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MY_ARR</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span> 
+  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="k">done</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Linux 
+is 
+awesome. 
+</code></pre></div>
+<p>When both an array and a variable name are given, all words are assigned to the array.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The <code>read</code> command is used to split a line of input into words.</p>
+<hr />
+<p><a href="https://linuxize.com/post/bash-read/">Source</a></p>
                 
               
               
@@ -984,7 +1215,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Local%20PostgreSQL%20Docker%20Dev/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Add%20Nemo%20context%20menu%20action/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -993,19 +1224,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Local PostgreSQL Docker Dev
+              Add Nemo context menu action
             </div>
           </div>
         </a>
       
       
-        <a href="../PgAdmin%204%20docker/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              PgAdmin 4 docker
+              Bash скрипты начало
             </div>
           </div>
           <div class="md-footer__button md-icon">
