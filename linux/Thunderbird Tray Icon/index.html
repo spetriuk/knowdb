@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ubuntu-based" class="md-skip">
+        <a href="#ubuntu-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -874,19 +874,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ubuntu-based" class="md-nav__link">
-    Ubuntu based
+  <a href="#ubuntu-repository" class="md-nav__link">
+    Ubuntu repository
   </a>
   
-    <nav class="md-nav" aria-label="Ubuntu based">
+    <nav class="md-nav" aria-label="Ubuntu repository">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    Repository
+  <a href="#add-the-repository" class="md-nav__link">
+    Add the repository
   </a>
   
-    <nav class="md-nav" aria-label="Repository">
+    <nav class="md-nav" aria-label="Add the repository">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -923,21 +923,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#package" class="md-nav__link">
-    Package
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#my-custom-icon" class="md-nav__link">
-    My custom icon:
+  <a href="#install" class="md-nav__link">
+    Install
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-custom-icon" class="md-nav__link">
+    My custom icon
+  </a>
   
 </li>
       
@@ -1074,19 +1074,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ubuntu-based" class="md-nav__link">
-    Ubuntu based
+  <a href="#ubuntu-repository" class="md-nav__link">
+    Ubuntu repository
   </a>
   
-    <nav class="md-nav" aria-label="Ubuntu based">
+    <nav class="md-nav" aria-label="Ubuntu repository">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    Repository
+  <a href="#add-the-repository" class="md-nav__link">
+    Add the repository
   </a>
   
-    <nav class="md-nav" aria-label="Repository">
+    <nav class="md-nav" aria-label="Add the repository">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1123,21 +1123,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#package" class="md-nav__link">
-    Package
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#my-custom-icon" class="md-nav__link">
-    My custom icon:
+  <a href="#install" class="md-nav__link">
+    Install
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-custom-icon" class="md-nav__link">
+    My custom icon
+  </a>
   
 </li>
       
@@ -1157,7 +1157,7 @@
                   <h1>Thunderbird Tray Icon</h1>
                 
                 <p>Thunderbird Tray Icon</p>
-<p><a href="https://github.com/Ximi1970/systray-x">Systray-x</a> with the Thunderbird app on Linux and is working good.</p>
+<p><a href="https://github.com/Ximi1970/systray-x">Systray-x</a> with the Thunderbird app is working good on Linux.</p>
 <p>SysTray-X is a system tray extension for Thunderbird 68+. The addon uses the WebExtension API's to control an external system dependent system tray application.</p>
 <p>The addon and system tray application can do:</p>
 <ul>
@@ -1168,9 +1168,8 @@
 <li>minimize on startup</li>
 <li>minimize on close</li>
 </ul>
-<h3 id="ubuntu-based">Ubuntu based</h3>
-<h4 id="repository">Repository</h4>
-<p>Installing the repository:</p>
+<h4 id="ubuntu-repository">Ubuntu repository</h4>
+<h5 id="add-the-repository">Add the repository</h5>
 <h6 id="2010">20.10</h6>
 <div class="highlight"><pre><span></span><code>wget -q https://download.opensuse.org/repositories/home:/Ximi1970:/Mozilla:/Add-ons/xUbuntu_20.10/Release.key
 sudo mv -f  Release.key  /etc/apt/trusted.gpg.d/Systray-x.Ximi1970.asc
@@ -1195,13 +1194,13 @@ sudo apt-key add Release.key
 sudo bash -c <span class="s1">&#39;echo &quot;deb http://download.opensuse.org/repositories/home:/Ximi1970:/Mozilla:/Add-ons/xUbuntu_16.04 ./&quot; &gt; /etc/apt/sources.list.d/systray-x.list&#39;</span>
 sudo apt update
 </code></pre></div>
-<h4 id="package">Package</h4>
+<h5 id="install">Install</h5>
 <p>Installing the SysTray-X addon and companion app package:</p>
 <div class="highlight"><pre><span></span><code>sudo apt install systray-x
 </code></pre></div>
 <p>For other distros see <a href="https://github.com/Ximi1970/systray-x#package">https://github.com/Ximi1970/systray-x#package</a></p>
 <hr />
-<h4 id="my-custom-icon">My custom icon:</h4>
+<h4 id="my-custom-icon">My custom icon</h4>
 <p><img alt="thunderbird-panel1.png" src="../../_resources/025484fd4a444338b25107a2d9fefa27.png" /></p>
 <hr />
 <p><a href="https://github.com/Ximi1970/systray-x">Source</a></p>
