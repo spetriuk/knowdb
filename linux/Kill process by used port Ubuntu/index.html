@@ -1094,11 +1094,11 @@
 <div class="highlight"><pre><span></span><code>sudo netstat -lpn <span class="p">|</span>grep :8080
 </code></pre></div></p>
 <p>You will get an output similar to this one
-<div class="highlight"><pre><span></span><code>tcp6       0      0 :::8080                 :::*                    LISTEN      6782/java
+<div class="highlight"><pre><span></span><code>tcp6       0      0 :::8080                 :::*                    LISTEN      21994/java
 </code></pre></div></p>
-<p>I have got the process Id, which is <code>6782</code>, now this is the process that is using port <code>8080</code></p>
+<p>You got the process Id, which is <code>21994</code>, now this is the process that is using port <code>8080</code></p>
 <p>Kill the process</p>
-<div class="highlight"><pre><span></span><code><span class="nb">kill</span> -p <span class="m">6782</span>
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span> <span class="m">21994</span>
 </code></pre></div>
                 
               
