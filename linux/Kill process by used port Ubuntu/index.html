@@ -14,7 +14,7 @@
     
     
       
-        <title>PDF file Compress - KnowDB</title>
+        <title>Kill process by used port Ubuntu - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#using-fuser" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PDF file Compress
+              Kill process by used port Ubuntu
             
           </span>
         </div>
@@ -773,11 +773,52 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kill process by used port Ubuntu
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Kill process by used port Ubuntu
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-fuser" class="md-nav__link">
+    Using fuser
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-kill" class="md-nav__link">
+    Using kill
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -857,52 +898,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          PDF file Compress
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../PDF%20file%20Compress/" class="md-nav__link">
         PDF file Compress
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    Способ 1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    Способ 2
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1056,15 +1056,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    Способ 1
+  <a href="#using-fuser" class="md-nav__link">
+    Using fuser
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    Способ 2
+  <a href="#using-kill" class="md-nav__link">
+    Using kill
   </a>
   
 </li>
@@ -1082,44 +1082,24 @@
               
                 
                 
-                  <h1>PDF file Compress</h1>
+                  <h1>Kill process by used port Ubuntu</h1>
                 
-                <p>PDF file Compress</p>
-<h2 id="1">Способ 1</h2>
-<p>Устанавливаем Ghostscript и pdftk</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript pdftk
+                <p>Kill process by used port Ubuntu</p>
+<h3 id="using-fuser">Using fuser</h3>
+<p>The best way to kill a port in ubuntu terminal is 
+<div class="highlight"><pre><span></span><code>fuser -k <span class="m">8080</span>/tcp
+</code></pre></div></p>
+<h3 id="using-kill">Using kill</h3>
+<p>Find what application/process is using the port:
+<div class="highlight"><pre><span></span><code>sudo netstat -lpn <span class="p">|</span>grep :8080
+</code></pre></div></p>
+<p>You will get an output similar to this one
+<div class="highlight"><pre><span></span><code>tcp6       0      0 :::8080                 :::*                    LISTEN      6782/java
+</code></pre></div></p>
+<p>I have got the process Id, which is <code>6782</code>, now this is the process that is using port <code>8080</code></p>
+<p>Kill the process</p>
+<div class="highlight"><pre><span></span><code><span class="nb">kill</span> -p <span class="m">6782</span>
 </code></pre></div>
-<p>Далее кидаем файлы pdf в какую-то папку,далее создаем и запускаем следующий скрипт:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> file <span class="k">in</span> *.pdf<span class="p">;</span> <span class="k">do</span> 
-  <span class="nv">ps</span><span class="o">=</span><span class="s2">&quot;.ps&quot;</span><span class="p">;</span>
-  pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$ps</span><span class="s2">&quot;</span><span class="p">;</span> 
-<span class="k">done</span>
-<span class="k">for</span> file <span class="k">in</span> *.ps<span class="p">;</span> <span class="k">do</span> 
-  <span class="nv">pdf</span><span class="o">=</span><span class="s2">&quot;.pdf&quot;</span><span class="p">;</span>
-  pdf2ps <span class="nv">$file</span> <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">+</span><span class="nv">$pdf</span><span class="s2">&quot;</span><span class="p">;</span> 
-<span class="k">done</span>
-</code></pre></div>
-<p>В итоге получаем сжатые в несколько раз файлы.</p>
-<h2 id="2">Способ 2</h2>
-<p>Воспользуемся ghostscript. Убедимся, что он установлен:</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install ghostscript
-</code></pre></div>
-<p>А затем сожмем PDF:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> file <span class="k">in</span> *.pdf<span class="p">;</span> <span class="k">do</span>
-  <span class="nv">pdf</span><span class="o">=</span><span class="s2">&quot;.pdf&quot;</span><span class="p">;</span>
-  gs -sDEVICE<span class="o">=</span>pdfwrite -dCompatibilityLevel<span class="o">=</span><span class="m">1</span>.4 -dPDFSETTINGS<span class="o">=</span>/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$file$pdf</span><span class="s2">&quot;</span> <span class="nv">$file</span>
- <span class="k">done</span>
-</code></pre></div>
-<p>Или однй коммандой:</p>
-<div class="highlight"><pre><span></span><code> gs -sDEVICE<span class="o">=</span>pdfwrite -dCompatibilityLevel<span class="o">=</span><span class="m">1</span>.4 -dPDFSETTINGS<span class="o">=</span>/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile<span class="o">=</span>output.pdf input.pdf
-</code></pre></div>
-<p><strong>-dPDFSETTINGS</strong> settings:</p>
-<ul>
-<li><code>/screen</code> selects low-resolution output similar to the Acrobat Distiller «Screen Optimized» setting.</li>
-<li><code>/printer</code> selects output similar to the Acrobat Distiller «Print Optimized» setting.</li>
-<li><code>/prepress</code> selects output similar to Acrobat Distiller «Prepress Optimized» setting.</li>
-<li><code>/default</code> selects output intended to be useful across a wide variety of uses, possibly at the expense of a larger output file.</li>
-</ul>
                 
               
               
@@ -1138,7 +1118,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../PDF%20create%20from%20images/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../KeePassXC%20with%20synchronization/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1147,19 +1127,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              PDF create from images
+              KeePassXC with synchronization
             </div>
           </div>
         </a>
       
       
-        <a href="../Terminal%20set%20wrong%20sudo%20password%20message/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Mosquitto/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Terminal set wrong sudo password message
+              Mosquitto
             </div>
           </div>
           <div class="md-footer__button md-icon">
