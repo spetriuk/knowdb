@@ -688,6 +688,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+        Modularizing a Spring Boot Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
         Spring REST Error Handling Example
       </a>
@@ -906,6 +918,18 @@
     <li class="md-nav__item">
       <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
         GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+        Grep поиск внутри файлов
       </a>
     </li>
   
@@ -1339,18 +1363,18 @@
 <p><strong>Для тех кто совсем не знает что такое Stream Api</strong></p>
 <p>Stream API это новый способ работать со структурами данных в функциональном стиле. Чаще всего с помощью stream в Java 8 работают с коллекциями, но на самом деле этот механизм может использоваться для самых различных данных.</p>
 <p>Stream Api позволяет писать обработку структур данных в стиле SQL, то если раньше задача получить сумму всех нечетных чисел из коллекции решалась следующим кодом:</p>
-<div class="highlight"><pre><span></span><code> Integer sumOddOld = 0; 
-        for(Integer i: collection) {
-            if(i % 2 != 0) {
-                sumOddOld += i;
-            }
-        } 
+<div class="highlight"><pre><span></span><code> <span class="n">Integer</span> <span class="n">sumOddOld</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">sumOddOld</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> 
 </code></pre></div>
 <p>То с помощью Stream Api можно решить такую задачу в функциональном стиле:</p>
-<div class="highlight"><pre><span></span><code> Integer sumOdd = collection.stream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+<div class="highlight"><pre><span></span><code> <span class="n">Integer</span> <span class="n">sumOdd</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
 </code></pre></div>
 <p>Более того, Stream Api позволяет решать задачу параллельно лишь изменив stream() на parallelStream() без всякого лишнего кода, т.е.</p>
-<div class="highlight"><pre><span></span><code> Integer sumOdd = collection.parallelStream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
+<div class="highlight"><pre><span></span><code> <span class="n">Integer</span> <span class="n">sumOdd</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">parallelStream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
 </code></pre></div>
 <p>Уже делает код параллельным, без всяких семафоров, синхронизаций, рисков взаимных блокировок и т.п.</p>
 <p><strong>Общее оглавление 'Шпаргалок'</strong></p>
@@ -1418,64 +1442,64 @@
 <p>Выражение n -&gt; n + 1, это просто аналог выражения Integer func(Integer n) { return n+1;}, а выражение () -&gt; «a1» аналог выражения String func() { return «a1»;} обернутых в анонимный класс.</p>
 <p><strong>Более подробные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/BuildTests.java">github</a>'e</p>
-<div class="highlight"><pre><span></span><code> System.out.println(&quot;Test buildStream start&quot;);
+<div class="highlight"><pre><span></span><code> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test buildStream start&quot;</span><span class="p">);</span>
 
 
-        Stream&lt;String&gt; streamFromValues = Stream.of(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;);
-        System.out.println(&quot;streamFromValues = &quot; + streamFromValues.collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromValues</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromValues = &quot;</span> <span class="o">+</span> <span class="n">streamFromValues</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        String[] array = {&quot;a1&quot;,&quot;a2&quot;,&quot;a3&quot;};
-        Stream&lt;String&gt; streamFromArrays = Arrays.stream(array);
-        System.out.println(&quot;streamFromArrays = &quot; + streamFromArrays.collect(Collectors.toList())); 
+        <span class="n">String</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;a1&quot;</span><span class="p">,</span><span class="s">&quot;a2&quot;</span><span class="p">,</span><span class="s">&quot;a3&quot;</span><span class="p">};</span>
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromArrays</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromArrays = &quot;</span> <span class="o">+</span> <span class="n">streamFromArrays</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
-        Stream&lt;String&gt; streamFromArrays1 = Stream.of(array);
-        System.out.println(&quot;streamFromArrays1 = &quot; + streamFromArrays1.collect(Collectors.toList())); 
-
-
-        File file = new File(&quot;1.tmp&quot;);
-        file.deleteOnExit();
-        PrintWriter out = new PrintWriter(file);
-        out.println(&quot;a1&quot;);
-        out.println(&quot;a2&quot;);
-        out.println(&quot;a3&quot;);
-        out.close();
-
-        Stream&lt;String&gt; streamFromFiles = Files.lines(Paths.get(file.getAbsolutePath()));
-        System.out.println(&quot;streamFromFiles = &quot; + streamFromFiles.collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromArrays1</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromArrays1 = &quot;</span> <span class="o">+</span> <span class="n">streamFromArrays1</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;);
-        Stream&lt;String&gt; streamFromCollection = collection.stream();
-        System.out.println(&quot;streamFromCollection = &quot; + streamFromCollection.collect(Collectors.toList())); 
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;1.tmp&quot;</span><span class="p">);</span>
+        <span class="n">file</span><span class="p">.</span><span class="na">deleteOnExit</span><span class="p">();</span>
+        <span class="n">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a2&quot;</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromFiles</span> <span class="o">=</span> <span class="n">Files</span><span class="p">.</span><span class="na">lines</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">()));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromFiles = &quot;</span> <span class="o">+</span> <span class="n">streamFromFiles</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        IntStream streamFromString = &quot;123&quot;.chars();
-        System.out.print(&quot;streamFromString = &quot;);
-        streamFromString.forEach((e)-&gt;System.out.print(e + &quot; , &quot;)); 
-        System.out.println();
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">);</span>
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromCollection</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromCollection = &quot;</span> <span class="o">+</span> <span class="n">streamFromCollection</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        Stream.Builder&lt;String&gt; builder = Stream.builder();
-        Stream&lt;String&gt; streamFromBuilder = builder.add(&quot;a1&quot;).add(&quot;a2&quot;).add(&quot;a3&quot;).build();
-        System.out.println(&quot;streamFromBuilder = &quot; + streamFromBuilder.collect((Collectors.toList()))); 
+        <span class="n">IntStream</span> <span class="n">streamFromString</span> <span class="o">=</span> <span class="s">&quot;123&quot;</span><span class="p">.</span><span class="na">chars</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;streamFromString = &quot;</span><span class="p">);</span>
+        <span class="n">streamFromString</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">e</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&quot; , &quot;</span><span class="p">));</span> 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+
+        <span class="n">Stream</span><span class="p">.</span><span class="na">Builder</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">builder</span><span class="p">();</span>
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromBuilder</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;a2&quot;</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromBuilder = &quot;</span> <span class="o">+</span> <span class="n">streamFromBuilder</span><span class="p">.</span><span class="na">collect</span><span class="p">((</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">())));</span> 
 
 
 
-        Stream&lt;Integer&gt; streamFromIterate = Stream.iterate(1, n -&gt; n + 2);
-        System.out.println(&quot;streamFromIterate = &quot; + streamFromIterate.limit(3).collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">streamFromIterate</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">iterate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromIterate = &quot;</span> <span class="o">+</span> <span class="n">streamFromIterate</span><span class="p">.</span><span class="na">limit</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        Stream&lt;String&gt; streamFromGenerate = Stream.generate(() -&gt; &quot;a1&quot;);
-        System.out.println(&quot;streamFromGenerate = &quot; + streamFromGenerate.limit(3).collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamFromGenerate</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">generate</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamFromGenerate = &quot;</span> <span class="o">+</span> <span class="n">streamFromGenerate</span><span class="p">.</span><span class="na">limit</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        Stream&lt;String&gt; streamEmpty = Stream.empty();
-        System.out.println(&quot;streamEmpty = &quot; + streamEmpty.collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streamEmpty</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;streamEmpty = &quot;</span> <span class="o">+</span> <span class="n">streamEmpty</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 
 
-        Stream&lt;String&gt; parallelStream = collection.parallelStream();
-        System.out.println(&quot;parallelStream = &quot; + parallelStream.collect(Collectors.toList())); 
+        <span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">parallelStream</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">parallelStream</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;parallelStream = &quot;</span> <span class="o">+</span> <span class="n">parallelStream</span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">()));</span> 
 </code></pre></div>
 <h2 id="ii"><strong>II. Методы работы со стримами</strong></h2>
 <p>Java Stream API предлагает два вида методов:
@@ -1668,12 +1692,12 @@
 </tbody>
 </table>
 <p>С помощью, методов parallel и sequential можно определять какие операции могут быть параллельными, а какие только последовательными. Так же из любого последовательного стрима можно сделать параллельный и наоборот, то есть:</p>
-<div class="highlight"><pre><span></span><code>collection.stream().
-peek(...). 
-parallel().
-map(...). 
-sequential().
-reduce(...) 
+<div class="highlight"><pre><span></span><code><span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span>
+<span class="n">peek</span><span class="p">(...).</span> 
+<span class="n">parallel</span><span class="p">().</span>
+<span class="n">map</span><span class="p">(...).</span> 
+<span class="n">sequential</span><span class="p">().</span>
+<span class="n">reduce</span><span class="p">(...)</span> 
 </code></pre></div>
 <p><strong>Внимание</strong>: крайне не рекомендуется использовать параллельные стримы для сколько-нибудь долгих операций (получение данных из базы, сетевых соединений), так как все параллельные стримы работают c одним пулом fork/join и такие долгие операции могут остановить работу всех параллельных стримов в JVM из-за того отсутствия доступных потоков в пуле, т.е. параллельные стримы стоит использовать лишь для коротких операций, где счет идет на миллисекунды, но не для тех где счет может идти на секунды и минуты.</p>
 <h2 id="iii"><strong>III. Примеры работы с методами стримов</strong></h2>
@@ -1758,128 +1782,128 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Также этот пример можно найти на github'e: <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/FiterAndCountTests.java">первый класс</a> и <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/LimitAndSkipTests.java">второй класс</a></p>
-<div class="highlight"><pre><span></span><code> private static void testFilterAndCount() {
-        System.out.println();
-        System.out.println(&quot;Test filter and count start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
-        Collection&lt;People&gt; peoples = Arrays.asList(
-                new People(&quot;Вася&quot;, 16, Sex.MAN),
-                new People(&quot;Петя&quot;, 23, Sex.MAN),
-                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
-                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
-        );
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testFilterAndCount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test filter and count start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">peoples</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Вася&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Петя&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Елена&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">WOMEN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Иван Иванович&quot;</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">)</span>
+        <span class="p">);</span>
 
 
-        long count = collection.stream().filter(&quot;a1&quot;::equals).count();
-        System.out.println(&quot;count = &quot; + count); 
+        <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">::</span><span class="n">equals</span><span class="p">).</span><span class="na">count</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;count = &quot;</span> <span class="o">+</span> <span class="n">count</span><span class="p">);</span> 
 
 
-        List&lt;String&gt; select = collection.stream().filter((s) -&gt; s.contains(&quot;1&quot;)).collect(Collectors.toList());
-        System.out.println(&quot;select = &quot; + select); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">select</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;select = &quot;</span> <span class="o">+</span> <span class="n">select</span><span class="p">);</span> 
 
 
-        List&lt;People&gt; militaryService = peoples.stream().filter((p)-&gt; p.getAge() &gt;= 18 &amp;&amp; p.getAge() &lt; 27
-                &amp;&amp; p.getSex() == Sex.MAN).collect(Collectors.toList());
-        System.out.println(&quot;militaryService = &quot; + militaryService); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">militaryService</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">27</span>
+                <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">==</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;militaryService = &quot;</span> <span class="o">+</span> <span class="n">militaryService</span><span class="p">);</span> 
 
 
-        double manAverageAge = peoples.stream().filter((p) -&gt; p.getSex() == Sex.MAN).
-                mapToInt(People::getAge).average().getAsDouble();
-        System.out.println(&quot;manAverageAge = &quot; + manAverageAge); 
+        <span class="kt">double</span> <span class="n">manAverageAge</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">==</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">).</span>
+                <span class="n">mapToInt</span><span class="p">(</span><span class="n">People</span><span class="p">::</span><span class="n">getAge</span><span class="p">).</span><span class="na">average</span><span class="p">().</span><span class="na">getAsDouble</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;manAverageAge = &quot;</span> <span class="o">+</span> <span class="n">manAverageAge</span><span class="p">);</span> 
 
 
-        long peopleHowCanWork = peoples.stream().filter((p) -&gt; p.getAge() &gt;= 18).filter(
-                (p) -&gt; (p.getSex() == Sex.WOMEN &amp;&amp; p.getAge() &lt; 55) || (p.getSex() == Sex.MAN &amp;&amp; p.getAge() &lt; 60)).count();
-        System.out.println(&quot;peopleHowCanWork = &quot; + peopleHowCanWork); 
+        <span class="kt">long</span> <span class="n">peopleHowCanWork</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">).</span><span class="na">filter</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">==</span> <span class="n">Sex</span><span class="p">.</span><span class="na">WOMEN</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">55</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">==</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">)).</span><span class="na">count</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;peopleHowCanWork = &quot;</span> <span class="o">+</span> <span class="n">peopleHowCanWork</span><span class="p">);</span> 
 
-    }
-
-
+    <span class="p">}</span>
 
 
-    private static void testFindFirstSkipCount() {
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
-
-        System.out.println(&quot;Test findFirst and skip start&quot;);
-
-        String first = collection.stream().findFirst().orElse(&quot;1&quot;);
-        System.out.println(&quot;first = &quot; + first); 
 
 
-        String last = collection.stream().skip(collection.size() - 1).findAny().orElse(&quot;1&quot;);
-        System.out.println(&quot;last = &quot; + last ); 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testFindFirstSkipCount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test findFirst and skip start&quot;</span><span class="p">);</span>
+
+        <span class="n">String</span> <span class="n">first</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">findFirst</span><span class="p">().</span><span class="na">orElse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;first = &quot;</span> <span class="o">+</span> <span class="n">first</span><span class="p">);</span> 
 
 
-        String find = collection.stream().filter(&quot;a3&quot;::equals).findFirst().get();
-        System.out.println(&quot;find = &quot; + find); 
+        <span class="n">String</span> <span class="n">last</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">skip</span><span class="p">(</span><span class="n">collection</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="na">findAny</span><span class="p">().</span><span class="na">orElse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;last = &quot;</span> <span class="o">+</span> <span class="n">last</span> <span class="p">);</span> 
 
 
-        String third = collection.stream().skip(2).findFirst().get();
-        System.out.println(&quot;third = &quot; + third); 
-
-        System.out.println();
-        System.out.println(&quot;Test collect start&quot;);
-
-        List&lt;String&gt; select = collection.stream().filter((s) -&gt; s.contains(&quot;1&quot;)).collect(Collectors.toList());
-        System.out.println(&quot;select = &quot; + select); 
-    }
+        <span class="n">String</span> <span class="n">find</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">::</span><span class="n">equals</span><span class="p">).</span><span class="na">findFirst</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;find = &quot;</span> <span class="o">+</span> <span class="n">find</span><span class="p">);</span> 
 
 
-    private static void testLimit() {
-        System.out.println();
-        System.out.println(&quot;Test limit start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+        <span class="n">String</span> <span class="n">third</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">skip</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="na">findFirst</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;third = &quot;</span> <span class="o">+</span> <span class="n">third</span><span class="p">);</span> 
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test collect start&quot;</span><span class="p">);</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">select</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;select = &quot;</span> <span class="o">+</span> <span class="n">select</span><span class="p">);</span> 
+    <span class="p">}</span>
 
 
-        List&lt;String&gt; limit = collection.stream().limit(2).collect(Collectors.toList());
-        System.out.println(&quot;limit = &quot; + limit); 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testLimit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test limit start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
 
-        List&lt;String&gt; fromTo = collection.stream().skip(1).limit(2).collect(Collectors.toList());
-        System.out.println(&quot;fromTo = &quot; + fromTo); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">limit</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;limit = &quot;</span> <span class="o">+</span> <span class="n">limit</span><span class="p">);</span> 
 
 
-        String last = collection.stream().skip(collection.size() - 1).findAny().orElse(&quot;1&quot;);
-        System.out.println(&quot;last = &quot; + last ); 
-    }
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">fromTo</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">skip</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;fromTo = &quot;</span> <span class="o">+</span> <span class="n">fromTo</span><span class="p">);</span> 
 
-    private enum Sex {
-        MAN,
-        WOMEN
-    }
 
-    private static class People {
-        private final String name;
-        private final Integer age;
-        private final Sex sex;
+        <span class="n">String</span> <span class="n">last</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">skip</span><span class="p">(</span><span class="n">collection</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="na">findAny</span><span class="p">().</span><span class="na">orElse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;last = &quot;</span> <span class="o">+</span> <span class="n">last</span> <span class="p">);</span> 
+    <span class="p">}</span>
 
-        public People(String name, Integer age, Sex sex) {
-            this.name = name;
-            this.age = age;
-            this.sex = sex;
-        }
+    <span class="kd">private</span> <span class="kd">enum</span> <span class="n">Sex</span> <span class="p">{</span>
+        <span class="n">MAN</span><span class="p">,</span>
+        <span class="n">WOMEN</span>
+    <span class="p">}</span>
 
-        public String getName() {
-            return name;
-        }
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="p">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">;</span>
 
-        public Integer getAge() {
-            return age;
-        }
+        <span class="kd">public</span> <span class="nf">People</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">,</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public Sex getSex() {
-            return sex;
-        }
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        @Override
-        public String toString() {
-            return &quot;{&quot; +
-                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                    &quot;, age=&quot; + age +
-                    &quot;, sex=&quot; + sex +
-                    &#39;}&#39;;
-        }
-    } 
+        <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">Sex</span> <span class="nf">getSex</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;{&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;name=&#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                    <span class="s">&quot;, age=&quot;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                    <span class="s">&quot;, sex=&quot;</span> <span class="o">+</span> <span class="n">sex</span> <span class="o">+</span>
+                    <span class="sc">&#39;}&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="32-distinct"><strong>3.2 Примеры использования distinct</strong></h3>
 <p>Метод distinct возвращает stream без дубликатов, при этом для упорядоченного стрима (например, коллекция на основе list) порядок стабилен, для неупорядоченного — порядок не гарантируется. Рассмотрим результаты работы над коллекцией Collection ordered = Arrays.asList(«a1», «a2», «a2», «a3», «a1», «a2», «a2») и Collection nonOrdered = new HashSet&lt;&gt;(ordered).</p>
@@ -1909,19 +1933,19 @@ reduce(...)
 2. Если вы используете параллельные стримы и вам не важен порядок элементов после удаления дубликатов — намного лучше для производительности сделать сначала стрим неупорядоченным с помощь unordered(), а уже потом применять distinct(), так как подержание стабильности сортировки при параллельном стриме довольно затратно по ресурсам и distinct() на упорядоченным стриме будет выполнятся значительно дольше чем при неупорядоченном,</p>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/DistinctTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testDistinct() {
-        System.out.println();
-        System.out.println(&quot;Test distinct start&quot;);
-        Collection&lt;String&gt; ordered = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;, &quot;a2&quot;, &quot;a2&quot;);
-        Collection&lt;String&gt; nonOrdered = new HashSet&lt;&gt;(ordered);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testDistinct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test distinct start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ordered</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nonOrdered</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">ordered</span><span class="p">);</span>
 
 
-        List&lt;String&gt; distinct = nonOrdered.stream().distinct().collect(Collectors.toList());
-        System.out.println(&quot;distinct = &quot; + distinct); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinct</span> <span class="o">=</span> <span class="n">nonOrdered</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;distinct = &quot;</span> <span class="o">+</span> <span class="n">distinct</span><span class="p">);</span> 
 
-        List&lt;String&gt; distinctOrdered = ordered.stream().distinct().collect(Collectors.toList());
-        System.out.println(&quot;distinctOrdered = &quot; + distinctOrdered); 
-    } 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinctOrdered</span> <span class="o">=</span> <span class="n">ordered</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;distinctOrdered = &quot;</span> <span class="o">+</span> <span class="n">distinctOrdered</span><span class="p">);</span> 
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="33-match-anymatch-allmatch-nonematch"><strong>3.3 Примеры использования Match функций (anyMatch, allMatch, noneMatch)</strong></h3>
 <p><strong>Условие</strong>: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), давайте посмотрим, как её можно обрабатывать используя Match функции</p>
@@ -1958,25 +1982,25 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Также этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/FindAndMatchTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testMatch() {
-        System.out.println();
-        System.out.println(&quot;Test anyMatch, allMatch, noneMatch  start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMatch</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test anyMatch, allMatch, noneMatch  start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
 
-        boolean isAnyOneTrue = collection.stream().anyMatch(&quot;a1&quot;::equals);
-        System.out.println(&quot;anyOneTrue &quot; + isAnyOneTrue); 
-        boolean isAnyOneFalse = collection.stream().anyMatch(&quot;a8&quot;::equals);
-        System.out.println(&quot;anyOneFlase &quot; + isAnyOneFalse); 
+        <span class="kt">boolean</span> <span class="n">isAnyOneTrue</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">anyMatch</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">::</span><span class="n">equals</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;anyOneTrue &quot;</span> <span class="o">+</span> <span class="n">isAnyOneTrue</span><span class="p">);</span> 
+        <span class="kt">boolean</span> <span class="n">isAnyOneFalse</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">anyMatch</span><span class="p">(</span><span class="s">&quot;a8&quot;</span><span class="p">::</span><span class="n">equals</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;anyOneFlase &quot;</span> <span class="o">+</span> <span class="n">isAnyOneFalse</span><span class="p">);</span> 
 
 
-        boolean isAll = collection.stream().allMatch((s) -&gt; s.contains(&quot;1&quot;));
-        System.out.println(&quot;isAll &quot; + isAll); 
+        <span class="kt">boolean</span> <span class="n">isAll</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">allMatch</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isAll &quot;</span> <span class="o">+</span> <span class="n">isAll</span><span class="p">);</span> 
 
 
-        boolean isNotEquals = collection.stream().noneMatch(&quot;a7&quot;::equals);
-        System.out.println(&quot;isNotEquals &quot; + isNotEquals); 
-    } 
+        <span class="kt">boolean</span> <span class="n">isNotEquals</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">noneMatch</span><span class="p">(</span><span class="s">&quot;a7&quot;</span><span class="p">::</span><span class="n">equals</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isNotEquals &quot;</span> <span class="o">+</span> <span class="n">isNotEquals</span><span class="p">);</span> 
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="34-map-map-maptoint-flatmap-flatmaptoint"><strong>3.4 Примеры использования Map функций (map, mapToInt, FlatMap, FlatMapToInt)</strong></h3>
 <p><strong>Условие</strong>: даны две коллекции collection1 = Arrays.asList(«a1», «a2», «a3», «a1») и collection2 = Arrays.asList(«1,2,0», «4,5»), давайте посмотрим как её можно обрабатывать используя различные map функции</p>
@@ -2014,50 +2038,50 @@ reduce(...)
 <p>Обратите внимание: все map функции могут вернуть объект другого типа (класса), то есть map может работать со стримом строк, а на выходе дать Stream из значений Integer или получать класс людей People, а возвращать класс Office, где эти люди работают и т.п., flatMap (flatMapToInt и т.п.) на выходе должны возвращать стрим с одним, несколькими или ни одним элементов для каждого элемента входящего стрима (см. последние два примера).</p>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/MapTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testMap() {
-        System.out.println();
-        System.out.println(&quot;Test map start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test map start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
-        List&lt;String&gt; transform = collection.stream().map((s) -&gt; s + &quot;_1&quot;).collect(Collectors.toList());
-        System.out.println(&quot;transform = &quot; + transform); 
-
-
-        List&lt;Integer&gt; number = collection.stream().map((s) -&gt; Integer.parseInt(s.substring(1))).collect(Collectors.toList());
-        System.out.println(&quot;number = &quot; + number); 
-
-    }
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&quot;_1&quot;</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;transform = &quot;</span> <span class="o">+</span> <span class="n">transform</span><span class="p">);</span> 
 
 
-    private static void testMapToInt() {
-        System.out.println();
-        System.out.println(&quot;Test mapToInt start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">number</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">))).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;number = &quot;</span> <span class="o">+</span> <span class="n">number</span><span class="p">);</span> 
 
-        int[] number = collection.stream().mapToInt((s) -&gt; Integer.parseInt(s.substring(1))).toArray();
-        System.out.println(&quot;number = &quot; + Arrays.toString(number)); 
-
-    }
+    <span class="p">}</span>
 
 
-    private static void testFlatMap() {
-        System.out.println();
-        System.out.println(&quot;Test flat map start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;1,2,0&quot;, &quot;4,5&quot;);
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMapToInt</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test mapToInt start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
-        String[] number = collection.stream().flatMap((p) -&gt; Arrays.asList(p.split(&quot;,&quot;)).stream()).toArray(String[]::new);
-        System.out.println(&quot;number = &quot; + Arrays.toString(number)); 
-    }
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">number</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">mapToInt</span><span class="p">((</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">))).</span><span class="na">toArray</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;number = &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">number</span><span class="p">));</span> 
+
+    <span class="p">}</span>
 
 
-    private static void testFlatMapToInt() {
-        System.out.println();
-        System.out.println(&quot;Test flat map start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;1,2,0&quot;, &quot;4,5&quot;);
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testFlatMap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test flat map start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;1,2,0&quot;</span><span class="p">,</span> <span class="s">&quot;4,5&quot;</span><span class="p">);</span>
 
-        int sum = collection.stream().flatMapToInt((p) -&gt; Arrays.asList(p.split(&quot;,&quot;)).stream().mapToInt(Integer::parseInt)).sum();
-        System.out.println(&quot;sum = &quot; + sum); 
-    } 
+        <span class="n">String</span><span class="o">[]</span> <span class="n">number</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">flatMap</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)).</span><span class="na">stream</span><span class="p">()).</span><span class="na">toArray</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">::</span><span class="k">new</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;number = &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">number</span><span class="p">));</span> 
+    <span class="p">}</span>
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testFlatMapToInt</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test flat map start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;1,2,0&quot;</span><span class="p">,</span> <span class="s">&quot;4,5&quot;</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">flatMapToInt</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)).</span><span class="na">stream</span><span class="p">().</span><span class="na">mapToInt</span><span class="p">(</span><span class="n">Integer</span><span class="p">::</span><span class="n">parseInt</span><span class="p">)).</span><span class="na">sum</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sum = &quot;</span> <span class="o">+</span> <span class="n">sum</span><span class="p">);</span> 
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="35-sorted"><strong>3.5 Примеры использования Sorted функции</strong></h3>
 <p><strong>Условие</strong>: даны две коллекции коллекция строк Arrays.asList(«a1», «a4», «a3», «a2», «a1», «a4») и коллекция людей класса People (с полями name — имя, age — возраст, sex — пол), вида Arrays.asList( new People(«Вася», 16, Sex.MAN), new People(«Петя», 23, Sex.MAN), new People(«Елена», 42, Sex.WOMEN), new People(«Иван Иванович», 69, Sex.MAN)). Давайте посмотрим примеры как их можно сортировать:</p>
@@ -2104,100 +2128,100 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/SortedTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testSorted() {
-        System.out.println();
-        System.out.println(&quot;Test sorted start&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testSorted</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test sorted start&quot;</span><span class="p">);</span>
 
 
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a4&quot;, &quot;a3&quot;, &quot;a2&quot;, &quot;a1&quot;, &quot;a4&quot;);
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a4&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a4&quot;</span><span class="p">);</span>
 
 
-        List&lt;String&gt; sorted = collection.stream().sorted().collect(Collectors.toList());
-        System.out.println(&quot;sorted = &quot; + sorted); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sorted</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sorted = &quot;</span> <span class="o">+</span> <span class="n">sorted</span><span class="p">);</span> 
 
 
-        List&lt;String&gt; sortedDistinct = collection.stream().sorted().distinct().collect(Collectors.toList());
-        System.out.println(&quot;sortedDistinct = &quot; + sortedDistinct); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sortedDistinct</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sortedDistinct = &quot;</span> <span class="o">+</span> <span class="n">sortedDistinct</span><span class="p">);</span> 
 
 
-        List&lt;String&gt; sortedReverse = collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).collect(Collectors.toList());
-        System.out.println(&quot;sortedReverse = &quot; + sortedReverse); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sortedReverse</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">((</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">o1</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o2</span><span class="p">)).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sortedReverse = &quot;</span> <span class="o">+</span> <span class="n">sortedReverse</span><span class="p">);</span> 
 
 
-        List&lt;String&gt; distinctReverse = collection.stream().sorted((o1, o2) -&gt; -o1.compareTo(o2)).distinct().collect(Collectors.toList());
-        System.out.println(&quot;distinctReverse = &quot; + distinctReverse); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinctReverse</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">((</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">o1</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o2</span><span class="p">)).</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;distinctReverse = &quot;</span> <span class="o">+</span> <span class="n">distinctReverse</span><span class="p">);</span> 
 
 
 
-        Collection&lt;People&gt; peoples = Arrays.asList(
-                new People(&quot;Вася&quot;, 16, Sex.MAN),
-                new People(&quot;Петя&quot;, 23, Sex.MAN),
-                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
-                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
-        );
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">peoples</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Вася&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Петя&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Елена&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">WOMEN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Иван Иванович&quot;</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">)</span>
+        <span class="p">);</span>
 
 
-        Collection&lt;People&gt; byName = peoples.stream().sorted((o1,o2) -&gt; -o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
-        System.out.println(&quot;byName = &quot; + byName); 
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">byName</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">((</span><span class="n">o1</span><span class="p">,</span><span class="n">o2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">o1</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o2</span><span class="p">.</span><span class="na">getName</span><span class="p">())).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;byName = &quot;</span> <span class="o">+</span> <span class="n">byName</span><span class="p">);</span> 
 
 
-        Collection&lt;People&gt; bySexAndAge = peoples.stream().sorted((o1, o2) -&gt; o1.getSex() != o2.getSex() ? o1.getSex().
-                compareTo(o2.getSex()) : o1.getAge().compareTo(o2.getAge())).collect(Collectors.toList());
-        System.out.println(&quot;bySexAndAge = &quot; + bySexAndAge); 
-    }
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">bySexAndAge</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">sorted</span><span class="p">((</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">o1</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">!=</span> <span class="n">o2</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">?</span> <span class="n">o1</span><span class="p">.</span><span class="na">getSex</span><span class="p">().</span>
+                <span class="n">compareTo</span><span class="p">(</span><span class="n">o2</span><span class="p">.</span><span class="na">getSex</span><span class="p">())</span> <span class="p">:</span> <span class="n">o1</span><span class="p">.</span><span class="na">getAge</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">o2</span><span class="p">.</span><span class="na">getAge</span><span class="p">())).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;bySexAndAge = &quot;</span> <span class="o">+</span> <span class="n">bySexAndAge</span><span class="p">);</span> 
+    <span class="p">}</span>
 
-    private enum Sex {
-        MAN,
-        WOMEN
-    }
+    <span class="kd">private</span> <span class="kd">enum</span> <span class="n">Sex</span> <span class="p">{</span>
+        <span class="n">MAN</span><span class="p">,</span>
+        <span class="n">WOMEN</span>
+    <span class="p">}</span>
 
-    private static class People {
-        private final String name;
-        private final Integer age;
-        private final Sex sex;
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="p">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">;</span>
 
-        public People(String name, Integer age, Sex sex) {
-            this.name = name;
-            this.age = age;
-            this.sex = sex;
-        }
+        <span class="kd">public</span> <span class="nf">People</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">,</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public String getName() {
-            return name;
-        }
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public Integer getAge() {
-            return age;
-        }
+        <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public Sex getSex() {
-            return sex;
-        }
+        <span class="kd">public</span> <span class="n">Sex</span> <span class="nf">getSex</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        @Override
-        public String toString() {
-            return &quot;{&quot; +
-                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                    &quot;, age=&quot; + age +
-                    &quot;, sex=&quot; + sex +
-                    &#39;}&#39;;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;{&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;name=&#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                    <span class="s">&quot;, age=&quot;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                    <span class="s">&quot;, sex=&quot;</span> <span class="o">+</span> <span class="n">sex</span> <span class="o">+</span>
+                    <span class="sc">&#39;}&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof People)) return false;
-            People people = (People) o;
-            return Objects.equals(name, people.name) &amp;&amp;
-                    Objects.equals(age, people.age) &amp;&amp;
-                    Objects.equals(sex, people.sex);
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">People</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="n">People</span> <span class="n">people</span> <span class="o">=</span> <span class="p">(</span><span class="n">People</span><span class="p">)</span> <span class="n">o</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">age</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">sex</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, age, sex);
-        }
-    } 
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="36-max-min"><strong>3.6 Примеры использования Max и Min функций</strong></h3>
 <p><strong>Условие</strong>: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), и коллекция класса Peoples из прошлых примеров про Sorted и Filter функции.</p>
@@ -2234,135 +2258,135 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/MaxMinTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testMinMax() {
-        System.out.println();
-        System.out.println(&quot;Test min and max start&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMinMax</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test min and max start&quot;</span><span class="p">);</span>
 
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
-
-
-        String max = collection.stream().max(String::compareTo).get();
-        System.out.println(&quot;max &quot; + max); 
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
 
-        String min = collection.stream().min(String::compareTo).get();
-        System.out.println(&quot;min &quot; + min); 
+        <span class="n">String</span> <span class="n">max</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">max</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">compareTo</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;max &quot;</span> <span class="o">+</span> <span class="n">max</span><span class="p">);</span> 
+
+
+        <span class="n">String</span> <span class="n">min</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">min</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">compareTo</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;min &quot;</span> <span class="o">+</span> <span class="n">min</span><span class="p">);</span> 
 
 
 
 
-        Collection&lt;People&gt; peoples = Arrays.asList(
-                new People(&quot;Вася&quot;, 16, Sex.MAN),
-                new People(&quot;Петя&quot;, 23, Sex.MAN),
-                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
-                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
-        );
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">peoples</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Вася&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Петя&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Елена&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">WOMEN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Иван Иванович&quot;</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">)</span>
+        <span class="p">);</span>
 
 
-        People older = peoples.stream().max((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get();
-        System.out.println(&quot;older &quot; + older); 
+        <span class="n">People</span> <span class="n">older</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">max</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p1</span><span class="p">.</span><span class="na">getAge</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">getAge</span><span class="p">())).</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;older &quot;</span> <span class="o">+</span> <span class="n">older</span><span class="p">);</span> 
 
 
-        People younger = peoples.stream().min((p1, p2) -&gt; p1.getAge().compareTo(p2.getAge())).get();
-        System.out.println(&quot;younger &quot; + younger); 
-    }
+        <span class="n">People</span> <span class="n">younger</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">min</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p1</span><span class="p">.</span><span class="na">getAge</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">getAge</span><span class="p">())).</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;younger &quot;</span> <span class="o">+</span> <span class="n">younger</span><span class="p">);</span> 
+    <span class="p">}</span>
 
 
-    private enum Sex {
-        MAN,
-        WOMEN
-    }
+    <span class="kd">private</span> <span class="kd">enum</span> <span class="n">Sex</span> <span class="p">{</span>
+        <span class="n">MAN</span><span class="p">,</span>
+        <span class="n">WOMEN</span>
+    <span class="p">}</span>
 
-    private static class People {
-        private final String name;
-        private final Integer age;
-        private final Sex sex;
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="p">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">;</span>
 
-        public People(String name, Integer age, Sex sex) {
-            this.name = name;
-            this.age = age;
-            this.sex = sex;
-        }
+        <span class="kd">public</span> <span class="nf">People</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">,</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public String getName() {
-            return name;
-        }
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public Integer getAge() {
-            return age;
-        }
+        <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        public Sex getSex() {
-            return sex;
-        }
+        <span class="kd">public</span> <span class="n">Sex</span> <span class="nf">getSex</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        @Override
-        public String toString() {
-            return &quot;{&quot; +
-                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                    &quot;, age=&quot; + age +
-                    &quot;, sex=&quot; + sex +
-                    &#39;}&#39;;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;{&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;name=&#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                    <span class="s">&quot;, age=&quot;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                    <span class="s">&quot;, sex=&quot;</span> <span class="o">+</span> <span class="n">sex</span> <span class="o">+</span>
+                    <span class="sc">&#39;}&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof People)) return false;
-            People people = (People) o;
-            return Objects.equals(name, people.name) &amp;&amp;
-                    Objects.equals(age, people.age) &amp;&amp;
-                    Objects.equals(sex, people.sex);
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">People</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="n">People</span> <span class="n">people</span> <span class="o">=</span> <span class="p">(</span><span class="n">People</span><span class="p">)</span> <span class="n">o</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">age</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">sex</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, age, sex);
-        }
-    } 
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="37-foreach-peek"><strong>3.7 Примеры использования ForEach и Peek функций</strong></h3>
 <p>Обе ForEach и Peek по сути делают одно и тоже, меняют свойства объектов в стриме, единственная разница между ними в том что ForEach терминальная и она заканчивает работу со стримом, в то время как Peek конвейерная и работа со стримом продолжается. Например, есть коллекция:</p>
-<div class="highlight"><pre><span></span><code> Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;)); 
+<div class="highlight"><pre><span></span><code> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">StringBuilder</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a2&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">));</span> 
 </code></pre></div>
 <p>И нужно добавить к каждому элементу "_new", то для ForEach код будет</p>
-<div class="highlight"><pre><span></span><code> list.stream().forEachOrdered((p) -&gt; p.append(&quot;_new&quot;)); 
+<div class="highlight"><pre><span></span><code> <span class="n">list</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">forEachOrdered</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;_new&quot;</span><span class="p">));</span> 
 </code></pre></div>
 <p>а для peek код будет</p>
-<div class="highlight"><pre><span></span><code> List&lt;StringBuilder&gt; newList = list.stream().peek((p) -&gt; p.append(&quot;_new&quot;)).collect(Collectors.toList()); 
+<div class="highlight"><pre><span></span><code> <span class="n">List</span><span class="o">&lt;</span><span class="n">StringBuilder</span><span class="o">&gt;</span> <span class="n">newList</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">peek</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;_new&quot;</span><span class="p">)).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span> 
 </code></pre></div>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/ForEachAndPeekTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testForEach() {
-        System.out.println();
-        System.out.println(&quot;For each start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testForEach</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;For each start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
-        System.out.print(&quot;forEach = &quot;);
-        collection.stream().map(String::toUpperCase).forEach((e) -&gt; System.out.print(e + &quot;,&quot;)); 
-        System.out.println();
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;forEach = &quot;</span><span class="p">);</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">toUpperCase</span><span class="p">).</span><span class="na">forEach</span><span class="p">((</span><span class="n">e</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span><span class="p">));</span> 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
-        Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;));
-        list.stream().forEachOrdered((p) -&gt; p.append(&quot;_new&quot;));
-        System.out.println(&quot;forEachOrdered = &quot; + list); 
-    }
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">StringBuilder</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a2&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">));</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">forEachOrdered</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;_new&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;forEachOrdered = &quot;</span> <span class="o">+</span> <span class="n">list</span><span class="p">);</span> 
+    <span class="p">}</span>
 
 
-    private static void testPeek() {
-        System.out.println();
-        System.out.println(&quot;Test peek start&quot;);
-        Collection&lt;String&gt; collection = Arrays.asList(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;, &quot;a1&quot;);
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testPeek</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test peek start&quot;</span><span class="p">);</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;a3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
-        System.out.print(&quot;peak1 = &quot;);
-        List&lt;String&gt; peek = collection.stream().map(String::toUpperCase).peek((e) -&gt; System.out.print(e + &quot;,&quot;)).
-                collect(Collectors.toList());
-        System.out.println(); 
-        System.out.println(&quot;peek2 = &quot; + peek); 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;peak1 = &quot;</span><span class="p">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">peek</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">toUpperCase</span><span class="p">).</span><span class="na">peek</span><span class="p">((</span><span class="n">e</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span><span class="p">)).</span>
+                <span class="n">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span> 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;peek2 = &quot;</span> <span class="o">+</span> <span class="n">peek</span><span class="p">);</span> 
 
-        Collection&lt;StringBuilder&gt; list = Arrays.asList(new StringBuilder(&quot;a1&quot;), new StringBuilder(&quot;a2&quot;), new StringBuilder(&quot;a3&quot;));
-        List&lt;StringBuilder&gt; newList = list.stream().peek((p) -&gt; p.append(&quot;_new&quot;)).collect(Collectors.toList());
-        System.out.println(&quot;newList = &quot; + newList); 
-    } 
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">StringBuilder</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a2&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">&quot;a3&quot;</span><span class="p">));</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">StringBuilder</span><span class="o">&gt;</span> <span class="n">newList</span> <span class="o">=</span> <span class="n">list</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">peek</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;_new&quot;</span><span class="p">)).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;newList = &quot;</span> <span class="o">+</span> <span class="n">newList</span><span class="p">);</span> 
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="38-reduce"><strong>3.8 Примеры использования Reduce функции</strong></h3>
 <p>Метод reduce позволяет выполнять агрегатные функции на всей коллекцией (такие как сумма, нахождение минимального или максимального значение и т.п.), он возвращает одно значение для стрима, функция получает два аргумента — значение полученное на прошлых шагах и текущее значение.</p>
@@ -2395,141 +2419,141 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Также этот пример можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/ReduceTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testReduce() {
-        System.out.println();
-        System.out.println(&quot;Test reduce start&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testReduce</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test reduce start&quot;</span><span class="p">);</span>
 
 
-        Collection&lt;Integer&gt; collection = Arrays.asList(1, 2, 3, 4, 2);
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
 
-        Integer sum = collection.stream().reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
-        Integer sumOld = 0; 
-        for(Integer i: collection) {
-            sumOld += i;
-        }
-        System.out.println(&quot;sum = &quot; + sum + &quot; : &quot; + sumOld); 
-
-
-
-        Integer max1 = collection.stream().reduce((s1, s2) -&gt; s1 &gt; s2 ? s1 : s2).orElse(0); 
-        Integer max2 = collection.stream().reduce(Integer::max).orElse(0); 
-        Integer maxOld = null; 
-        for(Integer i: collection) {
-            maxOld = maxOld != null &amp;&amp; maxOld &gt; i? maxOld: i;
-        }
-        maxOld = maxOld == null? 0 : maxOld;
-        System.out.println(&quot;max = &quot; + max1 + &quot; : &quot; + max2 + &quot; : &quot; + maxOld); 
-
-
-        Integer min = collection.stream().reduce((s1, s2) -&gt; s1 &lt; s2 ? s1 : s2).orElse(0); 
-        Integer minOld = null; 
-        for(Integer i: collection) {
-            minOld = minOld != null &amp;&amp; minOld &lt; i? minOld: i;
-        }
-        minOld = minOld == null? 0 : minOld;
-        System.out.println(&quot;min = &quot; + min+ &quot; : &quot; + minOld); 
-
-
-        Integer last = collection.stream().reduce((s1, s2) -&gt; s2).orElse(0); 
-        Integer lastOld = null; 
-        for(Integer i: collection) {
-            lastOld = i;
-        }
-        lastOld = lastOld == null? 0 : lastOld;
-        System.out.println(&quot;last = &quot; + last + &quot; : &quot; + lastOld); 
-
-
-        Integer sumMore2 = collection.stream().filter(o -&gt; o &gt; 2).reduce((s1, s2) -&gt; s1 + s2).orElse(0);     
-        Integer sumMore2Old = 0; 
-        for(Integer i: collection) {
-            if(i &gt; 2) {
-                sumMore2Old += i;
-            }
-        }
-        System.out.println(&quot;sumMore2 = &quot; + sumMore2 + &quot; : &quot; + sumMore2Old); 
-
-
-        Integer sumOdd = collection.stream().filter(o -&gt; o % 2 != 0).reduce((s1, s2) -&gt; s1 + s2).orElse(0); 
-        Integer sumOddOld = 0; 
-        for(Integer i: collection) {
-            if(i % 2 != 0) {
-                sumOddOld += i;
-            }
-        }
-        System.out.println(&quot;sumOdd = &quot; + sumOdd + &quot; : &quot; + sumOddOld); 
+        <span class="n">Integer</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">sumOld</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sumOld</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sum = &quot;</span> <span class="o">+</span> <span class="n">sum</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sumOld</span><span class="p">);</span> 
 
 
 
-
-        Collection&lt;People&gt; peoples = Arrays.asList(
-                new People(&quot;Вася&quot;, 16, Sex.MAN),
-                new People(&quot;Петя&quot;, 23, Sex.MAN),
-                new People(&quot;Елена&quot;, 42, Sex.WOMEN),
-                new People(&quot;Иван Иванович&quot;, 69, Sex.MAN)
-        );
-
-
-        int oldMan = peoples.stream().filter((p) -&gt; p.getSex() == Sex.MAN).map(People::getAge).reduce((s1, s2) -&gt; s1 &gt; s2 ? s1 : s2).get();
-        System.out.println(&quot;oldMan = &quot; + oldMan); 
+        <span class="n">Integer</span> <span class="n">max1</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="o">?</span> <span class="n">s1</span> <span class="p">:</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">max2</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">reduce</span><span class="p">(</span><span class="n">Integer</span><span class="p">::</span><span class="n">max</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">maxOld</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">maxOld</span> <span class="o">=</span> <span class="n">maxOld</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">maxOld</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">?</span> <span class="n">maxOld</span><span class="p">:</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">maxOld</span> <span class="o">=</span> <span class="n">maxOld</span> <span class="o">==</span> <span class="kc">null</span><span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">maxOld</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;max = &quot;</span> <span class="o">+</span> <span class="n">max1</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">max2</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">maxOld</span><span class="p">);</span> 
 
 
-        int younger = peoples.stream().filter((p) -&gt; p.getName().contains(&quot;е&quot;)).mapToInt(People::getAge).reduce((s1, s2) -&gt; s1 &lt; s2 ? s1 : s2).orElse(0);
-        System.out.println(&quot;younger = &quot; + younger); 
-    }
+        <span class="n">Integer</span> <span class="n">min</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">?</span> <span class="n">s1</span> <span class="p">:</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">minOld</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">minOld</span> <span class="o">=</span> <span class="n">minOld</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">minOld</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">?</span> <span class="n">minOld</span><span class="p">:</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">minOld</span> <span class="o">=</span> <span class="n">minOld</span> <span class="o">==</span> <span class="kc">null</span><span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">minOld</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;min = &quot;</span> <span class="o">+</span> <span class="n">min</span><span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">minOld</span><span class="p">);</span> 
 
-    private enum Sex {
-        MAN,
-        WOMEN
-    }
 
-    private static class People {
-        private final String name;
-        private final Integer age;
-        private final Sex sex;
+        <span class="n">Integer</span> <span class="n">last</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">lastOld</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">lastOld</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">lastOld</span> <span class="o">=</span> <span class="n">lastOld</span> <span class="o">==</span> <span class="kc">null</span><span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">lastOld</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;last = &quot;</span> <span class="o">+</span> <span class="n">last</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">lastOld</span><span class="p">);</span> 
 
-        public People(String name, Integer age, Sex sex) {
-            this.name = name;
-            this.age = age;
-            this.sex = sex;
-        }
 
-        public String getName() {
-            return name;
-        }
+        <span class="n">Integer</span> <span class="n">sumMore2</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>     
+        <span class="n">Integer</span> <span class="n">sumMore2Old</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">sumMore2Old</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sumMore2 = &quot;</span> <span class="o">+</span> <span class="n">sumMore2</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sumMore2Old</span><span class="p">);</span> 
 
-        public Integer getAge() {
-            return age;
-        }
 
-        public Sex getSex() {
-            return sex;
-        }
+        <span class="n">Integer</span> <span class="n">sumOdd</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+        <span class="n">Integer</span> <span class="n">sumOddOld</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">Integer</span> <span class="n">i</span><span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">sumOddOld</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sumOdd = &quot;</span> <span class="o">+</span> <span class="n">sumOdd</span> <span class="o">+</span> <span class="s">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sumOddOld</span><span class="p">);</span> 
 
-        @Override
-        public String toString() {
-            return &quot;{&quot; +
-                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                    &quot;, age=&quot; + age +
-                    &quot;, sex=&quot; + sex +
-                    &#39;}&#39;;
-        }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof People)) return false;
-            People people = (People) o;
-            return Objects.equals(name, people.name) &amp;&amp;
-                    Objects.equals(age, people.age) &amp;&amp;
-                    Objects.equals(sex, people.sex);
-        }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, age, sex);
-        }
-    } 
+
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">People</span><span class="o">&gt;</span> <span class="n">peoples</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Вася&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Петя&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Елена&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">WOMEN</span><span class="p">),</span>
+                <span class="k">new</span> <span class="n">People</span><span class="p">(</span><span class="s">&quot;Иван Иванович&quot;</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">)</span>
+        <span class="p">);</span>
+
+
+        <span class="kt">int</span> <span class="n">oldMan</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getSex</span><span class="p">()</span> <span class="o">==</span> <span class="n">Sex</span><span class="p">.</span><span class="na">MAN</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">People</span><span class="p">::</span><span class="n">getAge</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="o">?</span> <span class="n">s1</span> <span class="p">:</span> <span class="n">s2</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;oldMan = &quot;</span> <span class="o">+</span> <span class="n">oldMan</span><span class="p">);</span> 
+
+
+        <span class="kt">int</span> <span class="n">younger</span> <span class="o">=</span> <span class="n">peoples</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;е&quot;</span><span class="p">)).</span><span class="na">mapToInt</span><span class="p">(</span><span class="n">People</span><span class="p">::</span><span class="n">getAge</span><span class="p">).</span><span class="na">reduce</span><span class="p">((</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">?</span> <span class="n">s1</span> <span class="p">:</span> <span class="n">s2</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;younger = &quot;</span> <span class="o">+</span> <span class="n">younger</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">enum</span> <span class="n">Sex</span> <span class="p">{</span>
+        <span class="n">MAN</span><span class="p">,</span>
+        <span class="n">WOMEN</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="p">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">;</span>
+
+        <span class="kd">public</span> <span class="nf">People</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">,</span> <span class="n">Sex</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">Sex</span> <span class="nf">getSex</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;{&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;name=&#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                    <span class="s">&quot;, age=&quot;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                    <span class="s">&quot;, sex=&quot;</span> <span class="o">+</span> <span class="n">sex</span> <span class="o">+</span>
+                    <span class="sc">&#39;}&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">o</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">People</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="n">People</span> <span class="n">people</span> <span class="o">=</span> <span class="p">(</span><span class="n">People</span><span class="p">)</span> <span class="n">o</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">age</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                    <span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span> <span class="n">people</span><span class="p">.</span><span class="na">sex</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="39-toarray-collect"><strong>3.9 Примеры использования toArray и collect функции</strong></h3>
 <p>Если с toArray все просто, можно либо вызвать toArray() получить Object[], либо toArray(T[]::new) — получив массив типа T, то collect позволяет много возможностей преобразовать значение в коллекцию, map'у или любой другой тип. Для этого используются статические методы из Collectors, например преобразование в List будет stream.collect(Collectors.toList()).</p>
@@ -2653,139 +2677,139 @@ reduce(...)
 </table>
 <p><strong>Детальные примеры</strong></p>
 <p>Также примеры можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/CollectAndToArrayTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> private static void testCollect() {
-        System.out.println();
-        System.out.println(&quot;Test distinct start&quot;);
+<div class="highlight"><pre><span></span><code> <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testCollect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Test distinct start&quot;</span><span class="p">);</span>
 
 
-        Collection&lt;String&gt; strings = Arrays.asList(&quot;a1&quot;, &quot;b2&quot;, &quot;c3&quot;, &quot;a1&quot;);
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;b2&quot;</span><span class="p">,</span> <span class="s">&quot;c3&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">);</span>
 
 
-        List&lt;String&gt; distinct = strings.stream().distinct().collect(Collectors.toList());
-        System.out.println(&quot;distinct = &quot; + distinct); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinct</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;distinct = &quot;</span> <span class="o">+</span> <span class="n">distinct</span><span class="p">);</span> 
 
 
-        String[] array = strings.stream().distinct().map(String::toUpperCase).toArray(String[]::new);
-        System.out.println(&quot;array = &quot; + Arrays.asList(array)); 
+        <span class="n">String</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">toUpperCase</span><span class="p">).</span><span class="na">toArray</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">::</span><span class="k">new</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;array = &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">array</span><span class="p">));</span> 
 
 
-        String join = strings.stream().collect(Collectors.joining(&quot; : &quot;, &quot;&lt;b&gt; &quot;, &quot; &lt;/b&gt;&quot;));
-        System.out.println(&quot;join = &quot; + join); 
+        <span class="n">String</span> <span class="n">join</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">joining</span><span class="p">(</span><span class="s">&quot; : &quot;</span><span class="p">,</span> <span class="s">&quot;&lt;b&gt; &quot;</span><span class="p">,</span> <span class="s">&quot; &lt;/b&gt;&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;join = &quot;</span> <span class="o">+</span> <span class="n">join</span><span class="p">);</span> 
 
 
-        Map&lt;String, String&gt; map = strings.stream().distinct().collect(Collectors.toMap((p) -&gt; p.substring(0, 1), (p) -&gt; p.substring(1, 2)));
-        System.out.println(&quot;map = &quot; + map); 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toMap</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;map = &quot;</span> <span class="o">+</span> <span class="n">map</span><span class="p">);</span> 
 
 
-        Map&lt;String, List&lt;String&gt;&gt; groups = strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1)));
-        System.out.println(&quot;groups = &quot; + groups); 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;groups = &quot;</span> <span class="o">+</span> <span class="n">groups</span><span class="p">);</span> 
 
 
-        Map&lt;String, String&gt; groupJoin = strings.stream().collect(Collectors.groupingBy((p) -&gt; p.substring(0, 1), Collectors.mapping((p) -&gt; p.substring(1, 2), Collectors.joining(&quot;:&quot;))));
-        System.out.println(&quot;groupJoin = &quot; + groupJoin); 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">groupJoin</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Collectors</span><span class="p">.</span><span class="na">mapping</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Collectors</span><span class="p">.</span><span class="na">joining</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">))));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;groupJoin = &quot;</span> <span class="o">+</span> <span class="n">groupJoin</span><span class="p">);</span> 
 
 
-        Collection&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4);
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 
 
-        long sumOdd = numbers.stream().collect(Collectors.summingInt(((p) -&gt; p % 2 == 1 ? p : 0)));
-        System.out.println(&quot;sumOdd = &quot; + sumOdd); 
+        <span class="kt">long</span> <span class="n">sumOdd</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">summingInt</span><span class="p">(((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">p</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sumOdd = &quot;</span> <span class="o">+</span> <span class="n">sumOdd</span><span class="p">);</span> 
 
 
-        double average = numbers.stream().collect(Collectors.averagingInt((p) -&gt; p - 1));
-        System.out.println(&quot;average = &quot; + average); 
+        <span class="kt">double</span> <span class="n">average</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">averagingInt</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;average = &quot;</span> <span class="o">+</span> <span class="n">average</span><span class="p">);</span> 
 
 
-        IntSummaryStatistics statistics = numbers.stream().collect(Collectors.summarizingInt((p) -&gt; p + 3));
-        System.out.println(&quot;statistics = &quot; + statistics); 
+        <span class="n">IntSummaryStatistics</span> <span class="n">statistics</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">summarizingInt</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">3</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;statistics = &quot;</span> <span class="o">+</span> <span class="n">statistics</span><span class="p">);</span> 
 
 
-        long sumEven = numbers.stream().collect(Collectors.summarizingInt((p) -&gt; p % 2 == 0 ? p : 0)).getSum();
-        System.out.println(&quot;sumEven = &quot; + sumEven); 
+        <span class="kt">long</span> <span class="n">sumEven</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">summarizingInt</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">p</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)).</span><span class="na">getSum</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;sumEven = &quot;</span> <span class="o">+</span> <span class="n">sumEven</span><span class="p">);</span> 
 
 
-        Map&lt;Boolean, List&lt;Integer&gt;&gt; parts = numbers.stream().collect(Collectors.partitioningBy((p) -&gt; p % 2 == 0));
-        System.out.println(&quot;parts = &quot; + parts); 
-    } 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">parts</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">partitioningBy</span><span class="p">((</span><span class="n">p</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">p</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;parts = &quot;</span> <span class="o">+</span> <span class="n">parts</span><span class="p">);</span> 
+    <span class="p">}</span> 
 </code></pre></div>
 <h3 id="310-collectora"><strong>3.10 Пример создания собственного Collector'a</strong></h3>
 <p>Кроме Collector'ов уже определенных в Collectors можно так же создать собственный Collector, Давайте рассмотрим пример как его можно создать.</p>
 <p>Метод определения пользовательского Collector'a:</p>
-<div class="highlight"><pre><span></span><code>Collector&lt;Тип_источника, Тип_аккумулятора, Тип_результата&gt; сollector =  Collector.of(
-                метод_инициализации_аккумулятора,
-                метод_обработки_каждого_элемента,
-                метод_соединения_двух_аккумуляторов,
-                [метод_последней_обработки_аккумулятора]
-        ); 
+<div class="highlight"><pre><span></span><code><span class="n">Collector</span><span class="o">&lt;</span><span class="n">Тип_источника</span><span class="p">,</span> <span class="n">Тип_аккумулятора</span><span class="p">,</span> <span class="n">Тип_результата</span><span class="o">&gt;</span> <span class="n">сollector</span> <span class="o">=</span>  <span class="n">Collector</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+                <span class="n">метод_инициализации_аккумулятора</span><span class="p">,</span>
+                <span class="n">метод_обработки_каждого_элемента</span><span class="p">,</span>
+                <span class="n">метод_соединения_двух_аккумуляторов</span><span class="p">,</span>
+                <span class="o">[</span><span class="n">метод_последней_обработки_аккумулятора</span><span class="o">]</span>
+        <span class="p">);</span> 
 </code></pre></div>
 <p>Как видно из кода выше, для реализации своего Collector'a нужно определить три или четыре метода (метод_последней_обработки_аккумулятора не обязателен). Рассмотрим следующий кода, который мы писали до Java 8, чтобы объединить все строки коллекции:</p>
-<div class="highlight"><pre><span></span><code> StringBuilder b = new StringBuilder(); 
-        for(String s: strings) {
-            b.append(s).append(&quot; , &quot;); 
-        }
-        String joinBuilderOld = b.toString(); 
+<div class="highlight"><pre><span></span><code> <span class="n">StringBuilder</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">strings</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">b</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">);</span> 
+        <span class="p">}</span>
+        <span class="n">String</span> <span class="n">joinBuilderOld</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span> 
 </code></pre></div>
 <p>И аналогичный код, который будет написан в Java 8</p>
-<div class="highlight"><pre><span></span><code>String joinBuilder = strings.stream().collect(
-   Collector.of(
-                StringBuilder::new, 
-                (b ,s) -&gt; b.append(s).append(&quot; , &quot;), 
-                (b1, b2) -&gt; b1.append(b2).append(&quot; , &quot;), 
-                StringBuilder::toString 
-        )
-); 
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">joinBuilder</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span>
+   <span class="n">Collector</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+                <span class="n">StringBuilder</span><span class="p">::</span><span class="k">new</span><span class="p">,</span> 
+                <span class="p">(</span><span class="n">b</span> <span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">),</span> 
+                <span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b1</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">b2</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">),</span> 
+                <span class="n">StringBuilder</span><span class="p">::</span><span class="n">toString</span> 
+        <span class="p">)</span>
+<span class="p">);</span> 
 </code></pre></div>
 <p>В общем-то, три метода легко понять из кода выше, их мы писали практически при каждой обработки коллекций, но вот что такое метод_соединения_двух_аккумуляторов? Это метод который нужен для параллельной обработки Collector'a, в данном случае при параллельном стриме коллекция может быть разделенной на две части (или больше частей), в каждой из которых будет свой аккумулятор StringBuilder и потом необходимо будет их объединить, то код до Java 8 при 2 потоках будет таким:</p>
-<div class="highlight"><pre><span></span><code> StringBuilder b1 = new StringBuilder(); 
-        for(String s: stringsPart1) { 
-            b1.append(s).append(&quot; , &quot;); 
-        }
+<div class="highlight"><pre><span></span><code> <span class="n">StringBuilder</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">stringsPart1</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="n">b1</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">);</span> 
+        <span class="p">}</span>
 
-        StringBuilder b2 = new StringBuilder(); 
-        for(String s: stringsPart2) { 
-            b2.append(s).append(&quot; , &quot;); 
-        }
+        <span class="n">StringBuilder</span> <span class="n">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">stringsPart2</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="n">b2</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">);</span> 
+        <span class="p">}</span>
 
-        StringBuilder b = b1.append(b2).append(&quot; , &quot;), 
+        <span class="n">StringBuilder</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b1</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">b2</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">),</span> 
 
-        String joinBuilderOld = b.toString(); 
+        <span class="n">String</span> <span class="n">joinBuilderOld</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span> 
 </code></pre></div>
 <p>Напишем свой аналог Collectors.toList() для работы со строковым стримом:</p>
-<div class="highlight"><pre><span></span><code> Collector&lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
-                ArrayList::new, 
-                List::add, 
-                (l1, l2) -&gt; { l1.addAll(l2); return l1; } 
-        );
+<div class="highlight"><pre><span></span><code> <span class="n">Collector</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">toList</span> <span class="o">=</span> <span class="n">Collector</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+                <span class="n">ArrayList</span><span class="p">::</span><span class="k">new</span><span class="p">,</span> 
+                <span class="n">List</span><span class="p">::</span><span class="n">add</span><span class="p">,</span> 
+                <span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">l1</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span> <span class="k">return</span> <span class="n">l1</span><span class="p">;</span> <span class="p">}</span> 
+        <span class="p">);</span>
 
-        List&lt;String&gt; distinct1 = strings.stream().distinct().collect(toList); 
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinct1</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">toList</span><span class="p">);</span> 
 </code></pre></div>
 <p><strong>Детальные примеры</strong></p>
 <p>Так же примеры можно найти на <a href="https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/CollectAndToArrayTests.java">github'e</a></p>
-<div class="highlight"><pre><span></span><code> Collector&lt;String,StringBuilder, String&gt; stringBuilderCollector =  Collector.of(
-                StringBuilder::new, 
-                (b ,s) -&gt; b.append(s).append(&quot; , &quot;), 
-                (b1, b2) -&gt; b1.append(b2).append(&quot; , &quot;), 
-                StringBuilder::toString 
-        );
-        String joinBuilder = strings.stream().collect(stringBuilderCollector);
-        System.out.println(&quot;joinBuilder = &quot; + joinBuilder); 
+<div class="highlight"><pre><span></span><code> <span class="n">Collector</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">StringBuilder</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">stringBuilderCollector</span> <span class="o">=</span>  <span class="n">Collector</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+                <span class="n">StringBuilder</span><span class="p">::</span><span class="k">new</span><span class="p">,</span> 
+                <span class="p">(</span><span class="n">b</span> <span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">),</span> 
+                <span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b1</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">b2</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">),</span> 
+                <span class="n">StringBuilder</span><span class="p">::</span><span class="n">toString</span> 
+        <span class="p">);</span>
+        <span class="n">String</span> <span class="n">joinBuilder</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">stringBuilderCollector</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;joinBuilder = &quot;</span> <span class="o">+</span> <span class="n">joinBuilder</span><span class="p">);</span> 
 
 
-        StringBuilder b = new StringBuilder(); 
-        for(String s: strings) {
-            b.append(s).append(&quot; , &quot;); 
-        }
-        String joinBuilderOld = b.toString(); 
-        System.out.println(&quot;joinBuilderOld = &quot; + joinBuilderOld); 
+        <span class="n">StringBuilder</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span> 
+        <span class="k">for</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">strings</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">b</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; , &quot;</span><span class="p">);</span> 
+        <span class="p">}</span>
+        <span class="n">String</span> <span class="n">joinBuilderOld</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span> 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;joinBuilderOld = &quot;</span> <span class="o">+</span> <span class="n">joinBuilderOld</span><span class="p">);</span> 
 
 
-        Collector&lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
-                ArrayList::new, 
-                List::add, 
-                (l1, l2) -&gt; { l1.addAll(l2); return l1; } 
-        );
-        List&lt;String&gt; distinct1 = strings.stream().distinct().collect(toList);
-        System.out.println(&quot;distinct1 = &quot; + distinct1); 
+        <span class="n">Collector</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">toList</span> <span class="o">=</span> <span class="n">Collector</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+                <span class="n">ArrayList</span><span class="p">::</span><span class="k">new</span><span class="p">,</span> 
+                <span class="n">List</span><span class="p">::</span><span class="n">add</span><span class="p">,</span> 
+                <span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">l1</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span> <span class="k">return</span> <span class="n">l1</span><span class="p">;</span> <span class="p">}</span> 
+        <span class="p">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">distinct1</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">distinct</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">toList</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;distinct1 = &quot;</span> <span class="o">+</span> <span class="n">distinct1</span><span class="p">);</span> 
 </code></pre></div>
 <h2 id="iv"><strong>IV. Заключение</strong></h2>
 <p>Вот и все. Надеюсь, моя небольшая шпаргалка по работе со stream api была для вас полезной. Все исходники есть на <a href="https://github.com/Vedenin/java_collections_overview/tree/master/src/com/github/vedenin/rus/stream_api">github'е</a>, удачи в написании хорошего кода.</p>
@@ -2829,13 +2853,13 @@ reduce(...)
         </a>
       
       
-        <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Modularizing%20a%20Spring%20Boot%20Application/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Spring REST Error Handling Example
+              Modularizing a Spring Boot Application
             </div>
           </div>
           <div class="md-footer__button md-icon">

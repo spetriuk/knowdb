@@ -14,7 +14,7 @@
     
     
       
-        <title>KeePassXC with synchronization - KnowDB</title>
+        <title>Modularizing a Spring Boot Application - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-keepassxc-on-linux-with-cloud-synchronization" class="md-skip">
+        <a href="#code-example" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              KeePassXC with synchronization
+              Modularizing a Spring Boot Application
             
           </span>
         </div>
@@ -426,12 +426,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         Java
@@ -449,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+      <a href="../%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
         @Before @BeforeClass @BeforeEach @BeforeAll
       </a>
     </li>
@@ -461,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+      <a href="../Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
         Access value in application.properties Spring Boot
       </a>
     </li>
@@ -473,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+      <a href="../Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
         Change the Default Port in Spring Boot
       </a>
     </li>
@@ -485,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+      <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
         Export & Download Data as CSV File in Spring Boot
       </a>
     </li>
@@ -497,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+      <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
         Integration Testing in Spring   Baeldung
       </a>
     </li>
@@ -509,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Java%20Stream%20API/" class="md-nav__link">
+      <a href="../Java%20Stream%20API/" class="md-nav__link">
         Java Stream API
       </a>
     </li>
@@ -519,11 +521,154 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../java/Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Modularizing a Spring Boot Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Modularizing a Spring Boot Application
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-example" class="md-nav__link">
+    Code Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-a-module-in-spring-boot" class="md-nav__link">
+    What’s a Module in Spring Boot?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-for-creating-modules" class="md-nav__link">
+    Options for Creating Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Options for Creating Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentscan" class="md-nav__link">
+    @ComponentScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bean-definitions" class="md-nav__link">
+    @Bean Definitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionalon-annotations" class="md-nav__link">
+    @ConditionalOn... Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-for-importing-modules" class="md-nav__link">
+    Options for Importing Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Options for Importing Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    @Import
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-annotations" class="md-nav__link">
+    @Enable... Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-configuration" class="md-nav__link">
+    Auto-Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-a-module" class="md-nav__link">
+    Configuring a Module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-which-import-strategy" class="md-nav__link">
+    When to use which Import Strategy?
+  </a>
+  
+    <nav class="md-nav" aria-label="When to use which Import Strategy?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-import-for-business-modules" class="md-nav__link">
+    Use @Import for Business Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-auto-configuration-for-technical-modules" class="md-nav__link">
+    Use Auto-Configuration for Technical Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -533,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+      <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
         Spring REST Error Handling Example
       </a>
     </li>
@@ -545,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+      <a href="../Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
         Spring Security Keycloak Spring Boot
       </a>
     </li>
@@ -557,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
         Uploading and Parsing CSV File using Spring Boot
       </a>
     </li>
@@ -569,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+      <a href="../%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
         Юнит тестирование для чайников
       </a>
     </li>
@@ -654,14 +799,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
         Linux
@@ -679,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AppImage%20Repack/" class="md-nav__link">
+      <a href="../../linux/AppImage%20Repack/" class="md-nav__link">
         AppImage Repack
       </a>
     </li>
@@ -691,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Bash%20read%20Command/" class="md-nav__link">
+      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
         Bash read Command
       </a>
     </li>
@@ -703,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
+      <a href="../../linux/Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
         Bash remove recursive by extension
       </a>
     </li>
@@ -715,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
         Bash скрипты начало
       </a>
     </li>
@@ -727,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Bash_%20Write%20to%20File/" class="md-nav__link">
+      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
         Bash  Write to File
       </a>
     </li>
@@ -739,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
         Cinnamon theme switch script
       </a>
     </li>
@@ -751,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+      <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
         GTK 3.16 Fix Large Black Borders Around Windows
       </a>
     </li>
@@ -763,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+      <a href="../../linux/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
         Grep поиск внутри файлов
       </a>
     </li>
@@ -775,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Joplin%20Terminal/" class="md-nav__link">
+      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
         Joplin Terminal
       </a>
     </li>
@@ -785,84 +928,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          KeePassXC with synchronization
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../linux/KeePassXC%20with%20synchronization/" class="md-nav__link">
         KeePassXC with synchronization
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#master-password" class="md-nav__link">
-    Master Password
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-file" class="md-nav__link">
-    Key File
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decryption-time" class="md-nav__link">
-    Decryption Time
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rclone" class="md-nav__link">
-    Rclone
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automation" class="md-nav__link">
-    Automation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-file_1" class="md-nav__link">
-    Key File
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -872,7 +942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+      <a href="../../linux/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
         Kill process by used port Ubuntu
       </a>
     </li>
@@ -884,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mosquitto/" class="md-nav__link">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
         Mosquitto
       </a>
     </li>
@@ -896,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+      <a href="../../linux/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
         Mouse Buttons Bind To Keyboard Keys Or Commands
       </a>
     </li>
@@ -908,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+      <a href="../../linux/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
         Nemo add keyboard shortcuts
       </a>
     </li>
@@ -920,7 +990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Nemo%20context%20menu%20action/" class="md-nav__link">
+      <a href="../../linux/Nemo%20context%20menu%20action/" class="md-nav__link">
         Nemo context menu action
       </a>
     </li>
@@ -932,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Notifications%20with%20notify-send/" class="md-nav__link">
+      <a href="../../linux/Notifications%20with%20notify-send/" class="md-nav__link">
         Notifications with notify send
       </a>
     </li>
@@ -944,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PDF%20create%20from%20images/" class="md-nav__link">
+      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
         PDF create from images
       </a>
     </li>
@@ -956,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PDF%20file%20Compress/" class="md-nav__link">
+      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
         PDF file Compress
       </a>
     </li>
@@ -968,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+      <a href="../../linux/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
         Terminal set wrong sudo password message
       </a>
     </li>
@@ -980,7 +1050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Thunderbird%20Tray%20Icon/" class="md-nav__link">
+      <a href="../../linux/Thunderbird%20Tray%20Icon/" class="md-nav__link">
         Thunderbird Tray Icon
       </a>
     </li>
@@ -992,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
         Автоматическое монтирование диска
       </a>
     </li>
@@ -1104,8 +1174,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1114,44 +1182,118 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#master-password" class="md-nav__link">
-    Master Password
+  <a href="#code-example" class="md-nav__link">
+    Code Example
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-file" class="md-nav__link">
-    Key File
+  <a href="#whats-a-module-in-spring-boot" class="md-nav__link">
+    What’s a Module in Spring Boot?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#decryption-time" class="md-nav__link">
-    Decryption Time
+  <a href="#options-for-creating-modules" class="md-nav__link">
+    Options for Creating Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Options for Creating Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentscan" class="md-nav__link">
+    @ComponentScan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bean-definitions" class="md-nav__link">
+    @Bean Definitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionalon-annotations" class="md-nav__link">
+    @ConditionalOn... Annotations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-for-importing-modules" class="md-nav__link">
+    Options for Importing Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Options for Importing Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    @Import
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-annotations" class="md-nav__link">
+    @Enable... Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-configuration" class="md-nav__link">
+    Auto-Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-a-module" class="md-nav__link">
+    Configuring a Module
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rclone" class="md-nav__link">
-    Rclone
+  <a href="#when-to-use-which-import-strategy" class="md-nav__link">
+    When to use which Import Strategy?
+  </a>
+  
+    <nav class="md-nav" aria-label="When to use which Import Strategy?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-import-for-business-modules" class="md-nav__link">
+    Use @Import for Business Modules
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#automation" class="md-nav__link">
-    Automation
+        
+          <li class="md-nav__item">
+  <a href="#use-auto-configuration-for-technical-modules" class="md-nav__link">
+    Use Auto-Configuration for Technical Modules
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#key-file_1" class="md-nav__link">
-    Key File
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1168,70 +1310,109 @@
               
                 
                 
-                <p>KeePassXC with synchronization</p>
-<h1 id="setting-up-keepassxc-on-linux-with-cloud-synchronization">Setting up KeePassXC on Linux (with Cloud Synchronization)</h1>
-<blockquote>
-<p>Stay open-source, trust no one.</p>
-</blockquote>
-<h2 id="master-password">Master Password</h2>
-<p>The most important thing about using a password manager is to choose a (<strong><em>really, really</em></strong>) strong master password. If you’re not genuinely impressed with yourself when you type it in, it’s not strong enough. The point of switching to a password manager is to have all of your most sensitive credentials in one impregnable place; your bank account, credit cards, mail, social media — whether it’s your assets or your reputation, the dearest information you have is most probably accessible through the internet, ergo your passwords for this information should be as un-hackable as possible.</p>
-<p><img alt="Wonderful xkcd comic about password entropy." src="https://miro.medium.com/max/1480/1*7v6djGHv-AC6Jeg9I5Eamg.png" /></p>
-<p><a href="https://www.xkcd.com/">xkcd</a> knows.</p>
-<p>In my opinion the best approach in this case, and in many other cases, is to combine: choose four random words that are easy for you to remember, but combine uppercase, lowercase, and special characters as well. E.g. “correct horse battery staple” isn’t much harder to remember than “C0rrEct(hOrse)b@TTery+$7ap13|” once you’ve practiced typing it a couple of times, but the increase in <a href="https://en.wikipedia.org/wiki/Password_strength#Entropy_as_a_measure_of_password_strength">entropy</a> is substantial. It will take you longer to type, but I’d argue the extra minute a day (at most!) is a fair price for securing all of your passwords. Let your muscle memory do the heavy lifting and you’ll be surprised at how easily it comes to you after a few times.</p>
-<p>Just to be on the safe side, copy your master password to a physical note and put it in a completely secure place that no one with access to your computer could ever possibly know of.</p>
-<h2 id="key-file">Key File</h2>
-<p>Go to <em>Database → Database settings… → Security</em>. Under the <em>Password</em> section at the top you should see a <em>Key File</em> section.</p>
-<p><img alt="Security settings for a particular database within KeePassXC" src="https://miro.medium.com/max/2880/1*FxFNYt1vCDOOeWwfE6gHig.png" /></p>
-<p>Database → Database settings… → Security</p>
-<p>This allows setting or creating a binary file that is used together with or instead of a master password. It is recommended to let the application generate a key file for you, and to copy it to three USB sticks. One you will carry with you, the other two you will keep as backup (in separate locations from the physical backup for your master password!). Having a key file means that even if someone somehow gains access to your password, you have a second form of authentication that prevents them from being able to use it. Again, you pay with convenience, but profit immensely in security. Simply get in the habit of throwing that USB stick in your pocket or backpack when you leave the house to any place where you might need access to your passwords. This should really be limited to perhaps one or two computers you work on. We’ll talk about your mobile phone in a second.</p>
-<h2 id="decryption-time">Decryption Time</h2>
-<p>In the same <em>Database settings… → Security</em> menu, note the second tab titled <em>Encryption Settings</em>. The first field in this tab is labeled <em>Decryption Time</em> and should have a <em>Change</em> button opposite of it. Press the button and validate your decryption time setting is set to <em>at least</em> 1 second. Feel free to give it a couple of extra deciseconds (hundreds of milliseconds) while you’re at it. The difference will be effectively indistinguishable, but the result will be a significant increase in the number of iterations used when encrypting your data, making it much harder to decrypt.</p>
-<p><img alt="" src="https://miro.medium.com/max/2880/1*fmhb-QdPBJbmgNhDM6axJQ.png" /></p>
-<p>These are the basics. You can also set a default username for new entries (<em>Database</em> → <em>Database settings… → General</em>), which I like to have as my e-mail address, change the time interval for clearing the clipboard after copying passwords (<em>Tools → Settings → Security</em>), decide to show a system tray icon (<em>Tools → Settings → General</em>), and much, much more. Explore and make it your own!</p>
-<p>First, you probably want to have your passwords available on your mobile phone. I use <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android">Keepass2Android</a> and am very satisfied.</p>
-<p>Keepass2Android allows you to set the location of the database file from various cloud services (including Google Drive, Dropbox, OneDrive, ownCloud, NextCloud, and more). However, KeePassXC does not. <a href="https://keepassxc.org/docs/#faq-cloudsync">As stated in the KeePassXC website</a>:</p>
-<blockquote>
-<p>_Why is there no cloud synchronization feature built into KeePassXC?<br />
-_Cloud synchronization with Dropbox, Google Drive, OneDrive, ownCloud, Nextcloud etc. can be easily accomplished by simply storing your KeePassXC database inside your shared cloud folder and letting your desktop synchronization client do the rest. We prefer this approach, because it is simple, not tied to a specific cloud provider and keeps the complexity of our code low.</p>
-</blockquote>
-<p>Now it really depends on what cloud service you are using. <a href="https://www.dropbox.com/install-linux">Dropbox</a> provides a Linux client, and so do <a href="https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&amp;package=owncloud-client">ownCloud</a> and <a href="https://nextcloud.com/install/">NextCloud</a>, but Google Drive and OneDrive don’t offer a particularly straightforward solution for Linux users. Also, you may not want or be able to install your cloud provider’s client in all the computers you need to have access to your passwords from.</p>
-<blockquote>
-<p><strong>EDIT</strong>: if you’re using GNOME there actually is a simple method to mount both Google Drive and OneDrive, more information <a href="https://linuxnewbieguide.org/how-to-use-google-drive-in-linux/">here</a>. Thanks to <a href="https://twitter.com/KeePassXC">KeePassXC</a> on twitter, for pointing this out.</p>
-</blockquote>
-<p>This could pose a potential problem, but fret not — <a href="https://rclone.org/">Rclone</a> has got you covered.</p>
-<p><img alt="" src="https://miro.medium.com/max/370/0*iURvCA1ElOf3QOVw" /></p>
-<h2 id="rclone">Rclone</h2>
-<p>According to <a href="https://github.com/rclone/rclone">Rclone’s GitHub project</a>’s README:</p>
-<blockquote>
-<p>Rclone <em>(“rsync for cloud storage”)</em> is a command line program to sync files and directories to and from different cloud storage providers.</p>
-</blockquote>
-<p>If you’ve clicked on either of two previous links and reviewed the incredible list of <a href="https://github.com/rclone/rclone#storage-providers">supported cloud storage providers</a>, you could almost certainly spot whichever cloud service you might be using as well as just about any other one you’ve ever heard of (and a dozen you haven’t). Most importantly, the list includes any one of the services supported by Keepass2Android.</p>
-<p><a href="https://rclone.org/downloads/">Installation</a> is as simple as running:<br />
-<code>curl https://rclone.org/install.sh | sudo bash</code>.<br />
-To verify everything went smoothly you can execute<code>rclone --version</code> (or <code>-V</code>) and see that you get the expected output.</p>
-<p>Use the instructions on Rclone’s homepage to set up a connection to your preferred cloud storage provider by following the link next to its name. This process is usually quite effortless and mostly entails running <code>rclone config</code>, selecting whichever provider you’re using, choosing a name for the created remote location, and accepting some defaults. To validate your configuration, execute: <code>rclone lsd _name_:</code>, where <em>name</em> represents the name you chose for the remote (cloud) location. This will list all top-level directories within that location. Generally speaking, remote paths in Rclone are specified as <code>_name_:remote/path</code> (which is why <code>_name_:</code> points to the root directory).</p>
-<h2 id="automation">Automation</h2>
-<p>Now that you have established a connection with your cloud storage provider, you need a script to automate the task of checking for updates and importing (if the remote version is newer) or exporting (if the local version is newer). I am not much of a bash scriptwriter, but I’ve come up with something relatively simple that seems to work:</p>
-<p>Bash script to automate database file synchronization</p>
-<p>All you have to do is download the file (you can also click the “view raw” button and copy directly to a file on your computer) and change the values of the four variables under the “Configuration” title (<code>DRIVE_NAME</code>, <code>DB_FILE_NAME</code>, <code>LOCAL_LOCATION</code>, and <code>REMOTE_LOCATION</code>) according to your setup. I like to keep such bash scripts under <code>~/Scripts</code> (<code>~</code> in the terminal is an alias to the home directory). Don’t forget to give the file execution permissions:<br />
-<code>chmod +x ~/Scripts/sync-passwords.sh</code></p>
-<p>Alternatively, you can simply run:</p>
-<p>cd; mkdir -p Scripts; wget <a href="https://gist.githubusercontent.com/ZviBaratz/a4a51544c3d876543d37abfd0c6ee2a3/raw/1b739673cfe168a7c0797bc04e1ab90269c82281/sync-passwords.sh">https://gist.githubusercontent.com/ZviBaratz/a4a51544c3d876543d37abfd0c6ee2a3/raw/1b739673cfe168a7c0797bc04e1ab90269c82281/sync-passwords.sh</a> -P Scripts; chmod +x Scripts/sync-passwords.sh</p>
-<p>This will change directory to the user home’s directory, create the ‘Scripts’ directory if it doesn’t exist under it, download the GitHub gist, and change its permissions to make it executable. However, don’t forget you still have to change the variables at the beginning of the script to match the name and location of your database file and the name of the cloud storage provider.</p>
-<p>Make sure it’s working by running it:<br />
-<code>~/Scripts/sync-passwords.sh</code></p>
-<p>Assuming you don’t yet have a remote copy of the database file, you should see something like:</p>
-<p><img alt="" src="https://miro.medium.com/max/576/1*JM5BNwZ_fYb8F8dOKOkjEw.png" /></p>
-<p>In following runs the output will look like:</p>
-<p><img alt="" src="https://miro.medium.com/max/1148/1*dK0r7yDv8C4ZPRtl3l_kHQ.png" /></p>
-<p>Finally, you may want to create a <a href="https://en.wikipedia.org/wiki/Cron">cron</a> job to automate the execution of this script, so that you don’t have to remember running it every time you make a small change. To create a job that runs the synchronization script every 20 minutes, you can run:</p>
-<p>(crontab -l; echo "*/20 * * * * $HOME/Scripts/sync-passwords.sh") | crontab -</p>
-<p>If you would like to create a different synchronization schedule you can use <a href="https://crontab.guru/">crontab.guru</a> or <a href="https://code.tutsplus.com/tutorials/scheduling-tasks-with-cron-jobs--net-8800">learn more about cron scheduling</a>. If you already created this job and would like to edit it you can do so using <code>crontab -e</code>.</p>
-<h2 id="key-file_1">Key File</h2>
-<p>Don’t forget about the key file! Connect your mobile phone to your desktop with a USB cable and copy the key file to your local storage. Open Keepass2Android and under <em>“select master key type:”</em> choose <em>“Password + Key File”</em>. Browse to select your key file from the phone’s local storage.</p>
-<p>Once you’ve unlocked your database successfully, click on the options button (should appear as three vertical dots in the top right corner) → Settings → Database, and select “Import database to internal folder”. Having completed that, delete the original version of the key file on the device so that it is not accessible to any other application.</p>
+                  <h1>Modularizing a Spring Boot Application</h1>
+                
+                <p>Modularizing a Spring Boot Application</p>
+<p><em>Loading components from other sources</em></p>
+<p>Every software project comes to a point where the code should be broken up into modules. These may be modules within a single code base or modules that each live in their own code base. This article explains some Spring Boot features that help to split up your Spring Boot application into several modules.</p>
+<h2 id="code-example"><a href="#code-example"></a><a href="https://github.com/thombergs/code-examples/tree/master/spring-boot/modular"></a>Code Example</h2>
+<p>This article is accompanied by a working code example <a href="https://github.com/thombergs/code-examples/tree/master/spring-boot/modular">on GitHub</a>.</p>
+<h2 id="whats-a-module-in-spring-boot"><a href="#whats-a-module-in-spring-boot"></a>What’s a Module in Spring Boot?</h2>
+<p>A module in the sense of this article is a set of Spring components loaded into the application context.</p>
+<p>A module can be a business module, providing some business services to the application or a technical module that provides cross-cutting concerns to several other modules or to the whole of the application.</p>
+<p>The modules discussed in this article are part of the same monolithic codebase. To better enforce module boundaries, we could split up that monolithic codebase into <a href="https://reflectoring.io/spring-boot-gradle-multi-module/">multiple build modules</a> with Maven or Gradle, if we so wish.</p>
+<h2 id="options-for-creating-modules"><a href="#options-for-creating-modules"></a>Options for Creating Modules</h2>
+<p>The base for a Spring Module is a <code>@Configuration</code>-annotated class along the lines of Spring’s <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-java">Java configuration</a> feature.</p>
+<p>There are several ways to define what beans should be loaded by such a configuration class.</p>
+<h3 id="componentscan"><a href="#componentscan"></a><code>@ComponentScan</code></h3>
+<p>The easiest way to create a module is using the <code>@ComponentScan</code> annotation on a configuration class:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="p">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="s">&quot;io.reflectoring.booking&quot;</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookingModuleConfiguration</span> <span class="p">{</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p>If this configuration class is picked up by one of the importing mechanisms (explained later), it will look through all classes in the package <code>io.reflectoring.booking</code> and load an instance of each class that is annotated with one of Spring’s <a href="https://github.com/spring-projects/spring-framework/tree/master/spring-context/src/main/java/org/springframework/stereotype">stereotype annotations</a> into the application context.</p>
+<p>This way is fine as long as you always want to load <em>all</em> classes of a package and its sub-packages into the application context. If you need more control on what to load, read on.</p>
+<h3 id="bean-definitions"><a href="#bean-definitions"></a><code>@Bean</code> Definitions</h3>
+<p>Spring’s Java configuration feature also brings the <code>@Bean</code> annotation for creating beans that are loaded into the application context:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookingModuleConfiguration</span> <span class="p">{</span>
+
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="n">BookingService</span> <span class="nf">bookingService</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">BookingService</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// potentially more @Bean definitions ...</span>
+
+<span class="p">}</span> 
+</code></pre></div>
+<p>When this configuration class is imported, a <code>BookingService</code> instance will be created and inserted into the application context.</p>
+<p>Using this way to create a module gives a clearer picture of what beans are actually loaded, since you have a single place to look at - in contrast to using <code>@ComponentScan</code> where you have to look at the stereotype annotations of all classes in the package to see what’s going on.</p>
+<h3 id="conditionalon-annotations"><a href="#conditionalon-annotations"></a><code>@ConditionalOn...</code> Annotations</h3>
+<p>If you need even more fine-grained control over which components should be loaded into the application context, you can make use of Spring Boot’s <code>@ConditionalOn...</code> annotations:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@ConditionalOnProperty</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;io.reflectoring.security.enabled&quot;</span><span class="p">,</span> 
+    <span class="n">havingValue</span> <span class="o">=</span> <span class="s">&quot;true&quot;</span><span class="p">,</span> <span class="n">matchIfMissing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityModuleConfiguration</span> <span class="p">{</span>
+  <span class="c1">// @Bean definitions ...</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p>Setting the property <code>io.reflectoring.security.enabled</code> to <code>false</code> will now disable this module completely.</p>
+<p>There are other <a href="https://reflectoring.io/spring-boot-conditionals/"><code>@ConditionalOn...</code> annotations</a> you can use to define conditions for loading a module. These include a condition depending on the version of the JVM and the existence of a certain class in the classpath or a certain bean in the application context.</p>
+<p>If you ever asked yourself how Spring Boot magically loads exactly the beans your application needs into the application context, this is how. Spring Boot itself makes heavy use of the <code>@ConditionalOn...</code> annotations.</p>
+<h2 id="options-for-importing-modules"><a href="#options-for-importing-modules"></a>Options for Importing Modules</h2>
+<p>Having created a module, we need to import it into the application.</p>
+<h3 id="import"><a href="#import"></a><code>@Import</code></h3>
+<p>The most straight-forward way is to use the <code>@Import</code> annotation:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootApplication</span>
+<span class="nd">@Import</span><span class="p">(</span><span class="n">BookingModuleConfiguration</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModularApplication</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p>This will import the <code>BookingModuleConfiguration</code> class and all beans that come with it - no matter whether they are declared by <code>@ComponentScan</code> or <code>@Bean</code> annotations.</p>
+<h3 id="enable-annotations"><a href="#enable-annotations"></a><code>@Enable...</code> Annotations</h3>
+<p>Spring Boot brings a set of annotations that each import a certain module by themselves. An example is <code>@EnableScheduling</code>, which imports all Beans necessary for the scheduling sub system and its <code>@Scheduled</code> annotation to work.</p>
+<p>We can make use of this ourselves, by defining our own <code>@EnableBookingModule</code> annotation:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<span class="nd">@Target</span><span class="p">({</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">})</span>
+<span class="nd">@Documented</span>
+<span class="nd">@Import</span><span class="p">(</span><span class="n">BookingModuleConfiguration</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">EnableBookingModule</span> <span class="p">{</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p>The annotation is used like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableBookingModule</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ModularApplication</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p>The <code>@EnableBookingModule</code> annotation is actually just a wrapper around an <code>@Import</code> annotation that imports our <code>BookingModuleConfiguration</code> as before. However, if we have a module consisting of more than one configuration, this is a convenient and expressive way to aggregate these configurations into a single module.</p>
+<h3 id="auto-configuration"><a href="#auto-configuration"></a>Auto-Configuration</h3>
+<p>If we want to load a module automatically instead of hard-wiring the import into the source code, we can make use of Spring Boot’s auto-configuration feature.</p>
+<p>To enable a module for auto configuration, put the file <code>META-INF/spring.factories</code> into the classpath:</p>
+<div class="highlight"><pre><span></span><code><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="p">.</span><span class="na">autoconfigure</span><span class="p">.</span><span class="na">EnableAutoConfiguration</span><span class="o">=</span><span class="err">\</span>
+  <span class="n">io</span><span class="p">.</span><span class="na">reflectoring</span><span class="p">.</span><span class="na">security</span><span class="p">.</span><span class="na">SecurityModuleConfiguration</span> 
+</code></pre></div>
+<p>This would import the <code>SecurityModuleConfiguration</code> class all its beans into the application context.</p>
+<p>An auto-configuration is especially handy if we’re building a cross-cutting concern to be used in many Spring Boot applications. In this case, we can even build a separate <a href="https://reflectoring.io/spring-boot-starter/">starter module</a> around the configuration.</p>
+<h2 id="configuring-a-module"><a href="#configuring-a-module"></a>Configuring a Module</h2>
+<p>With the <code>@ConfigurationProperties</code> annotation, Spring Boot provides first-class support for <a href="https://reflectoring.io/spring-boot-configuration-properties/">binding external configuration parameters to a Spring bean</a> in a type-safe manner.</p>
+<h2 id="when-to-use-which-import-strategy"><a href="#when-to-use-which-import-strategy"></a>When to use which Import Strategy?</h2>
+<p>This article presented the major options for creating and importing modules in a Spring Boot application. But when should we use which of those options?</p>
+<h3 id="use-import-for-business-modules"><a href="#use-import-for-business-modules"></a>Use <code>@Import</code> for Business Modules</h3>
+<p>For modules that contain business logic - like the <code>BookingModuleConfiguration</code> from the code snippets above - a static import with the <code>@Import</code> annotation should suffice in most cases. It usually does not make sense to <em>not</em> load a business module, so we do not need any control about the conditions under which it is loaded.</p>
+<p>Note that even if a module is <em>always</em> loaded, it still has a right to exist as a module, since it being a module enables it to live in its own package or even its own JAR file.</p>
+<h3 id="use-auto-configuration-for-technical-modules"><a href="#use-auto-configuration-for-technical-modules"></a>Use Auto-Configuration for Technical Modules</h3>
+<p>Technical modules, on the other hand - like the <code>SecurityModuleConfiguration</code> from above - usually provide some cross-cutting concerns like logging, exception handling, authorization or monitoring features which the application can very well live without.</p>
+<p>Especially during development, these features may not be desired at all, so we want to have a way to disable them.</p>
+<p>Also, we do not want to import each technical module statically with <code>@Import</code>, since they should not really have any impact on our code.</p>
+<p>So, the best option for importing technical modules is the auto-configuration feature. The modules are loaded silently in the background and we can influence them outside of the code with properties.</p>
 <hr />
-<p><a href="https://medium.com/@z.baratz/setting-up-keepassxc-on-linux-with-cloud-synchronization-85ccce837365#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0NjJhNzFkYTRmNmQ2MTFmYzBmZWNmMGZjNGJhOWMzN2Q2NWU2Y2QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2MTU4MDA3NzEsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwOTg1NDU3NDIwMTExOTA5ODcxMCIsImVtYWlsIjoiYWxwaGEucGkwMkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlNlcmhpaSBQZXRyaXVrIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdqRjIwSmVyUjNPTzY5amR5RHhUYjNKcFl1THN6bkV3N29iWXprYz1zOTYtYyIsImdpdmVuX25hbWUiOiJTZXJoaWkiLCJmYW1pbHlfbmFtZSI6IlBldHJpdWsiLCJpYXQiOjE2MTU4MDEwNzEsImV4cCI6MTYxNTgwNDY3MSwianRpIjoiMjAxMTczMWQ0YjZlYjIwMWRjOGRkZjhiNTg0MzM4Yjc4NGQ1MGExZiJ9.o3ciGgSXAyU-mwu-2CURTs9MhKwZz37d7GxHFFx1dnq_T3WMV1ac5-0Kw9GBhNVvTaagFCUQbrAvjN3SgYdLiikqgywmqtKjIVvNvKLjmNQ3mzU5xZEG8z_snoRhuWIqIapMNRMZqO2GfUJvVrcy7-xJUmt5WI6xS_7nbgaQmAl8ZEIEEr_J6c-BeOv7_wu1wN0yD3gMn3UEHL0viL4QJu7dOYSiBSzg_mRywMSg-W9HfEGsQHQtGlUTTmMjV8RvhI2pW0ZgVP2MEzBPhwUi5DT1rraKu2IR1aEI4wIBWcaulUdsB4bbSA7SO3zrp_2fhHBzvddMip7xiSH8B2-h2Q">Source</a></p>
+<p><a href="https://reflectoring.io/spring-boot-modules/">Source</a></p>
                 
               
               
@@ -1250,7 +1431,7 @@ To verify everything went smoothly you can execute<code>rclone --version</code> 
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Joplin%20Terminal/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Java%20Stream%20API/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1259,19 +1440,19 @@ To verify everything went smoothly you can execute<code>rclone --version</code> 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Joplin Terminal
+              Java Stream API
             </div>
           </div>
         </a>
       
       
-        <a href="../Kill%20process%20by%20used%20port%20Ubuntu/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Spring%20REST%20Error%20Handling%20Example/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Kill process by used port Ubuntu
+              Spring REST Error Handling Example
             </div>
           </div>
           <div class="md-footer__button md-icon">
