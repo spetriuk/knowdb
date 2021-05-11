@@ -1,0 +1,1521 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Компиляция JavaScript - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Компиляция JavaScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        JavaScript
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Компиляция JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Компиляция JavaScript
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Компиляция
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Algorithms
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%201.%20Introduction/" class="md-nav__link">
+        B Tree. 1. Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%202.%20Insert%20Operation/" class="md-nav__link">
+        B Tree. 2. Insert Operation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-nav__link">
+        B Tree. 3. Delete Operation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
+        Keycloak Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/PostgreSQL%20Docker/" class="md-nav__link">
+        PostgreSQL Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Delete%20branch%20local_remote/" class="md-nav__link">
+        Delete branch local remote
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+        Modularizing a Spring Boot Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/AppImage%20Repack/" class="md-nav__link">
+        AppImage Repack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+        Bash read Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
+        Bash remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+        Bash  Write to File
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
+        Check for Listening Ports in Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+        GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+        Grep поиск внутри файлов
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/KeePassXC%20with%20synchronization/" class="md-nav__link">
+        KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+        Kill process by used port Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Mouse Buttons Bind To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+        Nemo add keyboard shortcuts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20context%20menu%20action/" class="md-nav__link">
+        Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Notifications%20with%20notify-send/" class="md-nav__link">
+        Notifications with notify send
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+        PDF create from images
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+        PDF file Compress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+        Terminal set wrong sudo password message
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Thunderbird%20Tray%20Icon/" class="md-nav__link">
+        Thunderbird Tray Icon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Mongodb
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mongodb" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Mongodb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+        MongoDB Cheat Sheet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Компиляция
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Компиляция JavaScript</h1>
+                
+                <p>Компиляция JavaScript</p>
+<p>Когда вы запускаете JavaScript код, происходят две вещи, которые заставляют его работать.</p>
+<ul>
+<li>Первое, ваш код компилируется.</li>
+<li>Затем скомпилированный код выполняется.</li>
+</ul>
+<p>Во время компиляции, JavaScript движок:</p>
+<ul>
+<li>запоминает все имена ваших переменных</li>
+<li>регистрирует их согласно подходящим областям видимости</li>
+<li>сохраняет место для их значений</li>
+</ul>
+<p>В действительности, только во время выполнения, движок JavaScript задаёт значения ссылкам переменных (variable references) равным присвоенному им значению. До этого они равны undefined.</p>
+<h3 id="_1">Компиляция</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// I can use first_name anywhere in this program </span>
+<span class="kd">var</span> <span class="nx">first_name</span> <span class="o">=</span> <span class="s2">&quot;Peleke&quot;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">popup</span> <span class="p">(</span><span class="nx">first_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// I can only use last_name inside of this function</span>
+    <span class="kd">var</span> <span class="nx">last_name</span> <span class="o">=</span> <span class="s2">&quot;Sengstacke&quot;</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">first_name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">last_name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">popup</span><span class="p">(</span><span class="nx">first_name</span><span class="p">);</span>
+</code></pre></div>
+<p>Сначала он прочитает строку<code>var first_name = "Peleke"</code>. Затем, он установит какой области видимости принадлежит эта переменная. Так как мы на верхнем уровне скрипта, он поймет, что мы в глобальной области видимости. Затем, он сохранит переменную <code>first_name</code> в глобальную область видимости и назначит ей значение <code>undefined</code>.</p>
+<p>Затем компилятор прочитает строчку<code>function popup (first_name)</code>. Так как ключевое слово <code>function</code> идёт первым на этой строке, он создаст новую область видимости для функции, зарегистрирует объявление функции для глобальной области видимости и заглянет внутрь, чтобы найти объявление переменных.</p>
+<p>Конечно, компилятор найдёт одно из них. Так как у нас есть <code>var last_name = "Sengstacke"</code> на первой строчке нашей функции, компилятор сохранит переменную last_name в область видимости popup—не глобальную область видимости—и задаст значение <code>undefined</code>.</p>
+<p>Так как внутри функции больше нет объявлений переменных, компилятор вернётся в глобальную область видимости. Там нет объявлений переменных, на этом фаза компиляции закончится.</p>
+<p>Обратите внимание, что мы ещё ничего не запускали. Работа компилятора на этом этапе - убедиться, что он знает все имена; ему не важно, что они делают.</p>
+<p>К этому моменту наша программа знает:</p>
+<ul>
+<li>Существует переменная first_name в глобальной области видимости.</li>
+<li>Существует функция popup в глобальной области видимости.</li>
+<li>Существует переменная last_name в области видимости popup.</li>
+<li>Значения first_name и last_name - undefined.</li>
+</ul>
+<p>Не важно если мы задали значения этим переменным в другом месте нашего кода. Движок JavaScript позаботится об этом во время выполнения.</p>
+<h3 id="_2">Выполнение</h3>
+<p>Во время следующей фазы, движок будет читать наш кода снова, на этот раз, выполняя его.</p>
+<p>Сначала, он прочитает строчку, <code>var first_name = "Peleke"</code>. Движок обратит внимание на переменную с названием <code>first_name</code>. Компилятор уже зарегистрировал переменную с таким именем, движок узнает об этом и задаст переменной значение <code>"Peleke"</code>.</p>
+<p>Затем, он прочитает строку <code>function popup (first_name)</code>. Пока мы не вызываем функцию, движку она будет не интересна и он пропустит её.</p>
+<p>Наконец, он прочитает строчку <code>popup(first_name)</code>. На этом месте идёт вызов функции, следовательно движок:</p>
+<ul>
+<li>будет искать значение popup</li>
+<li>будет искать значение first_name</li>
+<li>выполнит функцию popup, передавая значение first_name, как параметер</li>
+</ul>
+<p>Когда он выполняет popup, повторится тот же самый процесс, на этот раз внутри функции popup. Движок будет:</p>
+<ul>
+<li>искать переменную last_name</li>
+<li>установит значение last_name равным "Sengstacke"</li>
+<li>будет искать alert, выполнит её, как функцию с параметром "Peleke Sengstacke"</li>
+</ul>
+<p>Оказывается под капотом JavaScript происходит гораздо больше, чем мы думали! </p>
+<p>Теперь мы поняли, как JavaScript читает и выполняет, написанный вами код и мы готовы разобраться в том, как работает всплытие.
+Всплытие под Микроскопом</p>
+<p>Давайте начнём со следующего кода.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">bar</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">bar</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot;? This is strange...&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">broken</span><span class="p">();</span> <span class="c1">// TypeError!</span>
+<span class="kd">var</span> <span class="nx">broken</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This alert won&#39;t show up!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Запустив этот код можно заметить следующее:</p>
+<ul>
+<li>Вы можете использовать foo до того, как присвоите значение, но значение будет undefined.</li>
+<li>Вы можете вызвать функцию broken, до того, как определили её, но получите ошибку TypeError.</li>
+<li>Вы можете вызвать bar до того как определили её и она будет работать как полагается.</li>
+</ul>
+<p>Всплытие означает тот факт, что JavaScript делает все наши объявленные имена переменных доступными везде, в их области видимости до того, как мы присвоим им значение. </p>
+<p>Три случая в куске кода выше - это три случая, о которых вам стоит знать и быть внимательными, так что мы разберём каждый из них.
+Всплытие Объявления Переменной</p>
+<p>Помните, когда JavaScript компилятор читает строку вроде <code>var foo = "bar"</code>, он:</p>
+<ul>
+<li>регистрирует имя foo в ближайшей области видимости</li>
+<li>устанавливает значение foo, как undefined</li>
+</ul>
+<p>Причина по которой мы можем использовать <code>foo</code> до того, как мы добавили к ней значения, это то что, движок знает о существовании имён переменных. Вот почему он не показывает <code>ReferenceError</code>.</p>
+<p>Вместо этого мы видим значение undefined и движок пытается использовать его, в том случает если вы попросите его об этом. Обычно это вызывает ошибку.</p>
+<p>Зная об этом, мы можем предстать, что JavaScript видит в нашей функции bar следующую картину:
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">bar</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span> <span class="c1">// undefined</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// !undefined is true, so alert</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot;? This is strange...&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Это Первое Правило Всплытия: Переменные доступны в их области видимости, но имеют значение <code>undefined</code> пока в коде им не будет присвоено значение.</p>
+<p>Довольно популярная JavaScript идиома - писать все объявления var на верху их области видимости, вместо тех мест где вы их используете. Повторю слова Doug Crockford'а, ваш код читается также, как он выполняется.</p>
+<p>Если подумать об этом, это имеет смысл. Сразу становится понятно почему bar ведёт себя так, когда мы пишем код также, как движок JavaScript читает его, неправд-ли? Так почему же не писать его так всегда?
+Всплытие Функционального Выражения (Function Expression)</p>
+<p>Тот факт, что мы видим <code>TypeError</code> ошибку когда пытаемся запустить <code>broken</code> до того, как она была определена, тоже относится к первому правилу всплытия.</p>
+<p>Мы создали переменную <code>broken</code>, которую компилятор зарегистрировал в глобальной области видимости, равную <code>undefined</code>. Когда мы пытаемся её запустить, движок ищет значение <code>broken</code>, когда он его найдет, оно будет равно <code>undefined</code>, затем он пытается вызвать <code>undefined</code>, как функцию.</p>
+<p>Очевидно, что undefined не является функцией—вот почему, в результате, мы получаем TypeError!
+Всплытие Объявления Функции (Function Declaration)</p>
+<p>Ну и наконец, зная это, мы можем вызвать bar до того, как мы определили данную функцию. Это связано со Вторым Правилом Всплытия: когда JavaScript компилятор находит объявление функции, имя и определение функции доступно сверху области видимости, которой она принадлежит. Давайте снова перепишем наш код:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">bar</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot;? This is strange...&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">broken</span><span class="p">;</span> <span class="c1">// undefined</span>
+
+<span class="nx">bar</span><span class="p">();</span> <span class="c1">// bar is already defined, executes fine</span>
+
+<span class="nx">broken</span><span class="p">();</span> <span class="c1">// Can&#39;t execute undefined!</span>
+
+<span class="nx">broken</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This alert won&#39;t show up!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+И опять же, не кажется-ли вам, что проще писать JavaScript код, так как читает его движок?</p>
+<p>В итоге мы имеем:</p>
+<ul>
+<li>Имена объявлений переменных и выражения function (function expression) доступны в их области видимости, но их значение равно undefined, до тех пор пока оно не было назначено (значение).</li>
+<li>Имя и сама функция, функции объявления (function declaration) доступна внутри своей области видимости, даже до того, как она была объявлена.</li>
+</ul>
+<p>Теперь давайте посмотрим на два новых инструмента, принцип работы, которых немного отличается: речь идёт о <code>let</code> и <code>const</code>.
+<code>let</code>, <code>const</code> и временная мёртвая зона</p>
+<p>В отличии от объявлений var, на переменные объявленные через let и const, не распространяются правила всплытия во время компиляции.</p>
+<p>По крайней мере, не совсем так.</p>
+<p>Помните мы могли вызвать <code>broken</code>, но в результате получили <code>TypeError</code>, потому что мы пытались вызывать <code>undefined</code>? Если мы вызовем broken объявленную через <code>let</code>, мы увидим <code>ReferenceError</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span> 
+<span class="c1">// You have to &quot;use strict&quot; to try this in Node</span>
+<span class="nx">broken</span><span class="p">();</span> <span class="c1">// ReferenceError!</span>
+<span class="kd">let</span> <span class="nx">broken</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This alert won&#39;t show up!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Не смотря на то что компилятор, при первом чтении кода, регистрирует переменные в их области видимости, <code>let</code> и <code>const</code> отличаются от <code>var</code>.</p>
+<p>Когда он находит объявление <code>var</code>, мы регистрируем имя переменной в её области видимости и тут же присваиваем значение <code>undefined</code>.</p>
+<p>Однако с <code>let</code>, компилятор регистрирует переменную в её области видимости, но не инициализирует при этом значение равное <code>undefined</code>. Вместо этого он оставляет переменную не инициализированной, до тех пор пока движок не начнёт выполнять выражения присваивания значений. Пытаясь получить значение не инициализированной переменной, даёт результат <code>ReferenceError</code>, что в свою очередь объясняет почему мы получили ошибку в коде выше, пытаясь его запустить.</p>
+<p>Пространство между началом области видимости <code>let</code> и выражением присваивания значения, называется временная мёртвая зона (Temporal Dead Zone). Это название связанно с тем фактом, что даже не смотря на то что движок знает о переменной <code>foo</code> на вершине области видимости <code>bar</code>, переменная "мертва", потому что у неё нет значения.</p>
+<p>... А также переменная убьёт вашу программу если вы попытаетесь использовать её ранее.</p>
+<p>Ключевое слово <code>const</code> работает примерно таким же образом, как и <code>let</code>, с двумя ключевыми отличиями:</p>
+<ul>
+<li>Вы должны сразу же присвоить значение, когда используете const.</li>
+<li>Вы не можете повторно присвоить значение переменной объявленной через const.</li>
+</ul>
+<p>Тем самым у вас всегда будут гарантии, что у const будет значение, которое вы изначально присвоили.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// This is legal</span>
+<span class="kd">const</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
+
+<span class="c1">// This is totally not legal</span>
+<span class="kd">const</span> <span class="nx">crypto</span><span class="p">;</span>
+<span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+</code></pre></div>
+Область Видимости Блока</p>
+<p>У <code>let</code> и <code>const</code> есть и другое отличие от  <code>var</code>: размер области видимости.</p>
+<p>Когда вы объявляете переменную через var, она видна на вершине цепочки областей видимости—обычно, на вершине ближайшего объявления функции, или глобальной области видимости, в том случае если объявление произошло на верхнем уровне.</p>
+<p>Однако при объявлении переменных с <code>let</code> и <code>const</code>, они будут видны, более локально—только внутри ближайшего блока.</p>
+<p>Блоком считается пространство между фигурными скобками, которое можно видеть в <code>if/else</code> блоках, циклах for, и явно созданных "блочных" кусках кода, как в примере ниже. 
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+<span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">foobar</span> <span class="o">=</span> <span class="nx">foo</span> <span class="o">+</span> <span class="nx">bar</span><span class="p">;</span>
+
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I can see &quot;</span> <span class="o">+</span> <span class="nx">bar</span> <span class="o">+</span> <span class="s2">&quot; in this bloc.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I can see &quot;</span> <span class="o">+</span> <span class="nx">foo</span> <span class="o">+</span> <span class="s2">&quot; in this block, but not &quot;</span> <span class="o">+</span> <span class="nx">bar</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You got a &quot;</span> <span class="o">+</span> <span class="nx">err</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foo</span> <span class="o">+</span> <span class="nx">bar</span> <span class="p">);</span> <span class="c1">// Throws because of &#39;foo&#39;, but both are undefined</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">&quot;You just got a &quot;</span> <span class="o">+</span> <span class="nx">err</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foobar</span> <span class="p">);</span> <span class="c1">// Works fine</span>
+</code></pre></div></p>
+<p>Если вы объявляете переменную через <code>const</code> или <code>let</code> внутри блока, она будет видна только внутри этого блока и только после того, как вы присвоите значение.</p>
+<p>Переменная объявленная через <code>var</code>, видна гораздо дальше—в нашем случае, в глобальной области видимости.</p>
+<p>Если вас интересуют подробные детали <code>let</code> и <code>const</code>, обратите внимание, что Dr Rauschmayer говорит об этом в Изучаем ES6: переменные и область видимости, также посмотрите на документацию на MDN.
+Лексический <code>this</code> и стрелочная функция</p>
+<p>На поверхности, не похоже что this каким-либо образом влияет на область видимости. По факту, правила области видимости JavaScript рассмотренные ранее никак не относятся к <code>this</code>.</p>
+<p>По крайней мере не всегда. В JavaScript не важно где вы, в какой области видимости, использовали слово this:
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span>
+    <span class="nx">languages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Spanish&#39;</span><span class="p">,</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span> <span class="s1">&#39;Italian&#39;</span><span class="p">],</span>
+    <span class="nx">speak</span> <span class="o">:</span> <span class="kd">function</span> <span class="nx">speak</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">languages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">language</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; speaks &quot;</span> <span class="o">+</span> <span class="nx">language</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">foo</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+</code></pre></div></p>
+<p>Большинство из нас думают, что <code>this</code> будет равен <code>foo</code> внутри цикла <code>forEach</code>, так как <code>this</code> за границами <code>forEach</code> равен <code>foo</code>. Другими словами возможно многие думают, что JavaScript рассматривает <code>this</code> лексически.</p>
+<p>Вы ошибаетесь.</p>
+<p>Вместо этого создаётся новый <code>this</code> внутри каждой функции, которую вы определяете, движок рассматривает значение <code>this</code> в зависимости не от того где вы определили функцию, а от того как вы её вызвали.</p>
+<p>Похожий случай когда вы переопределяете любую переменную во внутренней области видимости:
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">foo</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">baz</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Reusing variable names like this is called &quot;shadowing&quot; </span>
+        <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;BAR&quot;</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span> <span class="c1">// BAR</span>
+    <span class="p">}</span>
+    <span class="nx">baz</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">foo</span><span class="p">();</span> <span class="c1">// BAR</span>
+</code></pre></div>
+Замените <code>bar</code> на <code>this</code>, и всё немедленно отчистится!</p>
+<p>Обычно, заставить this работать подобно лексической области видимости переменных, требует некоторых обходных путей:
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span>
+    <span class="nx">languages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Spanish&#39;</span><span class="p">,</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span> <span class="s1">&#39;Italian&#39;</span><span class="p">],</span>
+    <span class="nx">speak_self</span> <span class="o">:</span> <span class="kd">function</span> <span class="nx">speak_s</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">languages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">language</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; speaks &quot;</span> <span class="o">+</span> <span class="nx">language</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">speak_bound</span> <span class="o">:</span> <span class="kd">function</span> <span class="nx">speak_b</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">languages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">language</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; speaks &quot;</span> <span class="o">+</span> <span class="nx">language</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+        <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">foo</span><span class="p">));</span> <span class="c1">// More commonly:.bind(this);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+В <code>speak_self</code>, мы сохраняем значение <code>this</code> в переменную <code>self</code>и используем эту переменную в качестве ссылки. В speak_bound, мы используем bind для того, чтобы привязать this к объекту, на постоянной основе.</p>
+<p>В <code>ES2015</code> появилась ещё одна альтернатива - стрелочные функции.</p>
+<p>В отличии от обычной функции, стрелочная функция не скрывает значение <code>this</code> в родительской области видимости, устанавливая при этом новое значение. Вместо этого данные функции лексически привязаны к значению <code>this</code>.</p>
+<p>Другими словами, используя <code>this</code> в стрелочной функции, JavaScript ищет значение наверху, как и в случае с обычными переменными.</p>
+<p>В начале значение <code>this</code> ищется в локальной области видимости. Так как стрелочная функция не устанавливает значение <code>this</code>, там найдено ничего не будет. После этого значение <code>this</code> будет искаться в родительской области видимости. Если значение найдётся там, то оно и будет использоваться.</p>
+<p>Тем самым мы можем переписать код выше:
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span>
+    <span class="nx">languages</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Spanish&#39;</span><span class="p">,</span> <span class="s1">&#39;French&#39;</span><span class="p">,</span> <span class="s1">&#39;Italian&#39;</span><span class="p">],</span>
+    <span class="nx">speak</span> <span class="o">:</span> <span class="kd">function</span> <span class="nx">speak</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">languages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">language</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; speaks &quot;</span> <span class="o">+</span> <span class="nx">language</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../.." class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Welcome
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../algorithms/B-Tree.%201.%20Introduction/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              B Tree. 1. Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/serhii-petriuk/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
