@@ -1,0 +1,1540 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Exec Docker Command - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker-exec-syntax" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exec Docker Command
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        JavaScript
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaScript/%D0%9A%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%86%D0%B8%D1%8F%20JavaScript/" class="md-nav__link">
+        Компиляция JavaScript
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Algorithms
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%201.%20Introduction/" class="md-nav__link">
+        B Tree. 1. Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%202.%20Insert%20Operation/" class="md-nav__link">
+        B Tree. 2. Insert Operation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-nav__link">
+        B Tree. 3. Delete Operation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exec Docker Command
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Exec Docker Command
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-syntax" class="md-nav__link">
+    Docker Exec Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-bash" class="md-nav__link">
+    Docker Exec Bash
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Exec Bash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
+    Docker Exec Interactive Option (IT)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-as-root" class="md-nav__link">
+    Docker Exec as Root
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-multiple-commands" class="md-nav__link">
+    Docker Exec Multiple Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
+    Executing a command in a specific directory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-run-vs-exec" class="md-nav__link">
+    Docker Run vs Exec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-environment-variables" class="md-nav__link">
+    Set Environment Variables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keycloak%20Docker/" class="md-nav__link">
+        Keycloak Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PostgreSQL%20Docker/" class="md-nav__link">
+        PostgreSQL Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Delete%20branch%20local_remote/" class="md-nav__link">
+        Delete branch local remote
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Circuit%20Breaker%20pattern/" class="md-nav__link">
+        Circuit Breaker pattern
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+        Modularizing a Spring Boot Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Kafka
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/KafkaTemplate/" class="md-nav__link">
+        KafkaTemplate
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/Setting%20Up%20Kafka/" class="md-nav__link">
+        Setting Up Kafka
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/AppImage%20Repack/" class="md-nav__link">
+        AppImage Repack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+        Bash read Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
+        Bash remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+        Bash  Write to File
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
+        Check for Listening Ports in Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+        GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+        Grep поиск внутри файлов
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/KeePassXC%20with%20synchronization/" class="md-nav__link">
+        KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+        Kill process by used port Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Mouse Buttons Bind To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+        Nemo add keyboard shortcuts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Nemo%20context%20menu%20action/" class="md-nav__link">
+        Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Notifications%20with%20notify-send/" class="md-nav__link">
+        Notifications with notify send
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+        PDF create from images
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+        PDF file Compress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+        Terminal set wrong sudo password message
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Thunderbird%20Tray%20Icon/" class="md-nav__link">
+        Thunderbird Tray Icon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/sha256%20check/" class="md-nav__link">
+        Sha256 check
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Mongodb
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mongodb" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Mongodb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+        MongoDB Cheat Sheet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-syntax" class="md-nav__link">
+    Docker Exec Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-bash" class="md-nav__link">
+    Docker Exec Bash
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Exec Bash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
+    Docker Exec Interactive Option (IT)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-as-root" class="md-nav__link">
+    Docker Exec as Root
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-exec-multiple-commands" class="md-nav__link">
+    Docker Exec Multiple Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
+    Executing a command in a specific directory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-run-vs-exec" class="md-nav__link">
+    Docker Run vs Exec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-environment-variables" class="md-nav__link">
+    Set Environment Variables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Exec Docker Command</h1>
+                
+                <p>Exec Docker Command</p>
+<p>Luckily, there is a command that you can use in order to execute commands on running containers : <strong>docker exec.</strong></p>
+<p>In this tutorial, we are going to focus on the <strong>docker exec command</strong>.</p>
+<h2 id="docker-exec-syntax"><a id="Docker_Exec_Syntax"></a>Docker Exec Syntax</h2>
+<p><strong>In order to execute commands on running containers, you have to execute “docker exec” and specify the container name (or ID) as well as the command to be executed on this container.</strong></p>
+<div class="highlight"><pre><span></span><code>$ docker exec &lt;options&gt; &lt;container&gt; &lt;command&gt;
+</code></pre></div>
+<p>As an example, let’s say that you want to execute the “ls” command on one of your containers.</p>
+<p>The first thing that you need to do is to identify the container name (if you gave your container one) or the container ID.</p>
+<p>In order to determine the container name or ID, you can simply execute the “docker ps” command.</p>
+<div class="highlight"><pre><span></span><code>$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
+74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds 
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong> : the “docker ps” is also used in order to determine whether a container is running or not.</p>
+</blockquote>
+<p>As you can see, the container ID is the first column of the ‘docker ps’ output.</p>
+<p>Now, <strong>to execute the “ls” command on this container</strong>, simply append the ‘ls’ command to the ID of your container.</p>
+<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd ls
+
+bin
+boot
+dev
+etc
+home
+</code></pre></div>
+<p>Awesome, now that you know how you can use the “<strong>docker exec</strong>” command, let’s see some custom examples on usage of this command.</p>
+<h2 id="docker-exec-bash"><a id="Docker_Exec_Bash"></a>Docker Exec Bash</h2>
+<p>The most popular usage of the “<strong>docker exec</strong>” command is to launch a <a href="https://devconnected.com/category/linux-administration/bash/">Bash</a> terminal within a container.</p>
+<p><strong>In order to start a Bash shell in a Docker container, execute the “docker exec” command with the “-it” option and specify the container ID as well as the path to the bash shell.</strong></p>
+<p>If the Bash is part of your PATH, you can simply type “bash” and have a Bash terminal in your container.</p>
+<div class="highlight"><pre><span></span><code>$ docker exec -it &lt;container&gt; /bin/bash
+
+# Use this if bash is part of your PATH
+
+$ docker exec -it &lt;container&gt; bash
+</code></pre></div>
+<p>When executing this command, you will have an interactive Bash terminal where you can execute all the commands that you want.</p>
+<p><img alt="docker exec bash" src="../../_resources/c9e56e51d16d4a6fa33a11526e9b4af3.png" /></p>
+<p>Awesome, you are now running an interactive Bash terminal within your container.</p>
+<p>As you can see, we used an option that we did not use before to execute our command : the I and T options.</p>
+<p><em>What is the purpose of those options?</em></p>
+<h3 id="docker-exec-interactive-option-it"><a id="Docker_Exec_Interactive_Option_IT"></a>Docker Exec Interactive Option (IT)</h3>
+<p>If you are familiar with Linux operating systems, you have probably already heard about the concept of <a href="https://devconnected.com/input-output-redirection-on-linux-explained/#c_How_are_file_descriptors_used_on_Linux">file descriptors</a>.</p>
+<p>Whenever you are executing a command, you are creating three <strong>file descriptors</strong> :</p>
+<ul>
+<li><strong>STDIN</strong> : also called the standard input that will be used in order to type and submit your commands (for example a keyboard, a terminal etc..);</li>
+<li><strong>STDOUT</strong> : called the standard output, this is where the process outputs will be written (the terminal itself, a file, a database etc..);</li>
+<li><strong>STDERR</strong> : called the standard error, it is very related to the standard output and is used in order to display errors.</li>
+</ul>
+<p>So how are file descriptors related to the “<strong>docker exec</strong>“?</p>
+<p>When running “<strong>docker exec</strong>” with the “-i” option, <strong>you are binding the standard input of your host to the standard input of the process you are running in the container.</strong></p>
+<p>In order to get the results from your command, you are also binding the standard output and the standard error to the ones from your host machine.</p>
+<p><img alt="docker exec it option" src="../../_resources/09a86ebacdab4b3f969ba66aeade636b.png" /></p>
+<p>As you are binding the standard input from your host to the standard input of your container, you are running the command “interactively”.</p>
+<p>If you don’t specify the “IT” option, Bash will still get executed in the container but you won’t be able to submit commands to it.</p>
+<h2 id="docker-exec-as-root"><a id="Docker_Exec_as_Root"></a>Docker Exec as Root</h2>
+<p>In some cases, you are interested in running commands in your container as the root user.</p>
+<p><strong>In order to execute a command as root on a container, use the “docker exec” command and specify the “-u” with a value of 0 for the root user.</strong></p>
+<div class="highlight"><pre><span></span><code>$ docker exec -u 0 &lt;container&gt; &lt;command&gt;
+</code></pre></div>
+<p>For example, in order to make sure that we execute the command as root, let’s have a command that prints the user currently logged in the container.</p>
+<div class="highlight"><pre><span></span><code>$ docker exec -u 0 74f86665f0fd whoami
+
+root
+</code></pre></div>
+<p>Great, you are now able <strong>to run commands as the root user</strong> within a container with docker exec.</p>
+<h2 id="docker-exec-multiple-commands"><a id="Docker_Exec_Multiple_Commands"></a>Docker Exec Multiple Commands</h2>
+<p><strong>In order to execute multiple commands using the “docker exec” command, execute “docker exec” with the “bash” process and use the “-c” option to read the command as a string.</strong></p>
+<div class="highlight"><pre><span></span><code>$ docker exec &lt;container&gt; bash -c &quot;command1 ; command2 ; command3&quot;
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong> : simple quotes may not work in your host terminal, you will have to use double quotes to execute multiple commands.</p>
+</blockquote>
+<p>For example, let’s say that you want to change the current directory within the container and read a specific log file in your container.</p>
+<p>To achieve that, you are going to execute two commands : “cd” to change directory and “cat” to read the file content.</p>
+<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd bash -c &quot;cd /var/log ; cat dmesg &quot;
+
+(Nothing has been logged yet.)
+</code></pre></div>
+<h3 id="executing-a-command-in-a-specific-directory"><a id="Executing_a_command_in_a_specific_directory"></a>Executing a command in a specific directory</h3>
+<p>In some cases, the purpose of executing multiple commands is to navigate to a directory in order to execute a specific command in this directory.</p>
+<p>You can use the method we have seen before, but Docker provides a special option for this.</p>
+<p><strong>In order to execute a command within a specific directory in your container, use “docker exec” with the “-w” and specify the working directory to execute the command.</strong></p>
+<div class="highlight"><pre><span></span><code>$ docker exec -w /path/to/directory &lt;container&gt; &lt;command&gt;
+</code></pre></div>
+<p>Given the example we have seen before, where we inspected the content of a specific log file, it could be shortened to</p>
+<div class="highlight"><pre><span></span><code>$ docker exec -w /var/log 74f86665f0fd cat dmesg
+
+(Nothing has been logged yet.)
+</code></pre></div>
+<h2 id="docker-run-vs-exec"><a id="Docker_Run_vs_Exec"></a>Docker Run vs Exec</h2>
+<p>Now that we have seen multiple ways of using the “docker exec” command, you may wonder what is the difference with the “<a href="https://docs.docker.com/engine/reference/run/">docker run</a>” command.</p>
+<p><strong>The</strong> <strong>difference between “docker run” and “docker exec” is that “docker exec” executes a command on a running container. On the other hand, “docker run” creates a temporary container, executes the command in it and stops the container when it is done.</strong></p>
+<p>For example, you can execute a Bash shell using the “docker run” command but your container will be stopped when exiting the Bash shell.</p>
+<div class="highlight"><pre><span></span><code>$ docker run -it ubuntu:18.04 bash
+
+root@b8d2670657e3:/# exit
+
+$ docker ps
+
+(No containers.)
+</code></pre></div>
+<p>On the other hand, if a container is started, you can start a Bash shell in it and exit it without the container stopping at the same time.</p>
+<div class="highlight"><pre><span></span><code>$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
+74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds  
+
+$ docker exec -it 74f86665f0fd bash
+root@74f86665f0fd:/# exit
+
+
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
+74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         58 seconds ago      Up 58 seconds
+</code></pre></div>
+<p>Awesome, you know the difference between “docker run” and “docker exec” now.</p>
+<h2 id="set-environment-variables"><a id="Set_Environment_Variables"></a>Set Environment Variables</h2>
+<p>Setting environment variables is crucial for Docker : you may run databases that need specific <a href="https://devconnected.com/how-to-set-and-unset-environment-variables-on-linux/">environment variables</a> to work properly.</p>
+<p>Famous examples are Redis, MongoDB or MySQL databases.</p>
+<p><strong>In order to set environment variables, execute “docker exec” with the “-e” option and specify the environment variable name and value next to it.</strong></p>
+<div class="highlight"><pre><span></span><code>$ docker exec -e var=&#39;value&#39; &lt;container&gt; &lt;command&gt;
+</code></pre></div>
+<p>As an example, let’s have a command that sets the “UID” environment variable just to print it out within the container.</p>
+<p>To achieve that, we would use the “-e” option in order to set the environment variable.</p>
+<div class="highlight"><pre><span></span><code>$ docker exec -e UID=&#39;myuser&#39; 74f86665f0fd printenv UID
+
+&#39;myuser&#39;
+</code></pre></div>
+<p><a href="https://devconnected.com/docker-exec-command-with-examples/">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              B Tree. 3. Delete Operation
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Keycloak%20Docker/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Keycloak Docker
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/serhii-petriuk/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
