@@ -14,7 +14,7 @@
     
     
       
-        <title>Exec Docker Command - KnowDB</title>
+        <title>Port forwarding - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-exec-syntax" class="md-skip">
+        <a href="#port-forwarding-using-iptables" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Exec Docker Command
+              Port forwarding
             
           </span>
         </div>
@@ -270,14 +270,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Docker
@@ -293,106 +291,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Exec Docker Command
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/Exec%20Docker%20Command/" class="md-nav__link">
         Exec Docker Command
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-syntax" class="md-nav__link">
-    Docker Exec Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-bash" class="md-nav__link">
-    Docker Exec Bash
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Bash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
-    Docker Exec Interactive Option (IT)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-as-root" class="md-nav__link">
-    Docker Exec as Root
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-multiple-commands" class="md-nav__link">
-    Docker Exec Multiple Commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
-    Executing a command in a specific directory
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-run-vs-exec" class="md-nav__link">
-    Docker Run vs Exec
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-environment-variables" class="md-nav__link">
-    Set Environment Variables
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -402,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Keycloak%20Docker/" class="md-nav__link">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
         Keycloak Docker
       </a>
     </li>
@@ -414,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mongodb%20Docker/" class="md-nav__link">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
         Mongodb Docker
       </a>
     </li>
@@ -426,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
         PgAdmin 4 docker
       </a>
     </li>
@@ -438,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PostgreSQL%20Docker/" class="md-nav__link">
+      <a href="../../docker/PostgreSQL%20Docker/" class="md-nav__link">
         PostgreSQL Docker
       </a>
     </li>
@@ -811,12 +714,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       <label class="md-nav__link" for="__nav_7">
         Linux
@@ -834,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/AppImage%20Repack/" class="md-nav__link">
+      <a href="../AppImage%20Repack/" class="md-nav__link">
         AppImage Repack
       </a>
     </li>
@@ -846,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash%20read%20Command/" class="md-nav__link">
+      <a href="../Bash%20read%20Command/" class="md-nav__link">
         Bash read Command
       </a>
     </li>
@@ -858,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
+      <a href="../Bash%20remove%20recursive%20by%20extension/" class="md-nav__link">
         Bash remove recursive by extension
       </a>
     </li>
@@ -870,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+      <a href="../Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
         Bash скрипты начало
       </a>
     </li>
@@ -882,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Bash_%20Write%20to%20File/" class="md-nav__link">
+      <a href="../Bash_%20Write%20to%20File/" class="md-nav__link">
         Bash  Write to File
       </a>
     </li>
@@ -894,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
+      <a href="../Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
         Check for Listening Ports in Linux
       </a>
     </li>
@@ -906,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Checksum%20verify%20with%20GtkHash/" class="md-nav__link">
+      <a href="../Checksum%20verify%20with%20GtkHash/" class="md-nav__link">
         Checksum verify with GtkHash
       </a>
     </li>
@@ -918,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+      <a href="../Cinnamon%20theme%20switch%20script/" class="md-nav__link">
         Cinnamon theme switch script
       </a>
     </li>
@@ -930,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+      <a href="../GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
         GTK 3.16 Fix Large Black Borders Around Windows
       </a>
     </li>
@@ -942,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+      <a href="../Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
         Grep поиск внутри файлов
       </a>
     </li>
@@ -954,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Joplin%20Terminal/" class="md-nav__link">
+      <a href="../Joplin%20Terminal/" class="md-nav__link">
         Joplin Terminal
       </a>
     </li>
@@ -966,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/KeePassXC%20with%20synchronization/" class="md-nav__link">
+      <a href="../KeePassXC%20with%20synchronization/" class="md-nav__link">
         KeePassXC with synchronization
       </a>
     </li>
@@ -978,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+      <a href="../Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
         Kill process by used port Ubuntu
       </a>
     </li>
@@ -990,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Mosquitto/" class="md-nav__link">
+      <a href="../Mosquitto/" class="md-nav__link">
         Mosquitto
       </a>
     </li>
@@ -1002,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+      <a href="../Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
         Mouse Buttons Bind To Keyboard Keys Or Commands
       </a>
     </li>
@@ -1014,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+      <a href="../Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
         Nemo add keyboard shortcuts
       </a>
     </li>
@@ -1026,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Nemo%20context%20menu%20action/" class="md-nav__link">
+      <a href="../Nemo%20context%20menu%20action/" class="md-nav__link">
         Nemo context menu action
       </a>
     </li>
@@ -1038,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Notifications%20with%20notify-send/" class="md-nav__link">
+      <a href="../Notifications%20with%20notify-send/" class="md-nav__link">
         Notifications with notify send
       </a>
     </li>
@@ -1050,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20create%20from%20images/" class="md-nav__link">
+      <a href="../PDF%20create%20from%20images/" class="md-nav__link">
         PDF create from images
       </a>
     </li>
@@ -1062,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/PDF%20file%20Compress/" class="md-nav__link">
+      <a href="../PDF%20file%20Compress/" class="md-nav__link">
         PDF file Compress
       </a>
     </li>
@@ -1072,11 +977,45 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../linux/Port%20forwarding/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Port forwarding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Port forwarding
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#port-forwarding-using-iptables" class="md-nav__link">
+    Port forwarding using iptables
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1086,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+      <a href="../Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
         Terminal set wrong sudo password message
       </a>
     </li>
@@ -1098,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/Thunderbird%20Tray%20Icon/" class="md-nav__link">
+      <a href="../Thunderbird%20Tray%20Icon/" class="md-nav__link">
         Thunderbird Tray Icon
       </a>
     </li>
@@ -1110,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/sha256%20check/" class="md-nav__link">
+      <a href="../sha256%20check/" class="md-nav__link">
         Sha256 check
       </a>
     </li>
@@ -1122,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+      <a href="../%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
         Автоматическое монтирование диска
       </a>
     </li>
@@ -1254,69 +1193,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#docker-exec-syntax" class="md-nav__link">
-    Docker Exec Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-bash" class="md-nav__link">
-    Docker Exec Bash
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Bash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
-    Docker Exec Interactive Option (IT)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-as-root" class="md-nav__link">
-    Docker Exec as Root
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-multiple-commands" class="md-nav__link">
-    Docker Exec Multiple Commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
-    Executing a command in a specific directory
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-run-vs-exec" class="md-nav__link">
-    Docker Run vs Exec
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-environment-variables" class="md-nav__link">
-    Set Environment Variables
+  <a href="#port-forwarding-using-iptables" class="md-nav__link">
+    Port forwarding using iptables
   </a>
   
 </li>
@@ -1334,142 +1212,16 @@
               
                 
                 
-                  <h1>Exec Docker Command</h1>
+                  <h1>Port forwarding</h1>
                 
-                <p>Exec Docker Command</p>
-<p>Luckily, there is a command that you can use in order to execute commands on running containers : <strong>docker exec.</strong></p>
-<p>In this tutorial, we are going to focus on the <strong>docker exec command</strong>.</p>
-<h2 id="docker-exec-syntax"><a id="Docker_Exec_Syntax"></a>Docker Exec Syntax</h2>
-<p><strong>In order to execute commands on running containers, you have to execute “docker exec” and specify the container name (or ID) as well as the command to be executed on this container.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec &lt;options&gt; &lt;container&gt; &lt;command&gt;
+                <p>Port forwarding</p>
+<h2 id="port-forwarding-using-iptables">Port forwarding using iptables</h2>
+<p>Use iptables for redirects</p>
+<div class="highlight"><pre><span></span><code>iptables -t nat -A PREROUTING -p tcp --dport <span class="m">80</span> -j REDIRECT --to-ports <span class="m">8080</span>
 </code></pre></div>
-<p>As an example, let’s say that you want to execute the “ls” command on one of your containers.</p>
-<p>The first thing that you need to do is to identify the container name (if you gave your container one) or the container ID.</p>
-<p>In order to determine the container name or ID, you can simply execute the “docker ps” command.</p>
-<div class="highlight"><pre><span></span><code>$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds 
+<p>if you need to use localhost also add this</p>
+<div class="highlight"><pre><span></span><code>iptables -t nat -I OUTPUT -p tcp -d <span class="m">127</span>.0.0.1 --dport <span class="m">80</span> -j REDIRECT --to-ports <span class="m">8080</span>
 </code></pre></div>
-<blockquote>
-<p><strong>Note</strong> : the “docker ps” is also used in order to determine whether a container is running or not.</p>
-</blockquote>
-<p>As you can see, the container ID is the first column of the ‘docker ps’ output.</p>
-<p>Now, <strong>to execute the “ls” command on this container</strong>, simply append the ‘ls’ command to the ID of your container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd ls
-
-bin
-boot
-dev
-etc
-home
-</code></pre></div>
-<p>Awesome, now that you know how you can use the “<strong>docker exec</strong>” command, let’s see some custom examples on usage of this command.</p>
-<h2 id="docker-exec-bash"><a id="Docker_Exec_Bash"></a>Docker Exec Bash</h2>
-<p>The most popular usage of the “<strong>docker exec</strong>” command is to launch a <a href="https://devconnected.com/category/linux-administration/bash/">Bash</a> terminal within a container.</p>
-<p><strong>In order to start a Bash shell in a Docker container, execute the “docker exec” command with the “-it” option and specify the container ID as well as the path to the bash shell.</strong></p>
-<p>If the Bash is part of your PATH, you can simply type “bash” and have a Bash terminal in your container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -it &lt;container&gt; /bin/bash
-
-# Use this if bash is part of your PATH
-
-$ docker exec -it &lt;container&gt; bash
-</code></pre></div>
-<p>When executing this command, you will have an interactive Bash terminal where you can execute all the commands that you want.</p>
-<p><img alt="docker exec bash" src="../../_resources/c9e56e51d16d4a6fa33a11526e9b4af3.png" /></p>
-<p>Awesome, you are now running an interactive Bash terminal within your container.</p>
-<p>As you can see, we used an option that we did not use before to execute our command : the I and T options.</p>
-<p><em>What is the purpose of those options?</em></p>
-<h3 id="docker-exec-interactive-option-it"><a id="Docker_Exec_Interactive_Option_IT"></a>Docker Exec Interactive Option (IT)</h3>
-<p>If you are familiar with Linux operating systems, you have probably already heard about the concept of <a href="https://devconnected.com/input-output-redirection-on-linux-explained/#c_How_are_file_descriptors_used_on_Linux">file descriptors</a>.</p>
-<p>Whenever you are executing a command, you are creating three <strong>file descriptors</strong> :</p>
-<ul>
-<li><strong>STDIN</strong> : also called the standard input that will be used in order to type and submit your commands (for example a keyboard, a terminal etc..);</li>
-<li><strong>STDOUT</strong> : called the standard output, this is where the process outputs will be written (the terminal itself, a file, a database etc..);</li>
-<li><strong>STDERR</strong> : called the standard error, it is very related to the standard output and is used in order to display errors.</li>
-</ul>
-<p>So how are file descriptors related to the “<strong>docker exec</strong>“?</p>
-<p>When running “<strong>docker exec</strong>” with the “-i” option, <strong>you are binding the standard input of your host to the standard input of the process you are running in the container.</strong></p>
-<p>In order to get the results from your command, you are also binding the standard output and the standard error to the ones from your host machine.</p>
-<p><img alt="docker exec it option" src="../../_resources/09a86ebacdab4b3f969ba66aeade636b.png" /></p>
-<p>As you are binding the standard input from your host to the standard input of your container, you are running the command “interactively”.</p>
-<p>If you don’t specify the “IT” option, Bash will still get executed in the container but you won’t be able to submit commands to it.</p>
-<h2 id="docker-exec-as-root"><a id="Docker_Exec_as_Root"></a>Docker Exec as Root</h2>
-<p>In some cases, you are interested in running commands in your container as the root user.</p>
-<p><strong>In order to execute a command as root on a container, use the “docker exec” command and specify the “-u” with a value of 0 for the root user.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -u 0 &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>For example, in order to make sure that we execute the command as root, let’s have a command that prints the user currently logged in the container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -u 0 74f86665f0fd whoami
-
-root
-</code></pre></div>
-<p>Great, you are now able <strong>to run commands as the root user</strong> within a container with docker exec.</p>
-<h2 id="docker-exec-multiple-commands"><a id="Docker_Exec_Multiple_Commands"></a>Docker Exec Multiple Commands</h2>
-<p><strong>In order to execute multiple commands using the “docker exec” command, execute “docker exec” with the “bash” process and use the “-c” option to read the command as a string.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec &lt;container&gt; bash -c &quot;command1 ; command2 ; command3&quot;
-</code></pre></div>
-<blockquote>
-<p><strong>Note</strong> : simple quotes may not work in your host terminal, you will have to use double quotes to execute multiple commands.</p>
-</blockquote>
-<p>For example, let’s say that you want to change the current directory within the container and read a specific log file in your container.</p>
-<p>To achieve that, you are going to execute two commands : “cd” to change directory and “cat” to read the file content.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd bash -c &quot;cd /var/log ; cat dmesg &quot;
-
-(Nothing has been logged yet.)
-</code></pre></div>
-<h3 id="executing-a-command-in-a-specific-directory"><a id="Executing_a_command_in_a_specific_directory"></a>Executing a command in a specific directory</h3>
-<p>In some cases, the purpose of executing multiple commands is to navigate to a directory in order to execute a specific command in this directory.</p>
-<p>You can use the method we have seen before, but Docker provides a special option for this.</p>
-<p><strong>In order to execute a command within a specific directory in your container, use “docker exec” with the “-w” and specify the working directory to execute the command.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -w /path/to/directory &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>Given the example we have seen before, where we inspected the content of a specific log file, it could be shortened to</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -w /var/log 74f86665f0fd cat dmesg
-
-(Nothing has been logged yet.)
-</code></pre></div>
-<h2 id="docker-run-vs-exec"><a id="Docker_Run_vs_Exec"></a>Docker Run vs Exec</h2>
-<p>Now that we have seen multiple ways of using the “docker exec” command, you may wonder what is the difference with the “<a href="https://docs.docker.com/engine/reference/run/">docker run</a>” command.</p>
-<p><strong>The</strong> <strong>difference between “docker run” and “docker exec” is that “docker exec” executes a command on a running container. On the other hand, “docker run” creates a temporary container, executes the command in it and stops the container when it is done.</strong></p>
-<p>For example, you can execute a Bash shell using the “docker run” command but your container will be stopped when exiting the Bash shell.</p>
-<div class="highlight"><pre><span></span><code>$ docker run -it ubuntu:18.04 bash
-
-root@b8d2670657e3:/# exit
-
-$ docker ps
-
-(No containers.)
-</code></pre></div>
-<p>On the other hand, if a container is started, you can start a Bash shell in it and exit it without the container stopping at the same time.</p>
-<div class="highlight"><pre><span></span><code>$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds  
-
-$ docker exec -it 74f86665f0fd bash
-root@74f86665f0fd:/# exit
-
-
-$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         58 seconds ago      Up 58 seconds
-</code></pre></div>
-<p>Awesome, you know the difference between “docker run” and “docker exec” now.</p>
-<h2 id="set-environment-variables"><a id="Set_Environment_Variables"></a>Set Environment Variables</h2>
-<p>Setting environment variables is crucial for Docker : you may run databases that need specific <a href="https://devconnected.com/how-to-set-and-unset-environment-variables-on-linux/">environment variables</a> to work properly.</p>
-<p>Famous examples are Redis, MongoDB or MySQL databases.</p>
-<p><strong>In order to set environment variables, execute “docker exec” with the “-e” option and specify the environment variable name and value next to it.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -e var=&#39;value&#39; &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>As an example, let’s have a command that sets the “UID” environment variable just to print it out within the container.</p>
-<p>To achieve that, we would use the “-e” option in order to set the environment variable.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -e UID=&#39;myuser&#39; 74f86665f0fd printenv UID
-
-&#39;myuser&#39;
-</code></pre></div>
-<p><a href="https://devconnected.com/docker-exec-command-with-examples/">Source</a></p>
                 
               
               
@@ -1488,7 +1240,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../PDF%20file%20Compress/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1497,19 +1249,19 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
               <span class="md-footer__direction">
                 Previous
               </span>
-              B Tree. 3. Delete Operation
+              PDF file Compress
             </div>
           </div>
         </a>
       
       
-        <a href="../Keycloak%20Docker/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Terminal%20set%20wrong%20sudo%20password%20message/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Keycloak Docker
+              Terminal set wrong sudo password message
             </div>
           </div>
           <div class="md-footer__button md-icon">

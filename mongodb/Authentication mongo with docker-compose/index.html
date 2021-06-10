@@ -14,7 +14,7 @@
     
     
       
-        <title>Exec Docker Command - KnowDB</title>
+        <title>Authentication mongo with docker compose - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-exec-syntax" class="md-skip">
+        <a href="#authentication-mongo-with-docker-compose" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Exec Docker Command
+              Authentication mongo with docker compose
             
           </span>
         </div>
@@ -270,14 +270,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Docker
@@ -293,106 +291,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Exec Docker Command
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/Exec%20Docker%20Command/" class="md-nav__link">
         Exec Docker Command
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-syntax" class="md-nav__link">
-    Docker Exec Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-bash" class="md-nav__link">
-    Docker Exec Bash
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Bash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
-    Docker Exec Interactive Option (IT)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-as-root" class="md-nav__link">
-    Docker Exec as Root
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-multiple-commands" class="md-nav__link">
-    Docker Exec Multiple Commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
-    Executing a command in a specific directory
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-run-vs-exec" class="md-nav__link">
-    Docker Run vs Exec
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-environment-variables" class="md-nav__link">
-    Set Environment Variables
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -402,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Keycloak%20Docker/" class="md-nav__link">
+      <a href="../../docker/Keycloak%20Docker/" class="md-nav__link">
         Keycloak Docker
       </a>
     </li>
@@ -414,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Mongodb%20Docker/" class="md-nav__link">
+      <a href="../../docker/Mongodb%20Docker/" class="md-nav__link">
         Mongodb Docker
       </a>
     </li>
@@ -426,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PgAdmin%204%20docker/" class="md-nav__link">
+      <a href="../../docker/PgAdmin%204%20docker/" class="md-nav__link">
         PgAdmin 4 docker
       </a>
     </li>
@@ -438,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PostgreSQL%20Docker/" class="md-nav__link">
+      <a href="../../docker/PostgreSQL%20Docker/" class="md-nav__link">
         PostgreSQL Docker
       </a>
     </li>
@@ -1141,12 +1044,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       <label class="md-nav__link" for="__nav_8">
         Mongodb
@@ -1162,11 +1067,80 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../mongodb/Authentication%20mongo%20with%20docker-compose/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Authentication mongo with docker compose
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Authentication mongo with docker compose
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-mongo-with-docker-compose" class="md-nav__link">
+    Authentication mongo with docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-mongodb-docker-compose-without-authentication" class="md-nav__link">
+    Run MongoDB docker-compose without authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-mongodb-without-auth-inside-container" class="md-nav__link">
+    Connect MongoDB without auth inside container
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-user-and-roles-for-our-mongodb" class="md-nav__link">
+    Create user and roles for our MongoDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-mongodb-auth-in-docker-compose" class="md-nav__link">
+    Enable MongoDB auth in docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-mongodb-with-defined-authentication" class="md-nav__link">
+    Connect MongoDB with defined authentication
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1176,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+      <a href="../MongoDB%20Cheat%20Sheet/" class="md-nav__link">
         MongoDB Cheat Sheet
       </a>
     </li>
@@ -1254,69 +1228,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#docker-exec-syntax" class="md-nav__link">
-    Docker Exec Syntax
+  <a href="#authentication-mongo-with-docker-compose" class="md-nav__link">
+    Authentication mongo with docker-compose
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-exec-bash" class="md-nav__link">
-    Docker Exec Bash
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Bash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-exec-interactive-option-it" class="md-nav__link">
-    Docker Exec Interactive Option (IT)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-exec-as-root" class="md-nav__link">
-    Docker Exec as Root
+  <a href="#run-mongodb-docker-compose-without-authentication" class="md-nav__link">
+    Run MongoDB docker-compose without authentication
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-exec-multiple-commands" class="md-nav__link">
-    Docker Exec Multiple Commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Exec Multiple Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#executing-a-command-in-a-specific-directory" class="md-nav__link">
-    Executing a command in a specific directory
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-run-vs-exec" class="md-nav__link">
-    Docker Run vs Exec
+  <a href="#connect-mongodb-without-auth-inside-container" class="md-nav__link">
+    Connect MongoDB without auth inside container
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-environment-variables" class="md-nav__link">
-    Set Environment Variables
+  <a href="#create-user-and-roles-for-our-mongodb" class="md-nav__link">
+    Create user and roles for our MongoDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-mongodb-auth-in-docker-compose" class="md-nav__link">
+    Enable MongoDB auth in docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-mongodb-with-defined-authentication" class="md-nav__link">
+    Connect MongoDB with defined authentication
   </a>
   
 </li>
@@ -1334,142 +1282,31 @@
               
                 
                 
-                  <h1>Exec Docker Command</h1>
+                  <h1>Authentication mongo with docker compose</h1>
                 
-                <p>Exec Docker Command</p>
-<p>Luckily, there is a command that you can use in order to execute commands on running containers : <strong>docker exec.</strong></p>
-<p>In this tutorial, we are going to focus on the <strong>docker exec command</strong>.</p>
-<h2 id="docker-exec-syntax"><a id="Docker_Exec_Syntax"></a>Docker Exec Syntax</h2>
-<p><strong>In order to execute commands on running containers, you have to execute “docker exec” and specify the container name (or ID) as well as the command to be executed on this container.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec &lt;options&gt; &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>As an example, let’s say that you want to execute the “ls” command on one of your containers.</p>
-<p>The first thing that you need to do is to identify the container name (if you gave your container one) or the container ID.</p>
-<p>In order to determine the container name or ID, you can simply execute the “docker ps” command.</p>
-<div class="highlight"><pre><span></span><code>$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds 
-</code></pre></div>
-<blockquote>
-<p><strong>Note</strong> : the “docker ps” is also used in order to determine whether a container is running or not.</p>
-</blockquote>
-<p>As you can see, the container ID is the first column of the ‘docker ps’ output.</p>
-<p>Now, <strong>to execute the “ls” command on this container</strong>, simply append the ‘ls’ command to the ID of your container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd ls
-
-bin
-boot
-dev
-etc
-home
-</code></pre></div>
-<p>Awesome, now that you know how you can use the “<strong>docker exec</strong>” command, let’s see some custom examples on usage of this command.</p>
-<h2 id="docker-exec-bash"><a id="Docker_Exec_Bash"></a>Docker Exec Bash</h2>
-<p>The most popular usage of the “<strong>docker exec</strong>” command is to launch a <a href="https://devconnected.com/category/linux-administration/bash/">Bash</a> terminal within a container.</p>
-<p><strong>In order to start a Bash shell in a Docker container, execute the “docker exec” command with the “-it” option and specify the container ID as well as the path to the bash shell.</strong></p>
-<p>If the Bash is part of your PATH, you can simply type “bash” and have a Bash terminal in your container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -it &lt;container&gt; /bin/bash
-
-# Use this if bash is part of your PATH
-
-$ docker exec -it &lt;container&gt; bash
-</code></pre></div>
-<p>When executing this command, you will have an interactive Bash terminal where you can execute all the commands that you want.</p>
-<p><img alt="docker exec bash" src="../../_resources/c9e56e51d16d4a6fa33a11526e9b4af3.png" /></p>
-<p>Awesome, you are now running an interactive Bash terminal within your container.</p>
-<p>As you can see, we used an option that we did not use before to execute our command : the I and T options.</p>
-<p><em>What is the purpose of those options?</em></p>
-<h3 id="docker-exec-interactive-option-it"><a id="Docker_Exec_Interactive_Option_IT"></a>Docker Exec Interactive Option (IT)</h3>
-<p>If you are familiar with Linux operating systems, you have probably already heard about the concept of <a href="https://devconnected.com/input-output-redirection-on-linux-explained/#c_How_are_file_descriptors_used_on_Linux">file descriptors</a>.</p>
-<p>Whenever you are executing a command, you are creating three <strong>file descriptors</strong> :</p>
-<ul>
-<li><strong>STDIN</strong> : also called the standard input that will be used in order to type and submit your commands (for example a keyboard, a terminal etc..);</li>
-<li><strong>STDOUT</strong> : called the standard output, this is where the process outputs will be written (the terminal itself, a file, a database etc..);</li>
-<li><strong>STDERR</strong> : called the standard error, it is very related to the standard output and is used in order to display errors.</li>
-</ul>
-<p>So how are file descriptors related to the “<strong>docker exec</strong>“?</p>
-<p>When running “<strong>docker exec</strong>” with the “-i” option, <strong>you are binding the standard input of your host to the standard input of the process you are running in the container.</strong></p>
-<p>In order to get the results from your command, you are also binding the standard output and the standard error to the ones from your host machine.</p>
-<p><img alt="docker exec it option" src="../../_resources/09a86ebacdab4b3f969ba66aeade636b.png" /></p>
-<p>As you are binding the standard input from your host to the standard input of your container, you are running the command “interactively”.</p>
-<p>If you don’t specify the “IT” option, Bash will still get executed in the container but you won’t be able to submit commands to it.</p>
-<h2 id="docker-exec-as-root"><a id="Docker_Exec_as_Root"></a>Docker Exec as Root</h2>
-<p>In some cases, you are interested in running commands in your container as the root user.</p>
-<p><strong>In order to execute a command as root on a container, use the “docker exec” command and specify the “-u” with a value of 0 for the root user.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -u 0 &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>For example, in order to make sure that we execute the command as root, let’s have a command that prints the user currently logged in the container.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -u 0 74f86665f0fd whoami
-
-root
-</code></pre></div>
-<p>Great, you are now able <strong>to run commands as the root user</strong> within a container with docker exec.</p>
-<h2 id="docker-exec-multiple-commands"><a id="Docker_Exec_Multiple_Commands"></a>Docker Exec Multiple Commands</h2>
-<p><strong>In order to execute multiple commands using the “docker exec” command, execute “docker exec” with the “bash” process and use the “-c” option to read the command as a string.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec &lt;container&gt; bash -c &quot;command1 ; command2 ; command3&quot;
-</code></pre></div>
-<blockquote>
-<p><strong>Note</strong> : simple quotes may not work in your host terminal, you will have to use double quotes to execute multiple commands.</p>
-</blockquote>
-<p>For example, let’s say that you want to change the current directory within the container and read a specific log file in your container.</p>
-<p>To achieve that, you are going to execute two commands : “cd” to change directory and “cat” to read the file content.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec 74f86665f0fd bash -c &quot;cd /var/log ; cat dmesg &quot;
-
-(Nothing has been logged yet.)
-</code></pre></div>
-<h3 id="executing-a-command-in-a-specific-directory"><a id="Executing_a_command_in_a_specific_directory"></a>Executing a command in a specific directory</h3>
-<p>In some cases, the purpose of executing multiple commands is to navigate to a directory in order to execute a specific command in this directory.</p>
-<p>You can use the method we have seen before, but Docker provides a special option for this.</p>
-<p><strong>In order to execute a command within a specific directory in your container, use “docker exec” with the “-w” and specify the working directory to execute the command.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -w /path/to/directory &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>Given the example we have seen before, where we inspected the content of a specific log file, it could be shortened to</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -w /var/log 74f86665f0fd cat dmesg
-
-(Nothing has been logged yet.)
-</code></pre></div>
-<h2 id="docker-run-vs-exec"><a id="Docker_Run_vs_Exec"></a>Docker Run vs Exec</h2>
-<p>Now that we have seen multiple ways of using the “docker exec” command, you may wonder what is the difference with the “<a href="https://docs.docker.com/engine/reference/run/">docker run</a>” command.</p>
-<p><strong>The</strong> <strong>difference between “docker run” and “docker exec” is that “docker exec” executes a command on a running container. On the other hand, “docker run” creates a temporary container, executes the command in it and stops the container when it is done.</strong></p>
-<p>For example, you can execute a Bash shell using the “docker run” command but your container will be stopped when exiting the Bash shell.</p>
-<div class="highlight"><pre><span></span><code>$ docker run -it ubuntu:18.04 bash
-
-root@b8d2670657e3:/# exit
-
-$ docker ps
-
-(No containers.)
-</code></pre></div>
-<p>On the other hand, if a container is started, you can start a Bash shell in it and exit it without the container stopping at the same time.</p>
-<div class="highlight"><pre><span></span><code>$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         49 seconds ago      Up 48 seconds  
-
-$ docker exec -it 74f86665f0fd bash
-root@74f86665f0fd:/# exit
-
-
-$ docker ps
-
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              
-74f86665f0fd        ubuntu:18.04        &quot;/bin/bash&quot;         58 seconds ago      Up 58 seconds
-</code></pre></div>
-<p>Awesome, you know the difference between “docker run” and “docker exec” now.</p>
-<h2 id="set-environment-variables"><a id="Set_Environment_Variables"></a>Set Environment Variables</h2>
-<p>Setting environment variables is crucial for Docker : you may run databases that need specific <a href="https://devconnected.com/how-to-set-and-unset-environment-variables-on-linux/">environment variables</a> to work properly.</p>
-<p>Famous examples are Redis, MongoDB or MySQL databases.</p>
-<p><strong>In order to set environment variables, execute “docker exec” with the “-e” option and specify the environment variable name and value next to it.</strong></p>
-<div class="highlight"><pre><span></span><code>$ docker exec -e var=&#39;value&#39; &lt;container&gt; &lt;command&gt;
-</code></pre></div>
-<p>As an example, let’s have a command that sets the “UID” environment variable just to print it out within the container.</p>
-<p>To achieve that, we would use the “-e” option in order to set the environment variable.</p>
-<div class="highlight"><pre><span></span><code>$ docker exec -e UID=&#39;myuser&#39; 74f86665f0fd printenv UID
-
-&#39;myuser&#39;
-</code></pre></div>
-<p><a href="https://devconnected.com/docker-exec-command-with-examples/">Source</a></p>
+                <p>Authentication mongo with docker-compose</p>
+<h2 id="authentication-mongo-with-docker-compose">Authentication mongo with docker-compose</h2>
+<p>By default there is no authentication in MongoDB. It means that it comes with empty authentication. So we should create users and roles manually. There are lots of ways to create MongoDB docker-compose with authentication. The most popular one of them is to write a bash script with user and roles then use it in docker-compose and another way is to create an init-mongodb.js file with users and roles and use it in docker-compose. But in this post, I will show you how you could create MongoDB docker-compose and then add users and roles manually. Lets start...</p>
+<h2 id="run-mongodb-docker-compose-without-authentication"><a id="run-mongodb-dockercompose-without-authentication"></a><a href="#run-mongodb-dockercompose-without-authentication"></a><strong>Run MongoDB docker-compose without authentication</strong></h2>
+<p>First of all we should run MongoDB <code>docker-compose</code> without auth. Using <code>docker-compose up -d</code> we could run it.</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--yezN4R8G--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/uqd2xlbe7m5mmzlglebp.png"><img width="483" height="662" src="../../_resources/ac74afcd2f514e34b9d1d9aff922ffd9.png"/></a></p>
+<h2 id="connect-mongodb-without-auth-inside-container"><a id="connect-mongodb-without-auth-inside-container"></a><a href="#connect-mongodb-without-auth-inside-container"></a><strong>Connect MongoDB without auth inside container</strong></h2>
+<p>For doing that firstly we should run <code>docker exec -it mongodb bash</code> and enter inside the container. Then simply run <code>mongo</code> command to connect to mongodb.</p>
+<h2 id="create-user-and-roles-for-our-mongodb"><a id="create-user-and-roles-for-our-mongodb"></a><a href="#create-user-and-roles-for-our-mongodb"></a><strong>Create user and roles for our MongoDB</strong></h2>
+<p>Firstly we will create admin user with username root and password root in admin database.</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--M6-Mj7_n--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/yvuxdragqm624yqrwj3n.png"><img width="662" height="662" src="../../_resources/85c0b943094b4a5a9a1042800025fd11.png"/></a></p>
+<p>Then we need to create other user. Here I will create a demo user within demo database for our MongoDB:</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--8JH0ACXd--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ac3bqz221coi4t74x1w3.png"><img alt="Alt Text" src="../../_resources/197a503cc56f476891f52fd57eaf1cd6.png" /></a></p>
+<p>Now we are ready to run MongoDB with auth.</p>
+<h2 id="enable-mongodb-auth-in-docker-compose"><a id="enable-mongodb-auth-in-dockercompose"></a><a href="#enable-mongodb-auth-in-dockercompose"></a><strong>Enable MongoDB auth in docker-compose</strong></h2>
+<p>In order to enable auth in MongoDB we will use <code>--auth</code> flag in docker-compose. After that we could use <code>docker-compose up -d</code> command again, to run MongoDB container.</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--FpCDa7qX--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/u8e1j6l02m570wrsm4nw.png"><img alt="Alt Text" src="../../_resources/54480dcb76384a14858bcc6715842e8e.png" /></a></p>
+<h2 id="connect-mongodb-with-defined-authentication"><a id="connect-mongodb-with-defined-authentication"></a><a href="#connect-mongodb-with-defined-authentication"></a><strong>Connect MongoDB with defined authentication</strong></h2>
+<p>In this step we can connect our db with defined authentication. Firstly again we need to run <code>docker exec -it mongodb bash</code> command in order to enter inside the container. Now we are in so we can connect our db. Here I write 2 command one of them is to connect admin db and another one is to connect demo db.</p>
+<p><code>mongo -u root -p root --authenticationDatabase admin</code>
+<code>mongo -u demo -p demo12345 --authenticationDatabase demo</code></p>
+<hr />
+<p><a href="https://dev.to/efe136/how-to-enable-mongodb-authentication-with-docker-compose-2nbp">Source</a></p>
                 
               
               
@@ -1488,7 +1325,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../linux/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1497,19 +1334,19 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
               <span class="md-footer__direction">
                 Previous
               </span>
-              B Tree. 3. Delete Operation
+              Автоматическое монтирование диска
             </div>
           </div>
         </a>
       
       
-        <a href="../Keycloak%20Docker/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../MongoDB%20Cheat%20Sheet/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Keycloak Docker
+              MongoDB Cheat Sheet
             </div>
           </div>
           <div class="md-footer__button md-icon">

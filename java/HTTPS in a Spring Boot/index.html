@@ -14,7 +14,7 @@
     
     
       
-        <title>Uploading and Parsing CSV File using Spring Boot - KnowDB</title>
+        <title>HTTPS in a Spring Boot - KnowDB</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dependencies" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Uploading and Parsing CSV File using Spring Boot
+              HTTPS in a Spring Boot
             
           </span>
         </div>
@@ -521,11 +521,195 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../HTTPS%20in%20a%20Spring%20Boot/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HTTPS in a Spring Boot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         HTTPS in a Spring Boot
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1a-generate-a-self-signed-ssl-certificate" class="md-nav__link">
+    1a. Generate a self-signed SSL certificate
+  </a>
+  
+    <nav class="md-nav" aria-label="1a. Generate a self-signed SSL certificate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-an-ssl-certificate-in-a-keystore" class="md-nav__link">
+    Generate an SSL certificate in a keystore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-keystore-content" class="md-nav__link">
+    Verify the keystore content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-jks-keystore-into-pkcs12" class="md-nav__link">
+    Convert a JKS keystore into PKCS12
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1b-use-an-existing-ssl-certificate" class="md-nav__link">
+    1b. Use an existing SSL certificate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-enable-https-in-spring-boot" class="md-nav__link">
+    2. Enable HTTPS in Spring Boot
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Enable HTTPS in Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-https-in-spring-boot-1" class="md-nav__link">
+    Enable HTTPS in Spring Boot 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-https-in-spring-boot-2" class="md-nav__link">
+    Enable HTTPS in Spring Boot 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-ssl-in-spring-boot" class="md-nav__link">
+    Configuring SSL in Spring Boot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-spring-security-to-require-https-requests" class="md-nav__link">
+    Configure Spring Security to require HTTPS requests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-redirect-http-requests-to-https" class="md-nav__link">
+    3. Redirect HTTP requests to HTTPS
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Redirect HTTP requests to HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-tomcat-for-spring-boot-1" class="md-nav__link">
+    Configuring Tomcat for Spring Boot 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-tomcat-for-spring-boot-2" class="md-nav__link">
+    Configuring Tomcat for Spring Boot 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-distribute-the-ssl-certificate-to-clients" class="md-nav__link">
+    4. Distribute the SSL certificate to clients
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Distribute the SSL certificate to clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-a-browser-trust-an-ssl-certificate" class="md-nav__link">
+    Make a browser trust an SSL certificate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-an-ssl-certificate-inside-the-jre-keystore" class="md-nav__link">
+    Import an SSL certificate inside the JRE keystore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -617,107 +801,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Uploading and Parsing CSV File using Spring Boot
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
         Uploading and Parsing CSV File using Spring Boot
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    Dependencies
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-class" class="md-nav__link">
-    Model Class
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#spring-boot-controller" class="md-nav__link">
-    Spring Boot Controller
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thymeleaf-templates" class="md-nav__link">
-    Thymeleaf Templates
-  </a>
-  
-    <nav class="md-nav" aria-label="Thymeleaf Templates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#html-form-for-file-upload" class="md-nav__link">
-    HTML Form for File Upload
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#display-upload-results" class="md-nav__link">
-    Display Upload Results
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-testing-the-application" class="md-nav__link">
-    Running &amp; Testing the Application
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    Further Reading
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1255,44 +1343,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    Dependencies
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-class" class="md-nav__link">
-    Model Class
+  <a href="#1a-generate-a-self-signed-ssl-certificate" class="md-nav__link">
+    1a. Generate a self-signed SSL certificate
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#spring-boot-controller" class="md-nav__link">
-    Spring Boot Controller
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thymeleaf-templates" class="md-nav__link">
-    Thymeleaf Templates
-  </a>
-  
-    <nav class="md-nav" aria-label="Thymeleaf Templates">
+    <nav class="md-nav" aria-label="1a. Generate a self-signed SSL certificate">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#html-form-for-file-upload" class="md-nav__link">
-    HTML Form for File Upload
+  <a href="#generate-an-ssl-certificate-in-a-keystore" class="md-nav__link">
+    Generate an SSL certificate in a keystore
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#display-upload-results" class="md-nav__link">
-    Display Upload Results
+  <a href="#verify-the-keystore-content" class="md-nav__link">
+    Verify the keystore content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-jks-keystore-into-pkcs12" class="md-nav__link">
+    Convert a JKS keystore into PKCS12
   </a>
   
 </li>
@@ -1303,9 +1384,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-testing-the-application" class="md-nav__link">
-    Running &amp; Testing the Application
+  <a href="#1b-use-an-existing-ssl-certificate" class="md-nav__link">
+    1b. Use an existing SSL certificate
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-enable-https-in-spring-boot" class="md-nav__link">
+    2. Enable HTTPS in Spring Boot
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Enable HTTPS in Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-https-in-spring-boot-1" class="md-nav__link">
+    Enable HTTPS in Spring Boot 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-https-in-spring-boot-2" class="md-nav__link">
+    Enable HTTPS in Spring Boot 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-ssl-in-spring-boot" class="md-nav__link">
+    Configuring SSL in Spring Boot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-spring-security-to-require-https-requests" class="md-nav__link">
+    Configure Spring Security to require HTTPS requests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-redirect-http-requests-to-https" class="md-nav__link">
+    3. Redirect HTTP requests to HTTPS
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Redirect HTTP requests to HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-tomcat-for-spring-boot-1" class="md-nav__link">
+    Configuring Tomcat for Spring Boot 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-tomcat-for-spring-boot-2" class="md-nav__link">
+    Configuring Tomcat for Spring Boot 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-distribute-the-ssl-certificate-to-clients" class="md-nav__link">
+    4. Distribute the SSL certificate to clients
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Distribute the SSL certificate to clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#make-a-browser-trust-an-ssl-certificate" class="md-nav__link">
+    Make a browser trust an SSL certificate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-an-ssl-certificate-inside-the-jre-keystore" class="md-nav__link">
+    Import an SSL certificate inside the JRE keystore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1317,8 +1493,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    Further Reading
+  <a href="#references" class="md-nav__link">
+    References
   </a>
   
 </li>
@@ -1336,216 +1512,256 @@
               
                 
                 
-                  <h1>Uploading and Parsing CSV File using Spring Boot</h1>
+                  <h1>HTTPS in a Spring Boot</h1>
                 
-                <p>Uploading and Parsing CSV File using Spring Boot</p>
-<p>CSV — short for <strong>Comma Separated Values</strong> — is a popular data exchange format that is frequently used for importing and exporting data between different servers and applications. A CSV file is just a <strong>plain-text file</strong> that stores data in a tabular format where each row consists of one or more fields and each column represents a specific field. These fields are separated by a delimiter usually a comma or a tab.</p>
-<p>In an earlier article, I wrote about <a href="https://attacomsian.com/blog/export-download-data-csv-file-spring-boot">exporting and downloading data as a CSV file</a> in Spring Boot. In this article, you'll <strong>learn how to upload and parse a CSV file</strong> using Spring Boot &amp; Thymeleaf.</p>
-<blockquote>
-<p><strong>Note:</strong> To read and parse a CSV file in core Java, check out <a href="https://attacomsian.com/blog/java-read-parse-csv-file">reading and parsing a CSV file in Java</a> tutorial.</p>
-</blockquote>
-<h2 id="dependencies">Dependencies<a href="#dependencies" title="Anchor Link"></a></h2>
-<p>To upload parse a CSV file in Spring Boot, you only need <code>spring-boot-starter-web</code> and <code>opencsv</code> dependencies. Additionally, we also need <code>spring-boot-starter-thymeleaf</code> for serving Thymeleaf templates. The <a href="http://opencsv.sourceforge.net/" title="Open in new window">OpenCSV</a> 3rd-party library will be used for parsing the uploaded file.</p>
-<p>Add the following dependencies to your Gradle project's <code>build.gradle</code> file:</p>
-<div class="highlight"><pre><span></span><code>implementation &#39;org.springframework.boot:spring-boot-starter-web&#39;
-implementation &#39;org.springframework.boot:spring-boot-starter-thymeleaf&#39;
-implementation &#39;com.opencsv:opencsv:5.0&#39; 
-</code></pre></div>
-<p>For Maven, include the following dependencies to your <code>pom.xml</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>com.opencsv<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>opencsv<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>5.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span> 
-</code></pre></div>
-<p>To create a new Spring Boot project from scratch, you can either use <a href="https://attacomsian.com/blog/scaffolding-spring-boot-application#spring-initializr">Spring Initializr</a> or <a href="https://attacomsian.com/blog/scaffolding-spring-boot-application#spring-boot-cli">Spring Boot CLI</a> to bootstrap a new application with the above-mentioned dependencies.</p>
-<h2 id="model-class">Model Class<a href="#model-class" title="Anchor Link"></a></h2>
-<p>OpenCSV allows us to directly map the <a href="https://attacomsian.com/blog/read-write-csv-files-opencsv#reading-a-csv-file-with-each-record-as-a-java-object-using-annotations">CSV record fields to a Java object</a>. Let us create a simple model class named <code>User.java</code> that will be used to populate data from the CSV file:</p>
-<p>User.java</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="p">{</span>
-
-    <span class="nd">@CsvBindByName</span>
-    <span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
-    <span class="nd">@CsvBindByName</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
-    <span class="nd">@CsvBindByName</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="p">;</span>
-    <span class="nd">@CsvBindByName</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s">&quot;country&quot;</span><span class="p">)</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">countryCode</span><span class="p">;</span>
-    <span class="nd">@CsvBindByName</span>
-    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-
-    <span class="kd">public</span> <span class="nf">User</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">email</span><span class="p">,</span> <span class="n">String</span> <span class="n">countryCode</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">countryCode</span> <span class="o">=</span> <span class="n">countryCode</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
-    <span class="p">}</span>
-
-
- <span class="p">}</span> 
-</code></pre></div>
-<p>As you can see above, we have annotated the <code>User</code> class attributes with <code>@CsvBindByName</code> annotation. This annotation is provided by OpenCSV to specify a binding between a column name of the CSV input and a field in a bean.</p>
-<p>You can only use the <code>@CsvBindByName</code> annotation if the CSV file has a header. It accepts up to five parameters like <code>column</code>, <code>required</code>, and <code>locale</code>. All parameters are options except <code>column</code> which is also only required if the header column name in the CSV file is different from the bean field name.</p>
-<h2 id="spring-boot-controller">Spring Boot Controller<a href="#spring-boot-controller" title="Anchor Link"></a></h2>
-<p>Next, create a Spring Boot controller class named <code>UploadController.java</code> that handles the uploading and parsing of a CSV file:</p>
-<p>UploadController.java</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UploadController</span> <span class="p">{</span>
-
-    <span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;index&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/upload-csv-file&quot;</span><span class="p">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">uploadCSVFile</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&quot;file&quot;</span><span class="p">)</span> <span class="n">MultipartFile</span> <span class="n">file</span><span class="p">,</span> <span class="n">Model</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
-
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="p">{</span>
-            <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span> <span class="s">&quot;Please select a CSV file to upload.&quot;</span><span class="p">);</span>
-            <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-
-
-            <span class="k">try</span> <span class="p">(</span><span class="n">Reader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">())))</span> <span class="p">{</span>
-
-
-                <span class="n">CsvToBean</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">csvToBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CsvToBeanBuilder</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
-                        <span class="p">.</span><span class="na">withType</span><span class="p">(</span><span class="n">User</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
-                        <span class="p">.</span><span class="na">withIgnoreLeadingWhiteSpace</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-                        <span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-
-                <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">csvToBean</span><span class="p">.</span><span class="na">parse</span><span class="p">();</span>
-
-
-
-
-                <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span> <span class="n">users</span><span class="p">);</span>
-                <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-
-            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span> <span class="s">&quot;An error occurred while processing the CSV file.&quot;</span><span class="p">);</span>
-                <span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="s">&quot;file-upload-status&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span> 
-</code></pre></div>
-<p>As you can see above, we have annotated the <code>UploadController</code> class with <code>@Controller</code> to indicate that the annotated class is a "Controller" (e.g. a web controller). Each method is decorated with <code>@GetMapping</code> or <code>@PostMapping</code> to bind the path and the HTTP action with that particular method:</p>
-<ul>
-<li>GET <code>/</code> route simply renders an HTML form to allow the user to upload a CSV file.</li>
-<li>POST <code>/upload-csv-file</code> route handles HTTP <code>multipart/form-data</code> requests and accepts a <code>MultipartFile</code> object as a route parameter. This is where we actually parse the uploaded CSV file into a list of <code>User</code> objects by using the <code>CsvToBean</code> class. This method returns an HTML response to either display a list of users or an error message.</li>
+                <p>HTTPS in a Spring Boot</p>
+<p>Setting up HTTPS for Spring Boot requires two steps:</p>
+<ol>
+<li>Getting an SSL certificate;</li>
+<li>Configuring SSL in Spring Boot.</li>
+</ol>
+<p>We can generate an SSL certificate ourselves (self-signed certificate). Its use is intended just for development and testing purposes. In production, we should use a certificate issued by a trusted Certificate Authority (CA).</p>
+<p>In either case, we're going to see how to enable HTTPS in a Spring Boot application. Examples will be shown both for Spring Boot 1 and Spring Boot 2.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In this tutorial, we're going to:</p>
+<ol>
+<li>Get an SSL certificate<ul>
+<li>Generate a self-signed SSL certificate</li>
+<li>Use an existing SSL certificate</li>
 </ul>
-<h2 id="thymeleaf-templates">Thymeleaf Templates<a href="#thymeleaf-templates" title="Anchor Link"></a></h2>
-<p>The next step is to create Thymeleaf templates to allow users to upload a CSV file and display results. To nicely display the HTML form, we will use <a href="https://getbootstrap.com/" title="Open in new window">Bootstrap 4</a> default styles.</p>
-<h3 id="html-form-for-file-upload">HTML Form for File Upload<a href="#html-form-for-file-upload" title="Anchor Link"></a></h3>
-<p>Here is a simple HTML form that enables users to select a CSV file for upload:</p>
-<p>index.html</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">th:action</span><span class="o">=</span><span class="s">&quot;@{/upload-csv-file}&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group mt-3&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;file&quot;</span><span class="p">&gt;</span>Select a CSV file<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control-file&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">accept</span><span class="o">=</span><span class="s">&quot;.csv&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>Import Users<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span> 
-</code></pre></div>
-<h3 id="display-upload-results">Display Upload Results<a href="#display-upload-results" title="Anchor Link"></a></h3>
-<p>Let us create another Thymeleaf template to display the upload results:</p>
-<p>file-upload-status.html</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container py-5&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-10 mx-auto&quot;</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>File Upload Status<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${!status}&quot;</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Error:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-
-
-            <span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table table-striped&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${status}&quot;</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>#<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>ID<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="p">&gt;</span>Age<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;user, i : ${users}&quot;</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">&quot;row&quot;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${i.index + 1}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${user.id}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${user.name}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${user.email}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${user.countryCode}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${user.age}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> 
-</code></pre></div>
-<h2 id="running-testing-the-application">Running &amp; Testing the Application<a href="#running--testing-the-application" title="Anchor Link"></a></h2>
-<p>First of all, you need to create the main application class for Spring Boot application as shown below:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootApplication</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
-    <span class="p">}</span>
-
-<span class="p">}</span> 
-</code></pre></div>
-<p>Let's run the application by typing the following command in your terminal from the root directory of the project:</p>
-<div class="highlight"><pre><span></span><code>$ ./gradlew bootRun 
-</code></pre></div>
-<p>Once the Spring Boot application is started, open <a href="http://localhost:8080/" title="Open in new window">http://localhost:8080</a> in your favorite web browser to see the upload form. Here is how it looks like:</p>
-<p><img alt="CSV Upload Form" src="../../_resources/77f71b863e1c4515bd1d5145cb30ff70.png" /></p>
-<p>As shown in the above image, select a CSV file and then click on <strong>Import Users</strong> button to kickstart file upload operation. If everything goes right, you should see a <strong>list of users displayed</strong> as shown in the following screenshot:</p>
-<p><img alt="CSV Results" src="../../_resources/e49a04bf97e241a7af0267688567f4b2.png" /></p>
-<p>If you forget to select a CSV file or the CSV file is not valid, you should see the following <strong>error message displayed</strong> on the screen:</p>
-<p><img alt="CSV Error Message" src="../../_resources/324e9c3a7f66423082afb7bb7e000da8.png" /></p>
-<p>Finally, here is the sample CSV file I just uploaded in the above example:</p>
-<p>users.csv</p>
-<div class="highlight"><pre><span></span><code>id,name,email,country,age
-100,Atta Shah,atta@example.com,PK,30
-101,Alex Jones,alex@example.com,DE,35
-102,Jovan Lee,jovan@example.com,FR,25
-103,Greg Hover,greg@example.com,US,45 
-</code></pre></div>
-<blockquote>
-<p><strong>Source Code:</strong> Download the complete source code from <a href="https://github.com/attacomsian/code-examples/tree/master/spring-boot/parse-data-csv" title="Open in new window">GitHub</a> available under MIT license.</p>
-</blockquote>
-<h2 id="conclusion">Conclusion<a href="#conclusion" title="Anchor Link"></a></h2>
-<p>That's all folks! In this article, you have learned how to upload and parse a CSV file using Spring Boot and Thymeleaf web application. We used <a href="https://attacomsian.com/blog/read-write-csv-files-opencsv">OpenCSV</a>, a popular open-source library, for parsing the uploaded file into a list of Java objects.</p>
-<h2 id="further-reading">Further Reading<a href="#further-reading" title="Anchor Link"></a></h2>
-<p>If you like this article, you may be interested in other Spring Boot related articles:</p>
+</li>
+<li>Enable HTTPS in Spring Boot</li>
+<li>Redirect HTTP requests to HTTPS</li>
+<li>Distribute the SSL certificate to clients.</li>
+</ol>
+<p>If you don't already have a certificate, follow the step 1a. If you have already got an SSL certificate, you can follow the step 1b.</p>
+<p>Throughout this tutorial, I'll use the following technologies and tools:</p>
 <ul>
-<li><a href="https://attacomsian.com/blog/export-download-data-csv-file-spring-boot">Export &amp; Download Data as CSV File in Spring Boot</a></li>
-<li><a href="https://attacomsian.com/blog/uploading-files-spring-boot">Uploading Files in Spring Boot</a></li>
-<li><a href="https://attacomsian.com/blog/spring-boot-file-upload-with-ajax">How to upload a file with Ajax in Spring Boot</a></li>
-<li><a href="https://attacomsian.com/blog/read-write-csv-files-opencsv">Reading and writing CSV files using OpenCSV</a></li>
+<li>Java JDK 8</li>
+<li>Spring Boot 2.2.2 and Spring Boot 1.5.22</li>
+<li>keytool</li>
 </ul>
-<p><strong>✌️ Like this article?</strong> Follow me on <a href="https://twitter.com/attacomsian">Twitter</a> and <a href="https://linkedin.com/in/attacomsian">LinkedIn</a>. You can also subscribe to <a href="https://feeds.feedburner.com/attacomsian">RSS Feed</a>.</p>
+<p>Keytool is a certificate management utility provided together with the JDK, so if you have the JDK installed, you should already have keytool available. To check it, try running the command <code>keytool --help</code> from your Terminal prompt. Note that if you are on Windows, you might need to launch it from the <em>\bin</em> folder. For more information about this utility, you can read the <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html">official documentation</a>.</p>
+<p>On GitHub, you can find the <a href="https://github.com/ThomasVitale/spring-tutorials/tree/master/spring-boot-https">source code</a> for the application we are building in this tutorial.</p>
+<h2 id="1a-generate-a-self-signed-ssl-certificate">1a. Generate a self-signed SSL certificate</h2>
+<p>First of all, we need to generate a pair of cryptographic keys, use them to produce an SSL certificate and store it in a keystore. The <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html#keytool_option_genkeypair">keytool documentation</a> defines a keystore as a database of "cryptographic keys, X.509 certificate chains, and trusted certificates".</p>
+<p>To enable HTTPS, we'll provide a Spring Boot application with this keystore containing the SSL certificate.</p>
+<p>The two most common formats used for keystores are JKS, a proprietary format specific for Java, and PKCS12, an industry-standard format. JKS used to be the default choice, but now Oracle recommends to adopt the PKCS12 format. We're going to see how to use both.</p>
+<h3 id="generate-an-ssl-certificate-in-a-keystore">Generate an SSL certificate in a keystore</h3>
+<p>Let's open our Terminal prompt and write the following command to create a <strong>JKS keystore</strong>:</p>
+<div class="highlight"><pre><span></span><code>keytool -genkeypair -alias tomcat -keyalg RSA -keysize 2048 -keystore keystore.jks -validity 3650 -storepass password
+</code></pre></div>
+<p>To create a <strong>PKCS12 keystore</strong>, and we should, the command is the following:</p>
+<div class="highlight"><pre><span></span><code>keytool -genkeypair -alias tomcat -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 3650 -storepass password
+</code></pre></div>
+<p>Let's have a closer look at the command we just run:</p>
+<ul>
+<li><code>genkeypair</code>: generates a key pair;</li>
+<li><code>alias</code>: the alias name for the item we are generating;</li>
+<li><code>keyalg</code>: the cryptographic algorithm to generate the key pair;</li>
+<li><code>keysize</code>: the size of the key. We have used 2048 bits, but 4096 would be a better choice for production;</li>
+<li><code>storetype</code>: the type of keystore;</li>
+<li><code>keystore</code>: the name of the keystore;</li>
+<li><code>validity</code>: validity number of days;</li>
+<li><code>storepass</code>: a password for the keystore.</li>
+</ul>
+<p>When running the previous command, we will be asked to input some information, but we are free to skip all of it (just press <em>Return</em> to skip an option). When asked if the information is correct, we should type <em>yes</em>. Finally, we hit return to use the keystore password as key password as well.</p>
+<div class="highlight"><pre><span></span><code>What is your first and last name? 
+    [Unknown]: 
+What is the name of your organizational unit? 
+    [Unknown]: 
+What is the name of your organization? 
+    [Unknown]: 
+What is the name of your City or Locality? 
+    [Unknown]: 
+What is the name of your State or Province? 
+    [Unknown]: 
+What is the two-letter country code for this unit? 
+    [Unknown]: 
+Is CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct? 
+    [no]: yes 
+
+Enter key password for &lt;tomcat&gt; 
+    (RETURN if same as keystore password):
+</code></pre></div>
+<p>At the end of this operation, we'll get a keystore containing a brand new SSL certificate.</p>
+<h3 id="verify-the-keystore-content">Verify the keystore content</h3>
+<p>To check the content of the keystore following the <strong>JKS</strong> format, we can use keytool again:</p>
+<div class="highlight"><pre><span></span><code>keytool -list -v -keystore keystore.jks
+</code></pre></div>
+<p>To test the content of a keystore following the <strong>PKCS12</strong> format:</p>
+<div class="highlight"><pre><span></span><code>keytool -list -v -storetype pkcs12 -keystore keystore.p12
+</code></pre></div>
+<h3 id="convert-a-jks-keystore-into-pkcs12">Convert a JKS keystore into PKCS12</h3>
+<p>Should we have already a JKS keystore, we have the option to migrate it to PKCS12; keytool has a convenient command for that:</p>
+<div class="highlight"><pre><span></span><code>keytool -importkeystore -srckeystore keystore.jks -destkeystore keystore.p12 -deststoretype pkcs12
+</code></pre></div>
+<h2 id="1b-use-an-existing-ssl-certificate">1b. Use an existing SSL certificate</h2>
+<p>In case we have already got an SSL certificate, for example, one issued by <a href="https://letsencrypt.org/">Let's Encrypt</a>, we can import it into a keystore and use it to enable HTTPS in a Spring Boot application.</p>
+<p>We can use keytool to import our certificate in a new keystore.</p>
+<div class="highlight"><pre><span></span><code>keytool -import -alias tomcat -file myCertificate.crt -keystore keystore.p12 -storepass password
+</code></pre></div>
+<p>To get more information about the keystore and its format, please refer to the previous section.</p>
+<h2 id="2-enable-https-in-spring-boot">2. Enable HTTPS in Spring Boot</h2>
+<p>Whether our keystore contains a self-signed certificate or one issued by a trusted Certificate Authority, we can now set up Spring Boot to accept requests over HTTPS instead of HTTP by using that certificate.</p>
+<p>The first thing to do is placing the keystore file inside the Spring Boot project. We want to put it in the <em>resources</em> folder or the root folder.</p>
+<p>Then, we configure the server to use our brand new keystore and enable https. Let's go through the steps both for Spring Boot 1 and Spring Boot 2.</p>
+<h3 id="enable-https-in-spring-boot-1">Enable HTTPS in Spring Boot 1</h3>
+<p>Let's open our <em>application.properties</em> file (or <em>application.yml</em>) and define the following properties:</p>
+<div class="highlight"><pre><span></span><code>server.port=8443
+
+server.ssl.key-store-type=PKCS12
+server.ssl.key-store=classpath:keystore.p12
+server.ssl.key-store-password=password
+server.ssl.key-alias=tomcat
+
+security.require-ssl=true
+</code></pre></div>
+<p>application.properties (Spring Boot 1)</p>
+<h3 id="enable-https-in-spring-boot-2">Enable HTTPS in Spring Boot 2</h3>
+<p>To enable HTTPS for our Spring Boot 2 application, let's open our <em>application.yml</em> file (or <em>application.properties</em>) and define the following properties:</p>
+<div class="highlight"><pre><span></span><code>server:
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: tomcat
+    key-password: password
+  port: 8443
+</code></pre></div>
+<p>application.yml (Spring Boot 2)</p>
+<h3 id="configuring-ssl-in-spring-boot">Configuring SSL in Spring Boot</h3>
+<p>Let's have a closer look at the SSL configuration we have just defined in our Spring Boot application properties.</p>
+<ul>
+<li><code>server.port</code>: the port on which the server is listening. We have used <code>8443</code> rather than the default <code>8080</code> port.</li>
+<li><code>server.ssl.key-store</code>: the path to the key store that contains the SSL certificate. In our example, we want Spring Boot to look for it in the classpath.</li>
+<li><code>server.ssl.key-store-password</code>: the password used to access the key store.</li>
+<li><code>server.ssl.key-store-type</code>: the type of the key store (JKS or PKCS12).</li>
+<li><code>server.ssl.key-alias</code>: the alias that identifies the key in the key store.</li>
+<li><code>server.ssl.key-password</code>: the password used to access the key in the key store.</li>
+</ul>
+<h3 id="configure-spring-security-to-require-https-requests">Configure Spring Security to require HTTPS requests</h3>
+<p>When using Spring Security, we can configure it to require automatically block any request coming from a non-secure HTTP channel.</p>
+<p>In a Spring Boot 1 application, we can achieve that by setting the <code>security.require-ssl</code> property to <code>true</code>, without explicitly touching our Spring Security configuration class.</p>
+<p>To achieve the same result in a Spring Boot 2 application, we need to extend the <code>WebSecurityConfigurerAdapter</code> class, since the <code>security.require-ssl</code> property has been deprecated.</p>
+<div class="highlight"><pre><span></span><code>@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .requiresChannel()
+            .anyRequest()
+            .requiresSecure();
+    }
+}
+</code></pre></div>
+<p>SecurityConfig.java (Spring Boot 2)</p>
+<p>For more information about how to configure SSL in Spring Boot, you can have a look at the <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-configure-ssl">Reference Guide</a>. If you want to find out which properties are available to configure SSL, you can refer to the <a href="https://github.com/spring-projects/spring-boot/blob/v1.5.8.RELEASE/spring-boot/src/main/java/org/springframework/boot/context/embedded/Ssl.java">definition</a> in the code-base.</p>
+<p>Congratulations! You have successfully enabled HTTPS in your Spring Boot application! Give it a try: run the application, open your browser and check if everything works as it should.</p>
+<h2 id="3-redirect-http-requests-to-https">3. Redirect HTTP requests to HTTPS</h2>
+<p>Now that we have enabled HTTPS in our Spring Boot application and blocked any HTTP request, we want to redirect all traffic to HTTPS.</p>
+<p>Spring allows defining just one network connector in <em>application.properties</em> (or <em>application.yml</em>). Since we have used it for HTTPS, we have to set the HTTP connector programmatically for our Tomcat web server.</p>
+<p>The implementations for Spring Boot 1 and Spring Boot 2 are almost the same. The only difference is that some classes for server configuration have been renamed in Spring Boot 2.</p>
+<h3 id="configuring-tomcat-for-spring-boot-1">Configuring Tomcat for Spring Boot 1</h3>
+<div class="highlight"><pre><span></span><code>@Configuration
+public class ServerConfig {
+
+  @Bean
+  public EmbeddedServletContainerFactory servletContainer() {
+    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
+      @Override
+      protected void postProcessContext(Context context) {
+        SecurityConstraint securityConstraint = new SecurityConstraint();
+        securityConstraint.setUserConstraint(&quot;CONFIDENTIAL&quot;);
+        SecurityCollection collection = new SecurityCollection();
+        collection.addPattern(&quot;/*&quot;);
+        securityConstraint.addCollection(collection);
+        context.addConstraint(securityConstraint);
+      }
+    };
+    tomcat.addAdditionalTomcatConnectors(getHttpConnector());
+    return tomcat;
+  }
+
+  private Connector getHttpConnector() {
+    Connector connector = new Connector(&quot;org.apache.coyote.http11.Http11NioProtocol&quot;);
+    connector.setScheme(&quot;http&quot;);
+    connector.setPort(8080);
+    connector.setSecure(false);
+    connector.setRedirectPort(8443);
+    return connector;
+  }
+}
+</code></pre></div>
+<p>ServerConfig.java (Spring Boot 1)</p>
+<h3 id="configuring-tomcat-for-spring-boot-2">Configuring Tomcat for Spring Boot 2</h3>
+<div class="highlight"><pre><span></span><code>@Configuration
+public class ServerConfig {
+
+    @Bean
+    public ServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+            @Override
+            protected void postProcessContext(Context context) {
+                SecurityConstraint securityConstraint = new SecurityConstraint();
+                securityConstraint.setUserConstraint(&quot;CONFIDENTIAL&quot;);
+                SecurityCollection collection = new SecurityCollection();
+                collection.addPattern(&quot;/*&quot;);
+                securityConstraint.addCollection(collection);
+                context.addConstraint(securityConstraint);
+            }
+        };
+        tomcat.addAdditionalTomcatConnectors(getHttpConnector());
+        return tomcat;
+    }
+
+    private Connector getHttpConnector() {
+        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+        connector.setScheme(&quot;http&quot;);
+        connector.setPort(8080);
+        connector.setSecure(false);
+        connector.setRedirectPort(8443);
+        return connector;
+    }
+}
+</code></pre></div>
+<p>ServerConfig.java (Spring Boot 2)</p>
+<h2 id="4-distribute-the-ssl-certificate-to-clients">4. Distribute the SSL certificate to clients</h2>
+<p>When using a self-signed SSL certificate, our browser won't trust our application and will warn the user that it's not secure. And that'll be the same with any other client.</p>
+<p>It's possible to make a client trust our application by providing it with our certificate.</p>
+<p>We have stored our certificate inside a keystore, so we need to extract it. Again, keytool supports us very well:</p>
+<div class="highlight"><pre><span></span><code>keytool -export -keystore keystore.jks -alias tomcat -file myCertificate.crt
+</code></pre></div>
+<p>The keystore can be in JKS or PKCS12 format. During the execution of this command, keytool will ask us for the keystore password that we set at the beginning of this tutorial (the extremely secure <em>password</em>).</p>
+<p>Now we can import our certificate into our client. Later, we'll see how to import the certificate into the JRE in case we need it to trust our application.</p>
+<h3 id="make-a-browser-trust-an-ssl-certificate">Make a browser trust an SSL certificate</h3>
+<p>When using a keystore in the industry-standard PKCS12 format, we should be able to use it directly without extracting the certificate.</p>
+<p>I suggest you check the official guide on how to import a PKCS12 file into your specific client. On macOS, for example, we can directly import a certificate into the Keychain Access (which browsers like Safari, Chrome and Opera rely on to manage certificates).</p>
+<p>If deploying the application on <em>localhost</em>, we may need to do a further step from our browser: enabling insecure connections with <em>localhost</em>.</p>
+<p>In Firefox, we are shown an alert message. To access the application, we need to explicitly define an exception for it and make Firefox trust the certificate.</p>
+<p>In Chrome, we can write the following URL in the search bar: <code>chrome://flags/#allow-insecure-localhost</code> and activate the relative option.</p>
+<h3 id="import-an-ssl-certificate-inside-the-jre-keystore">Import an SSL certificate inside the JRE keystore</h3>
+<p>To make the JRE trust our certificate, we need to import it inside <em>cacerts</em>: the JRE trust store in charge of holding all certificates that can be trusted.</p>
+<p>First, we need to know the path to our JDK home. A quick way to find it, if we are using Eclipse or STS as our IDE, is by going to <em>Preferences &gt; Java &gt; Installed JREs</em>. If using IntelliJ IDEA, we can access this information by going to <em>Project Structure &gt; SDKs</em> and look at the value of the <em>JDK home path</em> field.</p>
+<p>On macOS, it could be something like <em>/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home.</em> In the following, we'll refer to this location by using the placeholder <code>$JDK_HOME</code>.</p>
+<p>Then, from our Terminal prompt, let's insert the following command (we might need to run it with administrator privileges by prefixing it with <code>sudo</code>):</p>
+<div class="highlight"><pre><span></span><code>keytool -importcert -file myCertificate.crt -alias tomcat -keystore $JDK_HOME/jre/lib/security/cacerts
+</code></pre></div>
+<p>We'll be asked to input the JRE keystore password. If you have never changed it, it should be the default one: <em>changeit</em> or <em>changeme</em>, depending on the operating system. Finally, keytool will ask if you want to trust this certificate: let's say <em>yes</em>.</p>
+<p>If everything went right, we'd see the message <em>Certificate was added to keystore</em>. Great!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we have seen how to generate a self-signed SSL certificate, how to import an existing certificate into a keystore, how to use it to enable HTTPS inside a Spring Boot application, how to redirect HTTP to HTTPS and how to extract and distribute the certificate to clients.</p>
+<p>On GitHub, you can find the <a href="https://github.com/ThomasVitale/spring-tutorials/tree/master/spring-boot-https">source code</a> for the application we have built in this tutorial.</p>
+<p>If you want to protect the access to some resources of your application, consider using <a href="https://www.thomasvitale.com/introducing-keycloak-identity-access-management/">Keycloak</a> for the authentication and authorization of the users visiting your <a href="https://www.thomasvitale.com/spring-boot-keycloak-security/">Spring Boot</a> or <a href="https://www.thomasvitale.com/spring-security-keycloak/">Spring Security</a> application.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/howto.html#howto-configure-ssl">Spring Boot Docs - Configure SSL</a></li>
+<li><a href="https://github.com/spring-projects/spring-boot/blob/v2.2.2.RELEASE/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web/server/Ssl.java">Spring Boot Docs - SSL Configuration</a></li>
+</ul>
+<p><em>Last update: 15/12/2019</em></p>
 <hr />
-<p><a href="https://attacomsian.com/blog/spring-boot-upload-parse-csv-file">Source</a></p>
+<p><a href="https://www.thomasvitale.com/https-spring-boot-ssl-certificate/">Source</a></p>
                 
               
               
@@ -1564,7 +1780,7 @@ implementation &#39;com.opencsv:opencsv:5.0&#39;
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1573,19 +1789,19 @@ implementation &#39;com.opencsv:opencsv:5.0&#39;
               <span class="md-footer__direction">
                 Previous
               </span>
-              Spring Security Keycloak Spring Boot
+              Export & Download Data as CSV File in Spring Boot
             </div>
           </div>
         </a>
       
       
-        <a href="../%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Юнит тестирование для чайников
+              Integration Testing in Spring   Baeldung
             </div>
           </div>
           <div class="md-footer__button md-icon">
