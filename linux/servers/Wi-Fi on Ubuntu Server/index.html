@@ -1,0 +1,1863 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>Wi Fi on Ubuntu Server - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-find-the-name-of-your-wireless-interface-and-wireless-network" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wi Fi on Ubuntu Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Algorithms
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%201.%20Introduction/" class="md-nav__link">
+        B Tree. 1. Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%202.%20Insert%20Operation/" class="md-nav__link">
+        B Tree. 2. Insert Operation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-nav__link">
+        B Tree. 3. Delete Operation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Exec%20Docker%20Command/" class="md-nav__link">
+        Exec Docker Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Install%20Docker%20Engine%20on%20Ubuntu/" class="md-nav__link">
+        Install Docker Engine on Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Keycloak%20Docker/" class="md-nav__link">
+        Keycloak Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/PostgreSQL%20Docker/" class="md-nav__link">
+        PostgreSQL Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/Delete%20branch%20local_remote/" class="md-nav__link">
+        Delete branch local remote
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%A1hange%20author%20of%20%20commit/" class="md-nav__link">
+        Сhange author of  commit
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Circuit%20Breaker%20pattern/" class="md-nav__link">
+        Circuit Breaker pattern
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/HTTPS%20in%20a%20Spring%20Boot/" class="md-nav__link">
+        HTTPS in a Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Jackson%20XML%20annotations/" class="md-nav__link">
+        Jackson XML annotations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+        Modularizing a Spring Boot Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/PKIX%20path%20building%20failed%20%D0%BF%D1%80%D0%B8%20SSL%20%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8/" class="md-nav__link">
+        PKIX path building failed при SSL соединении
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Pointcut%20Expressions%20in%20Spring/" class="md-nav__link">
+        Pointcut Expressions in Spring
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Random%20Data%20Generators%20Java/" class="md-nav__link">
+        Random Data Generators Java
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      <label class="md-nav__link" for="__nav_6_1">
+        Bash scripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Bash scripting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bash scripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Read%20Command/" class="md-nav__link">
+        Read Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Write%20to%20File/" class="md-nav__link">
+        Write to File
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      <label class="md-nav__link" for="__nav_6_2">
+        Customization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Customization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Customization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Cinnamon%20in%20Ubuntu%2020.04/" class="md-nav__link">
+        Cinnamon in Ubuntu 20.04
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+        GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+        Nemo add keyboard shortcuts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Nemo%20context%20menu%20action/" class="md-nav__link">
+        Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Powerline%20for%20Bash/" class="md-nav__link">
+        Powerline for Bash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Shortcuts%20Export%20Cinnamon/" class="md-nav__link">
+        Shortcuts Export Cinnamon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+        Terminal set wrong sudo password message
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Terminator%20Themes/" class="md-nav__link">
+        Terminator Themes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Thunderbird%20Tray%20Icon/" class="md-nav__link">
+        Thunderbird Tray Icon
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      <label class="md-nav__link" for="__nav_6_3">
+        How to
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="How to" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/AppImage%20Repack/" class="md-nav__link">
+        AppImage Repack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
+        Check for Listening Ports in Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Checksum%20verify%20with%20GtkHash/" class="md-nav__link">
+        Checksum verify with GtkHash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+        Grep поиск внутри файлов
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/KeePassXC%20with%20synchronization/" class="md-nav__link">
+        KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+        Kill process by used port Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Mouse Buttons Bind To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/PDF%20create%20from%20images/" class="md-nav__link">
+        PDF create from images
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/PDF%20file%20Compress/" class="md-nav__link">
+        PDF file Compress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Port%20forwarding/" class="md-nav__link">
+        Port forwarding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Send%20notifications%20with%20notify-send/" class="md-nav__link">
+        Send notifications with notify send
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Services%20in%20Systemd/" class="md-nav__link">
+        Services in Systemd
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/sha256%20check/" class="md-nav__link">
+        Sha256 check
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" checked>
+      
+      <label class="md-nav__link" for="__nav_6_4">
+        Servers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Servers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Servers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kafka%20Setting%20Up/" class="md-nav__link">
+        Kafka Setting Up
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SSH%20Essentials/" class="md-nav__link">
+        SSH Essentials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wi Fi on Ubuntu Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Wi Fi on Ubuntu Server
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-find-the-name-of-your-wireless-interface-and-wireless-network" class="md-nav__link">
+    Step 1: Find The Name of Your Wireless Interface And Wireless Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-connect-to-wi-fi-network-with-wpa_supplicant" class="md-nav__link">
+    Step 2: Connect to Wi-Fi Network With WPA_Supplicant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-hidden-wireless-network" class="md-nav__link">
+    Connecting to Hidden Wireless Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-auto-connect-at-boot-time" class="md-nav__link">
+    Step 3: Auto-Connect At Boot Time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-obtain-a-static-ip-address" class="md-nav__link">
+    How to Obtain a Static IP Address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-hostname-to-access-services-on-ubuntu" class="md-nav__link">
+    Using a Hostname to Access Services on Ubuntu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unblock-wifi-on-raspberry-pi" class="md-nav__link">
+    Unblock Wifi on Raspberry Pi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-wi-fi-networks" class="md-nav__link">
+    Multiple Wi-Fi Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wi-fi-security" class="md-nav__link">
+    Wi-Fi Security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Mongodb
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mongodb" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Mongodb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mongodb/Authentication%20mongo%20with%20docker-compose/" class="md-nav__link">
+        Authentication mongo with docker compose
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+        MongoDB Cheat Sheet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-find-the-name-of-your-wireless-interface-and-wireless-network" class="md-nav__link">
+    Step 1: Find The Name of Your Wireless Interface And Wireless Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-connect-to-wi-fi-network-with-wpa_supplicant" class="md-nav__link">
+    Step 2: Connect to Wi-Fi Network With WPA_Supplicant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-hidden-wireless-network" class="md-nav__link">
+    Connecting to Hidden Wireless Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-auto-connect-at-boot-time" class="md-nav__link">
+    Step 3: Auto-Connect At Boot Time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-obtain-a-static-ip-address" class="md-nav__link">
+    How to Obtain a Static IP Address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-hostname-to-access-services-on-ubuntu" class="md-nav__link">
+    Using a Hostname to Access Services on Ubuntu
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unblock-wifi-on-raspberry-pi" class="md-nav__link">
+    Unblock Wifi on Raspberry Pi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-wi-fi-networks" class="md-nav__link">
+    Multiple Wi-Fi Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wi-fi-security" class="md-nav__link">
+    Wi-Fi Security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Wi Fi on Ubuntu Server</h1>
+                
+                <p>Wi-Fi on Ubuntu Server</p>
+<p>In this tutorial, we are going to learn how to connect to Wi-Fi network from the command line on Ubuntu <strong>18.04/20.04</strong> server and desktop using <strong>wpa_supplicant</strong>. In a modern home wireless network, communications are protected with WPA-PSK (pre-shared key) as opposed to WPA-Enterprise, which is designed for enterprise networks. WPA-PSK is also known as WPA-Personal. <strong>wpa_supplicant</strong> is an implementation of the WPA supplicant component. A supplicant in wireless LAN is client software installed on end-user’s computer that needs to be authenticated in order to join a network.</p>
+<h2 id="step-1-find-the-name-of-your-wireless-interface-and-wireless-network">Step 1: Find The Name of Your Wireless Interface And Wireless Network</h2>
+<p>Run <code>iwconfig</code> command to find the name of your wireless interface.
+<div class="highlight"><pre><span></span><code>iwconfig
+</code></pre></div>
+<code>wlan0</code> used to be a common name for wireless network interface on Linux systems without Systemd. Because Ubuntu uses Systemd, you are going to find that your wireless network interface is named something like <code>wlp4s0</code>. You can also see that it’s not associated with any access point right now.</p>
+<p><img alt="ubuntu server connect to wifi terminal" src="../../../_resources/6e09e66a91a04dd9a71ec0ff37524f23.png" /></p>
+<p>If your wireless interface isn’t shown, perhaps you need to bring it up with the following command.
+<div class="highlight"><pre><span></span><code>sudo ifconfig wlp4s0 up
+</code></pre></div>
+Then find your wireless network name by scanning nearby networks with the command below. Replace <code>wlp4s0</code> with your own wireless interface name. ESSID is the network name identifier.
+<div class="highlight"><pre><span></span><code>sudo iwlist wlp4s0 scan <span class="p">|</span> grep ESSID
+</code></pre></div>
+<img alt="ubuntu 19.04 connect to wifi command line wpa supplicant" src="../../../_resources/593cce6a44ab41a88273905e1e8e85a7.png" /></p>
+<h2 id="step-2-connect-to-wi-fi-network-with-wpa_supplicant">Step 2: Connect to Wi-Fi Network With WPA_Supplicant</h2>
+<p>Now install <code>wpa_supplicant</code> on Ubuntu 18.04/20.04 from the default software repository.
+<div class="highlight"><pre><span></span><code>sudo apt install wpasupplicant
+</code></pre></div>
+We need to create a file named <code>wpa_supplicant.conf</code> using the <code>wpa_passphrase</code> utility. <code>wpa_supplicant.conf</code> is the configuration file describing all networks that the user wants the computer to connect to. Run the following command to create this file. Replace ESSID and Wi-Fi passphrase with your own.
+<div class="highlight"><pre><span></span><code>wpa_passphrase your-ESSID your-wifi-passphrase <span class="p">|</span> sudo tee /etc/wpa_supplicant.conf
+</code></pre></div>
+<img width="1013" height="118" src="../../../_resources/297537b1a0db4d368df4b417d814c4a5.png"/></p>
+<p>Note that in the above screenshot, I wrapped my ESSID with double-quotes, because my ESSID contains whitespace.</p>
+<p>The output of <code>wpa_passphrase</code> command will be piped to <code>tee</code>, and then written to the <code>/etc/wpa_supplicant.conf</code> file. Now use the following command to connect your wireless card to wireless access point.
+<div class="highlight"><pre><span></span><code>sudo wpa<span class="se">\_</span>supplicant -c /etc/wpa<span class="se">\_</span>supplicant.conf -i wlp4s0
+</code></pre></div>
+The following output indicates your wireless card is successfully connected to an access point.
+<div class="highlight"><pre><span></span><code>Successfully initialized wpa_supplicant
+wlp4s0: SME: Trying to authenticate with c5:4a:21:53:ac:eb (SSID=&#39;LinuxBabe.Com Network&#39; freq=2437 MHz)
+wlp4s0: Trying to associate with c5:4a:21:53:ac:eb (SSID=&#39;LinuxBabe.Com Network&#39; freq=2437 MHz)
+**wlp4s0: Associated with c5:4a:21:53:ac:eb**
+wlp4s0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+wlp4s0: WPA: Key negotiation completed with c5:4a:21:53:ac:eb \[PTK=CCMP GTK=CCMP\]
+wlp4s0: CTRL-EVENT-CONNECTED - **Connection to c5:4a:21:53:ac:eb completed** \[id=0 id_str=\]
+</code></pre></div>
+Note that if you are using Ubuntu desktop edition, then you need to stop Network Manager with the following command, otherwise it will cause a connection problem when using <strong>wpa_supplicant</strong>.
+<div class="highlight"><pre><span></span><code>sudo systemctl stop NetworkManager
+</code></pre></div>
+And disable NetworkManager auto-start at boot time by executing the following command.
+<div class="highlight"><pre><span></span><code>sudo systemctl disable NetworkManager-wait-online NetworkManager-dispatcher NetworkManager
+</code></pre></div>
+By default, wpa_supplicant runs in the foreground. If the connection is completed, then open up another terminal window and run
+<div class="highlight"><pre><span></span><code>iwconfig
+</code></pre></div>
+You can see that the wireless interface is now associated with an access point.</p>
+<p><img width="734" height="275" src="../../../_resources/c1b61e5d07864789a574b33bcab8203f.png"/></p>
+<p>You can press <code>CTRL+C</code> to stop the current <strong>wpa_supplicant</strong> process and run it in the background by adding the <code>-B</code> flag.
+<div class="highlight"><pre><span></span><code>sudo wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0
+</code></pre></div>
+Although we’re authenticated and connected to a wireless network, we don’t have an IP address yet. To obtain a private IP address from DHCP server, use the following command:
+<div class="highlight"><pre><span></span><code>sudo dhclient wlp4s0
+</code></pre></div>
+Now your wireless interface has a private IP address, which can be shown with:
+<div class="highlight"><pre><span></span><code>ip addr show wlp4s0
+</code></pre></div>
+<img width="914" height="172" src="../../../_resources/9b10a2645a1047ffa7703f372febd1bc.png"/></p>
+<p>Now you can access the Internet. To release the private IP address, run
+<div class="highlight"><pre><span></span><code>sudo dhclient wlp4s0 -r
+</code></pre></div></p>
+<h2 id="connecting-to-hidden-wireless-network">Connecting to Hidden Wireless Network</h2>
+<p>If your wireless router doesn’t broadcast ESSID, then you need to add the following line in <code>/etc/wpa_supplicant.conf</code> file.
+<div class="highlight"><pre><span></span><code><span class="nv">scan_ssid</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+Like below:
+<div class="highlight"><pre><span></span><code>network={
+        ssid=&quot;LinuxBabe.Com Network&quot;
+        #psk=&quot;12345qwert&quot;
+        psk=68add4c5fee7dc3d0dac810f89b805d6d147c01e281f07f475a3e0195
+        scan_ssid=1
+}
+</code></pre></div></p>
+<h2 id="step-3-auto-connect-at-boot-time">Step 3: Auto-Connect At Boot Time</h2>
+<p>To automatically connect to wireless network at boot time, we need to edit the <code>wpa_supplicant.service</code> file. It’s a good idea to copy the file from <code>/lib/systemd/system/</code> directory to <code>/etc/systemd/system/</code> directory, then edit the file content, because we don’t want a newer version of <code>wpa_supplicant</code> to override our modifications.
+<div class="highlight"><pre><span></span><code>sudo cp /lib/systemd/system/wpa<span class="se">\_</span>supplicant.service /etc/systemd/system/wpa<span class="se">\_</span>supplicant.service
+</code></pre></div>
+Edit the file with a command-line text editor, such as Nano.
+<div class="highlight"><pre><span></span><code>sudo nano /etc/systemd/system/wpa_supplicant.service
+</code></pre></div>
+Find the following line.
+<div class="highlight"><pre><span></span><code>ExecStart=/sbin/wpa\_supplicant -u -s -O /run/wpa\_supplicant
+</code></pre></div>
+Change it to the following. Here we added the configuration file and the wireless interface name to the <code>ExecStart</code> command.
+<div class="highlight"><pre><span></span><code>ExecStart=/sbin/wpa\_supplicant -u -s -c /etc/wpa\_supplicant.conf -i wlp4s0
+</code></pre></div>
+It’s recommended to always try to restart wpa_supplicant when failure is detected. Add the following right below the <code>ExecStart</code> line.
+<div class="highlight"><pre><span></span><code>Restart=always
+</code></pre></div>
+If you can find the following line in this file, comment it out (Add the # character at the beginning of the line).
+<div class="highlight"><pre><span></span><code>Alias=dbus-fi.w1.wpa_supplicant1.service
+</code></pre></div>
+Save and close the file. (To save a file in Nano text editor, press <code>Ctrl+O</code>, then press <code>Enter</code> to confirm. To exit, press <code>Ctrl+X</code>.) Then reload systemd.
+<div class="highlight"><pre><span></span><code>sudo systemctl daemon-reload
+</code></pre></div>
+Enable <strong>wpa_supplicant</strong> service to start at boot time.
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> wpa_supplicant.service
+</code></pre></div>
+We also need to start <code>dhclient</code> at boot time to obtain a private IP address from DHCP server. This can be achieved by creating a systemd service unit for <code>dhclient</code>.
+<div class="highlight"><pre><span></span><code>sudo nano /etc/systemd/system/dhclient.service
+</code></pre></div>
+Put the following text into the file.
+<div class="highlight"><pre><span></span><code>\[Unit\]
+Description= DHCP Client
+Before=network.target
+After=wpa_supplicant.service
+
+\[Service\]
+Type=forking
+ExecStart=/sbin/dhclient wlp4s0 -v
+ExecStop=/sbin/dhclient wlp4s0 -r
+Restart=always
+
+\[Install\]
+WantedBy=multi-user.target
+</code></pre></div>
+Save and close the file. Then enable this service.
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> dhclient.service
+</code></pre></div></p>
+<h2 id="how-to-obtain-a-static-ip-address">How to Obtain a Static IP Address</h2>
+<p>If you want to obtain a static IP address, then you need to disable <code>dhclient.service</code>.
+<div class="highlight"><pre><span></span><code>sudo systemctl disable dhclient.service
+</code></pre></div>
+We need to use netplan to configure static IP address on Ubuntu 18.04/20.04. Create a configuration file under <code>/etc/netplan/</code>.
+<div class="highlight"><pre><span></span><code>sudo nano /etc/netplan/10-wifi.yaml
+</code></pre></div>
+Add the following lines to this file. Replace <code>192.168.0.102</code> with your preferred IP address. Please be careful about the indentation. An extra space would make the configuration invalid.
+<div class="highlight"><pre><span></span><code>network:
+    ethernets:
+        wlp4s0:
+            dhcp4: no
+            addresses: \[192.168.0.102/24\]
+            gateway4: 192.168.0.1
+    version: 2
+</code></pre></div>
+Save and close the file. Then apply the configurations.
+<div class="highlight"><pre><span></span><code>sudo netplan apply
+</code></pre></div>
+You can also turn on the <code>--debug</code> option if it doesn’t work as expected.
+<div class="highlight"><pre><span></span><code>sudo netplan --debug apply
+</code></pre></div>
+If there are other <code>.yaml</code> files under <code>/etc/netplan/</code> directory, then <code>netplan</code> will automatically merge configurations from different files. <code>netplan</code> uses <code>systemd-networkd</code> as the backend network renderer. It’s recommended to configure the <code>wpa_supplicant.service</code> runs before <code>systemd-networkd.service</code>, so the system will first associate with a Wi-Fi access point, then obtain a private IP address.
+<div class="highlight"><pre><span></span><code>sudo nano /etc/systemd/system/wpa_supplicant.service
+</code></pre></div>
+Find the following line.
+<div class="highlight"><pre><span></span><code>Before=network.target
+</code></pre></div>
+Change it to:
+<div class="highlight"><pre><span></span><code>Before=network.target systemd-networkd.service
+</code></pre></div>
+Save and close the file.</p>
+<p>Another way to obtain a static IP address is by logging into your router’s management interface and assigning a static IP to the MAC address of your wireless card, if your router supports this feature.</p>
+<h2 id="using-a-hostname-to-access-services-on-ubuntu"><a id="DNS-SD"></a>Using a Hostname to Access Services on Ubuntu</h2>
+<p>Actually, you don’t have to obtain a static IP address for your Ubuntu box. Ubuntu can use mDNS (Multicast DNS) to announce its hostname to the local network and clients can access services on your Ubuntu box with that hostname. This hostname can always be resolved to the IP address of your Ubuntu box, even if the IP address changes.</p>
+<p>In order to use mDNS, you need to install avahi-daemon, which is an open-source implementation of mDNS/DNS-SD.
+<div class="highlight"><pre><span></span><code>sudo apt install avahi-daemon
+</code></pre></div>
+Start the service.
+<div class="highlight"><pre><span></span><code>sudo systemctl start avahi-daemon
+</code></pre></div>
+Enable auto-start at boot time.
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> avahi-daemon
+</code></pre></div>
+Avahi-daemon listens on UDP 5353, so you need to open this port in the firewall. If you use UFW, then run the following command.
+<div class="highlight"><pre><span></span><code>sudo ufw allow <span class="m">5353</span>/udp
+</code></pre></div>
+Then you should set a unique hostname for your Ubuntu box with the <code>hostnamectl</code> command. Replace ubuntubox with your preferred hostname, which should not be already taken by other devices in the local network.
+<div class="highlight"><pre><span></span><code>sudo hostnamectl set-hostname ubuntubox
+</code></pre></div>
+Now restart avahi-daemon.
+<div class="highlight"><pre><span></span><code>sudo systemctl restart avahi-daemon
+</code></pre></div>
+If you check the status with
+<div class="highlight"><pre><span></span><code>systemctl status avahi-daemon
+</code></pre></div>
+you can see the mDNS hostname, which ends with the <code>.local</code> domain.</p>
+<p><img width="991" height="195" src="../../../_resources/afcca3bf1de74a8c83cc0d4a46c2ec1d.png"/></p>
+<p>On the client computer, you also need to install an mDNS/DNS-SD software.</p>
+<ul>
+<li>Linux users should install <code>avahi-daemon</code>.</li>
+<li>Windows users need to enable the Bonjour service by either installing the <a href="https://support.apple.com/kb/DL999?locale=en_US">Bonjour print service</a> or installing <a href="https://www.microsoft.com/en-us/p/itunes/9pb2mz1zmb1s">iTunes</a>.</li>
+<li>On macOS, Bonjour is pre-installed.</li>
+</ul>
+<p>Now you can access services by using the <code>ubuntubox.local</code> hostname, eliminating the need to check and type IP address.</p>
+<h2 id="unblock-wifi-on-raspberry-pi">Unblock Wifi on Raspberry Pi</h2>
+<p>The Ubuntu ARM OS for Raspberry Pi blocks wireless interface by default. You need to unblock it with:
+<div class="highlight"><pre><span></span><code>sudo rfkill unblock wifi
+</code></pre></div>
+To unblock it at boot time, create a systemd service unit.
+<div class="highlight"><pre><span></span><code>sudo nano /etc/systemd/system/unblock-wifi.service
+</code></pre></div>
+Add the following lines to it.
+<div class="highlight"><pre><span></span><code>\[Unit\]
+Description=RFKill Unblock WiFi Devices
+Requires=wpa_supplicant.service
+After=wpa_supplicant.service
+
+\[Service\]
+Type=oneshot
+ExecStart=/usr/sbin/rfkill unblock wifi
+ExecStop=
+RemainAfterExit=yes
+
+\[Install\]
+WantedBy=multi-user.target
+</code></pre></div>
+Save and close the file. Enable auto-start at boot time.
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> unblock-wifi
+</code></pre></div>
+I found that the <code>unblock-wifi.service</code> should run after the <code>wpa_supplicant.service</code> starts, otherwise it can’t unblock wifi. Note that if you have installed a desktop environment, there’s probably a network manager running that can interfere with the connection. You need to disable it. For example, I use the lightweight LXQT desktop environment on Raspberry Pi (<code>sudo apt install lubuntu-desktop</code>) and need to disable connman.service and NetworkManager.service.
+<div class="highlight"><pre><span></span><code>sudo systemctl disable connman.service NetworkManager.service
+</code></pre></div></p>
+<h2 id="multiple-wi-fi-networks">Multiple Wi-Fi Networks</h2>
+<p>The <code>/etc/wpa_supplicant.conf</code> configuration file can include multiple Wi-Fi networks. wpa_supplicant will automatically select the best network based on the order of network blocks in the configuration file, network security level, and signal strength.</p>
+<p>To add a second Wi-Fi network, run
+<div class="highlight"><pre><span></span><code>wpa_passphrase your-ESSID your-wifi-passphrase <span class="p">|</span> sudo tee -a /etc/wpa_supplicant.conf
+</code></pre></div>
+Note that you need to use the <code>-a</code> option with the <code>tee</code> command, which will append, instead of deleting the original content, the new Wifi-network to the file.</p>
+<h2 id="wi-fi-security">Wi-Fi Security</h2>
+<p>Do not use <strong>WPA2 TKIP</strong> or <strong>WPA2 TKIP+AES</strong> as the encryption method in your Wi-Fi router. TKIP is not considered secure anymore. You can use <strong>WPA2-AES</strong> as the encryption method.</p>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>I hope this tutorial helped you connect Ubuntu 18.04/20.04 to Wi-Fi network from the command line with WPA Supplicant. As always, if you found this post useful, then <a href="https://newsletter.linuxbabe.com/subscription/wkeY5d6pg">subscribe to our free newsletter</a> to get more tips and tricks 🙂</p>
+<hr />
+<p><a href="https://www.linuxbabe.com/ubuntu/connect-to-wi-fi-from-terminal-on-ubuntu-18-04-19-04-with-wpa-supplicant">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../SSH%20Essentials/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              SSH Essentials
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../../mongodb/Authentication%20mongo%20with%20docker-compose/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Authentication mongo with docker compose
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/serhii-petriuk/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>

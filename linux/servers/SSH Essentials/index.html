@@ -1,0 +1,2770 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>SSH Essentials - KnowDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KnowDB" class="md-header__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KnowDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SSH Essentials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue" type="radio" name="__palette" id="__palette_1">
+          <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+          </label>
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="cyan" type="radio" name="__palette" id="__palette_2">
+          <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+          </label>
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KnowDB" class="md-nav__button md-logo" aria-label="KnowDB" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    KnowDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Algorithms
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%201.%20Introduction/" class="md-nav__link">
+        B Tree. 1. Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%202.%20Insert%20Operation/" class="md-nav__link">
+        B Tree. 2. Insert Operation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/B-Tree.%203.%20Delete%20Operation/" class="md-nav__link">
+        B Tree. 3. Delete Operation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Docker
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Exec%20Docker%20Command/" class="md-nav__link">
+        Exec Docker Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Install%20Docker%20Engine%20on%20Ubuntu/" class="md-nav__link">
+        Install Docker Engine on Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Keycloak%20Docker/" class="md-nav__link">
+        Keycloak Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/Mongodb%20Docker/" class="md-nav__link">
+        Mongodb Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/PgAdmin%204%20docker/" class="md-nav__link">
+        PgAdmin 4 docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/PostgreSQL%20Docker/" class="md-nav__link">
+        PostgreSQL Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Git
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/Create%20Empty%20Branch%20in%20Git/" class="md-nav__link">
+        Create Empty Branch in Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/Delete%20branch%20local_remote/" class="md-nav__link">
+        Delete branch local remote
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%81%D0%B1%D0%B0%D0%BD%D1%8B%D0%B9%20Git%21%21%21/" class="md-nav__link">
+        Ёбаный Git!!!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%20Git%20stash.%20%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D1%8F%D1%82%D0%B0%D1%82%D1%8C%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20Git/" class="md-nav__link">
+        Команда Git stash. Как прятать изменения в Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/%D0%A1hange%20author%20of%20%20commit/" class="md-nav__link">
+        Сhange author of  commit
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Java
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/%40Before%20%40BeforeClass%20%40BeforeEach%20%40BeforeAll/" class="md-nav__link">
+        @Before @BeforeClass @BeforeEach @BeforeAll
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Access%20value%20in%20application.properties%20Spring%20Boot/" class="md-nav__link">
+        Access value in application.properties Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Change%20the%20Default%20Port%20in%20Spring%20Boot/" class="md-nav__link">
+        Change the Default Port in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Circuit%20Breaker%20pattern/" class="md-nav__link">
+        Circuit Breaker pattern
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Export%20%26%20Download%20Data%20as%20CSV%20File%20in%20Spring%20Boot/" class="md-nav__link">
+        Export & Download Data as CSV File in Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/HTTPS%20in%20a%20Spring%20Boot/" class="md-nav__link">
+        HTTPS in a Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Integration%20Testing%20in%20Spring%20_%20Baeldung/" class="md-nav__link">
+        Integration Testing in Spring   Baeldung
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Jackson%20XML%20annotations/" class="md-nav__link">
+        Jackson XML annotations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Java%20Stream%20API/" class="md-nav__link">
+        Java Stream API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Modularizing%20a%20Spring%20Boot%20Application/" class="md-nav__link">
+        Modularizing a Spring Boot Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/PKIX%20path%20building%20failed%20%D0%BF%D1%80%D0%B8%20SSL%20%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8/" class="md-nav__link">
+        PKIX path building failed при SSL соединении
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Pointcut%20Expressions%20in%20Spring/" class="md-nav__link">
+        Pointcut Expressions in Spring
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Random%20Data%20Generators%20Java/" class="md-nav__link">
+        Random Data Generators Java
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Spring%20REST%20Error%20Handling%20Example/" class="md-nav__link">
+        Spring REST Error Handling Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Spring%20Security%20Keycloak%20Spring%20Boot/" class="md-nav__link">
+        Spring Security Keycloak Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/Uploading%20and%20Parsing%20CSV%20File%20using%20Spring%20Boot/" class="md-nav__link">
+        Uploading and Parsing CSV File using Spring Boot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/%D0%AE%D0%BD%D0%B8%D1%82-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2/" class="md-nav__link">
+        Юнит тестирование для чайников
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      <label class="md-nav__link" for="__nav_6_1">
+        Bash scripting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Bash scripting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bash scripting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Bash-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/" class="md-nav__link">
+        Bash скрипты начало
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Read%20Command/" class="md-nav__link">
+        Read Command
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Remove%20recursive%20by%20extension/" class="md-nav__link">
+        Remove recursive by extension
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash%20scripting/Write%20to%20File/" class="md-nav__link">
+        Write to File
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      <label class="md-nav__link" for="__nav_6_2">
+        Customization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Customization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Customization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Cinnamon%20in%20Ubuntu%2020.04/" class="md-nav__link">
+        Cinnamon in Ubuntu 20.04
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Cinnamon%20theme%20switch%20script/" class="md-nav__link">
+        Cinnamon theme switch script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/GTK%203.16%20Fix%20Large%20Black%20Borders%20Around%20Windows/" class="md-nav__link">
+        GTK 3.16 Fix Large Black Borders Around Windows
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Nemo%20add%20keyboard%20shortcuts/" class="md-nav__link">
+        Nemo add keyboard shortcuts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Nemo%20context%20menu%20action/" class="md-nav__link">
+        Nemo context menu action
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Powerline%20for%20Bash/" class="md-nav__link">
+        Powerline for Bash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Shortcuts%20Export%20Cinnamon/" class="md-nav__link">
+        Shortcuts Export Cinnamon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Terminal%20set%20wrong%20sudo%20password%20message/" class="md-nav__link">
+        Terminal set wrong sudo password message
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Terminator%20Themes/" class="md-nav__link">
+        Terminator Themes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customization/Thunderbird%20Tray%20Icon/" class="md-nav__link">
+        Thunderbird Tray Icon
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      <label class="md-nav__link" for="__nav_6_3">
+        How to
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="How to" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/AppImage%20Repack/" class="md-nav__link">
+        AppImage Repack
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Check%20for%20Listening%20Ports%20in%20Linux/" class="md-nav__link">
+        Check for Listening Ports in Linux
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Checksum%20verify%20with%20GtkHash/" class="md-nav__link">
+        Checksum verify with GtkHash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Grep%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B8%20%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2/" class="md-nav__link">
+        Grep поиск внутри файлов
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Joplin%20Terminal/" class="md-nav__link">
+        Joplin Terminal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/KeePassXC%20with%20synchronization/" class="md-nav__link">
+        KeePassXC with synchronization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Kill%20process%20by%20used%20port%20Ubuntu/" class="md-nav__link">
+        Kill process by used port Ubuntu
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Mouse%20Buttons%20Bind%20To%20Keyboard%20Keys%20Or%20Commands/" class="md-nav__link">
+        Mouse Buttons Bind To Keyboard Keys Or Commands
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/PDF%20create%20from%20images/" class="md-nav__link">
+        PDF create from images
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/PDF%20file%20Compress/" class="md-nav__link">
+        PDF file Compress
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Port%20forwarding/" class="md-nav__link">
+        Port forwarding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Send%20notifications%20with%20notify-send/" class="md-nav__link">
+        Send notifications with notify send
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/Services%20in%20Systemd/" class="md-nav__link">
+        Services in Systemd
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/sha256%20check/" class="md-nav__link">
+        Sha256 check
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%B8%D1%81%D0%BA%D0%B0/" class="md-nav__link">
+        Автоматическое монтирование диска
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" checked>
+      
+      <label class="md-nav__link" for="__nav_6_4">
+        Servers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Servers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Servers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kafka%20Setting%20Up/" class="md-nav__link">
+        Kafka Setting Up
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kafka%20local%20cluster%20run/" class="md-nav__link">
+        Kafka local cluster run
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mosquitto/" class="md-nav__link">
+        Mosquitto
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SSH Essentials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SSH Essentials
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    How To Use This Guide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-overview" class="md-nav__link">
+    SSH Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-ssh-works" class="md-nav__link">
+    How SSH Works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-ssh-authenticates-users" class="md-nav__link">
+    How SSH Authenticates Users
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-and-working-with-ssh-keys" class="md-nav__link">
+    Generating and Working with SSH Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating and Working with SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-ssh-key-pair" class="md-nav__link">
+    Generating an SSH Key Pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-an-ssh-key-pair-with-a-larger-number-of-bits" class="md-nav__link">
+    Generate an SSH Key Pair with a Larger Number of Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-or-changing-the-passphrase-on-a-private-key" class="md-nav__link">
+    Removing or Changing the Passphrase on a Private Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-the-ssh-key-fingerprint" class="md-nav__link">
+    Displaying the SSH Key Fingerprint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-with-ssh-copy-id" class="md-nav__link">
+    Copying your Public SSH Key to a Server with SSH-Copy-ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-without-ssh-copy-id" class="md-nav__link">
+    Copying your Public SSH Key to a Server Without SSH-Copy-ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-manually" class="md-nav__link">
+    Copying your Public SSH Key to a Server Manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-connection-instructions" class="md-nav__link">
+    Basic Connection Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Connection Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-server" class="md-nav__link">
+    Connecting to a Remote Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-single-command-on-a-remote-server" class="md-nav__link">
+    Running a Single Command on a Remote Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-in-to-a-server-with-a-different-port" class="md-nav__link">
+    Logging in to a Server with a Different Port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-your-ssh-keys-to-an-ssh-agent-to-avoid-typing-the-passphrase" class="md-nav__link">
+    Adding your SSH Keys to an SSH Agent to Avoid Typing the Passphrase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-your-ssh-credentials-to-use-on-a-server" class="md-nav__link">
+    Forwarding your SSH Credentials to Use on a Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-configuration-options" class="md-nav__link">
+    Server-Side Configuration Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-Side Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disabling-password-authentication" class="md-nav__link">
+    Disabling Password Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-port-that-the-ssh-daemon-runs-on" class="md-nav__link">
+    Changing the Port that the SSH Daemon Runs On
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-the-users-who-can-connect-through-ssh" class="md-nav__link">
+    Limiting the Users Who can Connect Through SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-root-login" class="md-nav__link">
+    Disabling Root Login
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowing-root-access-for-specific-commands" class="md-nav__link">
+    Allowing Root Access for Specific Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-x-application-displays-to-the-client" class="md-nav__link">
+    Forwarding X Application Displays to the Client
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-configuration-options" class="md-nav__link">
+    Client-Side Configuration Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-Side Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-server-specific-connection-information" class="md-nav__link">
+    Defining Server-Specific Connection Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keeping-connections-alive-to-avoid-timeout" class="md-nav__link">
+    Keeping Connections Alive to Avoid Timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-host-checking" class="md-nav__link">
+    Disabling Host Checking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplexing-ssh-over-a-single-tcp-connection" class="md-nav__link">
+    Multiplexing SSH Over a Single TCP Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ssh-tunnels" class="md-nav__link">
+    Setting Up SSH Tunnels
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSH Tunnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-local-tunneling-to-a-server" class="md-nav__link">
+    Configuring Local Tunneling to a Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-remote-tunneling-to-a-server" class="md-nav__link">
+    Configuring Remote Tunneling to a Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-dynamic-tunneling-to-a-remote-server" class="md-nav__link">
+    Configuring Dynamic Tunneling to a Remote Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-ssh-escape-codes-to-control-connections" class="md-nav__link">
+    Using SSH Escape Codes to Control Connections
+  </a>
+  
+    <nav class="md-nav" aria-label="Using SSH Escape Codes to Control Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forcing-a-disconnect-from-the-client-side-how-to-exit-out-of-a-stuck-or-frozen-session" class="md-nav__link">
+    Forcing a Disconnect from the Client-Side (How to Exit Out of a Stuck or Frozen Session)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placing-an-ssh-session-into-the-background" class="md-nav__link">
+    Placing an SSH Session into the Background
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-port-forwarding-options-on-an-existing-ssh-connection" class="md-nav__link">
+    Changing Port Forwarding Options on an Existing SSH Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wi-Fi%20on%20Ubuntu%20Server/" class="md-nav__link">
+        Wi Fi on Ubuntu Server
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Mongodb
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mongodb" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Mongodb
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mongodb/Authentication%20mongo%20with%20docker-compose/" class="md-nav__link">
+        Authentication mongo with docker compose
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mongodb/MongoDB%20Cheat%20Sheet/" class="md-nav__link">
+        MongoDB Cheat Sheet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Windows
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Windows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../windows/%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ext4%20%D0%B2%20Windows/" class="md-nav__link">
+        Подключение ext4 в Windows
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    How To Use This Guide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-overview" class="md-nav__link">
+    SSH Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-ssh-works" class="md-nav__link">
+    How SSH Works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-ssh-authenticates-users" class="md-nav__link">
+    How SSH Authenticates Users
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-and-working-with-ssh-keys" class="md-nav__link">
+    Generating and Working with SSH Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating and Working with SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-an-ssh-key-pair" class="md-nav__link">
+    Generating an SSH Key Pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-an-ssh-key-pair-with-a-larger-number-of-bits" class="md-nav__link">
+    Generate an SSH Key Pair with a Larger Number of Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-or-changing-the-passphrase-on-a-private-key" class="md-nav__link">
+    Removing or Changing the Passphrase on a Private Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-the-ssh-key-fingerprint" class="md-nav__link">
+    Displaying the SSH Key Fingerprint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-with-ssh-copy-id" class="md-nav__link">
+    Copying your Public SSH Key to a Server with SSH-Copy-ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-without-ssh-copy-id" class="md-nav__link">
+    Copying your Public SSH Key to a Server Without SSH-Copy-ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-your-public-ssh-key-to-a-server-manually" class="md-nav__link">
+    Copying your Public SSH Key to a Server Manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-connection-instructions" class="md-nav__link">
+    Basic Connection Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Connection Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-a-remote-server" class="md-nav__link">
+    Connecting to a Remote Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-single-command-on-a-remote-server" class="md-nav__link">
+    Running a Single Command on a Remote Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-in-to-a-server-with-a-different-port" class="md-nav__link">
+    Logging in to a Server with a Different Port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-your-ssh-keys-to-an-ssh-agent-to-avoid-typing-the-passphrase" class="md-nav__link">
+    Adding your SSH Keys to an SSH Agent to Avoid Typing the Passphrase
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-your-ssh-credentials-to-use-on-a-server" class="md-nav__link">
+    Forwarding your SSH Credentials to Use on a Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-configuration-options" class="md-nav__link">
+    Server-Side Configuration Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-Side Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disabling-password-authentication" class="md-nav__link">
+    Disabling Password Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-port-that-the-ssh-daemon-runs-on" class="md-nav__link">
+    Changing the Port that the SSH Daemon Runs On
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-the-users-who-can-connect-through-ssh" class="md-nav__link">
+    Limiting the Users Who can Connect Through SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-root-login" class="md-nav__link">
+    Disabling Root Login
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowing-root-access-for-specific-commands" class="md-nav__link">
+    Allowing Root Access for Specific Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-x-application-displays-to-the-client" class="md-nav__link">
+    Forwarding X Application Displays to the Client
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-configuration-options" class="md-nav__link">
+    Client-Side Configuration Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-Side Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-server-specific-connection-information" class="md-nav__link">
+    Defining Server-Specific Connection Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keeping-connections-alive-to-avoid-timeout" class="md-nav__link">
+    Keeping Connections Alive to Avoid Timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-host-checking" class="md-nav__link">
+    Disabling Host Checking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplexing-ssh-over-a-single-tcp-connection" class="md-nav__link">
+    Multiplexing SSH Over a Single TCP Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ssh-tunnels" class="md-nav__link">
+    Setting Up SSH Tunnels
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSH Tunnels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-local-tunneling-to-a-server" class="md-nav__link">
+    Configuring Local Tunneling to a Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-remote-tunneling-to-a-server" class="md-nav__link">
+    Configuring Remote Tunneling to a Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-dynamic-tunneling-to-a-remote-server" class="md-nav__link">
+    Configuring Dynamic Tunneling to a Remote Server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-ssh-escape-codes-to-control-connections" class="md-nav__link">
+    Using SSH Escape Codes to Control Connections
+  </a>
+  
+    <nav class="md-nav" aria-label="Using SSH Escape Codes to Control Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forcing-a-disconnect-from-the-client-side-how-to-exit-out-of-a-stuck-or-frozen-session" class="md-nav__link">
+    Forcing a Disconnect from the Client-Side (How to Exit Out of a Stuck or Frozen Session)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placing-an-ssh-session-into-the-background" class="md-nav__link">
+    Placing an SSH Session into the Background
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-port-forwarding-options-on-an-existing-ssh-connection" class="md-nav__link">
+    Changing Port Forwarding Options on an Existing SSH Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>SSH Essentials</h1>
+                
+                <p>SSH Essentials</p>
+<h3 id="introduction">Introduction</h3>
+<p>SSH is a secure protocol used as the primary means of connecting to Linux servers remotely. It provides a text-based interface by spawning a remote shell. After connecting, all commands you type in your local terminal are sent to the remote server and executed there.</p>
+<p>In this cheat sheet-style guide, we will cover some common ways of connecting with SSH to achieve your objectives. This can be used as a quick reference when you need to know how to connect to or configure your server in different ways.</p>
+<h2 id="how-to-use-this-guide">How To Use This Guide</h2>
+<ul>
+<li>Read the <a href="https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#ssh-overview">SSH Overview section</a> first if you are unfamiliar with SSH in general or are just getting started.</li>
+<li>Use whichever subsequent sections are applicable to what you are trying to achieve. Most sections are not predicated on any other, so you can use the following examples independently.</li>
+<li>Use the Contents menu on the left side of this page (at wide page widths) or your browser’s find function to locate the sections you need.</li>
+<li>Copy and paste the command-line examples given, substituting the <code>highlighted</code> values with your own values.</li>
+</ul>
+<h2 id="ssh-overview">SSH Overview</h2>
+<p>The most common way of connecting to a remote Linux server is through SSH. SSH stands for Secure Shell and provides a safe and secure way of executing commands, making changes, and configuring services remotely. When you connect through SSH, you log in using an account that exists on the remote server.</p>
+<h3 id="how-ssh-works">How SSH Works</h3>
+<p>When you connect through SSH, you will be dropped into a shell session, which is a text-based interface where you can interact with your server. For the duration of your SSH session, any commands that you type into your local terminal are sent through an encrypted SSH tunnel and executed on your server.</p>
+<p>The SSH connection is implemented using a client-server model. This means that for an SSH connection to be established, the remote machine must be running a piece of software called an SSH daemon. This software listens for connections on a specific network port, authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.</p>
+<p>The user’s computer must have an SSH client. This is a piece of software that knows how to communicate using the SSH protocol and can be given information about the remote host to connect to, the username to use, and the credentials that should be passed to authenticate. The client can also specify certain details about the connection type they would like to establish.</p>
+<h3 id="how-ssh-authenticates-users">How SSH Authenticates Users</h3>
+<p>Clients generally authenticate either using passwords (less secure and not recommended) or SSH keys, which are very secure.</p>
+<p>Password logins are encrypted and are easy to understand for new users. However, automated bots and malicious users will often repeatedly try to authenticate to accounts that allow password-based logins, which can lead to security compromises. For this reason, we recommend always setting up SSH key-based authentication for most configurations.</p>
+<p>SSH keys are a matching set of cryptographic keys which can be used for authentication. Each set contains a public and a private key. The public key can be shared freely without concern, while the private key must be vigilantly guarded and never exposed to anyone.</p>
+<p>To authenticate using SSH keys, a user must have an SSH key pair on their local computer. On the remote server, the public key must be copied to a file within the user’s home directory at <code>~/.ssh/authorized_keys</code>. This file contains a list of public keys, one-per-line, that are authorized to log into this account.</p>
+<p>When a client connects to the host, wishing to use SSH key authentication, it will inform the server of this intent and will tell the server which public key to use. The server then checks its <code>authorized_keys</code> file for the public key, generates a random string, and encrypts it using the public key. This encrypted message can only be decrypted with the associated private key. The server will send this encrypted message to the client to test whether they actually have the associated private key.</p>
+<p>Upon receipt of this message, the client will decrypt it using the private key and combine the random string that is revealed with a previously negotiated session ID. It then generates an MD5 hash of this value and transmits it back to the server. The server already had the original message and the session ID, so it can compare an MD5 hash generated by those values and determine that the client must have the private key.</p>
+<p>Now that you know how SSH works, we can begin to discuss some examples to demonstrate different ways of working with SSH</p>
+<h2 id="generating-and-working-with-ssh-keys">Generating and Working with SSH Keys</h2>
+<p>This section will cover how to generate SSH keys on a client machine and distribute the public key to servers where they should be used. This is a good section to start with if you have not previously generated keys due to the increased security that it allows for future connections.</p>
+<h3 id="generating-an-ssh-key-pair">Generating an SSH Key Pair</h3>
+<p>Generating a new SSH public and private key pair on your local computer is the first step towards authenticating with a remote server without a password. Unless there is a good reason not to, you should always authenticate using SSH keys.</p>
+<p>A number of cryptographic algorithms can be used to generate SSH keys, including RSA, DSA, and ECDSA. RSA keys are generally preferred and are the default key type.</p>
+<p>To generate an RSA key pair on your local computer, type:</p>
+<div class="highlight"><pre><span></span><code>- ssh-keygen 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/demo/.ssh/id_rsa): 
+</code></pre></div>
+<p>This prompt allows you to choose the location to store your RSA private key. Press <code>ENTER</code> to leave this as the default, which will store them in the <code>.ssh</code> hidden directory in your user’s home directory. Leaving the default location selected will allow your SSH client to find the keys automatically.</p>
+<div class="highlight"><pre><span></span><code>Enter passphrase (empty for no passphrase):
+Enter same passphrase again: 
+</code></pre></div>
+<p>The next prompt allows you to enter a passphrase of an arbitrary length to secure your private key. By default, you will have to enter any passphrase you set here every time you use the private key, as an additional security measure. Feel free to press <code>ENTER</code> to leave this blank if you do not want a passphrase. Keep in mind though that this will allow anyone who gains control of your private key to login to your servers.</p>
+<p>If you choose to enter a passphrase, nothing will be displayed as you type. This is a security precaution.</p>
+<div class="highlight"><pre><span></span><code>Output
+
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+8c:e9:7c:fa:bf:c4:e5:9c:c9:b8:60:1f:fe:1c:d3:8a root@here
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|                 |
+|       +         |
+|      o S   .    |
+|     o   . * +   |
+|      o + = O .  |
+|       + = = +   |
+|      ....Eo+    |
++-----------------+ 
+</code></pre></div>
+<p>This procedure has generated an RSA SSH key pair, located in the <code>.ssh</code> hidden directory within your user’s home directory. These files are:</p>
+<ul>
+<li><code>~/.ssh/id_rsa</code>: The private key. DO NOT SHARE THIS FILE!</li>
+<li><code>~/.ssh/id_rsa.pub</code>: The associated public key. This can be shared freely without consequence.</li>
+</ul>
+<h3 id="generate-an-ssh-key-pair-with-a-larger-number-of-bits">Generate an SSH Key Pair with a Larger Number of Bits</h3>
+<p>SSH keys are 2048 bits by default. This is generally considered to be good enough for security, but you can specify a greater number of bits for a more hardened key.</p>
+<p>To do this, include the <code>-b</code> argument with the number of bits you would like. Most servers support keys with a length of at least 4096 bits. Longer keys may not be accepted for DDOS protection purposes:</p>
+<div class="highlight"><pre><span></span><code>- ssh-keygen -b <span class="m">4096</span> 
+</code></pre></div>
+<p>If you had previously created a different key, you will be asked if you wish to overwrite your previous key:</p>
+<div class="highlight"><pre><span></span><code>Overwrite (y/n)? 
+</code></pre></div>
+<p>If you choose “yes”, your previous key will be overwritten and you will no longer be able to log in to servers using that key. Because of this, be sure to overwrite keys with caution.</p>
+<h3 id="removing-or-changing-the-passphrase-on-a-private-key">Removing or Changing the Passphrase on a Private Key</h3>
+<p>If you have generated a passphrase for your private key and wish to change or remove it, you can do so easily.</p>
+<p><strong>Note</strong>: To change or remove the passphrase, you must know the original passphrase. If you have lost the passphrase to the key, there is no recourse and you will have to generate a new key pair.</p>
+<p>To change or remove the passphrase, simply type:</p>
+<div class="highlight"><pre><span></span><code>- ssh-keygen -p 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enter file in which the key is (/root/.ssh/id_rsa): 
+</code></pre></div>
+<p>You can type the location of the key you wish to modify or press <code>ENTER</code> to accept the default value:</p>
+<div class="highlight"><pre><span></span><code>Enter old passphrase: 
+</code></pre></div>
+<p>Enter the old passphrase that you wish to change. You will then be prompted for a new passphrase:</p>
+<div class="highlight"><pre><span></span><code>Enter new passphrase (empty for no passphrase):
+Enter same passphrase again: 
+</code></pre></div>
+<p>Here, enter your new passphrase or press <code>ENTER</code> to remove the passphrase.</p>
+<h3 id="displaying-the-ssh-key-fingerprint">Displaying the SSH Key Fingerprint</h3>
+<p>Each SSH key pair share a single cryptographic “fingerprint” which can be used to uniquely identify the keys. This can be useful in a variety of situations.</p>
+<p>To find out the fingerprint of an SSH key, type:</p>
+<div class="highlight"><pre><span></span><code>- ssh-keygen -l 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enter file in which the key is (/root/.ssh/id_rsa): 
+</code></pre></div>
+<p>You can press <code>ENTER</code> if that is the correct location of the key, else enter the revised location. You will be given a string which contains the bit-length of the key, the fingerprint, and account and host it was created for, and the algorithm used:</p>
+<div class="highlight"><pre><span></span><code>Output
+
+4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@test (RSA) 
+</code></pre></div>
+<h3 id="copying-your-public-ssh-key-to-a-server-with-ssh-copy-id">Copying your Public SSH Key to a Server with SSH-Copy-ID</h3>
+<p>To copy your public key to a server, allowing you to authenticate without a password, a number of approaches can be taken.</p>
+<p>If you currently have password-based SSH access configured to your server, and you have the <code>ssh-copy-id</code> utility installed, this is a simple process. The <code>ssh-copy-id</code> tool is included in many Linux distributions’ OpenSSH packages, so it very likely may be installed by default.</p>
+<p>If you have this option, you can easily transfer your public key by typing:</p>
+<div class="highlight"><pre><span></span><code>- ssh-copy-id username@remote_host 
+</code></pre></div>
+<p>This will prompt you for the user account’s password on the remote system:</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;111.111.11.111 (111.111.11.111)&#39; can&#39;t be established.
+ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.
+Are you sure you want to continue connecting (yes/no)? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+demo@111.111.11.111&#39;s password: 
+</code></pre></div>
+<p>After typing in the password, the contents of your <code>~/.ssh/id_rsa.pub</code> key will be appended to the end of the user account’s <code>~/.ssh/authorized_keys</code> file:</p>
+<div class="highlight"><pre><span></span><code>Output
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   &quot;ssh &#39;demo@111.111.11.111&#39;&quot;
+and check to make sure that only the key(s) you wanted were added. 
+</code></pre></div>
+<p>You can now log in to that account without a password:</p>
+<div class="highlight"><pre><span></span><code>- ssh username@remote_host 
+</code></pre></div>
+<h3 id="copying-your-public-ssh-key-to-a-server-without-ssh-copy-id">Copying your Public SSH Key to a Server Without SSH-Copy-ID</h3>
+<p>If you do not have the <code>ssh-copy-id</code> utility available, but still have password-based SSH access to the remote server, you can copy the contents of your public key in a different way.</p>
+<p>You can output the contents of the key and pipe it into the <code>ssh</code> command. On the remote side, you can ensure that the <code>~/.ssh</code> directory exists, and then append the piped contents into the <code>~/.ssh/authorized_keys</code> file:</p>
+<div class="highlight"><pre><span></span><code>- cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh username@remote_host <span class="s2">&quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span> 
+</code></pre></div>
+<p>You will be asked to supply the password for the remote account:</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;111.111.11.111 (111.111.11.111)&#39; can&#39;t be established.
+ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.
+Are you sure you want to continue connecting (yes/no)? yes
+demo@111.111.11.111&#39;s password: 
+</code></pre></div>
+<p>After entering the password, your key will be copied, allowing you to log in without a password:</p>
+<div class="highlight"><pre><span></span><code>- ssh username@remote_IP_host 
+</code></pre></div>
+<h3 id="copying-your-public-ssh-key-to-a-server-manually">Copying your Public SSH Key to a Server Manually</h3>
+<p>If you do not have password-based SSH access available, you will have to add your public key to the remote server manually.</p>
+<p>On your local machine, you can find the contents of your public key file by typing:</p>
+<div class="highlight"><pre><span></span><code>- cat ~/.ssh/id_rsa.pub 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCqql6MzstZYh1TmWWv11q5O3pISj2ZFl9HgH1JLknLLx44+tXfJ7mIrKNxOOwxIxvcBF8PXSYvobFYEZjGIVCEAjrUzLiIxbyCoxVyle7Q+bqgZ8SeeM8wzytsY+dVGcBxF6N4JS+zVk5eMcV385gG3Y6ON3EG112n6d+SMXY0OEBIcO6x+PnUSGHrSgpBgX7Ks1r7xqFa7heJLLt2wWwkARptX7udSq05paBhcpB0pHtA1Rfz3K2B+ZVIpSDfki9UVKzT8JUmwW6NNzSgxUfQHGwnW7kj4jp4AT0VZk3ADw497M2G/12N0PPB5CnhHf7ovgy6nL1ikrygTKRFmNZISvAcywB9GVqNAVE+ZHDSCuURNsAInVzgYo9xgJDW8wUw2o8U77+xiFxgI5QSZX3Iq7YLMgeksaO4rBJEa54k8m5wEiEE1nUhLuJ0X/vh2xPff6SQ1BL/zkOhvJCACK6Vb15mDOeCSq54Cr7kvS46itMosi/uS66+PujOO+xt/2FWYepz6ZlN70bRly57Q06J+ZJoc9FfBCbCyYH7U/ASsmY095ywPsBo1XQ9PqhnN1/YOorJ068foQDNVpm146mUpILVxmq41Cj55YKHEazXGsdBIbXWhcrRf4G2fJLRcGUr9q8/lERo9oxRm5JFX6TCmj6kmiFqv+Ow9gI0x8GvaQ== demo@test 
+</code></pre></div>
+<p>You can copy this value, and manually paste it into the appropriate location on the remote server. You will have to log in to the remote server through other means (like the DigitalOcean web console).</p>
+<p>On the remote server, create the <code>~/.ssh</code> directory if it does not already exist:</p>
+<div class="highlight"><pre><span></span><code>- mkdir -p ~/.ssh 
+</code></pre></div>
+<p>Afterwards, you can create or append the <code>~/.ssh/authorized_keys</code> file by typing:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">echo</span> public_key_string &gt;&gt; ~/.ssh/authorized_keys 
+</code></pre></div>
+<p>You should now be able to log in to the remote server without a password.</p>
+<h2 id="basic-connection-instructions">Basic Connection Instructions</h2>
+<p>The following section will cover some of the basics about how to connect to a server with SSH.</p>
+<h3 id="connecting-to-a-remote-server">Connecting to a Remote Server</h3>
+<p>To connect to a remote server and open a shell session there, you can use the <code>ssh</code> command.</p>
+<p>The simplest form assumes that your username on your local machine is the same as that on the remote server. If this is true, you can connect using:</p>
+<div class="highlight"><pre><span></span><code>- ssh remote_host 
+</code></pre></div>
+<p>If your username is different on the remoter server, you need to pass the remote user’s name like this:</p>
+<div class="highlight"><pre><span></span><code>- ssh username@remote_host 
+</code></pre></div>
+<p>Your first time connecting to a new host, you will see a message that looks like this:</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;111.111.11.111 (111.111.11.111)&#39; can&#39;t be established.
+ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.
+Are you sure you want to continue connecting (yes/no)? yes 
+</code></pre></div>
+<p>Type <code>yes</code> to accept the authenticity of the remote host.</p>
+<p>If you are using password authentication, you will be prompted for the password for the remote account here. If you are using SSH keys, you will be prompted for your private key’s passphrase if one is set, otherwise you will be logged in automatically.</p>
+<h3 id="running-a-single-command-on-a-remote-server">Running a Single Command on a Remote Server</h3>
+<p>To run a single command on a remote server instead of spawning a shell session, you can add the command after the connection information, like this:</p>
+<div class="highlight"><pre><span></span><code>- ssh username@remote_host command_to_run 
+</code></pre></div>
+<p>This will connect to the remote host, authenticate with your credentials, and execute the command you specified. The connection will immediately close afterwards.</p>
+<h3 id="logging-in-to-a-server-with-a-different-port">Logging in to a Server with a Different Port</h3>
+<p>By default the SSH daemon on a server runs on port <code>22</code>. Your SSH client will assume that this is the case when trying to connect. If your SSH server is listening on a non-standard port (this is demonstrated in a later section), you will have to specify the new port number when connecting with your client.</p>
+<p>You can do this by specifying the port number with the <code>-p</code> option:</p>
+<div class="highlight"><pre><span></span><code>- ssh -p port_num username@remote_host 
+</code></pre></div>
+<p>To avoid having to do this every time you log in to your remote server, you can create or edit a configuration file in the <code>~/.ssh</code> directory within the home directory of your local computer.</p>
+<p>Edit or create the file now by typing:</p>
+<div class="highlight"><pre><span></span><code>- nano ~/.ssh/config 
+</code></pre></div>
+<p>In here, you can set host-specific configuration options. To specify your new port, use a format like this:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host remote_alias
+    HostName remote_host
+    Port port_num
+</code></pre></div>
+<p>This will allow you to log in without specifying the specific port number on the command line.</p>
+<h3 id="adding-your-ssh-keys-to-an-ssh-agent-to-avoid-typing-the-passphrase">Adding your SSH Keys to an SSH Agent to Avoid Typing the Passphrase</h3>
+<p>If you have a passphrase on your private SSH key, you will be prompted to enter the passphrase every time you use it to connect to a remote host.</p>
+<p>To avoid having to repeatedly do this, you can run an SSH agent. This small utility stores your private key after you have entered the passphrase for the first time. It will be available for the duration of your terminal session, allowing you to connect in the future without re-entering the passphrase.</p>
+<p>This is also important if you need to forward your SSH credentials (shown later).</p>
+<p>To start the SSH Agent, type the following into your local terminal session:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">eval</span> <span class="k">$(</span>ssh-agent<span class="k">)</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+Agent pid 10891 
+</code></pre></div>
+<p>This will start the agent program and place it into the background. Now, you need to add your private key to the agent, so that it can manage your key:</p>
+<div class="highlight"><pre><span></span><code>- ssh-add 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enter passphrase for /home/demo/.ssh/id_rsa:
+Identity added: /home/demo/.ssh/id_rsa (/home/demo/.ssh/id_rsa) 
+</code></pre></div>
+<p>You will have to enter your passphrase (if one is set). Afterwards, your identity file is added to the agent, allowing you to use your key to sign in without having to re-enter the passphrase again.</p>
+<h3 id="forwarding-your-ssh-credentials-to-use-on-a-server">Forwarding your SSH Credentials to Use on a Server</h3>
+<p>If you wish to be able to connect without a password to one server from within another server, you will need to forward your SSH key information. This will allow you to authenticate to another server through the server you are connected to, using the credentials on your local computer.</p>
+<p>To start, you must have your SSH agent started and your SSH key added to the agent (see earlier). After this is done, you need to connect to your first server using the <code>-A</code> option. This forwards your credentials to the server for this session:</p>
+<div class="highlight"><pre><span></span><code>- ssh -A username@remote_host 
+</code></pre></div>
+<p>From here, you can SSH in to any other host that your SSH key is authorized to access. You will connect as if your private SSH key were located on this server.</p>
+<h2 id="server-side-configuration-options">Server-Side Configuration Options</h2>
+<p>This section contains some common server-side configuration options that can shape the way that your server responds and what types of connections are allowed.</p>
+<h3 id="disabling-password-authentication">Disabling Password Authentication</h3>
+<p>If you have SSH keys configured, tested, and working properly, it is probably a good idea to disable password authentication. This will prevent any user from signing in with SSH using a password.</p>
+<p>To do this, connect to your remote server and open the <code>/etc/ssh/sshd_config</code> file with root or sudo privileges:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>Inside of the file, search for the <code>PasswordAuthentication</code> directive. If it is commented out, uncomment it. Set it to <code>no</code> to disable password logins:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>PasswordAuthentication no
+</code></pre></div>
+<p>After you have made the change, save and close the file. To implement the changes, you should restart the SSH service.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<p>Now, all accounts on the system will be unable to log in with SSH using passwords.</p>
+<h3 id="changing-the-port-that-the-ssh-daemon-runs-on">Changing the Port that the SSH Daemon Runs On</h3>
+<p>Some administrators suggest that you change the default port that SSH runs on. This can help decrease the number of authentication attempts your server is subjected to from automated bots.</p>
+<p>To change the port that the SSH daemon listens on, you will have to log in to your remote server. Open the <code>sshd_config</code> file on the remote system with root privileges, either by logging in with that user or by using <code>sudo</code>:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>Once you are inside, you can change the port that SSH runs on by finding the <code>Port 22</code> specification and modifying it to reflect the port you wish to use. For instance, to change the port to <code>4444</code>, put this in your file:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#Port 22</span>
+Port <span class="m">4444</span>
+</code></pre></div>
+<p>Save and close the file when you are finished. To implement the changes, you must restart the SSH daemon.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<p>After the daemon restarts, you will need to authenticate by specifying the port number (demonstrated in an earlier section).</p>
+<h3 id="limiting-the-users-who-can-connect-through-ssh">Limiting the Users Who can Connect Through SSH</h3>
+<p>To explicitly limit the user accounts who are able to log in through SSH, you can take a few different approaches, each of which involve editing the SSH daemon config file.</p>
+<p>On your remote server, open this file now with root or sudo privileges:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>The first method of specifying the accounts that are allowed to login is using the <code>AllowUsers</code> directive. Search for the <code>AllowUsers</code> directive in the file. If one does not exist, create it anywhere. After the directive, list the user accounts that should be allowed to login through SSH:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>AllowUsers user1 user2
+</code></pre></div>
+<p>Save and close the file. Restart the daemon to implement your changes.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<p>If you are more comfortable with group management, you can use the <code>AllowGroups</code> directive instead. If this is the case, just add a single group that should be allowed SSH access (we will create this group and add members momentarily):</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>AllowGroups sshmembers
+</code></pre></div>
+<p>Save and close the file.</p>
+<p>Now, you can create a system group (without a home directory) matching the group you specified by typing:</p>
+<div class="highlight"><pre><span></span><code>- sudo groupadd -r sshmembers 
+</code></pre></div>
+<p>Make sure that you add whatever user accounts you need to this group. This can be done by typing:</p>
+<div class="highlight"><pre><span></span><code>- sudo usermod -a -G sshmembers user1
+
+- sudo usermod -a -G sshmembers user2 
+</code></pre></div>
+<p>Now, restart the SSH daemon to implement your changes.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<h3 id="disabling-root-login">Disabling Root Login</h3>
+<p>It is often advisable to completely disable root login through SSH after you have set up an SSH user account that has <code>sudo</code> privileges.</p>
+<p>To do this, open the SSH daemon configuration file with root or sudo on your remote server.</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>Inside, search for a directive called <code>PermitRootLogin</code>. If it is commented, uncomment it. Change the value to “no”:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>PermitRootLogin no
+</code></pre></div>
+<p>Save and close the file. To implement your changes, restart the SSH daemon.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<h3 id="allowing-root-access-for-specific-commands">Allowing Root Access for Specific Commands</h3>
+<p>There are some cases where you might want to disable root access generally, but enable it in order to allow certain applications to run correctly. An example of this might be a backup routine.</p>
+<p>This can be accomplished through the root user’s <code>authorized_keys</code> file, which contains SSH keys that are authorized to use the account.</p>
+<p>Add the key from your local computer that you wish to use for this process (we recommend creating a new key for each automatic process) to the root user’s <code>authorized_keys</code> file on the server. We will demonstrate with the <code>ssh-copy-id</code> command here, but you can use any of the methods of copying keys we discuss in other sections:</p>
+<div class="highlight"><pre><span></span><code>- ssh-copy-id root@remote_host 
+</code></pre></div>
+<p>Now, log into the remote server. We will need to adjust the entry in the <code>authorized_keys</code> file, so open it with root or sudo access:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /root/.ssh/authorized_keys 
+</code></pre></div>
+<p>At the beginning of the line with the key you uploaded, add a <code>command=</code> listing that defines the command that this key is valid for. This should include the full path to the executable, plus any arguments:</p>
+<p>/root/.ssh/authorized_keys</p>
+<div class="highlight"><pre><span></span><code><span class="nv">command</span><span class="o">=</span><span class="s2">&quot;/path/to/command arg1 arg2&quot;</span> ssh-rsa ...
+</code></pre></div>
+<p>Save and close the file when you are finished.</p>
+<p>Now, open the <code>sshd_config</code> file with root or sudo privileges:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>Find the directive <code>PermitRootLogin</code>, and change the value to <code>forced-commands-only</code>. This will only allow SSH key logins to use root when a command has been specified for the key:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>PermitRootLogin forced-commands-only
+</code></pre></div>
+<p>Save and close the file. Restart the SSH daemon to implement your changes.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<h3 id="forwarding-x-application-displays-to-the-client">Forwarding X Application Displays to the Client</h3>
+<p>The SSH daemon can be configured to automatically forward the display of X applications on the server to the client machine. For this to function correctly, the client must have an X windows system configured and enabled.</p>
+<p>To enable this functionality, log in to your remote server and edit the <code>sshd_config</code> file as root or with sudo privileges:</p>
+<div class="highlight"><pre><span></span><code>- sudo nano /etc/ssh/sshd_config 
+</code></pre></div>
+<p>Search for the <code>X11Forwarding</code> directive. If it is commented out, uncomment it. Create it if necessary and set the value to “yes”:</p>
+<p>/etc/ssh/sshd_config</p>
+<div class="highlight"><pre><span></span><code>X11Forwarding yes
+</code></pre></div>
+<p>Save and close the file. Restart your SSH daemon to implement these changes.</p>
+<p>On Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code>- sudo service ssh restart 
+</code></pre></div>
+<p>On CentOS/Fedora:</p>
+<div class="highlight"><pre><span></span><code>- sudo service sshd restart 
+</code></pre></div>
+<p>To connect to the server and forward an application’s display, you have to pass the <code>-X</code> option from the client upon connection:</p>
+<div class="highlight"><pre><span></span><code>- ssh -X username@remote_host 
+</code></pre></div>
+<p>Graphical applications started on the server through this session should be displayed on the local computer. The performance might be a bit slow, but it is very helpful in a pinch.</p>
+<h2 id="client-side-configuration-options">Client-Side Configuration Options</h2>
+<p>In the next section, we’ll focus on some adjustments that you can make on the client side of the connection.</p>
+<h3 id="defining-server-specific-connection-information">Defining Server-Specific Connection Information</h3>
+<p>On your local computer, you can define individual configurations for some or all of the servers you connect to. These can be stored in the <code>~/.ssh/config</code> file, which is read by your SSH client each time it is called.</p>
+<p>Create or open this file in your text editor on your local computer:</p>
+<div class="highlight"><pre><span></span><code>- nano ~/.ssh/config 
+</code></pre></div>
+<p>Inside, you can define individual configuration options by introducing each with a <code>Host</code> keyword, followed by an alias. Beneath this and indented, you can define any of the directives found in the <code>ssh_config</code> man page:</p>
+<div class="highlight"><pre><span></span><code>- man ssh_config 
+</code></pre></div>
+<p>An example configuration would be:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host testhost
+    HostName your_domain
+    Port <span class="m">4444</span>
+    User demo
+</code></pre></div>
+<p>You could then connect to <code>your_domain</code> on port <code>4444</code> using the username <code>demo</code> by simply typing:</p>
+<div class="highlight"><pre><span></span><code>- ssh testhost 
+</code></pre></div>
+<p>You can also use wildcards to match more than one host. Keep in mind that later matches can override earlier ones. Because of this, you should put your most general matches at the top. For instance, you could default all connections to not allow X forwarding, with an override for <code>your_domain</code> by having this in your file:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host *
+    ForwardX11 no
+
+Host testhost
+    HostName your_domain
+    ForwardX11 yes
+    Port <span class="m">4444</span>
+    User demo
+</code></pre></div>
+<p>Save and close the file when you are finished.</p>
+<h3 id="keeping-connections-alive-to-avoid-timeout">Keeping Connections Alive to Avoid Timeout</h3>
+<p>If you find yourself being disconnected from SSH sessions before you are ready, it is possible that your connection is timing out.</p>
+<p>You can configure your client to send a packet to the server every so often in order to avoid this situation:</p>
+<p>On your local computer, you can configure this for every connection by editing your <code>~/.ssh/config</code> file. Open it now:</p>
+<div class="highlight"><pre><span></span><code>- nano ~/.ssh/config 
+</code></pre></div>
+<p>If one does not already exist, at the top of the file, define a section that will match all hosts. Set the <code>ServerAliveInterval</code> to “120” to send a packet to the server every two minutes. This should be enough to notify the server not to close the connection:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host *
+    ServerAliveInterval <span class="m">120</span>
+</code></pre></div>
+<p>Save and close the file when you are finished.</p>
+<h3 id="disabling-host-checking">Disabling Host Checking</h3>
+<p>By default, whenever you connect to a new server, you will be shown the remote SSH daemon’s host key fingerprint.</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;111.111.11.111 (111.111.11.111)&#39; can&#39;t be established.
+ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.
+Are you sure you want to continue connecting (yes/no)? yes 
+</code></pre></div>
+<p>This is configured so that you can verify the authenticity of the host you are attempting to connect to and spot instances where a malicious user may be trying to masquerade as the remote host.</p>
+<p>In certain circumstances, you may wish to disable this feature. <strong>Note</strong>: This can be a big security risk, so make sure you know what you are doing if you set your system up like this.</p>
+<p>To make the change, the open the <code>~/.ssh/config</code> file on your local computer:</p>
+<div class="highlight"><pre><span></span><code>- nano ~/.ssh/config 
+</code></pre></div>
+<p>If one does not already exist, at the top of the file, define a section that will match all hosts. Set the <code>StrictHostKeyChecking</code> directive to <code>no</code> to add new hosts automatically to the <code>known_hosts</code> file. Set the <code>UserKnownHostsFile</code> to <code>/dev/null</code> to not warn on new or changed hosts:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host *
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+</code></pre></div>
+<p>You can enable the checking on a case-by-case basis by reversing those options for other hosts. The default for <code>StrictHostKeyChecking</code> is <code>ask</code>:</p>
+<p>~/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host *
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
+Host testhost
+    HostName your_domain
+    StrictHostKeyChecking ask
+    UserKnownHostsFile /home/demo/.ssh/known_hosts
+</code></pre></div>
+<h3 id="multiplexing-ssh-over-a-single-tcp-connection">Multiplexing SSH Over a Single TCP Connection</h3>
+<p>There are situations where establishing a new TCP connection can take longer than you would like. If you are making multiple connections to the same machine, you can take advantage of multiplexing.</p>
+<p>SSH multiplexing re-uses the same TCP connection for multiple SSH sessions. This removes some of the work necessary to establish a new session, possibly speeding things up. Limiting the number of connections may also be helpful for other reasons.</p>
+<p>To set up multiplexing, you can manually set up the connections, or you can configure your client to automatically use multiplexing when available. We will demonstrate the second option here.</p>
+<p>To configure multiplexing, edit your SSH client’s configuration file on your local machine:</p>
+<div class="highlight"><pre><span></span><code>- nano ~/.ssh/config 
+</code></pre></div>
+<p>If you do not already have a wildcard host definition at the top of the file, add one now (as <code>Host *</code>). We will be setting the <code>ControlMaster</code>, <code>ControlPath</code>, and <code>ControlPersist</code> values to establish our multiplexing configuration.</p>
+<p>The <code>ControlMaster</code> should be set to “auto” in able to automatically allow multiplexing if possible. The <code>ControlPath</code> will establish the path to control socket. The first session will create this socket and subsequent sessions will be able to find it because it is labeled by username, host, and port.</p>
+<p>Setting the <code>ControlPersist</code> option to <code>1</code> will allow the initial master connection to be backgrounded. The <code>1</code> specifies that the TCP connection should automatically terminate one second after the last SSH session is closed:</p>
+<p>/.ssh/config</p>
+<div class="highlight"><pre><span></span><code>Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/multiplex/%r@%h:%p
+    ControlPersist <span class="m">1</span>
+</code></pre></div>
+<p>Save and close the file when you are finished. Now, we need to actually create the directory we specified in the control path:</p>
+<div class="highlight"><pre><span></span><code>- mkdir ~/.ssh/multiplex 
+</code></pre></div>
+<p>Now, any sessions that are established with the same machine will attempt to use the existing socket and TCP connection. When the last session exists, the connection will be torn down after one second.</p>
+<p>If for some reason you need to bypass the multiplexing configuration temporarily, you can do so by passing the <code>-S</code> flag with <code>none</code>:</p>
+<div class="highlight"><pre><span></span><code>- ssh -S none username@remote_host 
+</code></pre></div>
+<h2 id="setting-up-ssh-tunnels">Setting Up SSH Tunnels</h2>
+<p>Tunneling other traffic through a secure SSH tunnel is an excellent way to work around restrictive firewall settings. It is also a great way to encrypt otherwise unencrypted network traffic.</p>
+<h3 id="configuring-local-tunneling-to-a-server">Configuring Local Tunneling to a Server</h3>
+<p>SSH connections can be used to tunnel traffic from ports on the local host to ports on a remote host.</p>
+<p>A local connection is a way of accessing a network location from your local computer through your remote host. First, an SSH connection is established to your remote host. On the remote server, a connection is made to an external (or internal) network address provided by the user and traffic to this location is tunneled to your local computer on a specified port.</p>
+<p>This is often used to tunnel to a less restricted networking environment by bypassing a firewall. Another common use is to access a “localhost-only” web interface from a remote location.</p>
+<p>To establish a local tunnel to your remote server, you need to use the <code>-L</code> parameter when connecting and you must supply three pieces of additional information:</p>
+<ul>
+<li>The local port where you wish to access the tunneled connection.</li>
+<li>The host that you want your remote host to connect to.</li>
+<li>The port that you want your remote host to connect on.</li>
+</ul>
+<p>These are given, in the order above (separated by colons), as arguments to the <code>-L</code> flag. We will also use the <code>-f</code> flag, which causes SSH to go into the background before executing and the <code>-N</code> flag, which does not open a shell or execute a program on the remote side.</p>
+<p>For instance, to connect to <code>your_domain</code> on port 80 on your remote host, making the connection available on your local machine on port 8888, you could type:</p>
+<div class="highlight"><pre><span></span><code>- ssh -f -N -L <span class="m">8888</span>:your_domain:80 username@remote_host 
+</code></pre></div>
+<p>Now, if you point your local web browser to <code>127.0.0.1:8888</code>, you should see whatever content is at <code>your_domain</code> on port <code>80</code>.</p>
+<p>A more general guide to the syntax is:</p>
+<div class="highlight"><pre><span></span><code>- ssh -L your_port:site_or_IP_to_access:site_port username@host 
+</code></pre></div>
+<p>Since the connection is in the background, you will have to find its PID to kill it. You can do so by searching for the port you forwarded:</p>
+<div class="highlight"><pre><span></span><code>- ps aux <span class="p">|</span> grep <span class="m">8888</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+1001      5965  0.0  0.0  48168  1136 ?        Ss   12:28   0:00 ssh -f -N -L 8888:your_domain:80 username@remote_host
+1001      6113  0.0  0.0  13648   952 pts/2    S+   12:37   0:00 grep --colour=auto 8888 
+</code></pre></div>
+<p>You can then kill the process by targeting the PID, which is the number in the second column of the line that matches your SSH command:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">kill</span> <span class="m">5965</span> 
+</code></pre></div>
+<p>Another option is to start the connection <em>without</em> the <code>-f</code> flag. This will keep the connection in the foreground, preventing you from using the terminal window for the duration of the forwarding. The benefit of this is that you can easily kill the tunnel by typing <code>CTRL-C</code>.</p>
+<h3 id="configuring-remote-tunneling-to-a-server">Configuring Remote Tunneling to a Server</h3>
+<p>SSH connections can be used to tunnel traffic from ports on the local host to ports on a remote host.</p>
+<p>In a remote tunnel, a connection is made to a remote host. During the creation of the tunnel, a <em>remote</em> port is specified. This port, on the remote host, will then be tunneled to a host and port combination that is connected to from the local computer. This will allow the remote computer to access a host through your local computer.</p>
+<p>This can be useful if you need to allow access to an internal network that is locked down to external connections. If the firewall allows connections <em>out</em> of the network, this will allow you to connect out to a remote machine and tunnel traffic from that machine to a location on the internal network.</p>
+<p>To establish a remote tunnel to your remote server, you need to use the <code>-R</code> parameter when connecting and you must supply three pieces of additional information:</p>
+<ul>
+<li>The port where the remote host can access the tunneled connection.</li>
+<li>The host that you want your local computer to connect to.</li>
+<li>The port that you want your local computer to connect to.</li>
+</ul>
+<p>These are given, in the order above (separated by colons), as arguments to the <code>-R</code> flag. We will also use the <code>-f</code> flag, which causes SSH to go into the background before executing and the <code>-N</code> flag, which does not open a shell or execute a program on the remote side.</p>
+<p>For instance, to connect to <code>your_domain</code> on port 80 on our local computer, making the connection available on our remote host on port <code>8888</code>, you could type:</p>
+<div class="highlight"><pre><span></span><code>- ssh -f -N -R <span class="m">8888</span>:your_domain:80 username@remote_host 
+</code></pre></div>
+<p>Now, on the remote host, opening a web browser to <code>127.0.0.1:8888</code> would allow you to see whatever content is at <code>your_domain</code> on port <code>80</code>.</p>
+<p>A more general guide to the syntax is:</p>
+<div class="highlight"><pre><span></span><code>- ssh -R remote_port:site_or_IP_to_access:site_port username@host 
+</code></pre></div>
+<p>Since the connection is in the background, you will have to find its PID to kill it. You can do so by searching for the port you forwarded:</p>
+<div class="highlight"><pre><span></span><code>- ps aux <span class="p">|</span> grep <span class="m">8888</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+1001      5965  0.0  0.0  48168  1136 ?        Ss   12:28   0:00 ssh -f -N -R 8888:your_domain:80 username@remote_host
+1001      6113  0.0  0.0  13648   952 pts/2    S+   12:37   0:00 grep --colour=auto 8888 
+</code></pre></div>
+<p>You can then kill the process by targeting the PID, which is the number in the second column, of the line that matches your SSH command:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">kill</span> <span class="m">5965</span> 
+</code></pre></div>
+<p>Another option is to start the connection <em>without</em> the <code>-f</code> flag. This will keep the connection in the foreground, preventing you from using the terminal window for the duration of the forwarding. The benefit of this is that you can easily kill the tunnel by typing <code>CTRL-C</code>.</p>
+<h3 id="configuring-dynamic-tunneling-to-a-remote-server">Configuring Dynamic Tunneling to a Remote Server</h3>
+<p>SSH connections can be used to tunnel traffic from ports on the local host to ports on a remote host.</p>
+<p>A dynamic tunnel is similar to a local tunnel in that it allows the local computer to connect to other resources <em>through</em> a remote host. A dynamic tunnel does this by simply specifying a single local port. Applications that wish to take advantage of this port for tunneling must be able to communicate using the SOCKS protocol so that the packets can be correctly redirected at the other side of the tunnel.</p>
+<p>Traffic that is passed to this local port will be sent to the remote host. From there, the SOCKS protocol will be interpreted to establish a connection to the desired end location. This set up allows a SOCKS-capable application to connect to any number of locations through the remote server, without multiple static tunnels.</p>
+<p>To establish the connection, we will pass the <code>-D</code> flag along with the local port where we wish to access the tunnel. We will also use the <code>-f</code> flag, which causes SSH to go into the background before executing and the <code>-N</code> flag, which does not open a shell or execute a program on the remote side.</p>
+<p>For instance, to establish a tunnel on port <code>7777</code>, you can type:</p>
+<div class="highlight"><pre><span></span><code>- ssh -f -N -D <span class="m">7777</span> username@remote_host 
+</code></pre></div>
+<p>From here, you can start pointing your SOCKS-aware application (like a web browser), to the port you selected. The application will send its information into a socket associated with the port.</p>
+<p>The method of directing traffic to the SOCKS port will differ depending on application. For instance, in Firefox, the general location is Preferences &gt; Advanced &gt; Settings &gt; Manual proxy configurations. In Chrome, you can start the application with the <code>--proxy-server=</code> flag set. You will want to use the localhost interface and the port you forwarded.</p>
+<p>Since the connection is in the background, you will have to find its PID to kill it. You can do so by searching for the port you forwarded:</p>
+<div class="highlight"><pre><span></span><code>- ps aux <span class="p">|</span> grep <span class="m">8888</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+1001      5965  0.0  0.0  48168  1136 ?        Ss   12:28   0:00 ssh -f -N -D 7777 username@remote_host
+1001      6113  0.0  0.0  13648   952 pts/2    S+   12:37   0:00 grep --colour=auto 8888 
+</code></pre></div>
+<p>You can then kill the process by targeting the PID, which is the number in the second column, of the line that matches your SSH command:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">kill</span> <span class="m">5965</span> 
+</code></pre></div>
+<p>Another option is to start the connection <em>without</em> the <code>-f</code> flag. This will keep the connection in the foreground, preventing you from using the terminal window for the duration of the forwarding. The benefit of this is that you can easily kill the tunnel by typing <code>CTRL-C</code>.</p>
+<h2 id="using-ssh-escape-codes-to-control-connections">Using SSH Escape Codes to Control Connections</h2>
+<p>Even after establishing an SSH session, it is possible to exercise control over the connection from within the terminal. We can do this with something called SSH escape codes, which allow us to interact with our local SSH software from within a session.</p>
+<h3 id="forcing-a-disconnect-from-the-client-side-how-to-exit-out-of-a-stuck-or-frozen-session">Forcing a Disconnect from the Client-Side (How to Exit Out of a Stuck or Frozen Session)</h3>
+<p>One of the most useful feature of OpenSSH that goes largely unnoticed is the ability to control certain aspects of the session from within.</p>
+<p>These commands can be executed starting with the <code>~</code> control character within an SSH session. Control commands will only be interpreted if they are the first thing that is typed after a newline, so always press ENTER one or two times prior to using one.</p>
+<p>One of the most useful controls is the ability to initiate a disconnect from the client. SSH connections are typically closed by the server, but this can be a problem if the server is suffering from issues or if the connection has been broken. By using a client-side disconnect, the connection can be cleanly closed from the client.</p>
+<p>To close a connection from the client, use the control character (<code>~</code>), with a dot. If your connection is having problems, you will likely be in what appears to be a stuck terminal session. Type the commands despite the lack of feedback to perform a client-side disconnect:</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~. 
+</code></pre></div>
+<p>The connection should immediately close, returning you to your local shell session.</p>
+<h3 id="placing-an-ssh-session-into-the-background">Placing an SSH Session into the Background</h3>
+<p>One of the most useful feature of OpenSSH that goes largely unnoticed is the ability to control certain aspects of the session from within the connection.</p>
+<p>These commands can be executed starting with the <code>~</code> control character from within an SSH connection. Control commands will only be interpreted if they are the first thing that is typed after a newline, so always press <code>ENTER</code> one or two times prior to using one.</p>
+<p>One capability that this provides is to put an SSH session into the background. To do this, we need to supply the control character (<code>~</code>) and then execute the conventional keyboard shortcut to background a task (CTRL-z):</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~<span class="o">[</span>CTRL-z<span class="o">]</span> 
+</code></pre></div>
+<p>This will place the connection into the background, returning you to your local shell session. To return to your SSH session, you can use the conventional job control mechanisms.</p>
+<p>You can immediately re-activate your most recent backgrounded task by typing:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">fg</span> 
+</code></pre></div>
+<p>If you have multiple backgrounded tasks, you can see the available jobs by typing:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">jobs</span> 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Output
+
+[1]+  Stopped                 ssh username@some_host
+[2]   Stopped                 ssh username@another_host 
+</code></pre></div>
+<p>You can then bring any of the tasks to the foreground by using the index in the first column with a percentage sign:</p>
+<div class="highlight"><pre><span></span><code>- <span class="nb">fg</span> %2 
+</code></pre></div>
+<h3 id="changing-port-forwarding-options-on-an-existing-ssh-connection">Changing Port Forwarding Options on an Existing SSH Connection</h3>
+<p>One of the most useful feature of OpenSSH that goes largely unnoticed is the ability to control certain aspects of the session from within the connection.</p>
+<p>These commands can be executed starting with the <code>~</code> control character from within an SSH connection. Control commands will only be interpreted if they are the first thing that is typed after a newline, so always press ENTER one or two times prior to using one.</p>
+<p>One thing that this allows is for a user to alter the port forwarding configuration after the connection has already been established. This allows you to create or tear down port forwarding rules on-the-fly.</p>
+<p>These capabilities are part of the SSH command line interface, which can be accessed during a session by using the control character (<code>~</code>) and “C”:</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~C 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ssh&gt; 
+</code></pre></div>
+<p>You will be given an SSH command prompt, which has a very limited set of valid commands. To see the available options, you can type <code>-h</code> from this prompt. If nothing is returned, you may have to increase the verbosity of your SSH output by using <code>~v</code> a few times:</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~v
+
+- ~v
+
+- ~v
+
+- ~C
+
+- -h 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Commands:
+      -L[bind_address:]port:host:hostport    Request local forward
+      -R[bind_address:]port:host:hostport    Request remote forward
+      -D[bind_address:]port                  Request dynamic forward
+      -KL[bind_address:]port                 Cancel local forward
+      -KR[bind_address:]port                 Cancel remote forward
+      -KD[bind_address:]port                 Cancel dynamic forward 
+</code></pre></div>
+<p>As you can see, you can easily implement any of the forwarding options using the appropriate options (see the forwarding section for more information). You can also destroy a tunnel with the associated “kill” command specified with a “K” before the forwarding type letter. For instance, to kill a local forward (<code>-L</code>), you could use the <code>-KL</code> command. You will only need to provide the port for this.</p>
+<p>So, to set up a local port forward, you may type:</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~C
+
+- -L <span class="m">8888</span>:127.0.0.1:80 
+</code></pre></div>
+<p>Port <code>8888</code> on your local computer will now be able to communicate with the web server on the host you are connecting to. When you are finished, you can tear down that forward by typing:</p>
+<div class="highlight"><pre><span></span><code>- <span class="o">[</span>ENTER<span class="o">]</span>
+
+- ~C
+
+- -KL <span class="m">8888</span> 
+</code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>The above instructions should cover the majority of the information most users will need about SSH on a day-to-day basis. If you have other tips or wish to share your favorite configurations and methods, feel free to use the comments below.</p>
+<hr />
+<p><a href="https://www.digitalocean.com/community/users/jellingwood">Justin Ellingwood</a></p>
+<p>Senior Technical Writer @DigitalOcean</p>
+<hr />
+<p><a href="https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#ssh-overview">Source</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Mosquitto/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Mosquitto
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Wi-Fi%20on%20Ubuntu%20Server/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Wi Fi on Ubuntu Server
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/spetriuk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/serhii-petriuk/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
